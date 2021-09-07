@@ -1,0 +1,1 @@
+C:\Users\jason\source\repos\info_managment_project\CS3230RentalSystemProject\CS3230RentalSystemProject\CS3230RentalSystemProject.csproj;x86
