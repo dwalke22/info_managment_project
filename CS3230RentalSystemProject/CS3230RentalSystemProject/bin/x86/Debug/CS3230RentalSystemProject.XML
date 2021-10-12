@@ -605,6 +605,14 @@
             Initialize constructor
             </summary>
         </member>
+        <member name="M:CS3230RentalSystemProject.view.MemberRegistration.OnNavigatedTo(Windows.UI.Xaml.Navigation.NavigationEventArgs)">
+            <summary>
+            Initialize parameter
+            </summary>
+            <param name="e">
+                    The parameter
+            </param>
+        </member>
         <member name="M:CS3230RentalSystemProject.view.MemberRegistration.InitializeComponent">
             <summary>
             InitializeComponent()
@@ -624,6 +632,19 @@
             <summary>
             An empty page that can be used on its own or navigated to within a Frame.
             </summary>
+        </member>
+        <member name="M:CS3230RentalSystemProject.View.MemebrInformationViewer.#ctor">
+            <summary>
+            Initalize constructor
+            </summary>
+        </member>
+        <member name="M:CS3230RentalSystemProject.View.MemebrInformationViewer.OnNavigatedTo(Windows.UI.Xaml.Navigation.NavigationEventArgs)">
+            <summary>
+            Initialize parameter
+            </summary>
+            <param name="e">
+                    The parameter
+            </param>
         </member>
         <member name="M:CS3230RentalSystemProject.View.MemebrInformationViewer.InitializeComponent">
             <summary>
@@ -700,6 +721,14 @@
             Get all the members
             </summary>
             <returns> all the members</returns>
+        </member>
+        <member name="M:DBAccess.DAL.EmployeeDAL.RegisterMember(CS3230RentalSystemProject.Model.Member)">
+            <summary>
+            Register ner member
+            </summary>
+            <param name="member">
+                        The new member
+            </param>
         </member>
     </members>
 </doc>

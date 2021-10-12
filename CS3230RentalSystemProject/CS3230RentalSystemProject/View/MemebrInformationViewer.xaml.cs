@@ -25,8 +25,11 @@ namespace CS3230RentalSystemProject.View
     public sealed partial class MemebrInformationViewer : Page
     {
 
-        public Member member { get; set; }
+        public Employee Employee { get; set; }
 
+        /// <summary>
+        /// Initalize constructor
+        /// </summary>
         public MemebrInformationViewer()
         {
             this.InitializeComponent();
@@ -35,18 +38,18 @@ namespace CS3230RentalSystemProject.View
 
         private void setViewer()
         {
-            this.firstNameInputBox.Text = this.member.FirstName;
-            this.lastNameInputBox.Text = this.member.LastName;
-            this.genderBox.Text = this.member.Gender;
-            this.address1InputBox.Text = this.member.Address1;
-            this.address2InputBox.Text = this.member.Address2 == null ? "" : this.member.Address2;
-            this.cityInputBox.Text = this.member.City;
-            this.stateBox.Text = this.member.State;
-            this.countryBox.Text = this.member.Country;
-            this.phoneInputBox.Text = this.member.PhoneNumber;
-            this.emailInputBox.Text = this.member.Email;
-            this.birtdayChooser.SelectedDate = this.member.Birthday;
-            this.zipcodeInputBox.Text = this.member.Zipcode;
+            this.firstNameInputBox.Text = this.Employee.Member.FirstName;
+            this.lastNameInputBox.Text = this.Employee.Member.LastName;
+            this.genderBox.Text = this.Employee.Member.Gender;
+            this.address1InputBox.Text = this.Employee.Member.Address1;
+            this.address2InputBox.Text = this.Employee.Member.Address2 == null ? "" : this.Employee.Member.Address2;
+            this.cityInputBox.Text = this.Employee.Member.City;
+            this.stateBox.Text = this.Employee.Member.State;
+            this.countryBox.Text = this.Employee.Member.Country;
+            this.phoneInputBox.Text = this.Employee.Member.PhoneNumber;
+            this.emailInputBox.Text = this.Employee.Member.Email;
+            this.birtdayChooser.SelectedDate = this.Employee.Member.Birthday;
+            this.zipcodeInputBox.Text = this.Employee.Member.Zipcode;
         }
 
         private void registerButton_Click(object sender, RoutedEventArgs e)
@@ -54,6 +57,12 @@ namespace CS3230RentalSystemProject.View
             Frame.Navigate(typeof(EmployeeWindow));
         }
 
+        /// <summary>
+        /// Initialize parameter
+        /// </summary>
+        /// <param name="e">
+        ///         The parameter
+        /// </param>
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             base.OnNavigatedTo(e);
@@ -62,7 +71,7 @@ namespace CS3230RentalSystemProject.View
                 return;
             }
 
-            this.member = (Member)e.Parameter;;
+            this.Employee = (Employee)e.Parameter;
 
             this.setViewer();
         }

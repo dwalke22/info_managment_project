@@ -70,26 +70,36 @@ namespace DBAccess.DAL
 
         }
 
+        /// <summary>
+        /// Register ner member
+        /// </summary>
+        /// <param name="member">
+        ///             The new member
+        /// </param>
         public void RegisterMember(Member member)
         {
-            string data = "";
-            if (member.Address2 == null)
-            {
-                data = "INSERT into `member` (memberID, gender, firstName, lastName, address1, address2, city, state, country, zipcode, phoneNumber, email, birthday, registrationDate)"
-                + "VALUES(null, '" + member.Gender + "', '" + member.FirstName + "', '" + member.LastName + "', '" + member.Address1 + "', null, '" + member.City + "', '" + member.State + "', '" + member.Country + "', '" + member.Zipcode + "', '" + member.PhoneNumber + "', '" + member.Email + "', '" + member.Birthday.Date.ToString("yyyy-MM-dd") + "', '" + DateTime.Now.ToString("yyyy-MM-dd") + "')";
-            }
-            else
-            {
-                data = "INSERT into `member` (memberID, gender, firstName, lastName, address1, address2, city, state, country, zipcode, phoneNumber, email, birthday, registrationDate)"
-                + "VALUES(null, '" + member.Gender + "', '" + member.FirstName + "', '" + member.LastName + "', '" + member.Address1 + "', " + member.Address2 + ", '" + member.City + "', '" + member.State + "', '" + member.Country + "', '" + member.Zipcode + "', '" + member.PhoneNumber + "', '" + member.Email + "', '" + member.Birthday.Date.ToString("yyyy-MM-dd") + "', '" + DateTime.Now.ToString("yyyy-MM-dd") + "')";
+            string data = "INSERT into `member` (memberID, gender, firstName, lastName, address1, address2, city, state, country, zipcode, phoneNumber, email, birthday, registrationDate)"
+                + "VALUES(@memberID, @gender, @firstName, @lastName, @address1, @address2, @city, @state, @country, @zipcode, @phoneNumber, @email, @birthday, @registrationDate)";
 
-            }
             using (MySqlConnection connection = new MySqlConnection(Connection.connectionString))
             {
                 connection.Open();
 
                 using MySqlCommand command = new MySqlCommand(data, connection);
-
+                command.Parameters.Add("@memberId", MySqlDbType.Int32).Value = null;
+                command.Parameters.Add("@gender", MySqlDbType.VarChar).Value = member.Gender;
+                command.Parameters.Add("@firstName", MySqlDbType.VarChar).Value = member.FirstName;
+                command.Parameters.Add("@lastName", MySqlDbType.VarChar).Value = member.LastName;
+                command.Parameters.Add("@address1", MySqlDbType.VarChar).Value = member.Address1;
+                command.Parameters.Add("@address2", MySqlDbType.VarChar).Value = member.Address2 == null ? null : member.Address2;
+                command.Parameters.Add("@city", MySqlDbType.VarChar).Value = member.City;
+                command.Parameters.Add("@state", MySqlDbType.VarChar).Value = member.State;
+                command.Parameters.Add("@country", MySqlDbType.VarChar).Value = member.Country;
+                command.Parameters.Add("@zipcode", MySqlDbType.VarChar).Value = member.Zipcode;
+                command.Parameters.Add("@phoneNumber", MySqlDbType.VarChar).Value = member.PhoneNumber;
+                command.Parameters.Add("@email", MySqlDbType.VarChar).Value = member.Email;
+                command.Parameters.Add("@birthday", MySqlDbType.VarChar).Value = member.Birthday.Date.ToString("yyyy-MM-dd");
+                command.Parameters.Add("@registrationDate", MySqlDbType.VarChar).Value = DateTime.Now.ToString("yyyy-MM-dd");
                 command.ExecuteNonQuery();
             }
         }

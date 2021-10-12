@@ -32,6 +32,8 @@ namespace CS3230RentalSystemProject.view
 
         #region DataMember
 
+        public Employee Employee { get; set; }
+
         private string FirstName;
 
         private string LastName;
@@ -116,7 +118,16 @@ namespace CS3230RentalSystemProject.view
 
             var message = new MessageDialog("");
             message.Title = "Alert Message";
-            if (this.FirstName == null || this.FirstName == "")
+            if (this.FirstName != null && this.LastName != null)
+            {
+                string fullName = this.FirstName + " " + this.LastName;
+                if (this.checkFirstAndLastName(fullName))
+                {
+                    message.Content = "The memebr (" + fullName + ") exists! Please try a different First Name or Last Name!";
+                    await message.ShowAsync();
+                }
+            }
+            else if (this.FirstName == null || this.FirstName == "")
             {
                 message.Content = "Please Entry Your First Name!";
                 await message.ShowAsync();
@@ -194,6 +205,18 @@ namespace CS3230RentalSystemProject.view
 
         }
 
+        private bool checkFirstAndLastName(string fullName)
+        {
+            foreach(Member member in this.Employee.MemberList)
+            {
+                if (fullName.Equals(member.ToString(), StringComparison.OrdinalIgnoreCase))
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
         private void firstNameInputBox_TextChanged(object sender, TextChangedEventArgs e)
         {
             this.FirstName = this.firstNameInputBox.Text;
@@ -252,6 +275,24 @@ namespace CS3230RentalSystemProject.view
         private void zipcodeInputBox_TextChanged(object sender, TextChangedEventArgs e)
         {
             this.Zipcode = this.zipcodeInputBox.Text;
+        }
+
+
+        /// <summary>
+        /// Initialize parameter
+        /// </summary>
+        /// <param name="e">
+        ///         The parameter
+        /// </param>
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            base.OnNavigatedTo(e);
+            if (e.Parameter == null)
+            {
+                return;
+            }
+
+            this.Employee = (Employee)e.Parameter;
         }
 
         #endregion

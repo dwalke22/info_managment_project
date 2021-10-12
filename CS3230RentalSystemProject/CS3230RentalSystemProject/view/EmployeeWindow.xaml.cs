@@ -32,6 +32,8 @@ namespace CS3230RentalSystemProject.view
 
         private List<Member> list;
 
+        private Employee employee;
+
         #endregion
 
         #region Constructor
@@ -44,6 +46,7 @@ namespace CS3230RentalSystemProject.view
         {
             this.InitializeComponent();
             this.viewModel = new EmployeeViewModel();
+            this.employee = new Employee();
             EmployeeDAL dAL = new EmployeeDAL();
             this.memberList.ItemsSource = dAL.GetAllMemberList();
             this.list = this.convertList();
@@ -55,10 +58,9 @@ namespace CS3230RentalSystemProject.view
 
         private void registerMemberButton_Click(object sender, RoutedEventArgs e)
         {
-            Frame.Navigate(typeof(MemberRegistration));
+            this.employee.MemberList = this.list;
+            Frame.Navigate(typeof(MemberRegistration), this.employee);
         }
-
-        #endregion
 
         private void searchBox_TextChanging(TextBox sender, TextBoxTextChangingEventArgs args)
         {
@@ -81,9 +83,11 @@ namespace CS3230RentalSystemProject.view
             ListBox box = sender as ListBox;
             if (box.SelectedItem != null)
             {
-
-                Frame.Navigate(typeof(MemebrInformationViewer), (Member)box.SelectedItem);
+                this.employee.Member = (Member)box.SelectedItem;
+                Frame.Navigate(typeof(MemebrInformationViewer), this.employee);
             }
         }
+
+        #endregion
     }
 }

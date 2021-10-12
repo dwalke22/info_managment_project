@@ -18,5 +18,9 @@ namespace CS3230RentalSystemProject.Model
         public string PhoneNumber { get; set; }
 
         public string Email { get; set; }
+
+        public Member Member { get; set; }
+
+        public List<Member> MemberList { get; set; }
     }
 }
