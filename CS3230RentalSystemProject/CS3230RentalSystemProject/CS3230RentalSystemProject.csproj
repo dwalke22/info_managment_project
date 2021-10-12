@@ -29,6 +29,7 @@
     <UseVSHostingProcess>false</UseVSHostingProcess>
     <ErrorReport>prompt</ErrorReport>
     <Prefer32Bit>true</Prefer32Bit>
+    <DocumentationFile>bin\x86\Debug\CS3230RentalSystemProject.XML</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
     <OutputPath>bin\x86\Release\</OutputPath>
@@ -115,21 +116,30 @@
   <PropertyGroup>
     <RestoreProjectStyle>PackageReference</RestoreProjectStyle>
   </PropertyGroup>
+  <PropertyGroup>
+    <LangVersion>preview</LangVersion>
+  </PropertyGroup>
   <ItemGroup>
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="DAL\Connection.cs" />
+    <Compile Include="DAL\DataReaderHelper.cs" />
+    <Compile Include="DAL\EmployeeDALl.cs" />
+    <Compile Include="Eums\Country.cs" />
+    <Compile Include="Eums\Gender.cs" />
+    <Compile Include="Eums\State.cs" />
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Model\Employee.cs" />
+    <Compile Include="Model\Member.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="view\EmployeeWindow.xaml.cs">
+    <Compile Include="ViewModel\EmployeeViewModel.cs" />
+    <Compile Include="View\EmployeeWindow.xaml.cs">
       <DependentUpon>EmployeeWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="view\Login.xaml.cs">
-      <DependentUpon>Login.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="view\MemberRegistration.xaml.cs">
+    <Compile Include="View\MemberRegistration.xaml.cs">
       <DependentUpon>MemberRegistration.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
@@ -157,15 +167,11 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="view\EmployeeWindow.xaml">
+    <Page Include="View\EmployeeWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="view\Login.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="view\MemberRegistration.xaml">
+    <Page Include="View\MemberRegistration.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -174,10 +180,17 @@
     <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform">
       <Version>6.2.12</Version>
     </PackageReference>
+    <PackageReference Include="MySql.Data">
+      <Version>8.0.26</Version>
+    </PackageReference>
+    <PackageReference Include="MySqlConnector">
+      <Version>1.3.13</Version>
+    </PackageReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="Documents\Product Backlog.pdf" />
   </ItemGroup>
+  <ItemGroup />
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>
   </PropertyGroup>

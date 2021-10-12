@@ -1,0 +1,685 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>CS3230RentalSystemProject</name>
+    </assembly>
+    <members>
+        <member name="T:CS3230RentalSystemProject.App">
+            <summary>
+            Provides application-specific behavior to supplement the default Application class.
+            </summary>
+        </member>
+        <member name="M:CS3230RentalSystemProject.App.#ctor">
+            <summary>
+            Initializes the singleton application object.  This is the first line of authored code
+            executed, and as such is the logical equivalent of main() or WinMain().
+            </summary>
+        </member>
+        <member name="M:CS3230RentalSystemProject.App.OnLaunched(Windows.ApplicationModel.Activation.LaunchActivatedEventArgs)">
+            <summary>
+            Invoked when the application is launched normally by the end user.  Other entry points
+            will be used such as when the application is launched to open a specific file.
+            </summary>
+            <param name="e">Details about the launch request and process.</param>
+        </member>
+        <member name="M:CS3230RentalSystemProject.App.OnNavigationFailed(System.Object,Windows.UI.Xaml.Navigation.NavigationFailedEventArgs)">
+            <summary>
+            Invoked when Navigation to a certain page fails
+            </summary>
+            <param name="sender">The Frame which failed navigation</param>
+            <param name="e">Details about the navigation failure</param>
+        </member>
+        <member name="M:CS3230RentalSystemProject.App.OnSuspending(System.Object,Windows.ApplicationModel.SuspendingEventArgs)">
+            <summary>
+            Invoked when application execution is being suspended.  Application state is saved
+            without knowing whether the application will be terminated or resumed with the contents
+            of memory still intact.
+            </summary>
+            <param name="sender">The source of the suspend request.</param>
+            <param name="e">Details about the suspend request.</param>
+        </member>
+        <member name="M:CS3230RentalSystemProject.App.InitializeComponent">
+            <summary>
+            InitializeComponent()
+            </summary>
+        </member>
+        <member name="M:CS3230RentalSystemProject.App.GetXamlType(System.Type)">
+            <summary>
+            GetXamlType(Type)
+            </summary>
+        </member>
+        <member name="M:CS3230RentalSystemProject.App.GetXamlType(System.String)">
+            <summary>
+            GetXamlType(String)
+            </summary>
+        </member>
+        <member name="M:CS3230RentalSystemProject.App.GetXmlnsDefinitions">
+            <summary>
+            GetXmlnsDefinitions()
+            </summary>
+        </member>
+        <member name="T:CS3230RentalSystemProject.Enums.Country">
+            <summary>
+            Enum Country
+            </summary>
+        </member>
+        <member name="F:CS3230RentalSystemProject.Enums.Country.None">
+            <summary>
+                If there is no country
+            </summary>
+            <summary>
+                The none
+            </summary>
+        </member>
+        <member name="F:CS3230RentalSystemProject.Enums.Country.USA">
+            <summary>
+                The United State
+            </summary>
+            <summary>
+                The USA
+            </summary>
+        </member>
+        <member name="T:CS3230RentalSystemProject.Enums.Gender">
+            <summary>
+            Enum Country
+            </summary>
+        </member>
+        <member name="F:CS3230RentalSystemProject.Enums.Gender.Male">
+            <summary>
+                Male
+            </summary>
+            <summary>
+                The Male
+            </summary>
+        </member>
+        <member name="F:CS3230RentalSystemProject.Enums.Gender.Female">
+            <summary>
+                Female
+            </summary>
+            <summary>
+                The Female
+            </summary>
+        </member>
+        <member name="T:CS3230RentalSystemProject.Enums.State">
+            <summary>
+                Enum States
+            </summary>
+        </member>
+        <member name="F:CS3230RentalSystemProject.Enums.State.None">
+            <summary>
+                If there is no state
+            </summary>
+            <summary>
+                The none
+            </summary>
+        </member>
+        <member name="F:CS3230RentalSystemProject.Enums.State.AL">
+            <summary>
+                The state Alabama
+            </summary>
+            <summary>
+                The al
+            </summary>
+        </member>
+        <member name="F:CS3230RentalSystemProject.Enums.State.AK">
+            <summary>
+                The state Alaska
+            </summary>
+            <summary>
+                The ak
+            </summary>
+        </member>
+        <member name="F:CS3230RentalSystemProject.Enums.State.AR">
+            <summary>
+                The state Arkansas
+            </summary>
+            <summary>
+                The ar
+            </summary>
+        </member>
+        <member name="F:CS3230RentalSystemProject.Enums.State.AS">
+            <summary>
+                American Samoa
+            </summary>
+            <summary>
+                As
+            </summary>
+        </member>
+        <member name="F:CS3230RentalSystemProject.Enums.State.AZ">
+            <summary>
+                The state Arizona
+            </summary>
+            <summary>
+                The az
+            </summary>
+        </member>
+        <member name="F:CS3230RentalSystemProject.Enums.State.CA">
+            <summary>
+                The state California
+            </summary>
+            <summary>
+                The ca
+            </summary>
+        </member>
+        <member name="F:CS3230RentalSystemProject.Enums.State.CO">
+            <summary>
+                The state Colorado
+            </summary>
+            <summary>
+                The co
+            </summary>
+        </member>
+        <member name="F:CS3230RentalSystemProject.Enums.State.CT">
+            <summary>
+                The state Connecticut
+            </summary>
+            <summary>
+                The ct
+            </summary>
+        </member>
+        <member name="F:CS3230RentalSystemProject.Enums.State.DC">
+            <summary>
+                The state  dc
+            </summary>
+            <summary>
+                The dc
+            </summary>
+        </member>
+        <member name="F:CS3230RentalSystemProject.Enums.State.DE">
+            <summary>
+                The state Delaware
+            </summary>
+            <summary>
+                The de
+            </summary>
+        </member>
+        <member name="F:CS3230RentalSystemProject.Enums.State.FL">
+            <summary>
+                The state Florida
+            </summary>
+            <summary>
+                The fl
+            </summary>
+        </member>
+        <member name="F:CS3230RentalSystemProject.Enums.State.GA">
+            <summary>
+                The state Georgia
+            </summary>
+            <summary>
+                The ga
+            </summary>
+        </member>
+        <member name="F:CS3230RentalSystemProject.Enums.State.GU">
+            <summary>
+                Guam
+            </summary>
+            <summary>
+                The gu
+            </summary>
+        </member>
+        <member name="F:CS3230RentalSystemProject.Enums.State.HI">
+            <summary>
+                The state Hawaii
+            </summary>
+            <summary>
+                The hi
+            </summary>
+        </member>
+        <member name="F:CS3230RentalSystemProject.Enums.State.IA">
+            <summary>
+                The state Iowa
+            </summary>
+            <summary>
+                The ia
+            </summary>
+        </member>
+        <member name="F:CS3230RentalSystemProject.Enums.State.ID">
+            <summary>
+                The state Idaho
+            </summary>
+            <summary>
+                The identifier
+            </summary>
+        </member>
+        <member name="F:CS3230RentalSystemProject.Enums.State.IL">
+            <summary>
+                The state Illinois
+            </summary>
+            <summary>
+                The il
+            </summary>
+        </member>
+        <member name="F:CS3230RentalSystemProject.Enums.State.IN">
+            <summary>
+                The state Indiana
+            </summary>
+            <summary>
+                The in
+            </summary>
+        </member>
+        <member name="F:CS3230RentalSystemProject.Enums.State.KS">
+            <summary>
+                The state Kansas
+            </summary>
+            <summary>
+                The ks
+            </summary>
+        </member>
+        <member name="F:CS3230RentalSystemProject.Enums.State.KY">
+            <summary>
+                The state Kentucky
+            </summary>
+            <summary>
+                The ky
+            </summary>
+        </member>
+        <member name="F:CS3230RentalSystemProject.Enums.State.LA">
+            <summary>
+                The state Louisiana
+            </summary>
+            <summary>
+                The la
+            </summary>
+        </member>
+        <member name="F:CS3230RentalSystemProject.Enums.State.MA">
+            <summary>
+                The state Massachusetts
+            </summary>
+            <summary>
+                The ma
+            </summary>
+        </member>
+        <member name="F:CS3230RentalSystemProject.Enums.State.MD">
+            <summary>
+                The state Maryland
+            </summary>
+            <summary>
+                The md
+            </summary>
+        </member>
+        <member name="F:CS3230RentalSystemProject.Enums.State.ME">
+            <summary>
+                The state Maine
+            </summary>
+            <summary>
+                Me
+            </summary>
+        </member>
+        <member name="F:CS3230RentalSystemProject.Enums.State.MI">
+            <summary>
+                The state Michigan
+            </summary>
+            <summary>
+                The mi
+            </summary>
+        </member>
+        <member name="F:CS3230RentalSystemProject.Enums.State.MN">
+            <summary>
+                The state Minnesota
+            </summary>
+            <summary>
+                The mn
+            </summary>
+        </member>
+        <member name="F:CS3230RentalSystemProject.Enums.State.MO">
+            <summary>
+                The state Missouri
+            </summary>
+            <summary>
+                The mo
+            </summary>
+        </member>
+        <member name="F:CS3230RentalSystemProject.Enums.State.MP">
+            <summary>
+                Northern Marianas
+            </summary>
+            <summary>
+                The mp
+            </summary>
+        </member>
+        <member name="F:CS3230RentalSystemProject.Enums.State.MS">
+            <summary>
+                The state Mississippi
+            </summary>
+            <summary>
+                The ms
+            </summary>
+        </member>
+        <member name="F:CS3230RentalSystemProject.Enums.State.MT">
+            <summary>
+                The state Montana
+            </summary>
+            <summary>
+                The mt
+            </summary>
+        </member>
+        <member name="F:CS3230RentalSystemProject.Enums.State.NC">
+            <summary>
+                The state North Carolina
+            </summary>
+            <summary>
+                The nc
+            </summary>
+        </member>
+        <member name="F:CS3230RentalSystemProject.Enums.State.ND">
+            <summary>
+                The state North Dakota
+            </summary>
+            <summary>
+                The nd
+            </summary>
+        </member>
+        <member name="F:CS3230RentalSystemProject.Enums.State.NE">
+            <summary>
+                The state Nebraska
+            </summary>
+            <summary>
+                The ne
+            </summary>
+        </member>
+        <member name="F:CS3230RentalSystemProject.Enums.State.NH">
+            <summary>
+                The state New Hampshire
+            </summary>
+            <summary>
+                The nh
+            </summary>
+        </member>
+        <member name="F:CS3230RentalSystemProject.Enums.State.NJ">
+            <summary>
+                The state New Jersey
+            </summary>
+            <summary>
+                The nj
+            </summary>
+        </member>
+        <member name="F:CS3230RentalSystemProject.Enums.State.NM">
+            <summary>
+                The state New Mexico
+            </summary>
+            <summary>
+                The nm
+            </summary>
+        </member>
+        <member name="F:CS3230RentalSystemProject.Enums.State.NV">
+            <summary>
+                The state Nevada
+            </summary>
+            <summary>
+                The nv
+            </summary>
+        </member>
+        <member name="F:CS3230RentalSystemProject.Enums.State.NY">
+            <summary>
+                The state New York
+            </summary>
+            <summary>
+                The ny
+            </summary>
+        </member>
+        <member name="F:CS3230RentalSystemProject.Enums.State.OK">
+            <summary>
+                The state Oklahoma
+            </summary>
+            <summary>
+                The ok
+            </summary>
+        </member>
+        <member name="F:CS3230RentalSystemProject.Enums.State.OH">
+            <summary>
+                The state Ohio
+            </summary>
+            <summary>
+                The oh
+            </summary>
+        </member>
+        <member name="F:CS3230RentalSystemProject.Enums.State.OR">
+            <summary>
+                The state Oregon
+            </summary>
+            <summary>
+                The or
+            </summary>
+        </member>
+        <member name="F:CS3230RentalSystemProject.Enums.State.PA">
+            <summary>
+                The state Pennsylvania
+            </summary>
+            <summary>
+                The pa
+            </summary>
+        </member>
+        <member name="F:CS3230RentalSystemProject.Enums.State.PR">
+            <summary>
+                The Place Puerto Rico
+            </summary>
+            <summary>
+                The pr
+            </summary>
+        </member>
+        <member name="F:CS3230RentalSystemProject.Enums.State.RI">
+            <summary>
+                The state Rhode Island
+            </summary>
+            <summary>
+                The ri
+            </summary>
+        </member>
+        <member name="F:CS3230RentalSystemProject.Enums.State.SC">
+            <summary>
+                The state South Carolina
+            </summary>
+        </member>
+        <member name="F:CS3230RentalSystemProject.Enums.State.SD">
+            <summary>
+                The state  South Dakota
+            </summary>
+        </member>
+        <member name="F:CS3230RentalSystemProject.Enums.State.TN">
+            <summary>
+                The state Tennessee
+            </summary>
+        </member>
+        <member name="F:CS3230RentalSystemProject.Enums.State.TX">
+            <summary>
+                The state Texas
+            </summary>
+        </member>
+        <member name="F:CS3230RentalSystemProject.Enums.State.UT">
+            <summary>
+                The state Utah
+            </summary>
+        </member>
+        <member name="F:CS3230RentalSystemProject.Enums.State.VA">
+            <summary>
+                The state Virginia
+            </summary>
+        </member>
+        <member name="F:CS3230RentalSystemProject.Enums.State.VI">
+            <summary>
+                The Virgin Islands
+            </summary>
+        </member>
+        <member name="F:CS3230RentalSystemProject.Enums.State.VT">
+            <summary>
+                The state Vermont
+            </summary>
+        </member>
+        <member name="F:CS3230RentalSystemProject.Enums.State.WA">
+            <summary>
+                The state Washington
+            </summary>
+        </member>
+        <member name="F:CS3230RentalSystemProject.Enums.State.WI">
+            <summary>
+                The state Wisconsin
+            </summary>
+        </member>
+        <member name="F:CS3230RentalSystemProject.Enums.State.WV">
+            <summary>
+                The state West Virginia
+            </summary>
+        </member>
+        <member name="F:CS3230RentalSystemProject.Enums.State.WY">
+            <summary>
+                The state Wyoming
+            </summary>
+        </member>
+        <member name="T:CS3230RentalSystemProject.MainPage">
+            <summary>
+            An empty page that can be used on its own or navigated to within a Frame.
+            </summary>
+        </member>
+        <member name="M:CS3230RentalSystemProject.MainPage.#ctor">
+            <summary>
+            Initialize constructor
+            </summary>
+        </member>
+        <member name="M:CS3230RentalSystemProject.MainPage.InitializeComponent">
+            <summary>
+            InitializeComponent()
+            </summary>
+        </member>
+        <member name="M:CS3230RentalSystemProject.MainPage.Connect(System.Int32,System.Object)">
+            <summary>
+            Connect()
+            </summary>
+        </member>
+        <member name="M:CS3230RentalSystemProject.MainPage.GetBindingConnector(System.Int32,System.Object)">
+            <summary>
+            GetBindingConnector(int connectionId, object target)
+            </summary>
+        </member>
+        <member name="T:CS3230RentalSystemProject.Model.Employee">
+            <summary>
+            The Employee Class.
+            </summary>
+        </member>
+        <member name="T:CS3230RentalSystemProject.Model.Member">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:CS3230RentalSystemProject.ViewModel.EmployeeViewModel">
+            <summary>
+            The Employee view model class.
+            </summary>
+        </member>
+        <member name="M:CS3230RentalSystemProject.ViewModel.EmployeeViewModel.#ctor">
+            <summary>
+            Initialize constructor
+            </summary>
+        </member>
+        <member name="T:CS3230RentalSystemProject.view.EmployeeWindow">
+            <summary>
+            The EmployeeWindow class
+            </summary>
+        </member>
+        <member name="M:CS3230RentalSystemProject.view.EmployeeWindow.#ctor">
+            <summary>
+            Initialize constructor
+            </summary>
+        </member>
+        <member name="M:CS3230RentalSystemProject.view.EmployeeWindow.InitializeComponent">
+            <summary>
+            InitializeComponent()
+            </summary>
+        </member>
+        <member name="M:CS3230RentalSystemProject.view.EmployeeWindow.Connect(System.Int32,System.Object)">
+            <summary>
+            Connect()
+            </summary>
+        </member>
+        <member name="M:CS3230RentalSystemProject.view.EmployeeWindow.GetBindingConnector(System.Int32,System.Object)">
+            <summary>
+            GetBindingConnector(int connectionId, object target)
+            </summary>
+        </member>
+        <member name="T:CS3230RentalSystemProject.view.MemberRegistration">
+            <summary>
+            The MemberRegistration class
+            </summary>
+        </member>
+        <member name="M:CS3230RentalSystemProject.view.MemberRegistration.#ctor">
+            <summary>
+            Initialize constructor
+            </summary>
+        </member>
+        <member name="M:CS3230RentalSystemProject.view.MemberRegistration.InitializeComponent">
+            <summary>
+            InitializeComponent()
+            </summary>
+        </member>
+        <member name="M:CS3230RentalSystemProject.view.MemberRegistration.Connect(System.Int32,System.Object)">
+            <summary>
+            Connect()
+            </summary>
+        </member>
+        <member name="M:CS3230RentalSystemProject.view.MemberRegistration.GetBindingConnector(System.Int32,System.Object)">
+            <summary>
+            GetBindingConnector(int connectionId, object target)
+            </summary>
+        </member>
+        <member name="T:CS3230RentalSystemProject.Program">
+            <summary>
+            Program class
+            </summary>
+        </member>
+        <member name="T:CS3230RentalSystemProject.CS3230RentalSystemProject_XamlTypeInfo.XamlMetaDataProvider">
+            <summary>
+            Main class for providing metadata for the app or library
+            </summary>
+        </member>
+        <member name="M:CS3230RentalSystemProject.CS3230RentalSystemProject_XamlTypeInfo.XamlMetaDataProvider.GetXamlType(System.Type)">
+            <summary>
+            GetXamlType(Type)
+            </summary>
+        </member>
+        <member name="M:CS3230RentalSystemProject.CS3230RentalSystemProject_XamlTypeInfo.XamlMetaDataProvider.GetXamlType(System.String)">
+            <summary>
+            GetXamlType(String)
+            </summary>
+        </member>
+        <member name="M:CS3230RentalSystemProject.CS3230RentalSystemProject_XamlTypeInfo.XamlMetaDataProvider.GetXmlnsDefinitions">
+            <summary>
+            GetXmlnsDefinitions()
+            </summary>
+        </member>
+        <member name="T:DBAccess.DAL.Connection">
+            <summary>
+            The Connection class
+            </summary>
+        </member>
+        <member name="F:DBAccess.DAL.Connection.connectionString">
+            <summary>
+            Connect to database
+            </summary>
+        </member>
+        <member name="T:DBAccess.DAL.DataReaderHelper">
+            <summary>
+             Helper class define an Extension method that checks if a column is null before retturn its value
+            </summary>
+        </member>
+        <member name="M:DBAccess.DAL.DataReaderHelper.GetFieldValueCheckNull``1(MySql.Data.MySqlClient.MySqlDataReader,System.Int32)">
+            <summary>
+            Extension method that checks if a column is null before return its value.
+            
+            </summary>
+            <typeparam name="T"> column type</typeparam>
+            <param name="reader">DataReader object</param>
+            <param name="columnOrdinal">column ordinal</param>
+            <returns></returns>
+        </member>
+        <member name="T:DBAccess.DAL.EmployeeDAL">
+            <summary>
+            The EmployeeDAL class
+            </summary>
+        </member>
+        <member name="M:DBAccess.DAL.EmployeeDAL.GetAllMemberst(System.Int32)">
+            <summary>
+            Get all the members
+            </summary>
+            <returns> all the members</returns>
+        </member>
+    </members>
+</doc>
