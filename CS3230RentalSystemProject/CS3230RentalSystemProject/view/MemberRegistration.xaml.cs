@@ -1,5 +1,6 @@
 ﻿using CS3230RentalSystemProject.Enums;
 using CS3230RentalSystemProject.Model;
+using DBAccess.DAL;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -79,7 +80,7 @@ namespace CS3230RentalSystemProject.view
            
         }
 
-        private async void pastDateToEmplyee()
+        private void pastDateToEmplyee()
         {
             Member member = new Member
             {
@@ -96,10 +97,9 @@ namespace CS3230RentalSystemProject.view
                 Email = this.Email,
                 Birthday = this.Birthday
             };
-            var message = new MessageDialog("");
-            message.Title = "Alert Message";
-            message.Content = "This is passed " + member.PhoneNumber + " " + member.Gender + " " + member.Birthday.Date;
-            await message.ShowAsync();
+            EmployeeDAL dAL = new EmployeeDAL();
+            dAL.RegisterMember(member);
+            Frame.Navigate(typeof(EmployeeWindow));
         }
 
         private void cancelButton_Click(object sender, RoutedEventArgs e)
@@ -110,7 +110,7 @@ namespace CS3230RentalSystemProject.view
         private async void checkInput()
         {
 
-            Regex phoneRegex = new Regex(@"[\d]{9}");
+            Regex phoneRegex = new Regex(@"[\d]{10}");
             Regex zipRegex = new Regex(@"[\d]{5}");
             Regex emailRegex = new Regex(@"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$");
 
@@ -190,6 +190,7 @@ namespace CS3230RentalSystemProject.view
             {
                 this.pastDateToEmplyee();
             }
+            
 
         }
 
@@ -220,7 +221,7 @@ namespace CS3230RentalSystemProject.view
 
         private void genderChooser_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            this.Gender = this.genderChooser.Text;
+            this.Gender = this.genderChooser.SelectedItem.ToString();
         }
 
         private void address1InputBox_TextChanged(object sender, TextChangedEventArgs e)
@@ -240,12 +241,12 @@ namespace CS3230RentalSystemProject.view
 
         private void stateChooser_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            this.State = this.stateChooser.Text;
+            this.State = this.stateChooser.SelectedItem.ToString();
         }
 
         private void countryChooser_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            this.Country = this.countryChooser.Text;
+            this.Country = this.countryChooser.SelectedItem.ToString();
         }
 
         private void zipcodeInputBox_TextChanged(object sender, TextChangedEventArgs e)

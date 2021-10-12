@@ -76,3 +76,4 @@ C:\Users\jason\source\repos\info_managment_project\CS3230RentalSystemProject\CS3
 C:\Users\jason\source\repos\info_managment_project\CS3230RentalSystemProject\CS3230RentalSystemProject\obj\x86\Debug\View\MemebrInformationViewer.xaml
 C:\Users\jason\source\repos\info_managment_project\CS3230RentalSystemProject\CS3230RentalSystemProject\obj\x86\Debug\View\MemebrInformationViewer.xbf
 C:\Users\jason\source\repos\info_managment_project\CS3230RentalSystemProject\CS3230RentalSystemProject\bin\x86\Debug\View\MemebrInformationViewer.xbf
+C:\Users\jason\source\repos\info_managment_project\CS3230RentalSystemProject\CS3230RentalSystemProject\obj\x86\Debug\CS3230RentalSystemProject.csproj.AssemblyReference.cache

@@ -70,5 +70,29 @@ namespace DBAccess.DAL
 
         }
 
+        public void RegisterMember(Member member)
+        {
+            string data = "";
+            if (member.Address2 == null)
+            {
+                data = "INSERT into `member` (memberID, gender, firstName, lastName, address1, address2, city, state, country, zipcode, phoneNumber, email, birthday, registrationDate)"
+                + "VALUES(null, '" + member.Gender + "', '" + member.FirstName + "', '" + member.LastName + "', '" + member.Address1 + "', null, '" + member.City + "', '" + member.State + "', '" + member.Country + "', '" + member.Zipcode + "', '" + member.PhoneNumber + "', '" + member.Email + "', '" + member.Birthday.Date.ToString("yyyy-MM-dd") + "', '" + DateTime.Now.ToString("yyyy-MM-dd") + "')";
+            }
+            else
+            {
+                data = "INSERT into `member` (memberID, gender, firstName, lastName, address1, address2, city, state, country, zipcode, phoneNumber, email, birthday, registrationDate)"
+                + "VALUES(null, '" + member.Gender + "', '" + member.FirstName + "', '" + member.LastName + "', '" + member.Address1 + "', " + member.Address2 + ", '" + member.City + "', '" + member.State + "', '" + member.Country + "', '" + member.Zipcode + "', '" + member.PhoneNumber + "', '" + member.Email + "', '" + member.Birthday.Date.ToString("yyyy-MM-dd") + "', '" + DateTime.Now.ToString("yyyy-MM-dd") + "')";
+
+            }
+            using (MySqlConnection connection = new MySqlConnection(Connection.connectionString))
+            {
+                connection.Open();
+
+                using MySqlCommand command = new MySqlCommand(data, connection);
+
+                command.ExecuteNonQuery();
+            }
+        }
+
     }
 }

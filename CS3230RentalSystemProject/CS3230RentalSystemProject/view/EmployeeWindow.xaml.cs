@@ -81,7 +81,6 @@ namespace CS3230RentalSystemProject.view
             ListBox box = sender as ListBox;
             if (box.SelectedItem != null)
             {
-                MemebrInformationViewer view = new MemebrInformationViewer();
 
                 Frame.Navigate(typeof(MemebrInformationViewer), (Member)box.SelectedItem);
             }
