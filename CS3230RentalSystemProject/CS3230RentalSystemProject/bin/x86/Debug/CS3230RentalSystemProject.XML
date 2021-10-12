@@ -620,6 +620,26 @@
             GetBindingConnector(int connectionId, object target)
             </summary>
         </member>
+        <member name="T:CS3230RentalSystemProject.View.MemebrInformationViewer">
+            <summary>
+            An empty page that can be used on its own or navigated to within a Frame.
+            </summary>
+        </member>
+        <member name="M:CS3230RentalSystemProject.View.MemebrInformationViewer.InitializeComponent">
+            <summary>
+            InitializeComponent()
+            </summary>
+        </member>
+        <member name="M:CS3230RentalSystemProject.View.MemebrInformationViewer.Connect(System.Int32,System.Object)">
+            <summary>
+            Connect()
+            </summary>
+        </member>
+        <member name="M:CS3230RentalSystemProject.View.MemebrInformationViewer.GetBindingConnector(System.Int32,System.Object)">
+            <summary>
+            GetBindingConnector(int connectionId, object target)
+            </summary>
+        </member>
         <member name="T:CS3230RentalSystemProject.Program">
             <summary>
             Program class
@@ -675,7 +695,7 @@
             The EmployeeDAL class
             </summary>
         </member>
-        <member name="M:DBAccess.DAL.EmployeeDAL.GetAllMemberst(System.Int32)">
+        <member name="M:DBAccess.DAL.EmployeeDAL.GetAllMemberList">
             <summary>
             Get all the members
             </summary>

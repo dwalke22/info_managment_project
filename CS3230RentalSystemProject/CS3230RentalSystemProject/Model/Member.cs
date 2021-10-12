@@ -37,5 +37,10 @@ namespace CS3230RentalSystemProject.Model
         public string Email { get; set; }
 
         public DateTime Birthday { get; set; }
+
+        public override string ToString()
+        {
+            return this.FirstName + " " + this.LastName;
+        }
     }
 }

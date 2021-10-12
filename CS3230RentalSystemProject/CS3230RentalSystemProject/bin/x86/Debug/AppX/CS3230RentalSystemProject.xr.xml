@@ -5,6 +5,7 @@
     <RootType FullName="Windows.UI.Xaml.Controls.Page">
       <RootProperty Name="Content" />
       <RootProperty Name="Width" />
+      <RootProperty Name="Background" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.Grid">
       <RootProperty Name="HorizontalAlignment" />
@@ -13,8 +14,6 @@
       <RootProperty Name="VerticalAlignment" />
       <RootProperty Name="Children" />
       <RootProperty Name="ColumnDefinitions" />
-      <RootMethod Name="GetRowSpan" />
-      <RootMethod Name="SetRowSpan" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.TextBlock">
       <RootProperty Name="HorizontalAlignment" />
@@ -31,6 +30,7 @@
       <RootProperty Name="Foreground" />
       <RootProperty Name="RenderTransformOrigin" />
       <RootProperty Name="FontWeight" />
+      <RootProperty Name="FontSize" />
       <RootProperty Name="RequestedTheme" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.TextBox">
@@ -46,6 +46,8 @@
       <RootProperty Name="AccessKey" />
       <RootProperty Name="TextAlignment" />
       <RootProperty Name="RenderTransformOrigin" />
+      <RootProperty Name="IsReadOnly" />
+      <RootEvent Name="TextChanging" />
       <RootEvent Name="TextChanged" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.PasswordBox">
@@ -65,13 +67,9 @@
     </RootType>
     <RootType FullName="Microsoft.Xaml.DirectUI.ProxyTypes.ThemeResourceExtension" />
     <RootType FullName="CS3230RentalSystemProject.MainPage" />
-    <RootType FullName="Windows.UI.Xaml.Controls.ListView">
+    <RootType FullName="Windows.UI.Xaml.Controls.ListBox">
       <RootProperty Name="Margin" />
-      <RootProperty Name="BorderBrush" />
-      <RootProperty Name="RenderTransformOrigin" />
-      <RootProperty Name="UseLayoutRounding" />
-      <RootProperty Name="Height" />
-      <RootProperty Name="VerticalAlignment" />
+      <RootEvent Name="DoubleTapped" />
     </RootType>
     <RootType FullName="CS3230RentalSystemProject.view.EmployeeWindow" />
     <RootType FullName="Windows.UI.Xaml.Controls.ColumnDefinition">
@@ -93,5 +91,6 @@
       <RootEvent Name="DateChanged" />
     </RootType>
     <RootType FullName="CS3230RentalSystemProject.view.MemberRegistration" />
+    <RootType FullName="CS3230RentalSystemProject.View.MemebrInformationViewer" />
   </Roots.RootTypes>
 </Roots>

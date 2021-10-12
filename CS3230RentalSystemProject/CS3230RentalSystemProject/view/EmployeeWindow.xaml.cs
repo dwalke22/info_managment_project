@@ -1,4 +1,7 @@
-﻿using CS3230RentalSystemProject.ViewModel;
+﻿using CS3230RentalSystemProject.Model;
+using CS3230RentalSystemProject.View;
+using CS3230RentalSystemProject.ViewModel;
+using DBAccess.DAL;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -27,6 +30,8 @@ namespace CS3230RentalSystemProject.view
 
         private EmployeeViewModel viewModel;
 
+        private List<Member> list;
+
         #endregion
 
         #region Constructor
@@ -39,6 +44,9 @@ namespace CS3230RentalSystemProject.view
         {
             this.InitializeComponent();
             this.viewModel = new EmployeeViewModel();
+            EmployeeDAL dAL = new EmployeeDAL();
+            this.memberList.ItemsSource = dAL.GetAllMemberList();
+            this.list = this.convertList();
         }
 
         #endregion
@@ -51,5 +59,32 @@ namespace CS3230RentalSystemProject.view
         }
 
         #endregion
+
+        private void searchBox_TextChanging(TextBox sender, TextBoxTextChangingEventArgs args)
+        {
+            string name = sender.Text;
+            this.memberList.ItemsSource = this.list.Where(x => x.FirstName.Contains(name, StringComparison.OrdinalIgnoreCase) || x.LastName.Contains(name, StringComparison.OrdinalIgnoreCase));
+        }
+
+        private List<Member> convertList()
+        {
+            List<Member> list = new List<Member>();
+            foreach(Member member in this.memberList.Items)
+            {
+                list.Add(member);
+            }
+            return list;
+        }
+
+        private void employeeList_DoubleTapped(object sender, DoubleTappedRoutedEventArgs e)
+        {
+            ListBox box = sender as ListBox;
+            if (box.SelectedItem != null)
+            {
+                MemebrInformationViewer view = new MemebrInformationViewer();
+
+                Frame.Navigate(typeof(MemebrInformationViewer), (Member)box.SelectedItem);
+            }
+        }
     }
 }

@@ -142,6 +142,9 @@
     <Compile Include="View\MemberRegistration.xaml.cs">
       <DependentUpon>MemberRegistration.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\MemebrInformationViewer.xaml.cs">
+      <DependentUpon>MemebrInformationViewer.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <AppxManifest Include="Package.appxmanifest">
@@ -172,6 +175,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\MemberRegistration.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\MemebrInformationViewer.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
