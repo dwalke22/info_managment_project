@@ -2,7 +2,6 @@
 using CS3230RentalSystemProject.ViewModel;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using DBAccess.DAL;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x409
 
@@ -36,12 +35,7 @@ namespace CS3230RentalSystemProject
 
         private void loginButton_Click(object sender, RoutedEventArgs e)
         {
-            bool loginSuccess = LogInDALI.LogInValidation(this.userNameBox.Text, this.passwordBox.Password.ToString());
-
-            if (loginSuccess)
-            {
-                Frame.Navigate(typeof(EmployeeWindow));
-            }
+            Frame.Navigate(typeof(EmployeeWindow));
         }
 
         #endregion
