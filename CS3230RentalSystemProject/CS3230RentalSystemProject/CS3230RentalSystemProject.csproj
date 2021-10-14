@@ -126,6 +126,7 @@
     <Compile Include="DAL\Connection.cs" />
     <Compile Include="DAL\DataReaderHelper.cs" />
     <Compile Include="DAL\EmployeeDALl.cs" />
+    <Compile Include="DAL\LogInDALI.cs" />
     <Compile Include="Eums\Country.cs" />
     <Compile Include="Eums\Gender.cs" />
     <Compile Include="Eums\State.cs" />
