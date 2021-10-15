@@ -11,6 +11,8 @@ namespace CS3230RentalSystemProject.Model
     /// </summary>
     public class Employee
     {
+        public int EmployeeID { get; set; }
+
         public string FirstName { get; set; }
 
         public string LastName { get; set; }
@@ -22,5 +24,10 @@ namespace CS3230RentalSystemProject.Model
         public Member Member { get; set; }
 
         public List<Member> MemberList { get; set; }
+
+        public override string ToString()
+        {
+            return this.FirstName + " " + this.LastName;
+        }
     }
 }

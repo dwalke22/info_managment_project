@@ -580,6 +580,14 @@
             Initialize constructor
             </summary>
         </member>
+        <member name="M:CS3230RentalSystemProject.view.EmployeeWindow.OnNavigatedTo(Windows.UI.Xaml.Navigation.NavigationEventArgs)">
+            <summary>
+            Initialize parameter
+            </summary>
+            <param name="e">
+                    The parameter
+            </param>
+        </member>
         <member name="M:CS3230RentalSystemProject.view.EmployeeWindow.InitializeComponent">
             <summary>
             InitializeComponent()
@@ -729,6 +737,32 @@
             <param name="member">
                         The new member
             </param>
+        </member>
+        <member name="T:DBAccess.DAL.LoginDALI">
+            <summary>
+            The LoginDALI class
+            </summary>
+        </member>
+        <member name="M:DBAccess.DAL.LoginDALI.LoginValidation(System.String,System.String)">
+            <summary>
+            Validates login credentials
+            </summary>
+            <param name="username">The username.</param>
+            <param name="password">The password.</param>
+            <returns>
+            True if the username and password exist in the database
+            </returns>
+        </member>
+        <member name="M:DBAccess.DAL.LoginDALI.GetEmployee(System.Int32)">
+            <summary>
+            Get Employee
+            </summary>
+            <param name="id">
+                The employee's id
+            </param>
+            <returns>
+                The employee associated with the id
+            </returns>
         </member>
     </members>
 </doc>

@@ -14,7 +14,8 @@
             <ColumnDefinition Width="0*"/>
             <ColumnDefinition Width="0*"/>
         </Grid.ColumnDefinitions>
-        <TextBlock HorizontalAlignment="Left" Margin="6,1,0,0" Text="Member Register:" TextWrapping="Wrap" VerticalAlignment="Top" Height="19" Width="144" RequestedTheme="Default" FontWeight="Bold"/>
+        <TextBlock x:Name="employeeName" HorizontalAlignment="Left" Margin="7,6,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="176" Height="29" FontWeight="Bold" TextAlignment="Start" FontFamily="SimSun" FontSize="16"  Style="{ThemeResource SubheaderTextBlockStyle}" Foreground="#FFB03636"/>
+        <TextBlock HorizontalAlignment="Left" Margin="242,10,0,0" Text="Member Registration" TextWrapping="Wrap" VerticalAlignment="Top" Height="19" Width="144" RequestedTheme="Default" FontWeight="Bold"/>
         <TextBlock HorizontalAlignment="Left" Margin="15,60,0,0" Text="First Name: " TextWrapping="Wrap" VerticalAlignment="Top" Height="19" Width="70" FontWeight="Normal" FontFamily="Segoe UI"/>
         <TextBlock HorizontalAlignment="Left" Margin="285,60,0,0" Text="Last Name: " TextWrapping="Wrap" VerticalAlignment="Top" Height="19" Width="74" RenderTransformOrigin="0.803,0.474"/>
         <ComboBox x:Name="genderChooser" Margin="535,185,0,280" Width="110" RenderTransformOrigin="0.667,0.5" VerticalAlignment="Stretch" SelectionChanged="genderChooser_SelectionChanged"/>

@@ -46,7 +46,6 @@ namespace CS3230RentalSystemProject.view
         {
             this.InitializeComponent();
             this.viewModel = new EmployeeViewModel();
-            this.employee = new Employee();
             EmployeeDAL dAL = new EmployeeDAL();
             this.memberList.ItemsSource = dAL.GetAllMemberList();
             this.list = this.convertList();
@@ -88,6 +87,30 @@ namespace CS3230RentalSystemProject.view
             }
         }
 
+
+        /// <summary>
+        /// Initialize parameter
+        /// </summary>
+        /// <param name="e">
+        ///         The parameter
+        /// </param>
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            base.OnNavigatedTo(e);
+            if (e.Parameter == null)
+            {
+                return;
+            }
+
+            this.employee = (Employee)e.Parameter;
+
+            this.employeeName.Text = "Welcome, " +  this.employee.ToString();
+        }
         #endregion
+
+        private void logout_Click(object sender, RoutedEventArgs e)
+        {
+            Frame.Navigate(typeof(MainPage));
+        }
     }
 }

@@ -15,7 +15,8 @@
             <ColumnDefinition Width="0*"/>
             <ColumnDefinition Width="0*"/>
         </Grid.ColumnDefinitions>
-        <TextBlock HorizontalAlignment="Left" Margin="6,1,0,0" Text="Member Information:" TextWrapping="Wrap" VerticalAlignment="Top" Height="19" Width="144" RequestedTheme="Default" FontWeight="Bold"/>
+        <TextBlock x:ConnectionId='2' x:Name="employeeName" HorizontalAlignment="Left" Margin="7,6,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="176" Height="29" FontWeight="Bold" TextAlignment="Start" FontFamily="SimSun" FontSize="16"  Style="{ThemeResource SubheaderTextBlockStyle}" Foreground="#FFB03636"/>
+        <TextBlock HorizontalAlignment="Left" Margin="245,10,0,0" Text="Member Information:" TextWrapping="Wrap" VerticalAlignment="Top" Height="19" Width="144" RequestedTheme="Default" FontWeight="Bold"/>
         <TextBlock HorizontalAlignment="Left" Margin="15,60,0,0" Text="First Name: " TextWrapping="Wrap" VerticalAlignment="Top" Height="19" Width="70" FontWeight="Normal" FontFamily="Segoe UI"/>
         <TextBlock HorizontalAlignment="Left" Margin="285,60,0,0" Text="Last Name: " TextWrapping="Wrap" VerticalAlignment="Top" Height="19" Width="74" RenderTransformOrigin="0.803,0.474"/>
         <TextBlock HorizontalAlignment="Left" Margin="480,195,0,0" Text="Gender: " TextWrapping="Wrap" VerticalAlignment="Top" Height="19" Width="53" RenderTransformOrigin="0.167,0.474"/>
@@ -28,19 +29,22 @@
         <TextBlock HorizontalAlignment="Left" Margin="472,360,0,0" Text="Zipcode: " TextWrapping="Wrap" VerticalAlignment="Top" Height="19" Width="53" RenderTransformOrigin="0.811,0.474"/>
         <TextBlock HorizontalAlignment="Left" Margin="33,196,0,0" Text="Phone: " TextWrapping="Wrap" VerticalAlignment="Top" Width="48" Height="19"/>
         <TextBlock HorizontalAlignment="Left" Margin="254,196,0,0" Text="Email:" TextWrapping="Wrap" VerticalAlignment="Top" Height="19" Width="41" RenderTransformOrigin="0.39,1.526"/>
-        <DatePicker x:ConnectionId='2' x:Name="birtdayChooser" Margin="95,118,0,0" RenderTransformOrigin="0.088,0.656" VerticalAlignment="Top" Width="325"/>
-        <TextBox x:ConnectionId='3' x:Name="firstNameInputBox" HorizontalAlignment="Left" Margin="95,0,0,410" Text="" TextWrapping="Wrap" Width="145" Height="35" VerticalAlignment="Bottom" TextAlignment="Center" IsReadOnly="True"/>
-        <TextBox x:ConnectionId='4' x:Name="lastNameInputBox" HorizontalAlignment="Left" Margin="365,0,0,410" Text="" TextWrapping="Wrap" Width="145" Height="35" VerticalAlignment="Bottom" TextAlignment="Center" RenderTransformOrigin="0.5,0.714" IsReadOnly="True"/>
-        <TextBox x:ConnectionId='5' x:Name="phoneInputBox" HorizontalAlignment="Left" Margin="95,0,0,275" Text="" TextWrapping="Wrap" Width="145" Height="35" VerticalAlignment="Bottom" TextAlignment="Center" IsReadOnly="True"/>
-        <TextBox x:ConnectionId='6' x:Name="emailInputBox" HorizontalAlignment="Left" Margin="295,0,0,280" Text="" TextWrapping="Wrap" Width="185" Height="35" VerticalAlignment="Bottom" TextAlignment="Center" RenderTransformOrigin="0.481,1.143" IsReadOnly="True"/>
-        <TextBox x:ConnectionId='7' x:Name="address1InputBox" HorizontalAlignment="Left" Margin="95,0,0,200" Text="" TextWrapping="Wrap" Width="145" Height="35" VerticalAlignment="Bottom" TextAlignment="Center" RenderTransformOrigin="0.235,0.571" IsReadOnly="True"/>
-        <TextBox x:ConnectionId='8' x:Name="address2InputBox" HorizontalAlignment="Left" Margin="310,0,0,200" Text="" TextWrapping="Wrap" Width="170" Height="35" VerticalAlignment="Bottom" TextAlignment="Center" RenderTransformOrigin="0.5,0.571" IsReadOnly="True"/>
-        <TextBox x:ConnectionId='9' x:Name="cityInputBox" HorizontalAlignment="Left" Margin="535,0,0,200" Text="" TextWrapping="Wrap" Width="110" Height="35" VerticalAlignment="Bottom" TextAlignment="Center" RenderTransformOrigin="0.5,0.571" IsReadOnly="True"/>
-        <TextBox x:ConnectionId='10' x:Name="zipcodeInputBox" HorizontalAlignment="Left" Margin="535,0,0,115" Text="" TextWrapping="Wrap" Width="110" Height="35" VerticalAlignment="Bottom" TextAlignment="Center" RenderTransformOrigin="0.688,0.429" IsReadOnly="True"/>
-        <Button x:ConnectionId='11' x:Name="okButton" Content="OK" Margin="545,430,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.25,0.625" Width="80"                             />
-        <TextBox x:ConnectionId='12' x:Name="stateBox" HorizontalAlignment="Left" Margin="95,358,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="140" RenderTransformOrigin="0.407,0.156" IsReadOnly="True"/>
-        <TextBox x:ConnectionId='13' x:Name="countryBox" HorizontalAlignment="Left" Margin="310,360,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="140" RenderTransformOrigin="0.407,0.156" IsReadOnly="True"/>
-        <TextBox x:ConnectionId='14' x:Name="genderBox" HorizontalAlignment="Left" Margin="530,190,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="115" RenderTransformOrigin="0.304,0.219" IsReadOnly="True"/>
+        <DatePicker x:ConnectionId='3' x:Name="birtdayChooser" Margin="95,118,0,0" RenderTransformOrigin="0.088,0.656" VerticalAlignment="Top" Width="325"                                         />
+        <TextBox x:ConnectionId='4' x:Name="firstNameInputBox" HorizontalAlignment="Left" Margin="95,0,0,410" Text="" TextWrapping="Wrap" Width="145" Height="35" VerticalAlignment="Bottom" TextAlignment="Center" IsReadOnly="True"                                            />
+        <TextBox x:ConnectionId='5' x:Name="lastNameInputBox" HorizontalAlignment="Left" Margin="365,0,0,410" Text="" TextWrapping="Wrap" Width="145" Height="35" VerticalAlignment="Bottom" TextAlignment="Center" RenderTransformOrigin="0.5,0.714" IsReadOnly="True"                                           />
+        <TextBox x:ConnectionId='6' x:Name="phoneInputBox" HorizontalAlignment="Left" Margin="95,0,0,275" Text="" TextWrapping="Wrap" Width="145" Height="35" VerticalAlignment="Bottom" TextAlignment="Center" IsReadOnly="True"                                        />
+        <TextBox x:ConnectionId='7' x:Name="emailInputBox" HorizontalAlignment="Left" Margin="295,0,0,280" Text="" TextWrapping="Wrap" Width="185" Height="35" VerticalAlignment="Bottom" TextAlignment="Center" RenderTransformOrigin="0.481,1.143" IsReadOnly="True"                                        />
+        <TextBox x:ConnectionId='8' x:Name="address1InputBox" HorizontalAlignment="Left" Margin="95,0,0,200" Text="" TextWrapping="Wrap" Width="145" Height="35" VerticalAlignment="Bottom" TextAlignment="Center" RenderTransformOrigin="0.235,0.571" IsReadOnly="True"                                           />
+        <TextBox x:ConnectionId='9' x:Name="address2InputBox" HorizontalAlignment="Left" Margin="310,0,0,200" Text="" TextWrapping="Wrap" Width="170" Height="35" VerticalAlignment="Bottom" TextAlignment="Center" RenderTransformOrigin="0.5,0.571" IsReadOnly="True"                                           />
+        <TextBox x:ConnectionId='10' x:Name="cityInputBox" HorizontalAlignment="Left" Margin="535,0,0,200" Text="" TextWrapping="Wrap" Width="110" Height="35" VerticalAlignment="Bottom" TextAlignment="Center" RenderTransformOrigin="0.5,0.571" IsReadOnly="True"                                       />
+        <TextBox x:ConnectionId='11' x:Name="zipcodeInputBox" HorizontalAlignment="Left" Margin="535,0,0,110" Text="" TextWrapping="Wrap" Width="110" Height="35" VerticalAlignment="Bottom" TextAlignment="Center" RenderTransformOrigin="0.688,0.429" IsReadOnly="True"                                          />
+        <Button x:ConnectionId='12' x:Name="okButton" Content="OK" Margin="545,430,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.25,0.625" Width="80"                       />
+        <ComboBox x:ConnectionId='13' x:Name="stateChooser" Margin="95,353,0,0" Width="120"                                                 />
+        <ComboBox x:ConnectionId='14' x:Name="genderChooser" Margin="535,188,0,0" Width="120"                                                  />
+        <ComboBox x:ConnectionId='15' x:Name="CountryChooser" Margin="315,353,0,0" Width="120" RenderTransformOrigin="0.458,0.531"                                                   />
+        <Button x:ConnectionId='16' x:Name="editButon" Content="Edit" Margin="461,430,0,0" VerticalAlignment="Top"                         Width="64"/>
+        <Button x:ConnectionId='17' x:Name="cancelButton" Content="Cancel" Margin="464,430,0,0" VerticalAlignment="Top"                            RenderTransformOrigin="0.41,0.469"/>
+        <Button x:ConnectionId='18' x:Name="saveButton" Content="Save" Margin="545,428,0,0" VerticalAlignment="Top"                          Width="80" Visibility="Visible"/>
 
     </Grid>
 </Page>

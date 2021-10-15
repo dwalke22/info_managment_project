@@ -71,6 +71,9 @@ namespace CS3230RentalSystemProject.view
             this.stateChooser.ItemsSource = Enum.GetNames(typeof(State));
             this.countryChooser.ItemsSource = Enum.GetNames(typeof(Country));
             this.genderChooser.ItemsSource = Enum.GetNames(typeof(Gender));
+
+
+
         }
         #endregion
 
@@ -101,12 +104,12 @@ namespace CS3230RentalSystemProject.view
             };
             EmployeeDAL dAL = new EmployeeDAL();
             dAL.RegisterMember(member);
-            Frame.Navigate(typeof(EmployeeWindow));
+            Frame.Navigate(typeof(EmployeeWindow), this.Employee);
         }
 
         private void cancelButton_Click(object sender, RoutedEventArgs e)
         {
-            Frame.Navigate(typeof(EmployeeWindow));
+            Frame.Navigate(typeof(EmployeeWindow), this.Employee);
         }
 
         private async void checkInput()
@@ -293,6 +296,8 @@ namespace CS3230RentalSystemProject.view
             }
 
             this.Employee = (Employee)e.Parameter;
+
+            this.employeeName.Text = this.Employee.ToString();
         }
 
         #endregion

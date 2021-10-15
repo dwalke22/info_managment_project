@@ -14,8 +14,8 @@
         <TextBlock HorizontalAlignment="Left" Margin="75,131,0,0" Text="User Name: " TextWrapping="Wrap" VerticalAlignment="Top" RenderTransformOrigin="0.653,0.474"/>
         <TextBlock HorizontalAlignment="Left" Margin="84,171,0,0" Text="Password: " TextWrapping="Wrap" VerticalAlignment="Top" Width="70" RenderTransformOrigin="0.657,0.474"/>
         <TextBox x:ConnectionId='2' x:Name="userNameBox" HorizontalAlignment="Left" Margin="160,125,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="140"/>
-        <PasswordBox HorizontalAlignment="Left" Margin="160,168,0,0" VerticalAlignment="Top" Width="140"/>
-        <Button x:ConnectionId='3' x:Name="loginButton" Content="Login" Margin="165,230,0,0" VerticalAlignment="Top"                          />
+        <PasswordBox x:ConnectionId='3' x:Name="passwordBox" HorizontalAlignment="Left" Margin="160,168,0,0" VerticalAlignment="Top" Width="140"/>
+        <Button x:ConnectionId='4' x:Name="loginButton" Content="Login" Margin="165,230,0,0" VerticalAlignment="Top"                          />
     </Grid>
 </Page>
 
