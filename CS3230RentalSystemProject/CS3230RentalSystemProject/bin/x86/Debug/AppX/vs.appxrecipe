@@ -30,13 +30,13 @@
     <AppXManifest Include="C:\Users\jason\source\repos\info_managment_project\CS3230RentalSystemProject\CS3230RentalSystemProject\bin\x86\Debug\Core\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2021-10-15T02:25:43.785</Modified>
+      <Modified>2021-10-16T02:54:20.200</Modified>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
     <AppxPackagedFile Include="C:\Users\jason\source\repos\info_managment_project\CS3230RentalSystemProject\CS3230RentalSystemProject\bin\x86\Debug\CS3230RentalSystemProject.exe">
       <PackagePath>entrypoint\CS3230RentalSystemProject.exe</PackagePath>
-      <Modified>2021-10-15T02:25:43.203</Modified>
+      <Modified>2021-10-16T02:54:19.850</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\jason\.nuget\packages\bouncycastle.netcore\1.8.5\lib\netstandard2.0\BouncyCastle.Crypto.dll">
       <PackagePath>BouncyCastle.Crypto.dll</PackagePath>
@@ -138,27 +138,27 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\jason\source\repos\info_managment_project\CS3230RentalSystemProject\CS3230RentalSystemProject\bin\x86\Debug\CS3230RentalSystemProject.xr.xml">
       <PackagePath>CS3230RentalSystemProject.xr.xml</PackagePath>
-      <Modified>2021-10-15T02:25:43.086</Modified>
+      <Modified>2021-10-16T02:36:31.212</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\jason\source\repos\info_managment_project\CS3230RentalSystemProject\CS3230RentalSystemProject\bin\x86\Debug\App.xbf">
       <PackagePath>App.xbf</PackagePath>
-      <Modified>2021-10-15T02:25:43.115</Modified>
+      <Modified>2021-10-16T02:47:03.486</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\jason\source\repos\info_managment_project\CS3230RentalSystemProject\CS3230RentalSystemProject\bin\x86\Debug\MainPage.xbf">
       <PackagePath>MainPage.xbf</PackagePath>
-      <Modified>2021-10-15T02:25:43.115</Modified>
+      <Modified>2021-10-16T02:47:03.486</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\jason\source\repos\info_managment_project\CS3230RentalSystemProject\CS3230RentalSystemProject\bin\x86\Debug\View\EmployeeWindow.xbf">
       <PackagePath>View\EmployeeWindow.xbf</PackagePath>
-      <Modified>2021-10-15T02:25:43.115</Modified>
+      <Modified>2021-10-16T02:47:03.486</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\jason\source\repos\info_managment_project\CS3230RentalSystemProject\CS3230RentalSystemProject\bin\x86\Debug\View\MemberRegistration.xbf">
       <PackagePath>View\MemberRegistration.xbf</PackagePath>
-      <Modified>2021-10-15T02:25:43.109</Modified>
+      <Modified>2021-10-16T02:47:03.481</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\jason\source\repos\info_managment_project\CS3230RentalSystemProject\CS3230RentalSystemProject\bin\x86\Debug\View\MemebrInformationViewer.xbf">
       <PackagePath>View\MemebrInformationViewer.xbf</PackagePath>
-      <Modified>2021-10-15T02:25:43.114</Modified>
+      <Modified>2021-10-16T02:47:03.485</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Windows Kits\10\UnionMetadata\10.0.19041.0\Windows.winmd">
       <PackagePath>WinMetadata\Windows.winmd</PackagePath>
@@ -166,11 +166,11 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\jason\source\repos\info_managment_project\CS3230RentalSystemProject\CS3230RentalSystemProject\bin\x86\Debug\resources.pri">
       <PackagePath>resources.pri</PackagePath>
-      <Modified>2021-10-15T01:52:54.156</Modified>
+      <Modified>2021-10-16T02:23:45.163</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\jason\source\repos\info_managment_project\CS3230RentalSystemProject\CS3230RentalSystemProject\bin\x86\Debug\Core\CS3230RentalSystemProject.exe">
       <PackagePath>CS3230RentalSystemProject.exe</PackagePath>
-      <Modified>2021-10-15T02:25:43.781</Modified>
+      <Modified>2021-10-16T02:54:20.197</Modified>
     </AppxPackagedFile>
   </ItemGroup>
   <ItemGroup>

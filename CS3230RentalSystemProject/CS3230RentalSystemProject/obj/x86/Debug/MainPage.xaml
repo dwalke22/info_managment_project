@@ -10,12 +10,15 @@
     d:DesignWidth="400">
 
     <Grid HorizontalAlignment="Center" Width="400" Height="300" VerticalAlignment="Center">
-        <TextBlock HorizontalAlignment="Left" Margin="30,45,0,0" Text="Rental System" TextWrapping="Wrap" VerticalAlignment="Top" Width="332" Height="48" FontFamily="Algerian" LineHeight="72" TextAlignment="Center" Style="{ThemeResource SubheaderTextBlockStyle}" Foreground="#FFB03636"/>
-        <TextBlock HorizontalAlignment="Left" Margin="75,131,0,0" Text="User Name: " TextWrapping="Wrap" VerticalAlignment="Top" RenderTransformOrigin="0.653,0.474"/>
+        <TextBlock HorizontalAlignment="Left" Margin="30,45,0,0" Text="Rent Me" TextWrapping="Wrap" VerticalAlignment="Top" Width="332" Height="48" FontFamily="Algerian" LineHeight="72" TextAlignment="Center" Style="{ThemeResource SubheaderTextBlockStyle}" Foreground="#FFB03636"/>
+        <TextBlock HorizontalAlignment="Left" Margin="78,116,0,0" Text="User Name: " TextWrapping="Wrap" VerticalAlignment="Top" RenderTransformOrigin="0.653,0.474"/>
         <TextBlock HorizontalAlignment="Left" Margin="84,171,0,0" Text="Password: " TextWrapping="Wrap" VerticalAlignment="Top" Width="70" RenderTransformOrigin="0.657,0.474"/>
-        <TextBox x:ConnectionId='2' x:Name="userNameBox" HorizontalAlignment="Left" Margin="160,125,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="140"/>
-        <PasswordBox x:ConnectionId='3' x:Name="passwordBox" HorizontalAlignment="Left" Margin="160,168,0,0" VerticalAlignment="Top" Width="140"/>
+        <TextBox x:ConnectionId='2' x:Name="userNameBox" HorizontalAlignment="Left" Margin="160,113,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="140"                                        />
+        <PasswordBox x:ConnectionId='3' x:Name="passwordBox" HorizontalAlignment="Left" Margin="160,168,0,0" VerticalAlignment="Top" Width="140"                                                />
         <Button x:ConnectionId='4' x:Name="loginButton" Content="Login" Margin="165,230,0,0" VerticalAlignment="Top"                          />
+        <TextBlock x:ConnectionId='5' x:Name="invalidLogin" HorizontalAlignment="Left" Margin="59,86,0,0" Text="Incorrect Username or Password! Please Check!" TextWrapping="Wrap" VerticalAlignment="Top" Width="298" Height="20" Foreground="#FFBB1A1A"/>
+        <TextBlock x:ConnectionId='6' x:Name="invalidUsername" HorizontalAlignment="Left" Margin="160,145,0,0" Text="Please Entry Your UserName!" TextWrapping="Wrap" VerticalAlignment="Top" Width="185" Foreground="#FFC92121"/>
+        <TextBlock x:ConnectionId='7' x:Name="invalidPassword" HorizontalAlignment="Left" Margin="160,201,0,0" Text="Please Entry Your Password!" TextWrapping="Wrap" VerticalAlignment="Top" Width="185" Foreground="#FFC92121"/>
     </Grid>
 </Page>
 

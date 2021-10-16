@@ -66,6 +66,7 @@ namespace CS3230RentalSystemProject.View
             this.genderChooser.ItemsSource = Enum.GetNames(typeof(Gender));
             this.allowChooser(false);
             this.isReadOnly(true);
+            this.disableInvalidlable();
         }
         private void isReadOnly(bool action)
         {
@@ -80,6 +81,22 @@ namespace CS3230RentalSystemProject.View
             this.emailInputBox.IsReadOnly = action;
             
             this.zipcodeInputBox.IsReadOnly = action;
+        }
+
+        private void disableInvalidlable()
+        {
+            this.invalidFirstname.Visibility = Visibility.Collapsed;
+            this.invalidLastname.Visibility = Visibility.Collapsed;
+            this.invalidBirthday.Visibility = Visibility.Collapsed;
+            this.invalidPhone.Visibility = Visibility.Collapsed;
+            this.invalidEmail.Visibility = Visibility.Collapsed;
+            this.InvalidGender.Visibility = Visibility.Collapsed;
+            this.invalidAddress1.Visibility = Visibility.Collapsed;
+            this.invalidCountry.Visibility = Visibility.Collapsed;
+            this.invalidState.Visibility = Visibility.Collapsed;
+            this.invalidZipcode.Visibility = Visibility.Collapsed;
+            this.invalidCity.Visibility = Visibility.Collapsed;
+            
         }
 
         private void allowChooser(bool action)
@@ -184,6 +201,7 @@ namespace CS3230RentalSystemProject.View
         private void birtdayChooser_DateChanged(object sender, DatePickerValueChangedEventArgs e)
         {
             this.Birthday = this.birtdayChooser.Date.DateTime;
+            this.invalidBirthday.Visibility = Visibility.Collapsed;
         }
 
         private void phoneInputBox_TextChanged(object sender, TextChangedEventArgs e)
@@ -199,6 +217,7 @@ namespace CS3230RentalSystemProject.View
         private void genderChooser_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             this.Gender = this.genderChooser.SelectedItem.ToString();
+            this.InvalidGender.Visibility = Visibility.Collapsed;
         }
 
         private void address1InputBox_TextChanged(object sender, TextChangedEventArgs e)
@@ -219,16 +238,53 @@ namespace CS3230RentalSystemProject.View
         private void stateChooser_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             this.State = this.stateChooser.SelectedItem.ToString();
+            this.invalidState.Visibility = Visibility.Collapsed;
         }
 
         private void CountryChooser_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             this.Country = this.CountryChooser.SelectedItem.ToString();
+            this.invalidCountry.Visibility = Visibility.Collapsed;
         }
 
         private void zipcodeInputBox_TextChanged(object sender, TextChangedEventArgs e)
         {
             this.Zipcode = this.zipcodeInputBox.Text;
+        }
+
+        private void firstNameInputBox_TextChanging(TextBox sender, TextBoxTextChangingEventArgs args)
+        {
+            this.invalidFirstname.Visibility = Visibility.Collapsed;
+        }
+
+        private void lastNameInputBox_TextChanging(TextBox sender, TextBoxTextChangingEventArgs args)
+        {
+            this.invalidLastname.Visibility = Visibility.Collapsed;
+        }
+
+        private void phoneInputBox_TextChanging(TextBox sender, TextBoxTextChangingEventArgs args)
+        {
+            this.invalidPhone.Visibility = Visibility.Collapsed;
+        }
+
+        private void emailInputBox_TextChanging(TextBox sender, TextBoxTextChangingEventArgs args)
+        {
+            this.invalidEmail.Visibility = Visibility.Collapsed;
+        }
+
+        private void address1InputBox_TextChanging(TextBox sender, TextBoxTextChangingEventArgs args)
+        {
+            this.invalidAddress1.Visibility = Visibility.Collapsed;
+        }
+
+        private void cityInputBox_TextChanging(TextBox sender, TextBoxTextChangingEventArgs args)
+        {
+            this.invalidCity.Visibility = Visibility.Collapsed;
+        }
+
+        private void zipcodeInputBox_TextChanging(TextBox sender, TextBoxTextChangingEventArgs args)
+        {
+            this.invalidZipcode.Visibility = Visibility.Collapsed;
         }
     }
 }

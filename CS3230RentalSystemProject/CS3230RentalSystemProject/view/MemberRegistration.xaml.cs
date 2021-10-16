@@ -72,12 +72,28 @@ namespace CS3230RentalSystemProject.view
             this.countryChooser.ItemsSource = Enum.GetNames(typeof(Country));
             this.genderChooser.ItemsSource = Enum.GetNames(typeof(Gender));
 
-
+            this.disableInvalidlable();
 
         }
         #endregion
 
         #region Methods
+
+        private void disableInvalidlable()
+        {
+            this.invalidFirstname.Visibility = Visibility.Collapsed;
+            this.invalidLastname.Visibility = Visibility.Collapsed;
+            this.invalidBirthday.Visibility = Visibility.Collapsed;
+            this.invalidPhone.Visibility = Visibility.Collapsed;
+            this.invalidEmail.Visibility = Visibility.Collapsed;
+            this.InvalidGender.Visibility = Visibility.Collapsed;
+            this.invalidAddress1.Visibility = Visibility.Collapsed;
+            this.invalidCountry.Visibility = Visibility.Collapsed;
+            this.invalidState.Visibility = Visibility.Collapsed;
+            this.invalidZipcode.Visibility = Visibility.Collapsed;
+            this.invalidCity.Visibility = Visibility.Collapsed;
+            this.usernameExist.Visibility = Visibility.Collapsed;
+        }
 
         private void registerButton_Click(object sender, RoutedEventArgs e)
         {
@@ -112,95 +128,93 @@ namespace CS3230RentalSystemProject.view
             Frame.Navigate(typeof(EmployeeWindow), this.Employee);
         }
 
-        private async void checkInput()
+        private void checkInput()
         {
-
+            bool isvalid = true;
             Regex phoneRegex = new Regex(@"[\d]{10}");
             Regex zipRegex = new Regex(@"[\d]{5}");
             Regex emailRegex = new Regex(@"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$");
-
-            var message = new MessageDialog("");
-            message.Title = "Alert Message";
             if (this.FirstName != null && this.LastName != null)
             {
                 string fullName = this.FirstName + " " + this.LastName;
                 if (this.checkFirstAndLastName(fullName))
                 {
-                    message.Content = "The memebr (" + fullName + ") exists! Please try a different First Name or Last Name!";
-                    await message.ShowAsync();
+                    this.usernameExist.Text = "The memebr (" + fullName + ") exists! Please try a different First Name or Last Name!";
+                    this.usernameExist.Visibility = Visibility.Visible;
+                    isvalid = false;
                 }
             }
-            else if (this.FirstName == null || this.FirstName == "")
+            if (this.FirstName == null || this.FirstName == "")
             {
-                message.Content = "Please Entry Your First Name!";
-                await message.ShowAsync();
+                this.invalidFirstname.Visibility = Visibility.Visible;
+                isvalid = false;
             } 
-            else if (this.LastName == null || this.LastName == "")
+            if (this.LastName == null || this.LastName == "")
             {
-                message.Content = "Please Entry Your Last Name!";
-                await message.ShowAsync();
+                this.invalidLastname.Visibility = Visibility.Visible;
+                isvalid = false;
             }
-            else if (this.Gender == null)
+            if (this.Gender == null)
             {
-                message.Content = "Please Choose Your Gender!";
-                await message.ShowAsync();
+                this.InvalidGender.Visibility = Visibility.Visible;
+                isvalid = false;
             }
-            else if (this.Address1 == null || this.Address1 == "")
+            if (this.Address1 == null || this.Address1 == "")
             {
-                message.Content = "Please Entry Your Address1!";
-                await message.ShowAsync();
+               this.invalidAddress1.Visibility = Visibility.Visible;
+                isvalid = false;
             }
-            else if (this.City == null || this.City == "")
+            if (this.City == null || this.City == "")
             {
-                message.Content = "Please Entry Your City!";
-                await message.ShowAsync();
+                this.invalidCity.Visibility = Visibility.Visible;
+                isvalid = false;
             }
-            else if (this.State == null)
+            if (this.State == null)
             {
-                message.Content = "Please Choose Your State!";
-                await message.ShowAsync();
+                this.invalidState.Visibility = Visibility.Visible;
+                isvalid = false;
             }
-            else if (this.Country == null)
+            if (this.Country == null)
             {
-                message.Content = "Please Choose Your Country!";
-                await message.ShowAsync();
+                this.invalidCountry.Visibility = Visibility.Visible;
+                isvalid = false;
             }
-            else if (this.Zipcode == null || this.Zipcode == "")
+            if (this.Zipcode == null || this.Zipcode == "")
             {
-                message.Content = "Please Entry Your Zipcode!";
-                await message.ShowAsync();
+                this.invalidZipcode.Visibility = Visibility.Visible;
+                isvalid = false;
             }
-            else if (this.PhoneNumber == null || this.PhoneNumber == "")
+            if (this.PhoneNumber == null || this.PhoneNumber == "")
             {
-                message.Content = "Please Entry Your Phone Number!";
-                await message.ShowAsync();
+                this.invalidPhone.Visibility = Visibility.Visible;
+                isvalid = false;
             }
-            else if (this.Email == null || this.Email == "")
+            if (this.Email == null || this.Email == "")
             {
-                message.Content = "Please Entry Your Email!";
-                await message.ShowAsync();
+                this.invalidEmail.Visibility = Visibility.Visible;
+                isvalid = false;
             }
-            else if (this.Birthday == null)
+            if (this.Birthday.Date == null || this.Birthday.ToString() == "")
             {
-                message.Content = "Please Choose Your Birthday!";
-                await message.ShowAsync();
+                this.invalidBirthday.Visibility = Visibility.Visible;
+                isvalid = false;
             }
-            else if (this.PhoneNumber != null && !phoneRegex.IsMatch(this.PhoneNumber))
+            if (this.PhoneNumber != null && !phoneRegex.IsMatch(this.PhoneNumber))
             {
-                message.Content = "Please Entry 9 digits for phone number!";
-                await message.ShowAsync();
+                this.invalidPhone.Visibility = Visibility.Visible;
+                isvalid = false;
             }
-            else if (this.Zipcode != null && !zipRegex.IsMatch(this.Zipcode))
+            if (this.Zipcode != null && !zipRegex.IsMatch(this.Zipcode))
             {
-                message.Content = "Please Entry 5 digits for zipcode!";
-                await message.ShowAsync();
+                this.invalidZipcode.Visibility = Visibility.Visible;
+                isvalid = false;
             }
-            else if (this.Email != null && !emailRegex.IsMatch(this.Email))
+            if (this.Email != null && !emailRegex.IsMatch(this.Email))
             {
-                message.Content = "Email format is incorrect! Please try again!";
-                await message.ShowAsync();
+                this.invalidEmail.Visibility = Visibility.Visible;
+                isvalid = false;
             }
-            else
+            if (isvalid)
             {
                 this.pastDateToEmplyee();
             }
@@ -233,6 +247,7 @@ namespace CS3230RentalSystemProject.view
         private void birtdayChooser_DateChanged(object sender, DatePickerValueChangedEventArgs e)
         {
             this.Birthday = this.birtdayChooser.Date.DateTime;
+            this.invalidBirthday.Visibility = Visibility.Collapsed;
         }
 
         private void phoneInputBox_TextChanged(object sender, TextChangedEventArgs e)
@@ -248,6 +263,7 @@ namespace CS3230RentalSystemProject.view
         private void genderChooser_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             this.Gender = this.genderChooser.SelectedItem.ToString();
+            this.InvalidGender.Visibility = Visibility.Collapsed;
         }
 
         private void address1InputBox_TextChanged(object sender, TextChangedEventArgs e)
@@ -268,11 +284,13 @@ namespace CS3230RentalSystemProject.view
         private void stateChooser_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             this.State = this.stateChooser.SelectedItem.ToString();
+            this.invalidState.Visibility = Visibility.Collapsed;
         }
 
         private void countryChooser_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             this.Country = this.countryChooser.SelectedItem.ToString();
+            this.invalidCountry.Visibility = Visibility.Collapsed;
         }
 
         private void zipcodeInputBox_TextChanged(object sender, TextChangedEventArgs e)
@@ -301,5 +319,42 @@ namespace CS3230RentalSystemProject.view
         }
 
         #endregion
+
+        private void firstNameInputBox_TextChanging(TextBox sender, TextBoxTextChangingEventArgs args)
+        {
+            this.invalidFirstname.Visibility = Visibility.Collapsed;
+            this.usernameExist.Visibility = Visibility.Collapsed;
+        }
+
+        private void lastNameInputBox_TextChanging(TextBox sender, TextBoxTextChangingEventArgs args)
+        {
+            this.invalidLastname.Visibility = Visibility.Collapsed;
+            this.usernameExist.Visibility = Visibility.Collapsed;
+        }
+
+        private void phoneInputBox_TextChanging(TextBox sender, TextBoxTextChangingEventArgs args)
+        {
+            this.invalidPhone.Visibility = Visibility.Collapsed;
+        }
+
+        private void emailInputBox_TextChanging(TextBox sender, TextBoxTextChangingEventArgs args)
+        {
+            this.invalidEmail.Visibility = Visibility.Collapsed;
+        }
+
+        private void address1InputBox_TextChanging(TextBox sender, TextBoxTextChangingEventArgs args)
+        {
+            this.invalidAddress1.Visibility = Visibility.Collapsed;
+        }
+
+        private void cityInputBox_TextChanging(TextBox sender, TextBoxTextChangingEventArgs args)
+        {
+            this.invalidCity.Visibility = Visibility.Collapsed;
+        }
+
+        private void zipcodeInputBox_TextChanging(TextBox sender, TextBoxTextChangingEventArgs args)
+        {
+            this.invalidZipcode.Visibility = Visibility.Collapsed;
+        }
     }
 }

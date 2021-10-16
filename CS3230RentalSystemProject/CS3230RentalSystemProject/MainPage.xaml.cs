@@ -31,6 +31,9 @@ namespace CS3230RentalSystemProject
         {
             this.InitializeComponent();
             this.viewModel = new EmployeeViewModel();
+            this.invalidLogin.Visibility = Visibility.Collapsed;
+            this.invalidUsername.Visibility = Visibility.Collapsed;
+            this.invalidPassword.Visibility = Visibility.Collapsed;
         }
 
         #endregion
@@ -39,17 +42,18 @@ namespace CS3230RentalSystemProject
 
         private async void loginButton_Click(object sender, RoutedEventArgs e)
         {
+            bool isvalid = true;
             if (this.userNameBox.Text == null || this.userNameBox.Text == "")
             {
-                var message = new MessageDialog("Pleass Entry Your UserName!");
-                await message.ShowAsync();
-            } 
-            else if (this.passwordBox.Password.ToString() == null || this.passwordBox.Password.ToString() == "")
-            {
-                var message = new MessageDialog("Pleass Entry Your Password!");
-                await message.ShowAsync();
+                this.invalidUsername.Visibility = Visibility.Visible;
+                isvalid = false;
             }
-            else
+            if (this.passwordBox.Password.ToString() == null || this.passwordBox.Password.ToString() == "")
+            {
+                this.invalidPassword.Visibility = Visibility.Visible;
+                isvalid = false;
+            }
+            if (isvalid)
             {
                 int loginSuccess = LoginDALI.LoginValidation(this.userNameBox.Text, this.passwordBox.Password.ToString());
 
@@ -60,12 +64,23 @@ namespace CS3230RentalSystemProject
                 }
                 else
                 {
-                    var message = new MessageDialog("Incorrect Username or Password! Please Check!");
-                    await message.ShowAsync();
+                    this.invalidLogin.Visibility = Visibility.Visible;
                 }
             }
         }
 
         #endregion
+
+        private void userNameBox_TextChanging(TextBox sender, TextBoxTextChangingEventArgs args)
+        {
+            this.invalidLogin.Visibility = Visibility.Collapsed;
+            this.invalidUsername.Visibility = Visibility.Collapsed;
+        }
+
+        private void passwordBox_PasswordChanging(PasswordBox sender, PasswordBoxPasswordChangingEventArgs args)
+        {
+            this.invalidLogin.Visibility = Visibility.Collapsed;
+            this.invalidPassword.Visibility = Visibility.Collapsed;
+        }
     }
 }
