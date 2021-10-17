@@ -1,11 +1,13 @@
 ﻿using CS3230RentalSystemProject.Enums;
 using CS3230RentalSystemProject.Model;
 using CS3230RentalSystemProject.view;
+using DBAccess.DAL;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using System.Text.RegularExpressions;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.UI.Xaml;
@@ -69,10 +71,7 @@ namespace CS3230RentalSystemProject.View
             this.disableInvalidlable();
         }
         private void isReadOnly(bool action)
-        {
-            this.firstNameInputBox.IsReadOnly = action;
-            this.lastNameInputBox.IsReadOnly = action;
-            
+        {   
             this.address1InputBox.IsReadOnly = action;
             this.address2InputBox.IsReadOnly = action;
             this.cityInputBox.IsReadOnly = action;
@@ -96,7 +95,6 @@ namespace CS3230RentalSystemProject.View
             this.invalidState.Visibility = Visibility.Collapsed;
             this.invalidZipcode.Visibility = Visibility.Collapsed;
             this.invalidCity.Visibility = Visibility.Collapsed;
-            
         }
 
         private void allowChooser(bool action)
@@ -122,7 +120,20 @@ namespace CS3230RentalSystemProject.View
             this.birtdayChooser.SelectedDate = this.Employee.Member.Birthday;
             this.zipcodeInputBox.Text = this.Employee.Member.Zipcode;
 
-            
+            this.FirstName = this.Employee.Member.FirstName;
+            this.LastName = this.Employee.Member.LastName;
+            this.Gender = this.Employee.Member.Gender;
+            this.Address1 = this.Employee.Member.Address1;
+            this.Address2 = this.Employee.Member.Address2 == null ? "" : this.Employee.Member.Address2;
+            this.City = this.Employee.Member.City;
+            this.State = this.Employee.Member.State;
+            this.Country = this.Employee.Member.Country;
+            this.PhoneNumber = this.Employee.Member.PhoneNumber;
+            this.Email = this.Employee.Member.Email;
+            this.Birthday = this.Employee.Member.Birthday;
+            this.Zipcode = this.Employee.Member.Zipcode;
+
+
         }
 
         private void okButton_Click(object sender, RoutedEventArgs e)
@@ -142,16 +153,113 @@ namespace CS3230RentalSystemProject.View
             this.isReadOnly(false);
         }
 
+        private void pastDateToEmplyee()
+        {
+
+            this.Employee.Member.FirstName = this.FirstName;
+            this.Employee.Member.LastName = this.LastName;
+            this.Employee.Member.Gender = this.Gender;
+            this.Employee.Member.Address1 = this.Address1;
+            this.Employee.Member.Address2 = this.Address2;
+            this.Employee.Member.City = this.City;
+            this.Employee.Member.State = this.State;
+            this.Employee.Member.Country = this.Country;
+            this.Employee.Member.Zipcode = this.Zipcode;
+            this.Employee.Member.PhoneNumber = this.PhoneNumber;
+            this.Employee.Member.Email = this.Email;
+            this.Employee.Member.Birthday = this.Birthday;
+            EmployeeDAL dAL = new EmployeeDAL();
+            dAL.UpdateMemberInfo(this.Employee.Member);
+        }
+
         private void saveButton_Click(object sender, RoutedEventArgs e)
         {
-            this.saveButton.Visibility = Visibility.Collapsed;
-            this.cancelButton.Visibility = Visibility.Collapsed;
+            bool isvalid = true;
+            Regex phoneRegex = new Regex(@"[\d]{10}");
+            Regex zipRegex = new Regex(@"[\d]{5}");
+            Regex emailRegex = new Regex(@"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$");
+            if (this.FirstName == null || this.FirstName == "")
+            {
+                this.invalidFirstname.Visibility = Visibility.Visible;
+                isvalid = false;
+            }
+            if (this.LastName == null || this.LastName == "")
+            {
+                this.invalidLastname.Visibility = Visibility.Visible;
+                isvalid = false;
+            }
+            if (this.Gender == null)
+            {
+                this.InvalidGender.Visibility = Visibility.Visible;
+                isvalid = false;
+            }
+            if (this.Address1 == null || this.Address1 == "")
+            {
+                this.invalidAddress1.Visibility = Visibility.Visible;
+                isvalid = false;
+            }
+            if (this.City == null || this.City == "")
+            {
+                this.invalidCity.Visibility = Visibility.Visible;
+                isvalid = false;
+            }
+            if (this.State == null)
+            {
+                this.invalidState.Visibility = Visibility.Visible;
+                isvalid = false;
+            }
+            if (this.Country == null)
+            {
+                this.invalidCountry.Visibility = Visibility.Visible;
+                isvalid = false;
+            }
+            if (this.Zipcode == null || this.Zipcode == "")
+            {
+                this.invalidZipcode.Visibility = Visibility.Visible;
+                isvalid = false;
+            }
+            if (this.PhoneNumber == null || this.PhoneNumber == "")
+            {
+                this.invalidPhone.Visibility = Visibility.Visible;
+                isvalid = false;
+            }
+            if (this.Email == null || this.Email == "")
+            {
+                this.invalidEmail.Visibility = Visibility.Visible;
+                isvalid = false;
+            }
+            if (this.Birthday == DateTime.MinValue)
+            {
+                this.invalidBirthday.Visibility = Visibility.Visible;
+                isvalid = false;
+            }
+            if (this.PhoneNumber != null && !phoneRegex.IsMatch(this.PhoneNumber))
+            {
+                this.invalidPhone.Visibility = Visibility.Visible;
+                isvalid = false;
+            }
+            if (this.Zipcode != null && !zipRegex.IsMatch(this.Zipcode))
+            {
+                this.invalidZipcode.Visibility = Visibility.Visible;
+                isvalid = false;
+            }
+            if (this.Email != null && !emailRegex.IsMatch(this.Email))
+            {
+                this.invalidEmail.Visibility = Visibility.Visible;
+                isvalid = false;
+            }
+            if (isvalid)
+            {
+                this.saveButton.Visibility = Visibility.Collapsed;
+                this.cancelButton.Visibility = Visibility.Collapsed;
 
-            this.okButton.Visibility = Visibility.Visible;
-            this.editButon.Visibility = Visibility.Visible;
+                this.okButton.Visibility = Visibility.Visible;
+                this.editButon.Visibility = Visibility.Visible;
 
-            this.allowChooser(false);
-            this.isReadOnly(true);
+                this.allowChooser(false);
+                this.isReadOnly(true);
+                this.pastDateToEmplyee();
+            }
         }
 
         private void cancelButton_Click(object sender, RoutedEventArgs e)

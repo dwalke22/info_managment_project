@@ -26,6 +26,8 @@ namespace DBAccess.DAL
                 using MySqlCommand command = new MySqlCommand(query, connection);
 
                 using MySqlDataReader reader = command.ExecuteReader();
+
+                int idoridinal = reader.GetOrdinal("memberID");
                 int fnameoridinal = reader.GetOrdinal("firstName");
                 int lnameoridinal = reader.GetOrdinal("lastName");
 
@@ -49,6 +51,7 @@ namespace DBAccess.DAL
                 {
                     MemberList.Add(new Member
                     {
+                        MemberID = reader.GetFieldValueCheckNull<Int32>(idoridinal),
                         FirstName = reader.GetFieldValueCheckNull<string>(fnameoridinal),
                         LastName = reader.GetFieldValueCheckNull<string>(lnameoridinal),
                         Gender = reader.GetFieldValueCheckNull<string>(genderoridinal),
@@ -86,7 +89,7 @@ namespace DBAccess.DAL
                 connection.Open();
 
                 using MySqlCommand command = new MySqlCommand(data, connection);
-                command.Parameters.Add("@memberId", MySqlDbType.Int32).Value = null;
+                command.Parameters.Add("@memberID", MySqlDbType.Int32).Value = null;
                 command.Parameters.Add("@gender", MySqlDbType.VarChar).Value = member.Gender;
                 command.Parameters.Add("@firstName", MySqlDbType.VarChar).Value = member.FirstName;
                 command.Parameters.Add("@lastName", MySqlDbType.VarChar).Value = member.LastName;
@@ -100,6 +103,34 @@ namespace DBAccess.DAL
                 command.Parameters.Add("@email", MySqlDbType.VarChar).Value = member.Email;
                 command.Parameters.Add("@birthday", MySqlDbType.VarChar).Value = member.Birthday.Date.ToString("yyyy-MM-dd");
                 command.Parameters.Add("@registrationDate", MySqlDbType.VarChar).Value = DateTime.Now.ToString("yyyy-MM-dd");
+                command.ExecuteNonQuery();
+            }
+        }
+
+        public void UpdateMemberInfo(Member member)
+        {
+            string data = "Update `member` set gender = @gender, firstName = @firstName, lastName = @lastName, address1 = @address1,"
+                + " address2 = @address2, city = @city, state = @state, country = @country, zipcode = @zipcode, phoneNumber = @phoneNumber, email = @email, birthday = @birthday "
+                + "where memberID = @memberID";
+
+            using (MySqlConnection connection = new MySqlConnection(Connection.connectionString))
+            {
+                connection.Open();
+
+                using MySqlCommand command = new MySqlCommand(data, connection);
+                command.Parameters.Add("@memberID", MySqlDbType.Int32).Value = member.MemberID;
+                command.Parameters.Add("@gender", MySqlDbType.VarChar).Value = member.Gender;
+                command.Parameters.Add("@firstName", MySqlDbType.VarChar).Value = member.FirstName;
+                command.Parameters.Add("@lastName", MySqlDbType.VarChar).Value = member.LastName;
+                command.Parameters.Add("@address1", MySqlDbType.VarChar).Value = member.Address1;
+                command.Parameters.Add("@address2", MySqlDbType.VarChar).Value = member.Address2 == null ? null : member.Address2;
+                command.Parameters.Add("@city", MySqlDbType.VarChar).Value = member.City;
+                command.Parameters.Add("@state", MySqlDbType.VarChar).Value = member.State;
+                command.Parameters.Add("@country", MySqlDbType.VarChar).Value = member.Country;
+                command.Parameters.Add("@zipcode", MySqlDbType.VarChar).Value = member.Zipcode;
+                command.Parameters.Add("@phoneNumber", MySqlDbType.VarChar).Value = member.PhoneNumber;
+                command.Parameters.Add("@email", MySqlDbType.VarChar).Value = member.Email;
+                command.Parameters.Add("@birthday", MySqlDbType.VarChar).Value = member.Birthday.Date.ToString("yyyy-MM-dd");
                 command.ExecuteNonQuery();
             }
         }

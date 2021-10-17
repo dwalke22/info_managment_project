@@ -16,7 +16,7 @@
             <ColumnDefinition Width="0*"/>
         </Grid.ColumnDefinitions>
         <TextBlock x:Name="employeeName" HorizontalAlignment="Left" Margin="7,6,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="176" Height="29" FontWeight="Bold" TextAlignment="Start" FontFamily="SimSun" FontSize="16"  Style="{ThemeResource SubheaderTextBlockStyle}" Foreground="#FFB03636"/>
-        <TextBlock HorizontalAlignment="Left" Margin="245,10,0,0" Text="Member Information:" TextWrapping="Wrap" VerticalAlignment="Top" Height="19" Width="144" RequestedTheme="Default" FontWeight="Bold"/>
+        <TextBlock HorizontalAlignment="Left" Margin="247,5,0,0" Text="Member Information:" TextWrapping="Wrap" VerticalAlignment="Top" Height="19" Width="144" RequestedTheme="Default" FontWeight="Bold"/>
         <TextBlock HorizontalAlignment="Left" Margin="15,60,0,0" Text="First Name: " TextWrapping="Wrap" VerticalAlignment="Top" Height="19" Width="70" FontWeight="Normal" FontFamily="Segoe UI"/>
         <TextBlock HorizontalAlignment="Left" Margin="285,60,0,0" Text="Last Name: " TextWrapping="Wrap" VerticalAlignment="Top" Height="19" Width="74" RenderTransformOrigin="0.803,0.474"/>
         <TextBlock HorizontalAlignment="Left" Margin="480,195,0,0" Text="Gender: " TextWrapping="Wrap" VerticalAlignment="Top" Height="19" Width="53" RenderTransformOrigin="0.167,0.474"/>
@@ -32,18 +32,18 @@
         <DatePicker x:Name="birtdayChooser" Margin="95,118,0,0" RenderTransformOrigin="0.088,0.656" VerticalAlignment="Top" Width="325" DateChanged="birtdayChooser_DateChanged"/>
         <TextBox x:Name="firstNameInputBox" HorizontalAlignment="Left" Margin="95,0,0,410" Text="" TextWrapping="Wrap" Width="145" Height="35" VerticalAlignment="Bottom" TextAlignment="Center" IsReadOnly="True" TextChanged="firstNameInputBox_TextChanged" TextChanging="firstNameInputBox_TextChanging"/>
         <TextBox x:Name="lastNameInputBox" HorizontalAlignment="Left" Margin="365,0,0,410" Text="" TextWrapping="Wrap" Width="145" Height="35" VerticalAlignment="Bottom" TextAlignment="Center" RenderTransformOrigin="0.5,0.714" IsReadOnly="True" TextChanged="lastNameInputBox_TextChanged" TextChanging="lastNameInputBox_TextChanging"/>
-        <TextBox x:Name="phoneInputBox" HorizontalAlignment="Left" Margin="95,0,0,275" Text="" TextWrapping="Wrap" Width="145" Height="35" VerticalAlignment="Bottom" TextAlignment="Center" IsReadOnly="True" TextChanged="phoneInputBox_TextChanged" TextChanging="phoneInputBox_TextChanging"/>
+        <TextBox x:Name="phoneInputBox" HorizontalAlignment="Left" Margin="95,0,0,275" Text="" TextWrapping="Wrap" Width="145" Height="35" VerticalAlignment="Bottom" TextAlignment="Center" IsReadOnly="True" TextChanged="phoneInputBox_TextChanged" TextChanging="phoneInputBox_TextChanging" PlaceholderText="10 Digits Only"/>
         <TextBox x:Name="emailInputBox" HorizontalAlignment="Left" Margin="295,0,0,280" Text="" TextWrapping="Wrap" Width="185" Height="35" VerticalAlignment="Bottom" TextAlignment="Center" RenderTransformOrigin="0.481,1.143" IsReadOnly="True" TextChanged="emailInputBox_TextChanged" TextChanging="emailInputBox_TextChanging"/>
         <TextBox x:Name="address1InputBox" HorizontalAlignment="Left" Margin="95,0,0,200" Text="" TextWrapping="Wrap" Width="145" Height="35" VerticalAlignment="Bottom" TextAlignment="Center" RenderTransformOrigin="0.235,0.571" IsReadOnly="True" TextChanged="address1InputBox_TextChanged" TextChanging="address1InputBox_TextChanging"/>
         <TextBox x:Name="address2InputBox" HorizontalAlignment="Left" Margin="310,0,0,200" Text="" TextWrapping="Wrap" Width="170" Height="35" VerticalAlignment="Bottom" TextAlignment="Center" RenderTransformOrigin="0.5,0.571" IsReadOnly="True" TextChanged="address2InputBox_TextChanged"/>
         <TextBox x:Name="cityInputBox" HorizontalAlignment="Left" Margin="535,0,0,200" Text="" TextWrapping="Wrap" Width="110" Height="35" VerticalAlignment="Bottom" TextAlignment="Center" RenderTransformOrigin="0.5,0.571" IsReadOnly="True" TextChanged="cityInputBox_TextChanged" TextChanging="cityInputBox_TextChanging"/>
-        <TextBox x:Name="zipcodeInputBox" HorizontalAlignment="Left" Margin="535,0,0,110" Text="" TextWrapping="Wrap" Width="110" Height="35" VerticalAlignment="Bottom" TextAlignment="Center" RenderTransformOrigin="0.688,0.429" IsReadOnly="True" TextChanged="zipcodeInputBox_TextChanged" TextChanging="zipcodeInputBox_TextChanging"/>
-        <Button x:Name="okButton" Content="OK" Margin="545,430,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.25,0.625" Width="80" Click="okButton_Click"/>
+        <TextBox x:Name="zipcodeInputBox" HorizontalAlignment="Left" Margin="535,0,0,110" Text="" TextWrapping="Wrap" Width="110" Height="35" VerticalAlignment="Bottom" TextAlignment="Center" RenderTransformOrigin="0.688,0.429" IsReadOnly="True" TextChanged="zipcodeInputBox_TextChanged" TextChanging="zipcodeInputBox_TextChanging" PlaceholderText="5 Digits Only"/>
+        <Button x:Name="okButton" Content="Exit" Margin="545,430,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.25,0.625" Width="80" Click="okButton_Click"/>
         <ComboBox x:Name="stateChooser" Margin="95,353,0,0" Width="120" SelectionChanged="stateChooser_SelectionChanged"/>
         <ComboBox x:Name="genderChooser" Margin="535,188,0,0" Width="120" SelectionChanged="genderChooser_SelectionChanged"/>
         <ComboBox x:Name="CountryChooser" Margin="315,353,0,0" Width="120" RenderTransformOrigin="0.458,0.531" SelectionChanged="CountryChooser_SelectionChanged"/>
         <Button x:Name="editButon" Content="Edit" Margin="461,430,0,0" VerticalAlignment="Top" Click="editButon_Click" Width="64"/>
-        <Button x:Name="cancelButton" Content="Cancel" Margin="464,430,0,0" VerticalAlignment="Top" Click="cancelButton_Click" RenderTransformOrigin="0.41,0.469"/>
+        <Button x:Name="cancelButton" Content="Cancel" Margin="464,430,0,0" VerticalAlignment="Top" Click="cancelButton_Click" RenderTransformOrigin="0.41,0.469" Height="32"/>
         <Button x:Name="saveButton" Content="Save" Margin="545,428,0,0" VerticalAlignment="Top" Click="saveButton_Click" Width="80" Visibility="Visible"/>
         <TextBlock x:Name="invalidFirstname" HorizontalAlignment="Left" Margin="100,90,0,0" Text="Invalid First Name" TextWrapping="Wrap" VerticalAlignment="Top" Width="140" Foreground="#FFB91B1B"/>
         <TextBlock x:Name="invalidLastname" HorizontalAlignment="Left" Margin="365,91,0,0" Text="Invalid Last Name" TextWrapping="Wrap" VerticalAlignment="Top" Width="140" Foreground="#FFB91B1B"/>
@@ -56,6 +56,5 @@
         <TextBlock x:Name="invalidCity" HorizontalAlignment="Left" Margin="539,301,0,0" Text="Invalid City" TextWrapping="Wrap" VerticalAlignment="Top" Width="140" Foreground="#FFB91B1B" Grid.ColumnSpan="3"/>
         <TextBlock x:Name="invalidCountry" HorizontalAlignment="Left" Margin="319,386,0,0" Text="Invalid Country" TextWrapping="Wrap" VerticalAlignment="Top" Width="140" Foreground="#FFB91B1B"/>
         <TextBlock x:Name="invalidZipcode" HorizontalAlignment="Left" Margin="539,390,0,0" Text="Invalid Zipcode" TextWrapping="Wrap" VerticalAlignment="Top" Width="140" Foreground="#FFB91B1B" Grid.ColumnSpan="3"/>
-
     </Grid>
 </Page>

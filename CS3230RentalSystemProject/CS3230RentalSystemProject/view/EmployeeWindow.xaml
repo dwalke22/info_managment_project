@@ -11,10 +11,10 @@
     <Grid Height="500" VerticalAlignment="Center" HorizontalAlignment="Center" Width="670">
         <TextBlock x:Name="employeeName" HorizontalAlignment="Left" Margin="7,6,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="176" Height="29" FontWeight="Bold" TextAlignment="Start" FontFamily="SimSun" FontSize="16"  Style="{ThemeResource SubheaderTextBlockStyle}" Foreground="#FFB03636"/>
         <TextBox x:Name="searchBox" HorizontalAlignment="Left" Margin="80,55,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="105" Height="35" FontSize="14" PlaceholderText="eg: John" AccessKey="" TextAlignment="Center" TextChanging="searchBox_TextChanging"/>
-        <Button x:Name="registerMemberButton" Content="Register Member" Margin="455,5,0,0" VerticalAlignment="Top" Width="130" Height="35" Click="registerMemberButton_Click"/>
+        <Button x:Name="registerMemberButton" Content="Register Member" Margin="455,5,0,0" VerticalAlignment="Top" Width="130" Height="35" Click="registerMemberButton_Click" RenderTransformOrigin="0.538,0.714"/>
         <ListBox x:Name="memberList" Margin="5,100,470,5" DoubleTapped="employeeList_DoubleTapped"/>
         <TextBlock HorizontalAlignment="Left" Margin="7,60,0,0" Text="Search:" TextWrapping="Wrap" VerticalAlignment="Top" Height="24" Width="71" TextAlignment="Center" FontSize="18"/>
-        <Button x:Name="logout" Content="Logout" Margin="595,8,0,0" VerticalAlignment="Top" Click="logout_Click">
+        <Button x:Name="logout" Content="Logout" Margin="595,5,0,0" VerticalAlignment="Top" Click="logout_Click" Height="35">
             <Button.FocusVisualPrimaryBrush>
                 <ImageBrush ImageSource="/Assets/SplashScreen.scale-200.png"/>
             </Button.FocusVisualPrimaryBrush>

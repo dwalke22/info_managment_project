@@ -194,7 +194,7 @@ namespace CS3230RentalSystemProject.view
                 this.invalidEmail.Visibility = Visibility.Visible;
                 isvalid = false;
             }
-            if (this.Birthday.Date == null || this.Birthday.ToString() == "")
+            if (this.Birthday == DateTime.MinValue)
             {
                 this.invalidBirthday.Visibility = Visibility.Visible;
                 isvalid = false;
