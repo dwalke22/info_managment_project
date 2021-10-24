@@ -32,6 +32,8 @@ namespace CS3230RentalSystemProject.view
 
         #region DataMember
 
+        private bool isvalid = true;
+
         public Employee Employee { get; set; }
 
         private string FirstName;
@@ -130,10 +132,9 @@ namespace CS3230RentalSystemProject.view
 
         private void checkInput()
         {
-            bool isvalid = true;
-            Regex phoneRegex = new Regex(@"[\d]{10}");
-            Regex zipRegex = new Regex(@"[\d]{5}");
-            Regex emailRegex = new Regex(@"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$");
+            
+            
+            
             if (this.FirstName != null && this.LastName != null)
             {
                 string fullName = this.FirstName + " " + this.LastName;
@@ -199,21 +200,19 @@ namespace CS3230RentalSystemProject.view
                 this.invalidBirthday.Visibility = Visibility.Visible;
                 isvalid = false;
             }
-            if (this.PhoneNumber != null && !phoneRegex.IsMatch(this.PhoneNumber))
+            if (this.invalidEmail.Visibility == Visibility.Visible)
             {
-                this.invalidPhone.Visibility = Visibility.Visible;
                 isvalid = false;
             }
-            if (this.Zipcode != null && !zipRegex.IsMatch(this.Zipcode))
+            if (this.invalidPhone.Visibility == Visibility.Visible)
             {
-                this.invalidZipcode.Visibility = Visibility.Visible;
                 isvalid = false;
             }
-            if (this.Email != null && !emailRegex.IsMatch(this.Email))
+            if (this.invalidZipcode.Visibility == Visibility.Visible)
             {
-                this.invalidEmail.Visibility = Visibility.Visible;
                 isvalid = false;
             }
+
             if (isvalid)
             {
                 this.pastDateToEmplyee();
@@ -355,6 +354,51 @@ namespace CS3230RentalSystemProject.view
         private void zipcodeInputBox_TextChanging(TextBox sender, TextBoxTextChangingEventArgs args)
         {
             this.invalidZipcode.Visibility = Visibility.Collapsed;
+        }
+
+        private void phoneInputBox_LostFocus(object sender, RoutedEventArgs e)
+        {
+
+            Regex phoneRegex = new Regex(@"[\d]{10}");
+            if (this.PhoneNumber != null && !phoneRegex.IsMatch(this.PhoneNumber))
+            {
+                this.invalidPhone.Visibility = Visibility.Visible;
+                isvalid = false;
+            }
+            else
+            {
+                isvalid = true;
+            }
+        }
+
+        private void emailInputBox_LostFocus(object sender, RoutedEventArgs e)
+        {
+            Regex emailRegex = new Regex(@"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$");
+
+            if (this.Email != null && !emailRegex.IsMatch(this.Email))
+            {
+                this.invalidEmail.Visibility = Visibility.Visible;
+                isvalid = false;
+            } 
+            else
+            {
+                isvalid = true;
+            }
+        }
+
+        private void zipcodeInputBox_LostFocus(object sender, RoutedEventArgs e)
+        {
+            Regex zipRegex = new Regex(@"[\d]{5}");
+
+            if (this.Zipcode != null && (!zipRegex.IsMatch(this.Zipcode) || this.Zipcode.Length > 5))
+            {
+                this.invalidZipcode.Visibility = Visibility.Visible;
+                isvalid = false;
+            }
+            else
+            {
+                isvalid = true;
+            }
         }
     }
 }

@@ -59,7 +59,7 @@ namespace CS3230RentalSystemProject
 
                 if (loginSuccess != -1)
                 {
-                    Employee emploee = LoginDALI.GetEmployee(loginSuccess);
+                    Employee emploee = EmployeeDAL.GetEmployee(loginSuccess);
                     Frame.Navigate(typeof(EmployeeWindow), emploee);
                 }
                 else

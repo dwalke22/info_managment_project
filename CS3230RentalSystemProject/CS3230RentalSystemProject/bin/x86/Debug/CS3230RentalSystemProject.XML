@@ -738,6 +738,17 @@
                         The new member
             </param>
         </member>
+        <member name="M:DBAccess.DAL.EmployeeDAL.GetEmployee(System.Int32)">
+            <summary>
+            Get Employee
+            </summary>
+            <param name="id">
+                The employee's id
+            </param>
+            <returns>
+                The employee associated with the id
+            </returns>
+        </member>
         <member name="T:DBAccess.DAL.LoginDALI">
             <summary>
             The LoginDALI class
@@ -751,17 +762,6 @@
             <param name="password">The password.</param>
             <returns>
             True if the username and password exist in the database
-            </returns>
-        </member>
-        <member name="M:DBAccess.DAL.LoginDALI.GetEmployee(System.Int32)">
-            <summary>
-            Get Employee
-            </summary>
-            <param name="id">
-                The employee's id
-            </param>
-            <returns>
-                The employee associated with the id
             </returns>
         </member>
     </members>

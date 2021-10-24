@@ -51,6 +51,7 @@
       <RootProperty Name="IsReadOnly" />
       <RootEvent Name="TextChanging" />
       <RootEvent Name="TextChanged" />
+      <RootEvent Name="LostFocus" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.PasswordBox">
       <RootProperty Name="HorizontalAlignment" />
