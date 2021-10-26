@@ -13,16 +13,16 @@
             <ListBox.ItemTemplate>
                 <DataTemplate>
 
-                    <Grid >
+                    <Grid>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="300"/>
                             <ColumnDefinition Width="200"/>
                             <ColumnDefinition Width="200"/>
                         </Grid.ColumnDefinitions>
                         <TextBlock Grid.Column="0" Text="{Binding FurnitureName}" HorizontalAlignment="Left" />
-                        <ComboBox Grid.Column="1" ItemsSource= "{Binding fakeQuantity}" HorizontalAlignment="Left" />
+                        <ComboBox Grid.Column="1" ItemsSource= "{Binding fakeQuantity}" SelectedItem="{Binding rentQuantity}" HorizontalAlignment="Left" />
 
-                        <Button x:ConnectionId='7' x:Name="warningButton" Content="Remove" Grid.Column="2" Width="80" Height="30" Foreground="#FF9C0E0E" FontSize="14"                            HorizontalAlignment="Left">
+                        <Button x:ConnectionId='7' x:Name="warningButton" Tag="{Binding FurnitureID}" Content="Remove" Grid.Column="2" Width="80" Height="30" Foreground="#FF9C0E0E" FontSize="14"                            HorizontalAlignment="Left">
                         </Button>
                     </Grid>
 

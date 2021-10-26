@@ -26,6 +26,8 @@ namespace CS3230RentalSystemProject.View
     {
         public Employee Employee { get; set; }
 
+        private IList<Furniture> furnitureListData;
+
         public Checkout()
         {
             this.InitializeComponent();
@@ -44,9 +46,10 @@ namespace CS3230RentalSystemProject.View
             {
                 return;
             }
-
+            this.furnitureListData = new List<Furniture>();
             this.Employee = (Employee)e.Parameter;
             this.furnitureList.ItemsSource = this.Employee.FurnitureListData;
+            this.furnitureListData = this.Employee.FurnitureListData;
             this.employeeName.Text = this.Employee.ToString();
         }
 
@@ -57,20 +60,23 @@ namespace CS3230RentalSystemProject.View
 
         private void Checkout_Click(object sender, RoutedEventArgs e)
         {
-
         }
 
         private void warningButtonClick(object sender, RoutedEventArgs e)
         {
-            ListBox box = sender as ListBox;
-            if (this.furnitureList.SelectedItem != null)
+            int tag = (int)((Button)sender).Tag;
+            
+
+            Furniture furniture = this.Employee.FurnitureListData.Find(x => x.FurnitureID == tag);
+
+            this.Employee.FurnitureListData.Remove(furniture);
+            List <Furniture> list = new List<Furniture>();
+            foreach(Furniture item in this.Employee.FurnitureListData)
             {
-                Furniture funiture = (Furniture)this.furnitureList.SelectedItem;
-
-                this.Employee.FurnitureListData.Remove(funiture);
-                this.furnitureList.Items.Remove((Furniture)this.furnitureList.SelectedItem);
-
+                list.Add(item);
             }
+            this.furnitureList.ItemsSource = list;
+
 
         }
     }

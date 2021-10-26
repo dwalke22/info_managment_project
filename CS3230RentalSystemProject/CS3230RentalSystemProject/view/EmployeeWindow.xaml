@@ -35,7 +35,7 @@
                             <TextBlock Grid.Column="1" Text="{Binding Style}" HorizontalAlignment="Left" />
                             <TextBlock Grid.Column="2" Text="{Binding Category}" HorizontalAlignment="Left" />
 
-                            <Button x:Name="warningButton" Content="Add" Grid.Column="3" Width="50" Height="30" Foreground="#FF9C0E0E" FontSize="14" Click="warningButtonClick" HorizontalAlignment="Left">
+                            <Button x:Name="warningButton" Tag="{Binding FurnitureID}" Content="Add" Grid.Column="3" Width="50" Height="30" Foreground="#FF9C0E0E" FontSize="14" Click="warningButtonClick" HorizontalAlignment="Left">
                             </Button>
                         </Grid>
                         

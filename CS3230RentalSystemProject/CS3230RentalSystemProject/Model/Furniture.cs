@@ -21,9 +21,19 @@ namespace CS3230RentalSystemProject.Model
 
         public decimal RentPrice { get; set; }
 
-        public int rentQuantity = 0;
+        public int rentQuantity { get; set; }
 
-        public string fakeQuantity = "123456";
+        public IList<int> fakeQuantity { get; set; }
+
+        public Furniture()
+        {
+            this.fakeQuantity = new List<int>();
+            this.fakeQuantity.Add(1);
+            this.fakeQuantity.Add(2);
+            this.fakeQuantity.Add(3);
+            this.fakeQuantity.Add(4);
+            this.rentQuantity = 0;
+        }
 
         public override string ToString()
         {

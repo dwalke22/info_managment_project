@@ -47,6 +47,8 @@ namespace CS3230RentalSystemProject.view
 
         private int rentQuantity = 0;
 
+        private List<Furniture> furnitureListData;
+
         
 
         #endregion
@@ -60,9 +62,11 @@ namespace CS3230RentalSystemProject.view
         public EmployeeWindow()
         {
             this.InitializeComponent();
+            this.furnitureListData = new List<Furniture>();
             this.dAL = new MemberDAL();
             this.furnitureDAL = new FurnitureDAL();
-            this.furnitureList.ItemsSource = this.furnitureDAL.GetAllFurnitureList();
+            this.furnitureListData = this.furnitureDAL.GetAllFurnitureList();
+            this.furnitureList.ItemsSource = this.furnitureListData;
             this.viewModel = new EmployeeViewModel();
             
             this.memberList.ItemsSource = dAL.GetAllMemberList();
@@ -199,27 +203,23 @@ namespace CS3230RentalSystemProject.view
 
         private void warningButtonClick(object sender, RoutedEventArgs e)
         {
-            ListBox box = sender as ListBox;
-            if (this.furnitureList.SelectedItem != null)
+            int tag = (int)((Button)sender).Tag;
+            Furniture furniture = this.furnitureListData.Find(x => x.FurnitureID == tag);
+            if (this.employee.FurnitureListData.Contains(furniture))
             {
-                Furniture funiture = (Furniture)this.furnitureList.SelectedItem;
-                if (this.employee.FurnitureListData.Contains(funiture))
-                {
-                    int index = this.employee.FurnitureListData.IndexOf(funiture);
-                    this.employee.FurnitureListData.ElementAt(index).rentQuantity++;
-                    rentQuantity++;
-                    this.bagButton.Content = "Bag(" + rentQuantity + ")";
-                }
-                else
-                {
-                    funiture.rentQuantity++;
-                    this.employee.FurnitureListData.Add(funiture);
-                    rentQuantity++;
-                    this.bagButton.Content = "Bag(" + rentQuantity + ")";
-                }
-                
+                int index = this.employee.FurnitureListData.IndexOf(furniture);
+                this.employee.FurnitureListData.ElementAt(index).rentQuantity++;
+                rentQuantity++;
+                this.bagButton.Content = "Bag(" + rentQuantity + ")";
             }
-            
+            else
+            {
+                furniture.rentQuantity++;
+                this.employee.FurnitureListData.Add(furniture);
+                rentQuantity++;
+                this.bagButton.Content = "Bag(" + rentQuantity + ")";
+            }
+
         }
 
         private void bagButton_Click(object sender, RoutedEventArgs e)
