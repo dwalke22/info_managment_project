@@ -13,7 +13,7 @@
         <TextBlock HorizontalAlignment="Left" Margin="63,150,0,0" Text="User Name: " TextWrapping="Wrap" VerticalAlignment="Top" RenderTransformOrigin="0.653,0.474"/>
         <TextBlock HorizontalAlignment="Left" Margin="74,206,0,0" Text="Password: " TextWrapping="Wrap" VerticalAlignment="Top" Width="70" RenderTransformOrigin="0.657,0.474"/>
         <TextBox x:ConnectionId='2' x:Name="userNameBox" HorizontalAlignment="Left" Margin="150,143,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="140"                                        />
-        <PasswordBox x:ConnectionId='3' x:Name="passwordBox" HorizontalAlignment="Left" Margin="150,198,0,0" VerticalAlignment="Top" Width="140"                                                />
+        <PasswordBox x:ConnectionId='3' x:Name="passwordBox" HorizontalAlignment="Left" Margin="150,198,0,0" VerticalAlignment="Top" Width="140"                                                                              />
         <Button x:ConnectionId='4' x:Name="loginButton" Content="Login" Margin="155,255,0,0" VerticalAlignment="Top"                          />
         <TextBlock x:ConnectionId='5' x:Name="invalidLogin" HorizontalAlignment="Left" Margin="60,121,0,0" Text="Incorrect Username or Password! Please Check!" TextWrapping="Wrap" VerticalAlignment="Top" Width="298" Height="20" Foreground="#FFBB1A1A"/>
         <TextBlock x:ConnectionId='6' x:Name="invalidUsername" HorizontalAlignment="Left" Margin="152,175,0,0" Text="Please Entry Your UserName!" TextWrapping="Wrap" VerticalAlignment="Top" Width="185" Foreground="#FFC92121"/>

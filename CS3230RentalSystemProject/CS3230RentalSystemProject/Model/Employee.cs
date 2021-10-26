@@ -25,6 +25,14 @@ namespace CS3230RentalSystemProject.Model
 
         public List<Member> MemberList { get; set; }
 
+        public List<Furniture> FurnitureListData { get; set; }
+
+        public Employee() 
+        {
+            this.FurnitureListData = new List<Furniture>();
+        }
+
+
         public override string ToString()
         {
             return this.FirstName + " " + this.LastName;

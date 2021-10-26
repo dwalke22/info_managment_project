@@ -1,4 +1,5 @@
-﻿using CS3230RentalSystemProject.Enums;
+﻿using CS3230RentalSystemProject.DAL;
+using CS3230RentalSystemProject.Enums;
 using CS3230RentalSystemProject.Model;
 using DBAccess.DAL;
 using System;
@@ -120,7 +121,7 @@ namespace CS3230RentalSystemProject.view
                 Email = this.Email,
                 Birthday = this.Birthday
             };
-            EmployeeDAL dAL = new EmployeeDAL();
+            MemberDAL dAL = new MemberDAL();
             dAL.RegisterMember(member);
             Frame.Navigate(typeof(EmployeeWindow), this.Employee);
         }

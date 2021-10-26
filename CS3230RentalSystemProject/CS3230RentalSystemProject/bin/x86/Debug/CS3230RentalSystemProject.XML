@@ -58,6 +58,54 @@
             GetXmlnsDefinitions()
             </summary>
         </member>
+        <member name="T:CS3230RentalSystemProject.DAL.FurnitureDAL">
+            <summary>
+            the FurnitureDAL class
+            </summary>
+        </member>
+        <member name="M:CS3230RentalSystemProject.DAL.FurnitureDAL.GetAllFurnitureList">
+            <summary>
+            Get all the furnitures
+            </summary>
+            <returns> all the furnitures</returns>
+        </member>
+        <member name="T:CS3230RentalSystemProject.DAL.MemberDAL">
+            <summary>
+            The MemnerDAL class
+            </summary>
+        </member>
+        <member name="M:CS3230RentalSystemProject.DAL.MemberDAL.GetAllMemberList">
+            <summary>
+            Get all the members
+            </summary>
+            <returns> all the members</returns>
+        </member>
+        <member name="M:CS3230RentalSystemProject.DAL.MemberDAL.GetMemberById(System.Int32)">
+            <summary>
+            Get the member tha match the id
+            </summary>
+            <returns> the member that match the id</returns>
+        </member>
+        <member name="M:CS3230RentalSystemProject.DAL.MemberDAL.GetMemberByPhone(System.String)">
+            <summary>
+            Get the member tha match the phone
+            </summary>
+            <returns> the member that match the phone</returns>
+        </member>
+        <member name="M:CS3230RentalSystemProject.DAL.MemberDAL.GetMemberByFullName(System.String)">
+            <summary>
+            Get the member tha match the fullName
+            </summary>
+            <returns> the member that match the fullName</returns>
+        </member>
+        <member name="M:CS3230RentalSystemProject.DAL.MemberDAL.RegisterMember(CS3230RentalSystemProject.Model.Member)">
+            <summary>
+            Register ner member
+            </summary>
+            <param name="member">
+                        The new member
+            </param>
+        </member>
         <member name="T:CS3230RentalSystemProject.Enums.Country">
             <summary>
             Enum Country
@@ -555,6 +603,11 @@
             The Employee Class.
             </summary>
         </member>
+        <member name="T:CS3230RentalSystemProject.Model.Furniture">
+            <summary>
+            The Furniture class
+            </summary>
+        </member>
         <member name="T:CS3230RentalSystemProject.Model.Member">
             <summary>
             
@@ -568,6 +621,67 @@
         <member name="M:CS3230RentalSystemProject.ViewModel.EmployeeViewModel.#ctor">
             <summary>
             Initialize constructor
+            </summary>
+        </member>
+        <member name="T:CS3230RentalSystemProject.View.Checkout">
+            <summary>
+            An empty page that can be used on its own or navigated to within a Frame.
+            </summary>
+        </member>
+        <member name="M:CS3230RentalSystemProject.View.Checkout.OnNavigatedTo(Windows.UI.Xaml.Navigation.NavigationEventArgs)">
+            <summary>
+            Initialize parameter
+            </summary>
+            <param name="e">
+                    The parameter
+            </param>
+        </member>
+        <member name="M:CS3230RentalSystemProject.View.Checkout.InitializeComponent">
+            <summary>
+            InitializeComponent()
+            </summary>
+        </member>
+        <member name="M:CS3230RentalSystemProject.View.Checkout.Connect(System.Int32,System.Object)">
+            <summary>
+            Connect()
+            </summary>
+        </member>
+        <member name="M:CS3230RentalSystemProject.View.Checkout.GetBindingConnector(System.Int32,System.Object)">
+            <summary>
+            GetBindingConnector(int connectionId, object target)
+            </summary>
+        </member>
+        <member name="T:CS3230RentalSystemProject.View.MemebrInformationViewer">
+            <summary>
+            An empty page that can be used on its own or navigated to within a Frame.
+            </summary>
+        </member>
+        <member name="M:CS3230RentalSystemProject.View.MemebrInformationViewer.#ctor">
+            <summary>
+            Initalize constructor
+            </summary>
+        </member>
+        <member name="M:CS3230RentalSystemProject.View.MemebrInformationViewer.OnNavigatedTo(Windows.UI.Xaml.Navigation.NavigationEventArgs)">
+            <summary>
+            Initialize parameter
+            </summary>
+            <param name="e">
+                    The parameter
+            </param>
+        </member>
+        <member name="M:CS3230RentalSystemProject.View.MemebrInformationViewer.InitializeComponent">
+            <summary>
+            InitializeComponent()
+            </summary>
+        </member>
+        <member name="M:CS3230RentalSystemProject.View.MemebrInformationViewer.Connect(System.Int32,System.Object)">
+            <summary>
+            Connect()
+            </summary>
+        </member>
+        <member name="M:CS3230RentalSystemProject.View.MemebrInformationViewer.GetBindingConnector(System.Int32,System.Object)">
+            <summary>
+            GetBindingConnector(int connectionId, object target)
             </summary>
         </member>
         <member name="T:CS3230RentalSystemProject.view.EmployeeWindow">
@@ -636,39 +750,6 @@
             GetBindingConnector(int connectionId, object target)
             </summary>
         </member>
-        <member name="T:CS3230RentalSystemProject.View.MemebrInformationViewer">
-            <summary>
-            An empty page that can be used on its own or navigated to within a Frame.
-            </summary>
-        </member>
-        <member name="M:CS3230RentalSystemProject.View.MemebrInformationViewer.#ctor">
-            <summary>
-            Initalize constructor
-            </summary>
-        </member>
-        <member name="M:CS3230RentalSystemProject.View.MemebrInformationViewer.OnNavigatedTo(Windows.UI.Xaml.Navigation.NavigationEventArgs)">
-            <summary>
-            Initialize parameter
-            </summary>
-            <param name="e">
-                    The parameter
-            </param>
-        </member>
-        <member name="M:CS3230RentalSystemProject.View.MemebrInformationViewer.InitializeComponent">
-            <summary>
-            InitializeComponent()
-            </summary>
-        </member>
-        <member name="M:CS3230RentalSystemProject.View.MemebrInformationViewer.Connect(System.Int32,System.Object)">
-            <summary>
-            Connect()
-            </summary>
-        </member>
-        <member name="M:CS3230RentalSystemProject.View.MemebrInformationViewer.GetBindingConnector(System.Int32,System.Object)">
-            <summary>
-            GetBindingConnector(int connectionId, object target)
-            </summary>
-        </member>
         <member name="T:CS3230RentalSystemProject.Program">
             <summary>
             Program class
@@ -723,20 +804,6 @@
             <summary>
             The EmployeeDAL class
             </summary>
-        </member>
-        <member name="M:DBAccess.DAL.EmployeeDAL.GetAllMemberList">
-            <summary>
-            Get all the members
-            </summary>
-            <returns> all the members</returns>
-        </member>
-        <member name="M:DBAccess.DAL.EmployeeDAL.RegisterMember(CS3230RentalSystemProject.Model.Member)">
-            <summary>
-            Register ner member
-            </summary>
-            <param name="member">
-                        The new member
-            </param>
         </member>
         <member name="M:DBAccess.DAL.EmployeeDAL.GetEmployee(System.Int32)">
             <summary>

@@ -4,21 +4,78 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:CS3230RentalSystemProject.view"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:model="using:CS3230RentalSystemProject.Model"
     mc:Ignorable="d"
     d:DesignHeight="500" Width="670">
 
     <Grid Height="500" VerticalAlignment="Center" HorizontalAlignment="Center" Width="670">
         <TextBlock x:ConnectionId='2' x:Name="employeeName" HorizontalAlignment="Left" Margin="7,6,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="176" Height="29" FontWeight="Bold" TextAlignment="Start" FontFamily="SimSun" FontSize="16"  Style="{ThemeResource SubheaderTextBlockStyle}" Foreground="#FFB03636"/>
-        <TextBox x:ConnectionId='3' x:Name="searchBox" HorizontalAlignment="Left" Margin="80,55,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="105" Height="35" FontSize="14" PlaceholderText="eg: John" AccessKey="" TextAlignment="Center"                                      />
+        <TextBox x:ConnectionId='3' x:Name="searchBox" HorizontalAlignment="Left" Margin="20,95,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Height="35" FontSize="14" PlaceholderText="eg: John Snith" AccessKey="" TextAlignment="Center"                                                                  />
         <Button x:ConnectionId='4' x:Name="registerMemberButton" Content="Register Member" Margin="455,5,0,0" VerticalAlignment="Top" Width="130" Height="35"                                    RenderTransformOrigin="0.538,0.714"/>
-        <ListBox x:ConnectionId='5' x:Name="memberList" Margin="5,100,470,5"                                         />
-        <TextBlock HorizontalAlignment="Left" Margin="7,60,0,0" Text="Search:" TextWrapping="Wrap" VerticalAlignment="Top" Height="24" Width="71" TextAlignment="Center" FontSize="18"/>
+        <ListBox x:ConnectionId='5' x:Name="memberList" Margin="5,170,530,5"                                         />
+        <TextBlock HorizontalAlignment="Left" Margin="7,60,0,0" Text="Search By " TextWrapping="Wrap" VerticalAlignment="Top" Height="24" Width="96" TextAlignment="Center" FontSize="18"/>
         <Button x:ConnectionId='6' x:Name="logout" Content="Logout" Margin="595,5,0,0" VerticalAlignment="Top"                      Height="35">
             <Button.FocusVisualPrimaryBrush>
                 <ImageBrush ImageSource="/Assets/SplashScreen.scale-200.png"/>
             </Button.FocusVisualPrimaryBrush>
         </Button>
+        <ComboBox x:ConnectionId='7' x:Name="criteriaList" Margin="100,58,0,0" Width="115"                                                  PlaceholderText="Select Me"/>
+        <ListBox x:ConnectionId='8' x:Name="furnitureList" Margin="155,170,40,5">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+
+                    <Grid >
+                        <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="255"/>
+                                <ColumnDefinition Width="70"/>
+                                <ColumnDefinition Width="70"/>
+                                <ColumnDefinition Width="50"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Grid.Column="0" Text="{Binding FurnitureName}" HorizontalAlignment="Left" />
+                            <TextBlock Grid.Column="1" Text="{Binding Style}" HorizontalAlignment="Left" />
+                            <TextBlock Grid.Column="2" Text="{Binding Category}" HorizontalAlignment="Left" />
+
+                            <Button x:ConnectionId='12' x:Name="warningButton" Content="Add" Grid.Column="3" Width="50" Height="30" Foreground="#FF9C0E0E" FontSize="14"                            HorizontalAlignment="Left">
+                            </Button>
+                        </Grid>
+                        
+                   
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+            <ListBox.Template>
+                <ControlTemplate>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <Grid Grid.Row="0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="255" />
+                                <ColumnDefinition Width="70" />
+                                <ColumnDefinition Width="70" />
+                                <ColumnDefinition Width="50" />
+                            </Grid.ColumnDefinitions>
+                            <Border Grid.Column="0">
+                                <TextBlock FontWeight="Bold" HorizontalAlignment="Left">Furniture Name</TextBlock>
+                            </Border>
+                            <Border Grid.Column="1">
+                                <TextBlock FontWeight="Bold" HorizontalAlignment="Center">Style</TextBlock>
+                            </Border>
+                            <Border  Grid.Column="2">
+                                <TextBlock FontWeight="Bold" HorizontalAlignment="Center">Category</TextBlock>
+                            </Border>
+                            <Border  Grid.Column="3">
+                                <TextBlock FontWeight="Bold" HorizontalAlignment="Right">Action</TextBlock>
+                            </Border>
+                        </Grid>
+                        <ItemsPresenter Grid.Row="1"></ItemsPresenter>
+                    </Grid>
+                </ControlTemplate>
+            </ListBox.Template>
+        </ListBox>
+        <Button x:ConnectionId='9' x:Name="bagButton" Content="Bag(0)" Margin="550,78,0,0" VerticalAlignment="Top"                        />
+        <TextBlock x:ConnectionId='10' x:Name="invalidSearch" HorizontalAlignment="Left" Margin="15,134,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="210" Height="29" Foreground="#FF9C0E0E" FontSize="14"/>
     </Grid>
 </Page>
 

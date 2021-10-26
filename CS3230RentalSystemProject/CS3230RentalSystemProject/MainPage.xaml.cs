@@ -82,5 +82,13 @@ namespace CS3230RentalSystemProject
             this.invalidLogin.Visibility = Visibility.Collapsed;
             this.invalidPassword.Visibility = Visibility.Collapsed;
         }
+
+        private void passwordBox_KeyDown(object sender, Windows.UI.Xaml.Input.KeyRoutedEventArgs e)
+        {
+            if (e.Key == Windows.System.VirtualKey.Enter)
+            {
+                this.loginButton_Click(sender, e);
+            }
+        }
     }
 }

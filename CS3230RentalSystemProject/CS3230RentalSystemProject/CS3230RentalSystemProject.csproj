@@ -126,7 +126,9 @@
     <Compile Include="DAL\Connection.cs" />
     <Compile Include="DAL\DataReaderHelper.cs" />
     <Compile Include="DAL\EmployeeDALl.cs" />
+    <Compile Include="DAL\FurnitureDAL.cs" />
     <Compile Include="DAL\LogInDALI.cs" />
+    <Compile Include="DAL\MemberDAL.cs" />
     <Compile Include="Eums\Country.cs" />
     <Compile Include="Eums\Gender.cs" />
     <Compile Include="Eums\State.cs" />
@@ -134,9 +136,13 @@
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Model\Employee.cs" />
+    <Compile Include="Model\Furniture.cs" />
     <Compile Include="Model\Member.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModel\EmployeeViewModel.cs" />
+    <Compile Include="View\Checkout.xaml.cs">
+      <DependentUpon>Checkout.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\EmployeeWindow.xaml.cs">
       <DependentUpon>EmployeeWindow.xaml</DependentUpon>
     </Compile>
@@ -171,6 +177,10 @@
     <Page Include="MainPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\Checkout.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\EmployeeWindow.xaml">
       <SubType>Designer</SubType>
