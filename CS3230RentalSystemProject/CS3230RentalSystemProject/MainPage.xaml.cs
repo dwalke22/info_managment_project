@@ -1,5 +1,4 @@
 ﻿using CS3230RentalSystemProject.view;
-using CS3230RentalSystemProject.ViewModel;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using DBAccess.DAL;
@@ -15,14 +14,7 @@ namespace CS3230RentalSystemProject
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
     public sealed partial class MainPage : Page
-    {
-        #region DataMember
-
-        private readonly EmployeeViewModel viewModel;
-
-        #endregion
-
-        #region Contructor
+    { 
 
         /// <summary>
         /// Initialize constructor
@@ -30,15 +22,10 @@ namespace CS3230RentalSystemProject
         public MainPage()
         {
             this.InitializeComponent();
-            this.viewModel = new EmployeeViewModel();
             this.invalidLogin.Visibility = Visibility.Collapsed;
             this.invalidUsername.Visibility = Visibility.Collapsed;
             this.invalidPassword.Visibility = Visibility.Collapsed;
         }
-
-        #endregion
-
-        #region Methods
 
         private async void loginButton_Click(object sender, RoutedEventArgs e)
         {
@@ -68,8 +55,6 @@ namespace CS3230RentalSystemProject
                 }
             }
         }
-
-        #endregion
 
         private void userNameBox_TextChanging(TextBox sender, TextBoxTextChangingEventArgs args)
         {

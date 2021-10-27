@@ -1,23 +1,14 @@
 ﻿using CS3230RentalSystemProject.DAL;
 using CS3230RentalSystemProject.Model;
 using CS3230RentalSystemProject.View;
-using CS3230RentalSystemProject.ViewModel;
-using DBAccess.DAL;
 using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.IO;
 using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
 using System.Text.RegularExpressions;
-using Windows.Foundation;
-using Windows.Foundation.Collections;
+using Windows.UI.Popups;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
-using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 
 // The User Control item template is documented at https://go.microsoft.com/fwlink/?LinkId=234236
@@ -29,11 +20,8 @@ namespace CS3230RentalSystemProject.view
     /// </summary>
     public sealed partial class EmployeeWindow : Page
     {
-        #region DataMember
 
         private List<string> criteriaListInfo = new List<string>() { "MemberID", "Phone", "FullName" };
-
-        private EmployeeViewModel viewModel;
 
         private List<Member> list;
 
@@ -49,12 +37,6 @@ namespace CS3230RentalSystemProject.view
 
         private List<Furniture> furnitureListData;
 
-        
-
-        #endregion
-
-        #region Constructor
-
 
         /// <summary>
         /// Initialize constructor
@@ -66,8 +48,8 @@ namespace CS3230RentalSystemProject.view
             this.dAL = new MemberDAL();
             this.furnitureDAL = new FurnitureDAL();
             this.furnitureListData = this.furnitureDAL.GetAllFurnitureList();
+            this.furnitureListData.ForEach(x => x.setQuantityList());
             this.furnitureList.ItemsSource = this.furnitureListData;
-            this.viewModel = new EmployeeViewModel();
             
             this.memberList.ItemsSource = dAL.GetAllMemberList();
             
@@ -76,9 +58,6 @@ namespace CS3230RentalSystemProject.view
             this.criteriaList.ItemsSource = this.criteriaListInfo;
         }
 
-        #endregion
-
-        #region Methods
 
         private void registerMemberButton_Click(object sender, RoutedEventArgs e)
         {
@@ -92,16 +71,6 @@ namespace CS3230RentalSystemProject.view
             this.invalidSearch.Visibility = Visibility.Collapsed;
         }
 
-        private List<Member> convertList()
-        {
-            List<Member> list = new List<Member>();
-            foreach(Member member in this.memberList.Items)
-            {
-                list.Add(member);
-            }
-            return list;
-        }
-
         private void employeeList_DoubleTapped(object sender, DoubleTappedRoutedEventArgs e)
         {
             ListBox box = sender as ListBox;
@@ -111,27 +80,6 @@ namespace CS3230RentalSystemProject.view
                 Frame.Navigate(typeof(MemebrInformationViewer), this.employee);
             }
         }
-
-
-        /// <summary>
-        /// Initialize parameter
-        /// </summary>
-        /// <param name="e">
-        ///         The parameter
-        /// </param>
-        protected override void OnNavigatedTo(NavigationEventArgs e)
-        {
-            base.OnNavigatedTo(e);
-            if (e.Parameter == null)
-            {
-                return;
-            }
-
-            this.employee = (Employee)e.Parameter;
-
-            this.employeeName.Text = "Welcome, " +  this.employee.ToString();
-        }
-        #endregion
 
         private void logout_Click(object sender, RoutedEventArgs e)
         {
@@ -201,30 +149,78 @@ namespace CS3230RentalSystemProject.view
             this.invalidSearch.Visibility = Visibility.Collapsed;
         }
 
-        private void warningButtonClick(object sender, RoutedEventArgs e)
+        private async void addButtonClick(object sender, RoutedEventArgs e)
         {
             int tag = (int)((Button)sender).Tag;
+
+            List<Furniture> list = new List<Furniture>();
+            foreach (Furniture item in this.furnitureList.Items)
+            {
+                if (item.FurnitureID == tag)
+                {
+                    if (item.Quantity == 0)
+                    {
+                        var message = new MessageDialog(" " + item.FurnitureName + " is not available now!");
+                        await message.ShowAsync();
+                        return;
+                    }
+                    item.Quantity--;
+                }
+                list.Add(item);
+            }
+            
             Furniture furniture = this.furnitureListData.Find(x => x.FurnitureID == tag);
+            
             if (this.employee.FurnitureListData.Contains(furniture))
             {
                 int index = this.employee.FurnitureListData.IndexOf(furniture);
-                this.employee.FurnitureListData.ElementAt(index).rentQuantity++;
+                this.employee.FurnitureListData.ElementAt(index).RentQuantity++;
                 rentQuantity++;
                 this.bagButton.Content = "Bag(" + rentQuantity + ")";
             }
             else
             {
-                furniture.rentQuantity++;
+                furniture.RentQuantity++;
                 this.employee.FurnitureListData.Add(furniture);
                 rentQuantity++;
                 this.bagButton.Content = "Bag(" + rentQuantity + ")";
             }
 
+            this.furnitureList.ItemsSource = list;
         }
 
         private void bagButton_Click(object sender, RoutedEventArgs e)
         {
             Frame.Navigate(typeof(Checkout), this.employee);
+        }
+
+        private List<Member> convertList()
+        {
+            List<Member> list = new List<Member>();
+            foreach (Member member in this.memberList.Items)
+            {
+                list.Add(member);
+            }
+            return list;
+        }
+
+        /// <summary>
+        /// Initialize parameter
+        /// </summary>
+        /// <param name="e">
+        ///         The parameter
+        /// </param>
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            base.OnNavigatedTo(e);
+            if (e.Parameter == null)
+            {
+                return;
+            }
+
+            this.employee = (Employee)e.Parameter;
+
+            this.employeeName.Text = "Welcome, " + this.employee.ToString();
         }
     }
 }

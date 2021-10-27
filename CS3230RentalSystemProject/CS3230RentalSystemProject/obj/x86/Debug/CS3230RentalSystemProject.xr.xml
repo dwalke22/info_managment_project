@@ -2,9 +2,10 @@
 <Roots >
   <Roots.PropertyPathNames>
     <RootPropertyPathName Name="FurnitureID" />
-    <RootPropertyPathName Name="fakeQuantity" />
-    <RootPropertyPathName Name="rentQuantity" />
+    <RootPropertyPathName Name="QuantityList" />
+    <RootPropertyPathName Name="RentQuantity" />
     <RootPropertyPathName Name="FurnitureName" />
+    <RootPropertyPathName Name="Quantity" />
     <RootPropertyPathName Name="Category" />
     <RootPropertyPathName Name="Style" />
   </Roots.PropertyPathNames>
@@ -24,12 +25,13 @@
       <RootProperty Name="Children" />
       <RootProperty Name="ColumnDefinitions" />
       <RootProperty Name="RowDefinitions" />
-      <RootMethod Name="GetColumnSpan" />
-      <RootMethod Name="SetColumnSpan" />
+      <RootProperty Name="Margin" />
       <RootMethod Name="GetColumn" />
       <RootMethod Name="SetColumn" />
       <RootMethod Name="GetRow" />
       <RootMethod Name="SetRow" />
+      <RootMethod Name="GetColumnSpan" />
+      <RootMethod Name="SetColumnSpan" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.TextBlock">
       <RootProperty Name="HorizontalAlignment" />
@@ -105,6 +107,8 @@
     <RootType FullName="Microsoft.Xaml.DirectUI.ProxyTypes.ThemeResourceExtension" />
     <RootType FullName="Windows.UI.Xaml.Controls.ListBox">
       <RootProperty Name="Margin" />
+      <RootProperty Name="HorizontalAlignment" />
+      <RootProperty Name="Width" />
       <RootProperty Name="ItemTemplate" />
       <RootProperty Name="Template" />
       <RootEvent Name="DoubleTapped" />
@@ -116,6 +120,7 @@
       <RootProperty Name="Width" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.ComboBox">
+      <RootProperty Name="Tag" />
       <RootProperty Name="ItemsSource" />
       <RootProperty Name="SelectedItem" />
       <RootProperty Name="HorizontalAlignment" />
@@ -126,6 +131,11 @@
       <RootProperty Name="VerticalAlignment" />
       <RootProperty Name="Height" />
       <RootEvent Name="SelectionChanged" />
+    </RootType>
+    <RootType FullName="Windows.UI.Xaml.Controls.CalendarDatePicker">
+      <RootProperty Name="Tag" />
+      <RootProperty Name="HorizontalAlignment" />
+      <RootEvent Name="DateChanged" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Data.Binding" />
     <RootType FullName="Windows.UI.Xaml.Controls.ControlTemplate">

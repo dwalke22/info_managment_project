@@ -24,13 +24,59 @@ namespace CS3230RentalSystemProject.View
     /// </summary>
     public sealed partial class Checkout : Page
     {
+        /// <summary>
+        /// The Employee
+        /// </summary>
         public Employee Employee { get; set; }
 
         private IList<Furniture> furnitureListData;
 
+        /// <summary>
+        /// Initialize constructor
+        /// </summary>
         public Checkout()
         {
             this.InitializeComponent();
+        }
+
+        private void Cancel_Click(object sender, RoutedEventArgs e)
+        {
+            this.Employee.FurnitureListData.Clear();
+            Frame.Navigate(typeof(EmployeeWindow), this.Employee);
+        }
+
+        private void Checkout_Click(object sender, RoutedEventArgs e)
+        {
+        }
+
+        private void removeButtonClick(object sender, RoutedEventArgs e)
+        {
+            int tag = (int)((Button)sender).Tag;
+            
+
+            Furniture furniture = this.Employee.FurnitureListData.Find(x => x.FurnitureID == tag);
+
+            this.Employee.FurnitureListData.Remove(furniture);
+            List <Furniture> list = new List<Furniture>();
+            foreach(Furniture item in this.Employee.FurnitureListData)
+            {
+                list.Add(item);
+            }
+            this.furnitureList.ItemsSource = list;
+
+
+        }
+
+        private void quantity_changed(object sender, SelectionChangedEventArgs e)
+        {
+            int tag = (int)((ComboBox)sender).Tag;
+            this.Employee.FurnitureListData.Find(x => x.FurnitureID == tag).RentQuantity = (int)((ComboBox)sender).SelectedItem;
+        }
+
+        private void date_changed(CalendarDatePicker sender, CalendarDatePickerDateChangedEventArgs args)
+        {
+            int tag = (int)((CalendarDatePicker)sender).Tag;
+            this.Employee.FurnitureListData.Find(x => x.FurnitureID == tag).ReturnDate = DateTimeOffset.Parse(((CalendarDatePicker)sender).Date.ToString()).DateTime;
         }
 
         /// <summary>
@@ -51,33 +97,6 @@ namespace CS3230RentalSystemProject.View
             this.furnitureList.ItemsSource = this.Employee.FurnitureListData;
             this.furnitureListData = this.Employee.FurnitureListData;
             this.employeeName.Text = this.Employee.ToString();
-        }
-
-        private void Cancel_Click(object sender, RoutedEventArgs e)
-        {
-            Frame.Navigate(typeof(EmployeeWindow), this.Employee);
-        }
-
-        private void Checkout_Click(object sender, RoutedEventArgs e)
-        {
-        }
-
-        private void warningButtonClick(object sender, RoutedEventArgs e)
-        {
-            int tag = (int)((Button)sender).Tag;
-            
-
-            Furniture furniture = this.Employee.FurnitureListData.Find(x => x.FurnitureID == tag);
-
-            this.Employee.FurnitureListData.Remove(furniture);
-            List <Furniture> list = new List<Furniture>();
-            foreach(Furniture item in this.Employee.FurnitureListData)
-            {
-                list.Add(item);
-            }
-            this.furnitureList.ItemsSource = list;
-
-
         }
     }
 }

@@ -603,29 +603,218 @@
             The Employee Class.
             </summary>
         </member>
+        <member name="P:CS3230RentalSystemProject.Model.Employee.EmployeeID">
+            <summary>
+            The Employee Id
+            </summary>
+        </member>
+        <member name="P:CS3230RentalSystemProject.Model.Employee.FirstName">
+            <summary>
+            The Employee's first name
+            </summary>
+        </member>
+        <member name="P:CS3230RentalSystemProject.Model.Employee.LastName">
+            <summary>
+            The Employee's last name
+            </summary>
+        </member>
+        <member name="P:CS3230RentalSystemProject.Model.Employee.PhoneNumber">
+            <summary>
+            The Employee's phone number
+            </summary>
+        </member>
+        <member name="P:CS3230RentalSystemProject.Model.Employee.Email">
+            <summary>
+            The Employee's email
+            </summary>
+        </member>
+        <member name="P:CS3230RentalSystemProject.Model.Employee.Member">
+            <summary>
+            The member that employee server for
+            </summary>
+        </member>
+        <member name="P:CS3230RentalSystemProject.Model.Employee.MemberList">
+            <summary>
+            Member list for the store
+            </summary>
+        </member>
+        <member name="P:CS3230RentalSystemProject.Model.Employee.FurnitureListData">
+            <summary>
+            Furniture list that rent for the memebr
+            </summary>
+        </member>
+        <member name="M:CS3230RentalSystemProject.Model.Employee.#ctor">
+            <summary>
+            Initialize constructor
+            </summary>
+        </member>
+        <member name="M:CS3230RentalSystemProject.Model.Employee.ToString">
+            <summary>
+            Override tostring
+            </summary>
+            <returns>
+            The employee's full name
+            </returns>
+        </member>
         <member name="T:CS3230RentalSystemProject.Model.Furniture">
             <summary>
             The Furniture class
             </summary>
         </member>
-        <member name="T:CS3230RentalSystemProject.Model.Member">
+        <member name="P:CS3230RentalSystemProject.Model.Furniture.FurnitureID">
             <summary>
-            
+            The Furniture ID
             </summary>
         </member>
-        <member name="T:CS3230RentalSystemProject.ViewModel.EmployeeViewModel">
+        <member name="P:CS3230RentalSystemProject.Model.Furniture.FurnitureName">
             <summary>
-            The Employee view model class.
+            The Furniture name
             </summary>
         </member>
-        <member name="M:CS3230RentalSystemProject.ViewModel.EmployeeViewModel.#ctor">
+        <member name="P:CS3230RentalSystemProject.Model.Furniture.Style">
+            <summary>
+            The Furniture Style
+            </summary>
+        </member>
+        <member name="P:CS3230RentalSystemProject.Model.Furniture.Category">
+            <summary>
+            The Furniture Category
+            </summary>
+        </member>
+        <member name="P:CS3230RentalSystemProject.Model.Furniture.RentPrice">
+            <summary>
+            The Furniture Rent price
+            </summary>
+        </member>
+        <member name="P:CS3230RentalSystemProject.Model.Furniture.Quantity">
+            <summary>
+            The Furniture Quantity
+            </summary>
+        </member>
+        <member name="P:CS3230RentalSystemProject.Model.Furniture.RentQuantity">
+            <summary>
+            The Furniture Rental quantity
+            </summary>
+        </member>
+        <member name="P:CS3230RentalSystemProject.Model.Furniture.QuantityList">
+            <summary>
+            The Quantity list
+            </summary>
+        </member>
+        <member name="P:CS3230RentalSystemProject.Model.Furniture.ReturnDate">
+            <summary>
+            The Furniture return date
+            </summary>
+        </member>
+        <member name="M:CS3230RentalSystemProject.Model.Furniture.#ctor">
             <summary>
             Initialize constructor
             </summary>
         </member>
+        <member name="M:CS3230RentalSystemProject.Model.Furniture.setQuantityList">
+            <summary>
+            Set up quantity list
+            </summary>
+        </member>
+        <member name="M:CS3230RentalSystemProject.Model.Furniture.ToString">
+            <summary>
+            Override tostring
+            </summary>
+            <returns>
+            The Furniture's full information
+            </returns>
+        </member>
+        <member name="T:CS3230RentalSystemProject.Model.Member">
+            <summary>
+            The Member class
+            </summary>
+        </member>
+        <member name="P:CS3230RentalSystemProject.Model.Member.MemberID">
+            <summary>
+            The Member ID
+            </summary>
+        </member>
+        <member name="P:CS3230RentalSystemProject.Model.Member.FirstName">
+            <summary>
+            The Member first name
+            </summary>
+        </member>
+        <member name="P:CS3230RentalSystemProject.Model.Member.LastName">
+            <summary>
+            The Member last name
+            </summary>
+        </member>
+        <member name="P:CS3230RentalSystemProject.Model.Member.Gender">
+            <summary>
+            The Member gender
+            </summary>
+        </member>
+        <member name="P:CS3230RentalSystemProject.Model.Member.Address1">
+            <summary>
+            The Member address1
+            </summary>
+        </member>
+        <member name="P:CS3230RentalSystemProject.Model.Member.Address2">
+            <summary>
+            The Member address2
+            </summary>
+        </member>
+        <member name="P:CS3230RentalSystemProject.Model.Member.City">
+            <summary>
+            The Member city
+            </summary>
+        </member>
+        <member name="P:CS3230RentalSystemProject.Model.Member.State">
+            <summary>
+            The Member state
+            </summary>
+        </member>
+        <member name="P:CS3230RentalSystemProject.Model.Member.Country">
+            <summary>
+            The Member country
+            </summary>
+        </member>
+        <member name="P:CS3230RentalSystemProject.Model.Member.Zipcode">
+            <summary>
+            The Member zipcode
+            </summary>
+        </member>
+        <member name="P:CS3230RentalSystemProject.Model.Member.PhoneNumber">
+            <summary>
+            The Member phone number
+            </summary>
+        </member>
+        <member name="P:CS3230RentalSystemProject.Model.Member.Email">
+            <summary>
+            The Member email
+            </summary>
+        </member>
+        <member name="P:CS3230RentalSystemProject.Model.Member.Birthday">
+            <summary>
+            The Member birthday
+            </summary>
+        </member>
+        <member name="M:CS3230RentalSystemProject.Model.Member.ToString">
+            <summary>
+            Override tostring
+            </summary>
+            <returns>
+            The Member's full name
+            </returns>
+        </member>
         <member name="T:CS3230RentalSystemProject.View.Checkout">
             <summary>
             An empty page that can be used on its own or navigated to within a Frame.
+            </summary>
+        </member>
+        <member name="P:CS3230RentalSystemProject.View.Checkout.Employee">
+            <summary>
+            The Employee
+            </summary>
+        </member>
+        <member name="M:CS3230RentalSystemProject.View.Checkout.#ctor">
+            <summary>
+            Initialize constructor
             </summary>
         </member>
         <member name="M:CS3230RentalSystemProject.View.Checkout.OnNavigatedTo(Windows.UI.Xaml.Navigation.NavigationEventArgs)">
@@ -654,6 +843,11 @@
         <member name="T:CS3230RentalSystemProject.View.MemebrInformationViewer">
             <summary>
             An empty page that can be used on its own or navigated to within a Frame.
+            </summary>
+        </member>
+        <member name="P:CS3230RentalSystemProject.View.MemebrInformationViewer.Employee">
+            <summary>
+            The Empolyee
             </summary>
         </member>
         <member name="M:CS3230RentalSystemProject.View.MemebrInformationViewer.#ctor">
@@ -720,6 +914,11 @@
         <member name="T:CS3230RentalSystemProject.view.MemberRegistration">
             <summary>
             The MemberRegistration class
+            </summary>
+        </member>
+        <member name="P:CS3230RentalSystemProject.view.MemberRegistration.Employee">
+            <summary>
+            The Employee
             </summary>
         </member>
         <member name="M:CS3230RentalSystemProject.view.MemberRegistration.#ctor">

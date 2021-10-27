@@ -6,40 +6,41 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:model="using:CS3230RentalSystemProject.Model"
     mc:Ignorable="d"
-    d:DesignHeight="500" Width="670">
+    d:DesignHeight="500" Width="980">
 
-    <Grid Height="500" VerticalAlignment="Center" HorizontalAlignment="Center" Width="670">
+    <Grid Height="500" VerticalAlignment="Center" Margin="15,0,0,0" HorizontalAlignment="Left" Width="965">
         <TextBlock x:Name="employeeName" HorizontalAlignment="Left" Margin="7,6,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="176" Height="29" FontWeight="Bold" TextAlignment="Start" FontFamily="SimSun" FontSize="16"  Style="{ThemeResource SubheaderTextBlockStyle}" Foreground="#FFB03636"/>
         <TextBox x:Name="searchBox" HorizontalAlignment="Left" Margin="20,95,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Height="35" FontSize="14" PlaceholderText="eg: John Snith" AccessKey="" TextAlignment="Center" TextChanging="searchBox_TextChanging" KeyDown="searchBox_KeyDown"/>
-        <Button x:Name="registerMemberButton" Content="Register Member" Margin="455,5,0,0" VerticalAlignment="Top" Width="130" Height="35" Click="registerMemberButton_Click" RenderTransformOrigin="0.538,0.714"/>
-        <ListBox x:Name="memberList" Margin="5,170,530,5" DoubleTapped="employeeList_DoubleTapped"/>
+        <Button x:Name="registerMemberButton" Content="Register Member" Margin="750,5,0,0" VerticalAlignment="Top" Width="130" Height="35" Click="registerMemberButton_Click" RenderTransformOrigin="0.538,0.714"/>
+        <ListBox x:Name="memberList" Margin="5,170,790,5" DoubleTapped="employeeList_DoubleTapped"/>
         <TextBlock HorizontalAlignment="Left" Margin="7,60,0,0" Text="Search By " TextWrapping="Wrap" VerticalAlignment="Top" Height="24" Width="96" TextAlignment="Center" FontSize="18"/>
-        <Button x:Name="logout" Content="Logout" Margin="595,5,0,0" VerticalAlignment="Top" Click="logout_Click" Height="35">
+        <Button x:Name="logout" Content="Logout" Margin="890,5,0,0" VerticalAlignment="Top" Click="logout_Click" Height="35">
             <Button.FocusVisualPrimaryBrush>
                 <ImageBrush ImageSource="/Assets/SplashScreen.scale-200.png"/>
             </Button.FocusVisualPrimaryBrush>
         </Button>
         <ComboBox x:Name="criteriaList" Margin="100,58,0,0" Width="115" SelectionChanged="criteriaList_SelectionChanged" PlaceholderText="Select Me"/>
-        <ListBox x:Name="furnitureList" Margin="155,170,40,5">
+        <ListBox x:Name="furnitureList" Margin="195,170,40,5">
             <ListBox.ItemTemplate>
                 <DataTemplate>
 
                     <Grid >
                         <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="255"/>
-                                <ColumnDefinition Width="70"/>
-                                <ColumnDefinition Width="70"/>
-                                <ColumnDefinition Width="50"/>
-                            </Grid.ColumnDefinitions>
-                            <TextBlock Grid.Column="0" Text="{Binding FurnitureName}" HorizontalAlignment="Left" />
-                            <TextBlock Grid.Column="1" Text="{Binding Style}" HorizontalAlignment="Left" />
-                            <TextBlock Grid.Column="2" Text="{Binding Category}" HorizontalAlignment="Left" />
+                            <ColumnDefinition Width="255"/>
+                            <ColumnDefinition Width="120"/>
+                            <ColumnDefinition Width="100"/>
+                            <ColumnDefinition Width="100"/>
+                            <ColumnDefinition Width="100"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Grid.Column="0" Text="{Binding FurnitureName}" HorizontalAlignment="Left" />
+                        <TextBlock Grid.Column="1" Text="{Binding Style}" HorizontalAlignment="Center" />
+                        <TextBlock Grid.Column="2" Text="{Binding Category}" HorizontalAlignment="Center" />
+                        <TextBlock Grid.Column="3" Text="{Binding Quantity}" HorizontalAlignment="Center" />
+                        <Button x:Name="addButton" Tag="{Binding FurnitureID}" Content="Add" Grid.Column="4" Width="50" Height="30" Foreground="#FF9C0E0E" FontSize="14" Click="addButtonClick" HorizontalAlignment="Right">
+                        </Button>
+                    </Grid>
 
-                            <Button x:Name="warningButton" Tag="{Binding FurnitureID}" Content="Add" Grid.Column="3" Width="50" Height="30" Foreground="#FF9C0E0E" FontSize="14" Click="warningButtonClick" HorizontalAlignment="Left">
-                            </Button>
-                        </Grid>
-                        
-                   
+
                 </DataTemplate>
             </ListBox.ItemTemplate>
             <ListBox.Template>
@@ -51,10 +52,11 @@
                         </Grid.RowDefinitions>
                         <Grid Grid.Row="0">
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="255" />
-                                <ColumnDefinition Width="70" />
-                                <ColumnDefinition Width="70" />
-                                <ColumnDefinition Width="50" />
+                                <ColumnDefinition Width="255"/>
+                                <ColumnDefinition Width="120"/>
+                                <ColumnDefinition Width="100"/>
+                                <ColumnDefinition Width="100"/>
+                                <ColumnDefinition Width="100"/>
                             </Grid.ColumnDefinitions>
                             <Border Grid.Column="0">
                                 <TextBlock FontWeight="Bold" HorizontalAlignment="Left">Furniture Name</TextBlock>
@@ -66,6 +68,9 @@
                                 <TextBlock FontWeight="Bold" HorizontalAlignment="Center">Category</TextBlock>
                             </Border>
                             <Border  Grid.Column="3">
+                                <TextBlock FontWeight="Bold" HorizontalAlignment="Center">Quantity</TextBlock>
+                            </Border>
+                            <Border  Grid.Column="4">
                                 <TextBlock FontWeight="Bold" HorizontalAlignment="Right">Action</TextBlock>
                             </Border>
                         </Grid>
@@ -74,7 +79,7 @@
                 </ControlTemplate>
             </ListBox.Template>
         </ListBox>
-        <Button x:Name="bagButton" Content="Bag(0)" Margin="550,78,0,0" VerticalAlignment="Top" Click="bagButton_Click"/>
+        <Button x:Name="bagButton" Content="Bag(0)" Margin="855,133,0,0" VerticalAlignment="Top" Click="bagButton_Click" RenderTransformOrigin="1,0.938"/>
         <TextBlock x:Name="invalidSearch" HorizontalAlignment="Left" Margin="15,134,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="210" Height="29" Foreground="#FF9C0E0E" FontSize="14"/>
     </Grid>
 </Page>

@@ -25,7 +25,7 @@ namespace CS3230RentalSystemProject.DAL
             using (MySqlConnection connection = new MySqlConnection(Connection.connectionString))
             {
                 connection.Open();
-                string query = "select f.furnitureID, f.furnitureName, f.rentPrice, s.styleName, c.categoryName from `furniture` f, `style` s, `category` c where f.styleID = s.styleId and f.categoryID = c.categoryId;";
+                string query = "select f.furnitureID, f.furnitureName, f.rentPrice, f.quantity, s.styleName, c.categoryName from `furniture` f, `style` s, `category` c where f.styleID = s.styleId and f.categoryID = c.categoryId;";
 
                 using MySqlCommand command = new MySqlCommand(query, connection);
 
@@ -34,6 +34,7 @@ namespace CS3230RentalSystemProject.DAL
                 int idoridinal = reader.GetOrdinal("furnitureID");
                 int fnameoridinal = reader.GetOrdinal("furnitureName");
                 int styleoridinal = reader.GetOrdinal("styleName");
+                int quantityoridinal = reader.GetOrdinal("quantity");
 
                 int categoryoridinal = reader.GetOrdinal("categoryName");
                 int priceoridinal = reader.GetOrdinal("rentPrice");
@@ -47,6 +48,7 @@ namespace CS3230RentalSystemProject.DAL
                         Style = reader.GetFieldValueCheckNull<string>(styleoridinal),
                         Category = reader.GetFieldValueCheckNull<string>(categoryoridinal),
                         RentPrice = reader.GetFieldValueCheckNull<decimal>(priceoridinal),
+                        Quantity = reader.GetFieldValueCheckNull<Int32>(quantityoridinal),
                     });
 
                 }

@@ -6,23 +6,24 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
-    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" Height="490" Width="720">
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" Height="490" Width="930">
 
-    <Grid Height="500" VerticalAlignment="Center">
-        <ListBox x:ConnectionId='2' x:Name="furnitureList" Margin="45,75,50,100">
+    <Grid Height="500" VerticalAlignment="Center" HorizontalAlignment="Center" Width="930">
+        <ListBox x:ConnectionId='2' x:Name="furnitureList" Margin="45,75,0,100" HorizontalAlignment="Left" Width="825">
             <ListBox.ItemTemplate>
                 <DataTemplate>
 
                     <Grid>
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="300"/>
-                            <ColumnDefinition Width="200"/>
-                            <ColumnDefinition Width="200"/>
+                            <ColumnDefinition Width="300" />
+                            <ColumnDefinition Width="180" />
+                            <ColumnDefinition Width="180" />
+                            <ColumnDefinition Width="180" />
                         </Grid.ColumnDefinitions>
                         <TextBlock Grid.Column="0" Text="{Binding FurnitureName}" HorizontalAlignment="Left" />
-                        <ComboBox Grid.Column="1" ItemsSource= "{Binding fakeQuantity}" SelectedItem="{Binding rentQuantity}" HorizontalAlignment="Left" />
-
-                        <Button x:ConnectionId='7' x:Name="warningButton" Tag="{Binding FurnitureID}" Content="Remove" Grid.Column="2" Width="80" Height="30" Foreground="#FF9C0E0E" FontSize="14"                            HorizontalAlignment="Left">
+                        <ComboBox x:ConnectionId='7' x:Name="quantityCombobox" Grid.Column="1" Tag="{Binding FurnitureID}" ItemsSource= "{Binding QuantityList}" SelectedItem="{Binding RentQuantity}"                                     HorizontalAlignment="Center" />
+                        <CalendarDatePicker x:ConnectionId='8' x:Name="returndayPicker"  Grid.Column="2" Tag="{Binding FurnitureID}"                            HorizontalAlignment="Center"/>
+                        <Button x:ConnectionId='9' x:Name="removeButton" Tag="{Binding FurnitureID}" Content="Remove" Grid.Column="3" Width="80" Height="30" Foreground="#FF9C0E0E" FontSize="14"                           HorizontalAlignment="Center">
                         </Button>
                     </Grid>
 
@@ -41,6 +42,7 @@
                                 <ColumnDefinition Width="300" />
                                 <ColumnDefinition Width="180" />
                                 <ColumnDefinition Width="180" />
+                                <ColumnDefinition Width="180" />
                             </Grid.ColumnDefinitions>
                             <Border Grid.Column="0">
                                 <TextBlock FontWeight="Bold" HorizontalAlignment="Left">Furniture Name</TextBlock>
@@ -48,7 +50,10 @@
                             <Border Grid.Column="1">
                                 <TextBlock FontWeight="Bold" HorizontalAlignment="Center">Quantity</TextBlock>
                             </Border>
-                            <Border  Grid.Column="2">
+                            <Border Grid.Column="2">
+                                <TextBlock FontWeight="Bold" HorizontalAlignment="Center">ReturnDay</TextBlock>
+                            </Border>
+                            <Border  Grid.Column="3">
                                 <TextBlock FontWeight="Bold" HorizontalAlignment="Center">Action</TextBlock>
                             </Border>
                         </Grid>
@@ -59,8 +64,8 @@
         </ListBox>
 
         <TextBlock x:ConnectionId='3' x:Name="employeeName" HorizontalAlignment="Left" Margin="20,20,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="161" Height="51" FontWeight="Bold" TextAlignment="Start" FontFamily="SimSun" FontSize="16"  Style="{ThemeResource SubheaderTextBlockStyle}" Foreground="#FFB03636"/>
-        <Button x:ConnectionId='4' Content="Checkout" Margin="390,405,0,0" VerticalAlignment="Top" Height="55" Width="170" FontSize="36"                        Grid.ColumnSpan="2"/>
-        <Button x:ConnectionId='5' Content="Cancel" Margin="195,405,0,0" VerticalAlignment="Top" Height="55" Width="165" FontSize="36"                     />
+        <Button x:ConnectionId='4' Content="Checkout" Margin="745,430,0,0" VerticalAlignment="Top" Height="55" Width="170" FontSize="36"                       />
+        <Button x:ConnectionId='5' Content="Cancel" Margin="570,430,0,0" VerticalAlignment="Top" Height="55" Width="165" FontSize="36"                     />
 
     </Grid>
 </Page>

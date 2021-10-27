@@ -31,6 +31,9 @@ namespace CS3230RentalSystemProject.View
 
         private bool isvalid = true;
 
+        /// <summary>
+        /// The Empolyee
+        /// </summary>
         public Employee Employee { get; set; }
 
         private string FirstName;
@@ -72,71 +75,6 @@ namespace CS3230RentalSystemProject.View
             this.allowChooser(false);
             this.isReadOnly(true);
             this.disableInvalidlable();
-        }
-        private void isReadOnly(bool action)
-        {   
-            this.address1InputBox.IsReadOnly = action;
-            this.address2InputBox.IsReadOnly = action;
-            this.cityInputBox.IsReadOnly = action;
-            
-            this.phoneInputBox.IsReadOnly = action;
-            this.emailInputBox.IsReadOnly = action;
-            
-            this.zipcodeInputBox.IsReadOnly = action;
-        }
-
-        private void disableInvalidlable()
-        {
-            this.invalidFirstname.Visibility = Visibility.Collapsed;
-            this.invalidLastname.Visibility = Visibility.Collapsed;
-            this.invalidBirthday.Visibility = Visibility.Collapsed;
-            this.invalidPhone.Visibility = Visibility.Collapsed;
-            this.invalidEmail.Visibility = Visibility.Collapsed;
-            this.InvalidGender.Visibility = Visibility.Collapsed;
-            this.invalidAddress1.Visibility = Visibility.Collapsed;
-            this.invalidCountry.Visibility = Visibility.Collapsed;
-            this.invalidState.Visibility = Visibility.Collapsed;
-            this.invalidZipcode.Visibility = Visibility.Collapsed;
-            this.invalidCity.Visibility = Visibility.Collapsed;
-        }
-
-        private void allowChooser(bool action)
-        {
-            this.genderChooser.IsEnabled = action;
-            this.stateChooser.IsEnabled = action;
-            this.CountryChooser.IsEnabled = action;
-            this.birtdayChooser.IsEnabled = action;
-        }
-
-        private void setViewer()
-        {
-            this.firstNameInputBox.Text = this.Employee.Member.FirstName;
-            this.lastNameInputBox.Text = this.Employee.Member.LastName;
-            this.genderChooser.SelectedItem = this.Employee.Member.Gender;
-            this.address1InputBox.Text = this.Employee.Member.Address1;
-            this.address2InputBox.Text = this.Employee.Member.Address2 == null ? "" : this.Employee.Member.Address2;
-            this.cityInputBox.Text = this.Employee.Member.City;
-            this.stateChooser.SelectedItem = this.Employee.Member.State;
-            this.CountryChooser.SelectedItem = this.Employee.Member.Country;
-            this.phoneInputBox.Text = this.Employee.Member.PhoneNumber;
-            this.emailInputBox.Text = this.Employee.Member.Email;
-            this.birtdayChooser.SelectedDate = this.Employee.Member.Birthday;
-            this.zipcodeInputBox.Text = this.Employee.Member.Zipcode;
-
-            this.FirstName = this.Employee.Member.FirstName;
-            this.LastName = this.Employee.Member.LastName;
-            this.Gender = this.Employee.Member.Gender;
-            this.Address1 = this.Employee.Member.Address1;
-            this.Address2 = this.Employee.Member.Address2 == null ? "" : this.Employee.Member.Address2;
-            this.City = this.Employee.Member.City;
-            this.State = this.Employee.Member.State;
-            this.Country = this.Employee.Member.Country;
-            this.PhoneNumber = this.Employee.Member.PhoneNumber;
-            this.Email = this.Employee.Member.Email;
-            this.Birthday = this.Employee.Member.Birthday;
-            this.Zipcode = this.Employee.Member.Zipcode;
-
-
         }
 
         private void okButton_Click(object sender, RoutedEventArgs e)
@@ -270,6 +208,72 @@ namespace CS3230RentalSystemProject.View
             this.isReadOnly(true);
 
             this.setViewer();
+        }
+
+        private void isReadOnly(bool action)
+        {
+            this.address1InputBox.IsReadOnly = action;
+            this.address2InputBox.IsReadOnly = action;
+            this.cityInputBox.IsReadOnly = action;
+
+            this.phoneInputBox.IsReadOnly = action;
+            this.emailInputBox.IsReadOnly = action;
+
+            this.zipcodeInputBox.IsReadOnly = action;
+        }
+
+        private void disableInvalidlable()
+        {
+            this.invalidFirstname.Visibility = Visibility.Collapsed;
+            this.invalidLastname.Visibility = Visibility.Collapsed;
+            this.invalidBirthday.Visibility = Visibility.Collapsed;
+            this.invalidPhone.Visibility = Visibility.Collapsed;
+            this.invalidEmail.Visibility = Visibility.Collapsed;
+            this.InvalidGender.Visibility = Visibility.Collapsed;
+            this.invalidAddress1.Visibility = Visibility.Collapsed;
+            this.invalidCountry.Visibility = Visibility.Collapsed;
+            this.invalidState.Visibility = Visibility.Collapsed;
+            this.invalidZipcode.Visibility = Visibility.Collapsed;
+            this.invalidCity.Visibility = Visibility.Collapsed;
+        }
+
+        private void allowChooser(bool action)
+        {
+            this.genderChooser.IsEnabled = action;
+            this.stateChooser.IsEnabled = action;
+            this.CountryChooser.IsEnabled = action;
+            this.birtdayChooser.IsEnabled = action;
+        }
+
+        private void setViewer()
+        {
+            this.firstNameInputBox.Text = this.Employee.Member.FirstName;
+            this.lastNameInputBox.Text = this.Employee.Member.LastName;
+            this.genderChooser.SelectedItem = this.Employee.Member.Gender;
+            this.address1InputBox.Text = this.Employee.Member.Address1;
+            this.address2InputBox.Text = this.Employee.Member.Address2 == null ? "" : this.Employee.Member.Address2;
+            this.cityInputBox.Text = this.Employee.Member.City;
+            this.stateChooser.SelectedItem = this.Employee.Member.State;
+            this.CountryChooser.SelectedItem = this.Employee.Member.Country;
+            this.phoneInputBox.Text = this.Employee.Member.PhoneNumber;
+            this.emailInputBox.Text = this.Employee.Member.Email;
+            this.birtdayChooser.SelectedDate = this.Employee.Member.Birthday;
+            this.zipcodeInputBox.Text = this.Employee.Member.Zipcode;
+
+            this.FirstName = this.Employee.Member.FirstName;
+            this.LastName = this.Employee.Member.LastName;
+            this.Gender = this.Employee.Member.Gender;
+            this.Address1 = this.Employee.Member.Address1;
+            this.Address2 = this.Employee.Member.Address2 == null ? "" : this.Employee.Member.Address2;
+            this.City = this.Employee.Member.City;
+            this.State = this.Employee.Member.State;
+            this.Country = this.Employee.Member.Country;
+            this.PhoneNumber = this.Employee.Member.PhoneNumber;
+            this.Email = this.Employee.Member.Email;
+            this.Birthday = this.Employee.Member.Birthday;
+            this.Zipcode = this.Employee.Member.Zipcode;
+
+
         }
 
         /// <summary>

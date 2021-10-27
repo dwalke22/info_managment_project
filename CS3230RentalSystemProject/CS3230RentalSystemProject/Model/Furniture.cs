@@ -11,30 +11,77 @@ namespace CS3230RentalSystemProject.Model
     /// </summary>
     public class Furniture
     {
+        /// <summary>
+        /// The Furniture ID
+        /// </summary>
         public int FurnitureID { get; set; }
 
+        /// <summary>
+        /// The Furniture name
+        /// </summary>
         public string FurnitureName { get; set; }
 
+        /// <summary>
+        /// The Furniture Style
+        /// </summary>
         public string Style { get; set; }
 
+        /// <summary>
+        /// The Furniture Category
+        /// </summary>
         public string Category { get; set; }
 
+        /// <summary>
+        /// The Furniture Rent price
+        /// </summary>
         public decimal RentPrice { get; set; }
 
-        public int rentQuantity { get; set; }
+        /// <summary>
+        /// The Furniture Quantity
+        /// </summary>
+        public int Quantity { get; set; }
 
-        public IList<int> fakeQuantity { get; set; }
+        /// <summary>
+        /// The Furniture Rental quantity
+        /// </summary>
+        public int RentQuantity { get; set; }
 
+        /// <summary>
+        /// The Quantity list
+        /// </summary>
+        public IList<int> QuantityList { get; set; }
+
+        /// <summary>
+        /// The Furniture return date
+        /// </summary>
+        public DateTime ReturnDate { get; set; }
+
+        /// <summary>
+        /// Initialize constructor
+        /// </summary>
         public Furniture()
         {
-            this.fakeQuantity = new List<int>();
-            this.fakeQuantity.Add(1);
-            this.fakeQuantity.Add(2);
-            this.fakeQuantity.Add(3);
-            this.fakeQuantity.Add(4);
-            this.rentQuantity = 0;
+            this.QuantityList = new List<int>();
+            this.RentQuantity = 0;
         }
 
+        /// <summary>
+        /// Set up quantity list
+        /// </summary>
+        public void setQuantityList()
+        {
+            for (int i = 1; i <= this.Quantity; i++)
+            {
+                this.QuantityList.Add(i);
+            }
+        }
+
+        /// <summary>
+        /// Override tostring
+        /// </summary>
+        /// <returns>
+        /// The Furniture's full information
+        /// </returns>
         public override string ToString()
         {
             return this.FurnitureName + "\n" + "< Style: " + this.Style + " Category: " + this.Category + " >";
