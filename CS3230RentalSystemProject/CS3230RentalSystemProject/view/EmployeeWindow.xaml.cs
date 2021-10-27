@@ -23,6 +23,8 @@ namespace CS3230RentalSystemProject.view
 
         private List<string> criteriaListInfo = new List<string>() { "MemberID", "Phone", "Full Name" };
 
+        private List<string> furnitureCriteriaList = new List<string>() { "Style", "Category", "Price" };
+
         private List<Member> list;
 
         private MemberDAL dAL;
@@ -56,6 +58,10 @@ namespace CS3230RentalSystemProject.view
             this.list = this.convertList();
             this.invalidSearch.Visibility = Visibility.Collapsed;
             this.criteriaList.ItemsSource = this.criteriaListInfo;
+            this.furnitureFilterComboBox.ItemsSource = this.furnitureCriteriaList;
+
+            this.categoryComboBox.ItemsSource = this.furnitureDAL.GetAllFurnitureCategories();
+            this.styleComboBox.ItemsSource = this.furnitureDAL.GetAllFurnitureStyles();
         }
 
 
@@ -221,6 +227,31 @@ namespace CS3230RentalSystemProject.view
             this.employee = (Employee)e.Parameter;
 
             this.employeeName.Text = "Welcome, " + this.employee.ToString();
+        }
+
+        private void furnitureComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            string filter = this.furnitureFilterComboBox.SelectedItem.ToString();
+            if (filter.Equals(this.furnitureCriteriaList[0]))
+            {
+                this.styleComboBox.Visibility = Visibility.Visible;
+                this.categoryComboBox.Visibility = Visibility.Collapsed;
+                this.funiturePriceTextbox.Visibility = Visibility.Collapsed;
+            }
+
+            if (filter.Equals(this.furnitureCriteriaList[1]))
+            {
+                this.categoryComboBox.Visibility = Visibility.Visible;
+                this.styleComboBox.Visibility = Visibility.Collapsed;
+                this.funiturePriceTextbox.Visibility = Visibility.Collapsed;
+            }
+
+            if (filter.Equals(this.furnitureCriteriaList[2]))
+            {
+                this.funiturePriceTextbox.Visibility = Visibility.Visible;
+                this.styleComboBox.Visibility = Visibility.Collapsed;
+                this.categoryComboBox.Visibility = Visibility.Collapsed;
+            }
         }
     }
 }

@@ -57,5 +57,48 @@ namespace CS3230RentalSystemProject.DAL
             return FurnitureList;
 
         }
+
+        public List<string> GetAllFurnitureCategories()
+        {
+            List<string> categories = new List<string>();
+            using (MySqlConnection connection = new MySqlConnection(Connection.connectionString))
+            {
+                connection.Open();
+                string query = "select categoryName from category";
+
+                using MySqlCommand command = new MySqlCommand(query, connection);
+
+                using MySqlDataReader reader = command.ExecuteReader();
+                int categoryOrdinal = reader.GetOrdinal("categoryName");
+
+                while (reader.Read())
+                {
+                    categories.Add(reader.GetFieldValueCheckNull<string>(categoryOrdinal));
+                }
+            }
+            return categories;
+        }
+
+        public List<string> GetAllFurnitureStyles()
+        {
+            List<string> styles = new List<string>();
+            using (MySqlConnection connection = new MySqlConnection(Connection.connectionString))
+            {
+                connection.Open();
+                string query = "select styleName from style";
+
+                using MySqlCommand command = new MySqlCommand(query, connection);
+
+                using MySqlDataReader reader = command.ExecuteReader();
+                int styleOrdinal = reader.GetOrdinal("styleName");
+
+                while (reader.Read())
+                {
+                    styles.Add(reader.GetFieldValueCheckNull<string>(styleOrdinal));
+                }
+            }
+
+            return styles;
+        }
     }
 }
