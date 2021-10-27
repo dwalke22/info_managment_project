@@ -21,7 +21,7 @@ namespace CS3230RentalSystemProject.view
     public sealed partial class EmployeeWindow : Page
     {
 
-        private List<string> criteriaListInfo = new List<string>() { "MemberID", "Phone", "FullName" };
+        private List<string> criteriaListInfo = new List<string>() { "MemberID", "Phone", "Full Name" };
 
         private List<Member> list;
 

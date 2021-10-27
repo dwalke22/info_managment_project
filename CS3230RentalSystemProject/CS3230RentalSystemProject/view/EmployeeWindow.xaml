@@ -6,21 +6,18 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:model="using:CS3230RentalSystemProject.Model"
     mc:Ignorable="d"
-    d:DesignHeight="500" Width="980">
+    d:DesignHeight="600" Width="1000">
 
-    <Grid Height="500" VerticalAlignment="Center" Margin="15,0,0,0" HorizontalAlignment="Left" Width="965">
-        <TextBlock x:Name="employeeName" HorizontalAlignment="Left" Margin="7,6,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="176" Height="29" FontWeight="Bold" TextAlignment="Start" FontFamily="SimSun" FontSize="16"  Style="{ThemeResource SubheaderTextBlockStyle}" Foreground="#FFB03636"/>
-        <TextBox x:Name="searchBox" HorizontalAlignment="Left" Margin="20,95,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Height="35" FontSize="14" PlaceholderText="eg: John Snith" AccessKey="" TextAlignment="Center" TextChanging="searchBox_TextChanging" KeyDown="searchBox_KeyDown"/>
-        <Button x:Name="registerMemberButton" Content="Register Member" Margin="750,5,0,0" VerticalAlignment="Top" Width="130" Height="35" Click="registerMemberButton_Click" RenderTransformOrigin="0.538,0.714"/>
-        <ListBox x:Name="memberList" Margin="5,170,790,5" DoubleTapped="employeeList_DoubleTapped"/>
-        <TextBlock HorizontalAlignment="Left" Margin="7,60,0,0" Text="Search By " TextWrapping="Wrap" VerticalAlignment="Top" Height="24" Width="96" TextAlignment="Center" FontSize="18"/>
-        <Button x:Name="logout" Content="Logout" Margin="890,5,0,0" VerticalAlignment="Top" Click="logout_Click" Height="35">
-            <Button.FocusVisualPrimaryBrush>
-                <ImageBrush ImageSource="/Assets/SplashScreen.scale-200.png"/>
-            </Button.FocusVisualPrimaryBrush>
-        </Button>
-        <ComboBox x:Name="criteriaList" Margin="100,58,0,0" Width="115" SelectionChanged="criteriaList_SelectionChanged" PlaceholderText="Select Me"/>
-        <ListBox x:Name="furnitureList" Margin="195,170,40,5">
+    <Grid Height="600" VerticalAlignment="Center" Margin="0,0,0,0" HorizontalAlignment="Left" Width="1000">
+        <TextBlock x:Name="employeeName" HorizontalAlignment="Left" Margin="5,10,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="176" Height="29" FontWeight="Bold" TextAlignment="Start" FontFamily="SimSun" FontSize="16"  Style="{ThemeResource SubheaderTextBlockStyle}" Foreground="#FFB03636"/>
+        <Button x:Name="registerMemberButton" Content="Register Member" Margin="690,10,0,0" VerticalAlignment="Top" Width="130" Height="35" Click="registerMemberButton_Click" RenderTransformOrigin="0.538,0.714"/>
+        <Button x:Name="bagButton" Content="Bag(0)" Margin="845,10,0,0" VerticalAlignment="Top" Click="bagButton_Click" RenderTransformOrigin="1,0.938" Height="35"/>
+        <TextBlock HorizontalAlignment="Left" Margin="5,60,0,0" Text="Search Members By: " TextWrapping="Wrap" VerticalAlignment="Top" Height="24" Width="160" TextAlignment="Center" FontSize="17"/>
+        <ComboBox x:Name="criteriaList" Margin="162,57,0,0" Width="115" SelectionChanged="criteriaList_SelectionChanged" PlaceholderText="Select Filter"/>
+        <TextBox x:Name="searchBox" HorizontalAlignment="Left" Margin="5,95,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Height="35" FontSize="14" PlaceholderText="eg: John Smith" AccessKey="" TextAlignment="Center" TextChanging="searchBox_TextChanging" KeyDown="searchBox_KeyDown"/>
+        <TextBlock x:Name="invalidSearch" HorizontalAlignment="Left" Margin="5,134,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="210" Height="29" Foreground="#FF9C0E0E" FontSize="14"/>
+        <ListBox x:Name="memberList" Margin="5,170,790,5" DoubleTapped="employeeList_DoubleTapped" BorderBrush="Black" BorderThickness="1,1,1,1"/>
+        <ListBox x:Name="furnitureList" Margin="225,170,10,0">
             <ListBox.ItemTemplate>
                 <DataTemplate>
 
@@ -79,7 +76,10 @@
                 </ControlTemplate>
             </ListBox.Template>
         </ListBox>
-        <Button x:Name="bagButton" Content="Bag(0)" Margin="855,133,0,0" VerticalAlignment="Top" Click="bagButton_Click" RenderTransformOrigin="1,0.938"/>
-        <TextBlock x:Name="invalidSearch" HorizontalAlignment="Left" Margin="15,134,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="210" Height="29" Foreground="#FF9C0E0E" FontSize="14"/>
+        <Button x:Name="logout" Content="Logout" Margin="926,10,0,0" VerticalAlignment="Top" Click="logout_Click" Height="35">
+            <Button.FocusVisualPrimaryBrush>
+                <ImageBrush ImageSource="/Assets/SplashScreen.scale-200.png"/>
+            </Button.FocusVisualPrimaryBrush>
+        </Button>
     </Grid>
 </Page>
