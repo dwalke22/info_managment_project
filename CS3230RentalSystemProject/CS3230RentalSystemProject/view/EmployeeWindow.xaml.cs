@@ -295,5 +295,12 @@ namespace CS3230RentalSystemProject.view
             this.furnitureListData.ForEach(x => x.setQuantityList());
             this.furnitureList.ItemsSource = this.furnitureListData;
         }
+
+        private void resetFilterButton_Click(object sender, RoutedEventArgs e)
+        {
+            this.furnitureListData = this.furnitureDAL.GetAllFurnitureList();
+            this.furnitureListData.ForEach(x => x.setQuantityList());
+            this.furnitureList.ItemsSource = this.furnitureListData;
+        }
     }
 }

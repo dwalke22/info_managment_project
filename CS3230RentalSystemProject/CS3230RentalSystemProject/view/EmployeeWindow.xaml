@@ -19,6 +19,7 @@
         <ListBox x:Name="memberList" Margin="5,170,790,5" DoubleTapped="employeeList_DoubleTapped" BorderBrush="Black" BorderThickness="1,1,1,1"/>
         <TextBlock HorizontalAlignment="Left" Margin="255,135,0,0" Text="Search Furniture By: " TextWrapping="Wrap" VerticalAlignment="Top" FontSize="14"/>
         <ComboBox x:Name="furnitureFilterComboBox" Margin="382,125,0,0" Width="120" PlaceholderText="Select Filter" SelectionChanged="furnitureComboBox_SelectionChanged"/>
+        <Button x:Name="resetFilterButton" Content="Reset Filters" Margin="382,81,0,0" VerticalAlignment="Top" Click="resetFilterButton_Click"/>
         <ComboBox x:Name="styleComboBox" Margin="535,125,0,0" Width="120" PlaceholderText="Select Style" SelectionChanged="styleComboBox_SelectionChanged" Visibility="Collapsed"/>
         <ComboBox x:Name="categoryComboBox" Margin="675,125,0,0" Width="145" PlaceholderText="Select Category" Visibility="Collapsed" SelectionChanged="categoryComboBox_SelectionChanged"/>
         <TextBox x:Name="funiturePriceTextbox" HorizontalAlignment="Left" Margin="845,125,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="145" TextChanged="funiturePriceTextbox_TextChanged" PlaceholderText="Enter Max Price" Visibility="Collapsed"/>
