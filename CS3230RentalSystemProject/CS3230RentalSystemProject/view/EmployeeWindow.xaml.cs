@@ -253,5 +253,13 @@ namespace CS3230RentalSystemProject.view
                 this.categoryComboBox.Visibility = Visibility.Collapsed;
             }
         }
+
+        private void styleComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            string style = this.styleComboBox.SelectedItem.ToString();
+            this.furnitureListData = this.furnitureDAL.GetAllFunitureBySelectedStyle(style);
+            this.furnitureListData.ForEach(x => x.setQuantityList());
+            this.furnitureList.ItemsSource = this.furnitureListData;
+        }
     }
 }
