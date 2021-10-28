@@ -113,6 +113,13 @@ namespace CS3230RentalSystemProject.DAL
             return styles;
         }
 
+        /// <summary>
+        /// Gets all funiture by selected style.
+        /// </summary>
+        /// <param name="style">The style.</param>
+        /// <returns>
+        /// The list of furniture that match the style
+        /// </returns>
         public List<Furniture> GetAllFunitureBySelectedStyle(string style)
         {
             List<Furniture> filteredFurniture = new List<Furniture>();
@@ -124,6 +131,51 @@ namespace CS3230RentalSystemProject.DAL
 
                 using MySqlCommand command = new MySqlCommand(query, connection);
                 command.Parameters.Add("@style", MySqlDbType.VarChar).Value = style;
+
+                using MySqlDataReader reader = command.ExecuteReader();
+                int idoridinal = reader.GetOrdinal("furnitureID");
+                int fnameoridinal = reader.GetOrdinal("furnitureName");
+                int styleoridinal = reader.GetOrdinal("styleName");
+                int quantityoridinal = reader.GetOrdinal("quantity");
+
+                int categoryoridinal = reader.GetOrdinal("categoryName");
+                int priceoridinal = reader.GetOrdinal("rentPrice");
+
+                while (reader.Read())
+                {
+                    filteredFurniture.Add(new Furniture
+                    {
+                        FurnitureID = reader.GetFieldValueCheckNull<Int32>(idoridinal),
+                        FurnitureName = reader.GetFieldValueCheckNull<string>(fnameoridinal),
+                        Style = reader.GetFieldValueCheckNull<string>(styleoridinal),
+                        Category = reader.GetFieldValueCheckNull<string>(categoryoridinal),
+                        RentPrice = reader.GetFieldValueCheckNull<decimal>(priceoridinal),
+                        Quantity = reader.GetFieldValueCheckNull<Int32>(quantityoridinal),
+                    });
+
+                }
+            }
+            return filteredFurniture;
+        }
+
+        /// <summary>
+        /// Gets all furniture by selected category.
+        /// </summary>
+        /// <param name="category">The category.</param>
+        /// <returns>
+        /// The list of furniture that are in the category
+        /// </returns>
+        public List<Furniture> GetAllFurnitureBySelectedCategory(string category)
+        {
+            List<Furniture> filteredFurniture = new List<Furniture>();
+            using (MySqlConnection connection = new MySqlConnection(Connection.connectionString))
+            {
+                connection.Open();
+                string query =
+                    "select f.furnitureID, f.furnitureName, f.rentPrice, f.quantity, s.styleName, c.categoryName from furniture f, style s, category c where f.styleID = s.styleId and f.categoryID = c.categoryId and c.categoryName = @category";
+
+                using MySqlCommand command = new MySqlCommand(query, connection);
+                command.Parameters.Add("@category", MySqlDbType.VarChar).Value = category;
 
                 using MySqlDataReader reader = command.ExecuteReader();
                 int idoridinal = reader.GetOrdinal("furnitureID");

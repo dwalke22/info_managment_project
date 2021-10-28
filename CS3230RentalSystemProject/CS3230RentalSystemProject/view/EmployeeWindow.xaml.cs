@@ -261,5 +261,13 @@ namespace CS3230RentalSystemProject.view
             this.furnitureListData.ForEach(x => x.setQuantityList());
             this.furnitureList.ItemsSource = this.furnitureListData;
         }
+
+        private void categoryComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            string category = this.categoryComboBox.SelectedItem.ToString();
+            this.furnitureListData = this.furnitureDAL.GetAllFurnitureBySelectedCategory(category);
+            this.furnitureListData.ForEach(x => x.setQuantityList());
+            this.furnitureList.ItemsSource = this.furnitureListData;
+        }
     }
 }
