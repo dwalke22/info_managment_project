@@ -21,7 +21,9 @@
         <ComboBox x:Name="furnitureFilterComboBox" Margin="382,125,0,0" Width="120" PlaceholderText="Select Filter" SelectionChanged="furnitureComboBox_SelectionChanged"/>
         <ComboBox x:Name="styleComboBox" Margin="535,125,0,0" Width="120" PlaceholderText="Select Style" SelectionChanged="styleComboBox_SelectionChanged" Visibility="Collapsed"/>
         <ComboBox x:Name="categoryComboBox" Margin="675,125,0,0" Width="145" PlaceholderText="Select Category" Visibility="Collapsed" SelectionChanged="categoryComboBox_SelectionChanged"/>
-        <TextBox x:Name="funiturePriceTextbox" HorizontalAlignment="Left" Margin="845,125,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="145" Visibility="Collapsed"/>
+        <TextBox x:Name="funiturePriceTextbox" HorizontalAlignment="Left" Margin="845,125,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="145" TextChanged="funiturePriceTextbox_TextChanged" PlaceholderText="Enter Max Price" Visibility="Collapsed"/>
+        <TextBlock x:Name="priceErrorTextBlock" HorizontalAlignment="Left" Margin="784,101,0,0" Text="Enter Amount In Format ###.##" TextWrapping="Wrap" VerticalAlignment="Top" Width="205" Foreground="Red" Visibility="Collapsed"/>
+        <Button x:Name="applyPriceFilter" Content="Apply" Margin="890,63,0,0" VerticalAlignment="Top" Click="applyPriceFilter_Click" Visibility="Collapsed" IsEnabled="False"/>
         <ListBox x:Name="furnitureList" Margin="225,170,10,0">
             <ListBox.ItemTemplate>
                 <DataTemplate>

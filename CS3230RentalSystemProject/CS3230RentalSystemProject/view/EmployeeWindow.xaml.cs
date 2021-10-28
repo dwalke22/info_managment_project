@@ -231,6 +231,8 @@ namespace CS3230RentalSystemProject.view
 
         private void furnitureComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            this.applyPriceFilter.Visibility = Visibility.Collapsed;
+            this.priceErrorTextBlock.Visibility = Visibility.Collapsed;
             string filter = this.furnitureFilterComboBox.SelectedItem.ToString();
             if (filter.Equals(this.furnitureCriteriaList[0]))
             {
@@ -266,6 +268,30 @@ namespace CS3230RentalSystemProject.view
         {
             string category = this.categoryComboBox.SelectedItem.ToString();
             this.furnitureListData = this.furnitureDAL.GetAllFurnitureBySelectedCategory(category);
+            this.furnitureListData.ForEach(x => x.setQuantityList());
+            this.furnitureList.ItemsSource = this.furnitureListData;
+        }
+
+        private void funiturePriceTextbox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            Regex priceRegex = new Regex(@"^\d+.\d{2}$");
+            this.applyPriceFilter.Visibility = Visibility.Visible;
+            if (!priceRegex.IsMatch(this.funiturePriceTextbox.Text))
+            {
+                this.priceErrorTextBlock.Visibility = Visibility.Visible;
+                this.applyPriceFilter.IsEnabled = false;
+            }
+            else
+            {
+                this.priceErrorTextBlock.Visibility = Visibility.Collapsed;
+                this.applyPriceFilter.IsEnabled = true;
+            }
+        }
+
+        private void applyPriceFilter_Click(object sender, RoutedEventArgs e)
+        {
+            decimal price = Convert.ToDecimal(this.funiturePriceTextbox.Text);
+            this.furnitureListData = this.furnitureDAL.GetAllFurnitureLessThanSpecifiedPrice(price);
             this.furnitureListData.ForEach(x => x.setQuantityList());
             this.furnitureList.ItemsSource = this.furnitureListData;
         }

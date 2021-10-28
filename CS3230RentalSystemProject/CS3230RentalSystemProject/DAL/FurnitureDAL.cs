@@ -202,5 +202,50 @@ namespace CS3230RentalSystemProject.DAL
             }
             return filteredFurniture;
         }
+
+        /// <summary>
+        /// Gets all furniture less than specified price.
+        /// </summary>
+        /// <param name="price">The price.</param>
+        /// <returns>
+        /// The list of furniture that has a price less than or equal to that specified
+        /// </returns>
+        public List<Furniture> GetAllFurnitureLessThanSpecifiedPrice(decimal price)
+        {
+            List<Furniture> filteredFurniture = new List<Furniture>();
+            using (MySqlConnection connection = new MySqlConnection(Connection.connectionString))
+            {
+                connection.Open();
+                string query =
+                    "select f.furnitureID, f.furnitureName, f.rentPrice, f.quantity, s.styleName, c.categoryName from furniture f, style s, category c where f.styleID = s.styleId and f.categoryID = c.categoryId and f.rentPrice <= @price";
+
+                using MySqlCommand command = new MySqlCommand(query, connection);
+                command.Parameters.Add("@price", MySqlDbType.Decimal).Value = price;
+
+                using MySqlDataReader reader = command.ExecuteReader();
+                int idoridinal = reader.GetOrdinal("furnitureID");
+                int fnameoridinal = reader.GetOrdinal("furnitureName");
+                int styleoridinal = reader.GetOrdinal("styleName");
+                int quantityoridinal = reader.GetOrdinal("quantity");
+
+                int categoryoridinal = reader.GetOrdinal("categoryName");
+                int priceoridinal = reader.GetOrdinal("rentPrice");
+
+                while (reader.Read())
+                {
+                    filteredFurniture.Add(new Furniture
+                    {
+                        FurnitureID = reader.GetFieldValueCheckNull<Int32>(idoridinal),
+                        FurnitureName = reader.GetFieldValueCheckNull<string>(fnameoridinal),
+                        Style = reader.GetFieldValueCheckNull<string>(styleoridinal),
+                        Category = reader.GetFieldValueCheckNull<string>(categoryoridinal),
+                        RentPrice = reader.GetFieldValueCheckNull<decimal>(priceoridinal),
+                        Quantity = reader.GetFieldValueCheckNull<Int32>(quantityoridinal),
+                    });
+
+                }
+            }
+            return filteredFurniture;
+        }
     }
 }
