@@ -11,6 +11,7 @@ CS3230RentalSystemProject.xr.xml
 MainPage.xbf
 View\Checkout.xbf
 View\EmployeeWindow.xbf
+View\FurnitureView.xbf
 View\MemberRegistration.xbf
 View\MemebrInformationViewer.xbf
 logo\logo.PNG

@@ -302,5 +302,19 @@ namespace CS3230RentalSystemProject.view
             this.furnitureListData.ForEach(x => x.setQuantityList());
             this.furnitureList.ItemsSource = this.furnitureListData;
         }
+
+        private void furnitureList_DoubleTapped(object sender, DoubleTappedRoutedEventArgs e)
+        {
+            ListBox box = sender as ListBox;
+            if (box.SelectedItem != null)
+            {
+                this.employee.SelectedFurniture = (Furniture)box.SelectedItem;
+                if (this.employee.SelectedFurniture.Quantity == 0)
+                {
+                    this.employee.SelectedFurniture.Availability = this.furnitureDAL.GetAllFurnitureMostAvailability(this.employee.SelectedFurniture.FurnitureID);
+                }
+                Frame.Navigate(typeof(FurnitureView), this.employee);
+            }
+        }
     }
 }

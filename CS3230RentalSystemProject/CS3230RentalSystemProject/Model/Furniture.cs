@@ -57,6 +57,11 @@ namespace CS3230RentalSystemProject.Model
         public DateTime ReturnDate { get; set; }
 
         /// <summary>
+        /// The Furniture return availability
+        /// </summary>
+        public DateTime Availability { get; set; }
+
+        /// <summary>
         /// Initialize constructor
         /// </summary>
         public Furniture()

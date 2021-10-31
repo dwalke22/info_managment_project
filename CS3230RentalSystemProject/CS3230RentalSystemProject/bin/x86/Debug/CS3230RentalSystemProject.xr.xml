@@ -49,6 +49,10 @@
       <RootProperty Name="FontSize" />
       <RootProperty Name="Style" />
       <RootProperty Name="Inlines" />
+      <RootProperty Name="Visibility" />
+      <RootProperty Name="UseLayoutRounding" />
+      <RootProperty Name="RenderTransform" />
+      <RootProperty Name="FocusVisualPrimaryBrush" />
       <RootProperty Name="RequestedTheme" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.TextBox">
@@ -63,6 +67,7 @@
       <RootProperty Name="PlaceholderText" />
       <RootProperty Name="AccessKey" />
       <RootProperty Name="TextAlignment" />
+      <RootProperty Name="Visibility" />
       <RootProperty Name="RenderTransformOrigin" />
       <RootProperty Name="Foreground" />
       <RootProperty Name="IsReadOnly" />
@@ -83,15 +88,16 @@
       <RootProperty Name="Content" />
       <RootProperty Name="Margin" />
       <RootProperty Name="VerticalAlignment" />
+      <RootProperty Name="HorizontalAlignment" />
       <RootProperty Name="Height" />
       <RootProperty Name="Width" />
       <RootProperty Name="FontSize" />
       <RootProperty Name="Tag" />
       <RootProperty Name="Foreground" />
-      <RootProperty Name="HorizontalAlignment" />
       <RootProperty Name="RenderTransformOrigin" />
-      <RootProperty Name="FocusVisualPrimaryBrush" />
       <RootProperty Name="Visibility" />
+      <RootProperty Name="IsEnabled" />
+      <RootProperty Name="FocusVisualPrimaryBrush" />
       <RootEvent Name="Click" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.Image">
@@ -111,6 +117,8 @@
       <RootProperty Name="Width" />
       <RootProperty Name="ItemTemplate" />
       <RootProperty Name="Template" />
+      <RootProperty Name="BorderBrush" />
+      <RootProperty Name="BorderThickness" />
       <RootEvent Name="DoubleTapped" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.DataTemplate">
@@ -127,6 +135,7 @@
       <RootProperty Name="Margin" />
       <RootProperty Name="Width" />
       <RootProperty Name="PlaceholderText" />
+      <RootProperty Name="Visibility" />
       <RootProperty Name="RenderTransformOrigin" />
       <RootProperty Name="VerticalAlignment" />
       <RootProperty Name="Height" />
@@ -153,6 +162,11 @@
       <RootProperty Name="ImageSource" />
     </RootType>
     <RootType FullName="CS3230RentalSystemProject.view.EmployeeWindow" />
+    <RootType FullName="Windows.UI.Xaml.Media.CompositeTransform">
+      <RootProperty Name="Rotation" />
+    </RootType>
+    <RootType FullName="Microsoft.Xaml.DirectUI.ProxyTypes.NullExtension" />
+    <RootType FullName="CS3230RentalSystemProject.View.FurnitureView" />
     <RootType FullName="Windows.UI.Xaml.Controls.DatePicker">
       <RootProperty Name="Margin" />
       <RootProperty Name="RenderTransformOrigin" />

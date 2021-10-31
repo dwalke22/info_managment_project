@@ -82,3 +82,8 @@ C:\Users\jason\source\repos\info_managment_project\CS3230RentalSystemProject\CS3
 C:\Users\jason\source\repos\info_managment_project\CS3230RentalSystemProject\CS3230RentalSystemProject\obj\x86\Debug\View\Checkout.xaml
 C:\Users\jason\source\repos\info_managment_project\CS3230RentalSystemProject\CS3230RentalSystemProject\obj\x86\Debug\View\Checkout.xbf
 C:\Users\jason\source\repos\info_managment_project\CS3230RentalSystemProject\CS3230RentalSystemProject\bin\x86\Debug\View\Checkout.xbf
+C:\Users\jason\source\repos\info_managment_project\CS3230RentalSystemProject\CS3230RentalSystemProject\bin\x86\Debug\View\FurnitureView.xbf
+C:\Users\jason\source\repos\info_managment_project\CS3230RentalSystemProject\CS3230RentalSystemProject\obj\x86\Debug\View\FurnitureView.g.i.cs
+C:\Users\jason\source\repos\info_managment_project\CS3230RentalSystemProject\CS3230RentalSystemProject\obj\x86\Debug\View\FurnitureView.g.cs
+C:\Users\jason\source\repos\info_managment_project\CS3230RentalSystemProject\CS3230RentalSystemProject\obj\x86\Debug\View\FurnitureView.xaml
+C:\Users\jason\source\repos\info_managment_project\CS3230RentalSystemProject\CS3230RentalSystemProject\obj\x86\Debug\View\FurnitureView.xbf

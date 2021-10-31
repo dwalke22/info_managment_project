@@ -69,6 +69,55 @@
             </summary>
             <returns> all the furnitures</returns>
         </member>
+        <member name="M:CS3230RentalSystemProject.DAL.FurnitureDAL.GetAllFurnitureMostAvailability(System.Int32)">
+            <summary>
+            Get the furniture's most availability
+            </summary>
+            <returns> all furniture's most availability</returns>
+        </member>
+        <member name="M:CS3230RentalSystemProject.DAL.FurnitureDAL.GetAllFurnitureCategories">
+            <summary>
+            Gets all furniture categories.
+            </summary>
+            <returns>
+            List of all furniture categories.
+            </returns>
+        </member>
+        <member name="M:CS3230RentalSystemProject.DAL.FurnitureDAL.GetAllFurnitureStyles">
+            <summary>
+            Gets all furniture styles.
+            </summary>
+            <returns>
+            List of all furniture styles
+            </returns>
+        </member>
+        <member name="M:CS3230RentalSystemProject.DAL.FurnitureDAL.GetAllFunitureBySelectedStyle(System.String)">
+            <summary>
+            Gets all funiture by selected style.
+            </summary>
+            <param name="style">The style.</param>
+            <returns>
+            The list of furniture that match the style
+            </returns>
+        </member>
+        <member name="M:CS3230RentalSystemProject.DAL.FurnitureDAL.GetAllFurnitureBySelectedCategory(System.String)">
+            <summary>
+            Gets all furniture by selected category.
+            </summary>
+            <param name="category">The category.</param>
+            <returns>
+            The list of furniture that are in the category
+            </returns>
+        </member>
+        <member name="M:CS3230RentalSystemProject.DAL.FurnitureDAL.GetAllFurnitureLessThanSpecifiedPrice(System.Decimal)">
+            <summary>
+            Gets all furniture less than specified price.
+            </summary>
+            <param name="price">The price.</param>
+            <returns>
+            The list of furniture that has a price less than or equal to that specified
+            </returns>
+        </member>
         <member name="T:CS3230RentalSystemProject.DAL.MemberDAL">
             <summary>
             The MemnerDAL class
@@ -643,6 +692,11 @@
             Furniture list that rent for the memebr
             </summary>
         </member>
+        <member name="P:CS3230RentalSystemProject.Model.Employee.SelectedFurniture">
+            <summary>
+            Selected Furniture
+            </summary>
+        </member>
         <member name="M:CS3230RentalSystemProject.Model.Employee.#ctor">
             <summary>
             Initialize constructor
@@ -704,6 +758,11 @@
         <member name="P:CS3230RentalSystemProject.Model.Furniture.ReturnDate">
             <summary>
             The Furniture return date
+            </summary>
+        </member>
+        <member name="P:CS3230RentalSystemProject.Model.Furniture.Availability">
+            <summary>
+            The Furniture return availability
             </summary>
         </member>
         <member name="M:CS3230RentalSystemProject.Model.Furniture.#ctor">
@@ -836,6 +895,44 @@
             </summary>
         </member>
         <member name="M:CS3230RentalSystemProject.View.Checkout.GetBindingConnector(System.Int32,System.Object)">
+            <summary>
+            GetBindingConnector(int connectionId, object target)
+            </summary>
+        </member>
+        <member name="T:CS3230RentalSystemProject.View.FurnitureView">
+            <summary>
+            An empty page that can be used on its own or navigated to within a Frame.
+            </summary>
+        </member>
+        <member name="P:CS3230RentalSystemProject.View.FurnitureView.Employee">
+            <summary>
+            The Employee
+            </summary>
+        </member>
+        <member name="M:CS3230RentalSystemProject.View.FurnitureView.#ctor">
+            <summary>
+            Initialize constructor
+            </summary>
+        </member>
+        <member name="M:CS3230RentalSystemProject.View.FurnitureView.OnNavigatedTo(Windows.UI.Xaml.Navigation.NavigationEventArgs)">
+            <summary>
+            Initialize parameter
+            </summary>
+            <param name="e">
+                    The parameter
+            </param>
+        </member>
+        <member name="M:CS3230RentalSystemProject.View.FurnitureView.InitializeComponent">
+            <summary>
+            InitializeComponent()
+            </summary>
+        </member>
+        <member name="M:CS3230RentalSystemProject.View.FurnitureView.Connect(System.Int32,System.Object)">
+            <summary>
+            Connect()
+            </summary>
+        </member>
+        <member name="M:CS3230RentalSystemProject.View.FurnitureView.GetBindingConnector(System.Int32,System.Object)">
             <summary>
             GetBindingConnector(int connectionId, object target)
             </summary>

@@ -59,6 +59,34 @@ namespace CS3230RentalSystemProject.DAL
         }
 
         /// <summary>
+        /// Get the furniture's most availability
+        /// </summary>
+        /// <returns> all furniture's most availability</returns>
+        public DateTime GetAllFurnitureMostAvailability(int id)
+        {
+            DateTime date = new DateTime();
+            using (MySqlConnection connection = new MySqlConnection(Connection.connectionString))
+            {
+                connection.Open();
+                string query = "SELECT min(dueDate) as dueDate FROM `rentalitem` WHERE furnitureID = @id";
+
+                using MySqlCommand command = new MySqlCommand(query, connection);
+                command.Parameters.Add("@id", MySqlDbType.Int32).Value = id;
+                using MySqlDataReader reader = command.ExecuteReader();
+
+                int dateoridinal = reader.GetOrdinal("dueDate");
+
+                while (reader.Read())
+                {
+                    date = reader.GetFieldValueCheckNull<DateTime>(dateoridinal);
+                }
+
+            }
+            return date;
+
+        }
+
+        /// <summary>
         /// Gets all furniture categories.
         /// </summary>
         /// <returns>

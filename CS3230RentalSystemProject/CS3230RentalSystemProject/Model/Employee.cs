@@ -52,6 +52,11 @@ namespace CS3230RentalSystemProject.Model
         public List<Furniture> FurnitureListData { get; set; }
 
         /// <summary>
+        /// Selected Furniture
+        /// </summary>
+        public Furniture SelectedFurniture { get; set; }
+
+        /// <summary>
         /// Initialize constructor
         /// </summary>
         public Employee() 
