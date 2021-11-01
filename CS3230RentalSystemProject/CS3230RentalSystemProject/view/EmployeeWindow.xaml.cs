@@ -10,6 +10,8 @@ using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Navigation;
+using K4os.Compression.LZ4.Internal;
+using Org.BouncyCastle.Security;
 
 // The User Control item template is documented at https://go.microsoft.com/fwlink/?LinkId=234236
 
@@ -39,6 +41,11 @@ namespace CS3230RentalSystemProject.view
 
         private List<Furniture> furnitureListData;
 
+        public class SelectedInfo
+        {
+            public Employee Employee { get; set; }
+            public Member Member { get; set; }
+        }
 
         /// <summary>
         /// Initialize constructor
@@ -197,7 +204,20 @@ namespace CS3230RentalSystemProject.view
 
         private void bagButton_Click(object sender, RoutedEventArgs e)
         {
-            Frame.Navigate(typeof(Checkout), this.employee);
+            if (this.memberList.SelectedItem == null)
+            {
+                this.memberErrorLabel.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                
+                this.memberErrorLabel.Visibility = Visibility.Collapsed;
+                var selectedInfo = new SelectedInfo();
+                selectedInfo.Employee = this.employee;
+                selectedInfo.Member = (Member)this.memberList.SelectedItem;
+                //Member member = (Member)this.memberList.SelectedItem;
+                Frame.Navigate(typeof(Checkout), selectedInfo);
+            }
         }
 
         private List<Member> convertList()

@@ -46,19 +46,44 @@ namespace CS3230RentalSystemProject.DAL
         /// </summary>
         /// <param name="employee">The employee creating the transaction.</param>
         /// <param name="total">The total of the transaction.</param>
-        public void CreateTransaction(Employee employee, decimal total)
+        public void CreateTransaction(Employee employee, decimal total, Member member)
         {
             using (MySqlConnection connection = new MySqlConnection(Connection.connectionString))
             {
                 connection.Open();
 
-                string query = "insert into rentaltransaction (employeeID, memberID, totalPrice) output INSERTED.transactionID values (@employeeID, 1, @total)";
+                string query = "insert into rentaltransaction (employeeID, memberID, totalPrice) output INSERTED.transactionID values (@employeeID, @memberID, @total)";
                 
                 using MySqlCommand command = new MySqlCommand(query, connection);
                 command.Parameters.Add("@employeeID", MySqlDbType.Int32).Value = employee.EmployeeID;
+                command.Parameters.Add("@memberID", MySqlDbType.Int32).Value = member.MemberID;
                 command.Parameters.Add("@total", MySqlDbType.Decimal).Value = total;
 
                 command.ExecuteNonQuery();
+            }
+        }
+
+        public int GetTransactionID()
+        {
+            int id = -1;
+            using (MySqlConnection connection = new MySqlConnection(Connection.connectionString))
+            {
+                connection.Open();
+
+                string query = "select top 1 transactionID from rentaltransaction order by transactionID desc";
+
+                using MySqlCommand command = new MySqlCommand(query, connection);
+
+                using MySqlDataReader reader = command.ExecuteReader();
+
+                int idOrdinal = reader.GetOrdinal("transactionID");
+
+                while (reader.Read())
+                {
+                    id = reader.GetFieldValueCheckNull<int>(idOrdinal);
+                }
+
+                return id;
             }
         }
     }

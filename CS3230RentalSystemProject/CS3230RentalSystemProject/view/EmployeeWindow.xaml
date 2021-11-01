@@ -89,5 +89,6 @@
                 <ImageBrush ImageSource="/Assets/SplashScreen.scale-200.png"/>
             </Button.FocusVisualPrimaryBrush>
         </Button>
+        <TextBlock x:Name="memberErrorLabel" HorizontalAlignment="Left" Margin="556,82,0,0" Text="Select Member Before Checkout." TextWrapping="Wrap" VerticalAlignment="Top" RenderTransformOrigin="0.623,-0.083" Foreground="#FFB03636" Width="251" FontSize="16" Visibility="Collapsed"/>
     </Grid>
 </Page>

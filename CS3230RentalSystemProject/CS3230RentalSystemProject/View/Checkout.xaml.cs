@@ -21,6 +21,8 @@ namespace CS3230RentalSystemProject.View
         /// </summary>
         public Employee Employee { get; set; }
 
+        public Member Member { get; set; }
+
         private IList<Furniture> furnitureListData;
         private CheckoutDAL checkoutDal;
 
@@ -41,10 +43,11 @@ namespace CS3230RentalSystemProject.View
 
         private void Checkout_Click(object sender, RoutedEventArgs e)
         {
+            
             decimal total = Convert.ToDecimal(this.totalTextBlock.Text.Split("$")[1]);
-            this.checkoutDal.CreateTransaction(this.Employee, total);
-
-            this.checkoutDal.CheckoutCart(this.Employee.FurnitureListData, this.Employee, 2);
+            this.checkoutDal.CreateTransaction(this.Employee, total, this.Member);
+            int transactionID = this.checkoutDal.GetTransactionID();
+            this.checkoutDal.CheckoutCart(this.Employee.FurnitureListData, this.Employee, transactionID);
         }
 
         private void removeButtonClick(object sender, RoutedEventArgs e)
@@ -92,7 +95,9 @@ namespace CS3230RentalSystemProject.View
                 return;
             }
             this.furnitureListData = new List<Furniture>();
-            this.Employee = (Employee)e.Parameter;
+            var info = (EmployeeWindow.SelectedInfo)e.Parameter;
+            this.Employee = info.Employee;
+            this.Member = info.Member;
             this.furnitureList.ItemsSource = this.Employee.FurnitureListData;
             this.furnitureListData = this.Employee.FurnitureListData;
             this.employeeName.Text = this.Employee.ToString();
