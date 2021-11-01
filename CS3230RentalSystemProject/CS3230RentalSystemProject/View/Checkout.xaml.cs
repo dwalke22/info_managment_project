@@ -2,18 +2,10 @@
 using CS3230RentalSystemProject.view;
 using System;
 using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
-using Windows.Foundation;
-using Windows.Foundation.Collections;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Data;
-using Windows.UI.Xaml.Input;
-using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using CS3230RentalSystemProject.DAL;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -30,6 +22,7 @@ namespace CS3230RentalSystemProject.View
         public Employee Employee { get; set; }
 
         private IList<Furniture> furnitureListData;
+        private CheckoutDAL checkoutDal;
 
         /// <summary>
         /// Initialize constructor
@@ -37,7 +30,7 @@ namespace CS3230RentalSystemProject.View
         public Checkout()
         {
             this.InitializeComponent();
-
+            this.checkoutDal = new CheckoutDAL();
         }
 
         private void Cancel_Click(object sender, RoutedEventArgs e)
@@ -48,6 +41,10 @@ namespace CS3230RentalSystemProject.View
 
         private void Checkout_Click(object sender, RoutedEventArgs e)
         {
+            decimal total = Convert.ToDecimal(this.totalTextBlock.Text.Split("$")[1]);
+            this.checkoutDal.CreateTransaction(this.Employee, total);
+
+            this.checkoutDal.CheckoutCart(this.Employee.FurnitureListData, this.Employee, 2);
         }
 
         private void removeButtonClick(object sender, RoutedEventArgs e)
