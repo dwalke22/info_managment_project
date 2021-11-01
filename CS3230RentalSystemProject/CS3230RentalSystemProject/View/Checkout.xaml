@@ -15,12 +15,12 @@
 
                     <Grid>
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="300" />
+                            <ColumnDefinition Width="300"/>
                             <ColumnDefinition Width="180" />
                             <ColumnDefinition Width="180" />
                             <ColumnDefinition Width="180" />
                         </Grid.ColumnDefinitions>
-                        <TextBlock Grid.Column="0" Text="{Binding FurnitureName}" HorizontalAlignment="Left" />
+                        <TextBlock Grid.Column="0" Text="{Binding FurnitureName}" HorizontalAlignment="Left"/>
                         <ComboBox x:Name="quantityCombobox" Grid.Column="1" Tag="{Binding FurnitureID}" ItemsSource= "{Binding QuantityList}" SelectedItem="{Binding RentQuantity}" SelectionChanged="quantity_changed" HorizontalAlignment="Center" />
                         <CalendarDatePicker x:Name="returndayPicker"  Grid.Column="2" Tag="{Binding FurnitureID}" DateChanged="date_changed" HorizontalAlignment="Center"/>
                         <Button x:Name="removeButton" Tag="{Binding FurnitureID}" Content="Remove" Grid.Column="3" Width="80" Height="30" Foreground="#FF9C0E0E" FontSize="14" Click="removeButtonClick" HorizontalAlignment="Center">
@@ -32,7 +32,7 @@
             </ListBox.ItemTemplate>
             <ListBox.Template>
                 <ControlTemplate>
-                    <Grid>
+                    <Grid BorderBrush="Black" BorderThickness="1,1,1,1">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="auto"/>
                             <RowDefinition Height="*"/>
@@ -44,16 +44,16 @@
                                 <ColumnDefinition Width="180" />
                                 <ColumnDefinition Width="180" />
                             </Grid.ColumnDefinitions>
-                            <Border Grid.Column="0">
+                            <Border Grid.Column="0" BorderBrush="Black" BorderThickness="0,0,1,1">
                                 <TextBlock FontWeight="Bold" HorizontalAlignment="Left">Furniture Name</TextBlock>
                             </Border>
-                            <Border Grid.Column="1">
+                            <Border Grid.Column="1" BorderBrush="Black" BorderThickness="0,0,1,1">
                                 <TextBlock FontWeight="Bold" HorizontalAlignment="Center">Quantity</TextBlock>
                             </Border>
-                            <Border Grid.Column="2">
+                            <Border Grid.Column="2" BorderBrush="Black" BorderThickness="0,0,1,1">
                                 <TextBlock FontWeight="Bold" HorizontalAlignment="Center">ReturnDay</TextBlock>
                             </Border>
-                            <Border  Grid.Column="3">
+                            <Border  Grid.Column="3" BorderBrush="Black" BorderThickness="0,0,1,1">
                                 <TextBlock FontWeight="Bold" HorizontalAlignment="Center">Action</TextBlock>
                             </Border>
                         </Grid>
@@ -64,8 +64,9 @@
         </ListBox>
 
         <TextBlock x:Name="employeeName" HorizontalAlignment="Left" Margin="20,20,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="161" Height="51" FontWeight="Bold" TextAlignment="Start" FontFamily="SimSun" FontSize="16"  Style="{ThemeResource SubheaderTextBlockStyle}" Foreground="#FFB03636"/>
-        <Button Content="Checkout" Margin="745,430,0,0" VerticalAlignment="Top" Height="55" Width="170" FontSize="36" Click="Checkout_Click"/>
-        <Button Content="Cancel" Margin="570,430,0,0" VerticalAlignment="Top" Height="55" Width="165" FontSize="36" Click="Cancel_Click"/>
+        <Button Content="Checkout" Margin="745,425,0,0" VerticalAlignment="Top" Height="60" Width="170" FontSize="36" Click="Checkout_Click"/>
+        <Button Content="Cancel" Margin="570,425,0,0" VerticalAlignment="Top" Height="60" Width="165" FontSize="36" Click="Cancel_Click"/>
+        <TextBlock x:Name="totalTextBlock" HorizontalAlignment="Left" Margin="80,450,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Height="30" Width="200" FontSize="20"/>
 
     </Grid>
 </Page>

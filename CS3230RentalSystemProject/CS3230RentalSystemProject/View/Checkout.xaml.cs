@@ -37,6 +37,7 @@ namespace CS3230RentalSystemProject.View
         public Checkout()
         {
             this.InitializeComponent();
+
         }
 
         private void Cancel_Click(object sender, RoutedEventArgs e)
@@ -63,20 +64,21 @@ namespace CS3230RentalSystemProject.View
                 list.Add(item);
             }
             this.furnitureList.ItemsSource = list;
-
-
+            this.resetTotalText();
         }
 
         private void quantity_changed(object sender, SelectionChangedEventArgs e)
         {
             int tag = (int)((ComboBox)sender).Tag;
             this.Employee.FurnitureListData.Find(x => x.FurnitureID == tag).RentQuantity = (int)((ComboBox)sender).SelectedItem;
+            this.resetTotalText();
         }
 
         private void date_changed(CalendarDatePicker sender, CalendarDatePickerDateChangedEventArgs args)
         {
             int tag = (int)((CalendarDatePicker)sender).Tag;
             this.Employee.FurnitureListData.Find(x => x.FurnitureID == tag).ReturnDate = DateTimeOffset.Parse(((CalendarDatePicker)sender).Date.ToString()).DateTime;
+            this.resetTotalText();
         }
 
         /// <summary>
@@ -97,6 +99,25 @@ namespace CS3230RentalSystemProject.View
             this.furnitureList.ItemsSource = this.Employee.FurnitureListData;
             this.furnitureListData = this.Employee.FurnitureListData;
             this.employeeName.Text = this.Employee.ToString();
+            this.resetTotalText();
         }
+
+        private void resetTotalText()
+        {
+            if (this.furnitureListData.Count == 0)
+            {
+                this.totalTextBlock.Text = "Not Items In The Cart.";
+            }
+            else
+            {
+                decimal total = 0;
+                foreach (var furniture in this.Employee.FurnitureListData)
+                {
+                    total += furniture.RentPrice * furniture.RentQuantity;
+                }
+                this.totalTextBlock.Text = "Total: $" + total;
+            }
+        }
+
     }
 }
