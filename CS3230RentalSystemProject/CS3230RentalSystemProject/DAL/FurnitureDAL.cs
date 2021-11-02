@@ -59,6 +59,52 @@ namespace CS3230RentalSystemProject.DAL
         }
 
         /// <summary>
+        /// Get the Furniture tha match the id
+        /// </summary>
+        /// <returns> the Furniture that match the id</returns>
+        public List<Furniture> GetFurnitureById(int id)
+        {
+            List<Furniture> FurnitureList = new List<Furniture>();
+            using (MySqlConnection connection = new MySqlConnection(Connection.connectionString))
+            {
+                connection.Open();
+                string query =
+                    "select f.furnitureID, f.furnitureName, f.rentPrice, f.quantity, s.styleName, c.categoryName from `furniture` f, `style` s, `category` c where f.furnitureID = @id and f.styleID = s.styleId and f.categoryID = c.categoryId;";
+
+                using MySqlCommand command = new MySqlCommand(query, connection);
+
+                command.Parameters.Add("@id", MySqlDbType.Int32).Value = id;
+
+                using MySqlDataReader reader = command.ExecuteReader();
+
+                int idoridinal = reader.GetOrdinal("furnitureID");
+                int fnameoridinal = reader.GetOrdinal("furnitureName");
+                int styleoridinal = reader.GetOrdinal("styleName");
+                int quantityoridinal = reader.GetOrdinal("quantity");
+
+                int categoryoridinal = reader.GetOrdinal("categoryName");
+                int priceoridinal = reader.GetOrdinal("rentPrice");
+
+                while (reader.Read())
+                {
+                    FurnitureList.Add(new Furniture
+                    {
+                        FurnitureID = reader.GetFieldValueCheckNull<Int32>(idoridinal),
+                        FurnitureName = reader.GetFieldValueCheckNull<string>(fnameoridinal),
+                        Style = reader.GetFieldValueCheckNull<string>(styleoridinal),
+                        Category = reader.GetFieldValueCheckNull<string>(categoryoridinal),
+                        RentPrice = reader.GetFieldValueCheckNull<decimal>(priceoridinal),
+                        Quantity = reader.GetFieldValueCheckNull<Int32>(quantityoridinal),
+                    });
+
+                }
+            }
+            return FurnitureList;
+
+        }
+
+
+        /// <summary>
         /// Get the furniture's most availability
         /// </summary>
         /// <returns> all furniture's most availability</returns>

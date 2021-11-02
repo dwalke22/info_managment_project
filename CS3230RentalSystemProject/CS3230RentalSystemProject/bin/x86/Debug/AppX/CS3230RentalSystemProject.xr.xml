@@ -24,6 +24,8 @@
       <RootProperty Name="VerticalAlignment" />
       <RootProperty Name="Children" />
       <RootProperty Name="ColumnDefinitions" />
+      <RootProperty Name="BorderBrush" />
+      <RootProperty Name="BorderThickness" />
       <RootProperty Name="RowDefinitions" />
       <RootProperty Name="Margin" />
       <RootMethod Name="GetColumn" />
@@ -155,6 +157,8 @@
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.ItemsPresenter" />
     <RootType FullName="Windows.UI.Xaml.Controls.Border">
+      <RootProperty Name="BorderBrush" />
+      <RootProperty Name="BorderThickness" />
       <RootProperty Name="Child" />
     </RootType>
     <RootType FullName="CS3230RentalSystemProject.View.Checkout" />

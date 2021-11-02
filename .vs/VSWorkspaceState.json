@@ -1,6 +1,10 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\CS3230RentalSystemProject",
+    "\\CS3230RentalSystemProject\\CS3230RentalSystemProject",
+    "\\CS3230RentalSystemProject\\CS3230RentalSystemProject\\View"
   ],
+  "SelectedNode": "\\CS3230RentalSystemProject\\CS3230RentalSystemProject\\View\\FurnitureView.xaml.cs",
   "PreviewInSolutionExplorer": false
 }

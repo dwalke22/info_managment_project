@@ -58,6 +58,21 @@
             GetXmlnsDefinitions()
             </summary>
         </member>
+        <member name="M:CS3230RentalSystemProject.DAL.CheckoutDAL.CheckoutCart(System.Collections.Generic.List{CS3230RentalSystemProject.Model.Furniture},CS3230RentalSystemProject.Model.Employee,System.Int32)">
+            <summary>
+            Checkouts the cart.
+            </summary>
+            <param name="bag">The list of furniture to checkout.</param>
+            <param name="employee">The employee creating the transaction.</param>
+            <param name="transactionID">The transaction id.</param>
+        </member>
+        <member name="M:CS3230RentalSystemProject.DAL.CheckoutDAL.CreateTransaction(CS3230RentalSystemProject.Model.Employee,System.Decimal,CS3230RentalSystemProject.Model.Member)">
+            <summary>
+            Creates the transaction.
+            </summary>
+            <param name="employee">The employee creating the transaction.</param>
+            <param name="total">The total of the transaction.</param>
+        </member>
         <member name="T:CS3230RentalSystemProject.DAL.FurnitureDAL">
             <summary>
             the FurnitureDAL class
@@ -68,6 +83,12 @@
             Get all the furnitures
             </summary>
             <returns> all the furnitures</returns>
+        </member>
+        <member name="M:CS3230RentalSystemProject.DAL.FurnitureDAL.GetFurnitureById(System.Int32)">
+            <summary>
+            Get the Furniture tha match the id
+            </summary>
+            <returns> the Furniture that match the id</returns>
         </member>
         <member name="M:CS3230RentalSystemProject.DAL.FurnitureDAL.GetAllFurnitureMostAvailability(System.Int32)">
             <summary>

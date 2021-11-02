@@ -25,7 +25,7 @@ namespace CS3230RentalSystemProject.view
 
         private List<string> criteriaListInfo = new List<string>() { "MemberID", "Phone", "Full Name" };
 
-        private List<string> furnitureCriteriaList = new List<string>() { "Style", "Category", "Price" };
+        private List<string> furnitureCriteriaList = new List<string>() { "Style", "Category", "Price" , "ID"};
 
         private List<Member> list;
 
@@ -64,6 +64,8 @@ namespace CS3230RentalSystemProject.view
             
             this.list = this.convertList();
             this.invalidSearch.Visibility = Visibility.Collapsed;
+            this.invalidFurnitureSearch.Visibility = Visibility.Collapsed;
+            this.furnitureIDSearch.Visibility = Visibility.Collapsed;
             this.criteriaList.ItemsSource = this.criteriaListInfo;
             this.furnitureFilterComboBox.ItemsSource = this.furnitureCriteriaList;
 
@@ -212,11 +214,12 @@ namespace CS3230RentalSystemProject.view
             {
                 
                 this.memberErrorLabel.Visibility = Visibility.Collapsed;
-                var selectedInfo = new SelectedInfo();
-                selectedInfo.Employee = this.employee;
-                selectedInfo.Member = (Member)this.memberList.SelectedItem;
+                //var selectedInfo = new SelectedInfo();
+                //selectedInfo.Employee = this.employee;
+                //selectedInfo.Member = (Member)this.memberList.SelectedItem;
                 //Member member = (Member)this.memberList.SelectedItem;
-                Frame.Navigate(typeof(Checkout), selectedInfo);
+                this.employee.Member = (Member)this.memberList.SelectedItem;
+                Frame.Navigate(typeof(Checkout), this.employee);
             }
         }
 
@@ -259,6 +262,7 @@ namespace CS3230RentalSystemProject.view
                 this.styleComboBox.Visibility = Visibility.Visible;
                 this.categoryComboBox.Visibility = Visibility.Collapsed;
                 this.funiturePriceTextbox.Visibility = Visibility.Collapsed;
+                this.furnitureIDSearch.Visibility = Visibility.Collapsed;
             }
 
             if (filter.Equals(this.furnitureCriteriaList[1]))
@@ -266,6 +270,7 @@ namespace CS3230RentalSystemProject.view
                 this.categoryComboBox.Visibility = Visibility.Visible;
                 this.styleComboBox.Visibility = Visibility.Collapsed;
                 this.funiturePriceTextbox.Visibility = Visibility.Collapsed;
+                this.furnitureIDSearch.Visibility = Visibility.Collapsed;
             }
 
             if (filter.Equals(this.furnitureCriteriaList[2]))
@@ -273,6 +278,15 @@ namespace CS3230RentalSystemProject.view
                 this.funiturePriceTextbox.Visibility = Visibility.Visible;
                 this.styleComboBox.Visibility = Visibility.Collapsed;
                 this.categoryComboBox.Visibility = Visibility.Collapsed;
+                this.furnitureIDSearch.Visibility = Visibility.Collapsed;
+            }
+
+            if (filter.Equals(this.furnitureCriteriaList[3]))
+            {
+                this.funiturePriceTextbox.Visibility = Visibility.Collapsed;
+                this.styleComboBox.Visibility = Visibility.Collapsed;
+                this.categoryComboBox.Visibility = Visibility.Collapsed;
+                this.furnitureIDSearch.Visibility = Visibility.Visible;
             }
         }
 
@@ -321,6 +335,11 @@ namespace CS3230RentalSystemProject.view
             this.furnitureListData = this.furnitureDAL.GetAllFurnitureList();
             this.furnitureListData.ForEach(x => x.setQuantityList());
             this.furnitureList.ItemsSource = this.furnitureListData;
+            this.styleComboBox.Visibility = Visibility.Collapsed;
+            this.categoryComboBox.Visibility = Visibility.Collapsed;
+            this.funiturePriceTextbox.Visibility = Visibility.Collapsed;
+            this.furnitureIDSearch.Visibility = Visibility.Collapsed;
+            this.furnitureIDSearch.Text = "";
         }
 
         private void furnitureList_DoubleTapped(object sender, DoubleTappedRoutedEventArgs e)
@@ -334,6 +353,36 @@ namespace CS3230RentalSystemProject.view
                     this.employee.SelectedFurniture.Availability = this.furnitureDAL.GetAllFurnitureMostAvailability(this.employee.SelectedFurniture.FurnitureID);
                 }
                 Frame.Navigate(typeof(FurnitureView), this.employee);
+            }
+        }
+
+        private void furnitureIDSearch_TextChanging(TextBox sender, TextBoxTextChangingEventArgs args)
+        {
+            this.invalidFurnitureSearch.Visibility = Visibility.Collapsed;
+        }
+
+        private void furnitureIDSearch_KeyDown(object sender, KeyRoutedEventArgs e)
+        {
+            if (e.Key == Windows.System.VirtualKey.Enter)
+            {
+                string text = this.furnitureIDSearch.Text;
+               if (text == null || text == "")
+                {
+                    this.invalidFurnitureSearch.Visibility = Visibility.Visible;
+                }
+                else
+                {
+                    int id;
+                    if (!int.TryParse(text, out id))
+                    {
+                        this.invalidFurnitureSearch.Visibility = Visibility.Visible;
+                    }
+                    else
+                    {
+                        this.furnitureList.ItemsSource = this.furnitureDAL.GetFurnitureById(id);
+                    }
+                }
+              
             }
         }
     }

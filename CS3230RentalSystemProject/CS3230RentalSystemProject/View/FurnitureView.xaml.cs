@@ -63,6 +63,7 @@ namespace CS3230RentalSystemProject.View
             this.category.Text = this.Employee.SelectedFurniture.Category;
             this.quantity.Text = this.Employee.SelectedFurniture.Quantity.ToString();
             this.price.Text = this.Employee.SelectedFurniture.RentPrice.ToString();
+            this.id.Text = this.Employee.SelectedFurniture.FurnitureID.ToString();
             if (this.Employee.SelectedFurniture.Quantity == 0)
             {
                 this.availabilty.Text = this.Employee.SelectedFurniture.Availability.Date.ToShortDateString();

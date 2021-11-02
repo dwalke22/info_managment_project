@@ -15,7 +15,7 @@
         <TextBlock HorizontalAlignment="Left" Margin="5,63,0,0" Text="Search Members By: " TextWrapping="Wrap" VerticalAlignment="Top" Height="24" Width="143" TextAlignment="Center" FontSize="14"/>
         <ComboBox x:ConnectionId='5' x:Name="criteriaList" Margin="146,57,0,0" Width="115"                                                  PlaceholderText="Select Filter"/>
         <TextBox x:ConnectionId='6' x:Name="searchBox" HorizontalAlignment="Left" Margin="5,95,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Height="35" FontSize="14" PlaceholderText="eg: John Smith" AccessKey="" TextAlignment="Center"                                                                  />
-        <TextBlock x:ConnectionId='7' x:Name="invalidSearch" HorizontalAlignment="Left" Margin="5,134,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="210" Height="29" Foreground="#FF9C0E0E" FontSize="14"/>
+        <TextBlock x:ConnectionId='7' x:Name="invalidSearch" HorizontalAlignment="Left" Margin="10,135,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="210" Height="29" Foreground="#FF9C0E0E" FontSize="14"/>
         <ListBox x:ConnectionId='8' x:Name="memberList" Margin="5,170,790,5"                                          BorderBrush="Black" BorderThickness="1,1,1,1"/>
         <TextBlock HorizontalAlignment="Left" Margin="255,135,0,0" Text="Search Furniture By: " TextWrapping="Wrap" VerticalAlignment="Top" FontSize="14"/>
         <ComboBox x:ConnectionId='9' x:Name="furnitureFilterComboBox" Margin="382,125,0,0" Width="120" PlaceholderText="Select Filter"                                                      />
@@ -41,7 +41,7 @@
                         <TextBlock Grid.Column="1" Text="{Binding Style}" HorizontalAlignment="Center" />
                         <TextBlock Grid.Column="2" Text="{Binding Category}" HorizontalAlignment="Center" />
                         <TextBlock Grid.Column="3" Text="{Binding Quantity}" HorizontalAlignment="Center" />
-                        <Button x:ConnectionId='19' x:Name="addButton" Tag="{Binding FurnitureID}" Content="Add" Grid.Column="4" Width="50" Height="30" Foreground="#FF9C0E0E" FontSize="14"                        HorizontalAlignment="Right">
+                        <Button x:ConnectionId='22' x:Name="addButton" Tag="{Binding FurnitureID}" Content="Add" Grid.Column="4" Width="50" Height="30" Foreground="#FF9C0E0E" FontSize="14"                        HorizontalAlignment="Right">
                         </Button>
                     </Grid>
 
@@ -89,6 +89,9 @@
                 <ImageBrush ImageSource="/Assets/SplashScreen.scale-200.png"/>
             </Button.FocusVisualPrimaryBrush>
         </Button>
+        <TextBlock x:ConnectionId='18' x:Name="memberErrorLabel" HorizontalAlignment="Left" Margin="556,82,0,0" Text="Select Member Before Checkout." TextWrapping="Wrap" VerticalAlignment="Top" RenderTransformOrigin="0.623,-0.083" Foreground="#FFB03636" Width="251" FontSize="16" Visibility="Collapsed"/>
+        <TextBox x:ConnectionId='19' x:Name="furnitureIDSearch" HorizontalAlignment="Left" Margin="530,123,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Height="35" FontSize="14" PlaceholderText="" AccessKey="" TextAlignment="Center"                                                                                  />
+        <TextBlock x:ConnectionId='20' x:Name="invalidFurnitureSearch" HorizontalAlignment="Left" Margin="670,123,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="210" Height="29" Foreground="#FF9C0E0E" FontSize="14"/>
     </Grid>
 </Page>
 

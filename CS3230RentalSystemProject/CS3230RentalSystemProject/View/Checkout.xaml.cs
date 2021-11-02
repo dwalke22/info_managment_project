@@ -44,7 +44,16 @@ namespace CS3230RentalSystemProject.View
 
         private async void Checkout_Click(object sender, RoutedEventArgs e)
         {
-            
+            foreach (var furniture in this.Employee.FurnitureListData)
+            {
+                if (furniture.ReturnDate == DateTime.MinValue)
+                {
+                    var datemessageDialog = new MessageDialog("Please select return date for all items!");
+
+                    await datemessageDialog.ShowAsync();
+                    return;
+                }
+            }
             decimal total = Convert.ToDecimal(this.totalTextBlock.Text.Split("$")[1]);
             this.checkoutDal.CreateTransaction(this.Employee, total, this.Member);
             int transactionID = this.checkoutDal.GetTransactionID();
@@ -107,7 +116,8 @@ namespace CS3230RentalSystemProject.View
             this.Member = info.Member;
             this.furnitureList.ItemsSource = this.Employee.FurnitureListData;
             this.furnitureListData = this.Employee.FurnitureListData;
-            this.employeeName.Text = this.Employee.ToString();
+            this.employeeName.Text = "Employee: " + this.Employee.ToString();
+            this.membername.Text = "Member: " + this.Member.ToString();
             this.resetTotalText();
         }
 

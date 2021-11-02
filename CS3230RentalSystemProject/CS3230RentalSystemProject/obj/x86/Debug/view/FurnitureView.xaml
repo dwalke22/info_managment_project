@@ -9,7 +9,7 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" Width="755" Height="605">
 
     <Grid HorizontalAlignment="Left" Width="750">
-        <TextBlock x:ConnectionId='2' x:Name="employeeName" HorizontalAlignment="Left" Margin="15,87,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="201" Height="55" FontWeight="Bold" TextAlignment="Start" FontFamily="SimSun" FontSize="16"  Style="{ThemeResource SubheaderTextBlockStyle}" Foreground="#FFB03636"/>
+        <TextBlock x:ConnectionId='2' x:Name="employeeName" HorizontalAlignment="Left" Margin="37,67,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="201" Height="52" FontWeight="Bold" TextAlignment="Start" FontFamily="SimSun" FontSize="16"  Style="{ThemeResource SubheaderTextBlockStyle}" Foreground="#FFB03636"/>
         <TextBlock HorizontalAlignment="Left" Margin="197,21,0,0" Text="Furniture Information" TextWrapping="Wrap" VerticalAlignment="Top" Height="51" Width="351" Foreground="#FF1A6DA6" FontSize="36" FontFamily="Bahnschrift Condensed"/>
         <TextBlock HorizontalAlignment="Left" Margin="37,167,0,0" Text="Furniture Name: " TextWrapping="Wrap" VerticalAlignment="Top" Height="33" Width="225" FontFamily="Arial" FontSize="24" TextAlignment="Right"/>
         <TextBlock HorizontalAlignment="Left" Margin="37,227,0,0" Text="Furniture Style:" TextWrapping="Wrap" VerticalAlignment="Top" Height="33" Width="225" FontFamily="Arial" FontSize="24" TextAlignment="Right"/>
@@ -48,6 +48,12 @@
             </TextBlock.RenderTransform>
         </TextBlock>
         <Button x:ConnectionId='9' x:Name="OKButton" Content="OK" Margin="535,550,0,0" VerticalAlignment="Top" Width="120"                       />
+        <TextBlock HorizontalAlignment="Left" Margin="40,122,0,0" Text="Furniture ID: " TextWrapping="Wrap" VerticalAlignment="Top" Height="33" Width="225" FontFamily="Arial" FontSize="24" TextAlignment="Right"/>
+        <TextBlock x:ConnectionId='10' x:Name="id" HorizontalAlignment="Left" Margin="276,123,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Height="33" Width="430" FontFamily="Arial" FontSize="24" TextAlignment="Center" RenderTransformOrigin="0.5,0.5" UseLayoutRounding="False" d:LayoutRounding="Auto">
+            <TextBlock.RenderTransform>
+                <CompositeTransform Rotation="0.011"/>
+            </TextBlock.RenderTransform>
+        </TextBlock>
 
     </Grid>
 </Page>

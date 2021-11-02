@@ -259,6 +259,7 @@ namespace CS3230RentalSystemProject.View
             this.emailInputBox.Text = this.Employee.Member.Email;
             this.birtdayChooser.SelectedDate = this.Employee.Member.Birthday;
             this.zipcodeInputBox.Text = this.Employee.Member.Zipcode;
+            this.idInputBox.Text = this.Employee.Member.MemberID.ToString();
 
             this.FirstName = this.Employee.Member.FirstName;
             this.LastName = this.Employee.Member.LastName;
