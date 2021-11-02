@@ -2,6 +2,7 @@
 using CS3230RentalSystemProject.view;
 using System;
 using System.Collections.Generic;
+using Windows.UI.Popups;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
@@ -41,13 +42,19 @@ namespace CS3230RentalSystemProject.View
             Frame.Navigate(typeof(EmployeeWindow), this.Employee);
         }
 
-        private void Checkout_Click(object sender, RoutedEventArgs e)
+        private async void Checkout_Click(object sender, RoutedEventArgs e)
         {
             
             decimal total = Convert.ToDecimal(this.totalTextBlock.Text.Split("$")[1]);
             this.checkoutDal.CreateTransaction(this.Employee, total, this.Member);
             int transactionID = this.checkoutDal.GetTransactionID();
             this.checkoutDal.CheckoutCart(this.Employee.FurnitureListData, this.Employee, transactionID);
+
+            var messageDialog = new MessageDialog("Order Complete.");
+
+            await messageDialog.ShowAsync();
+
+            Frame.Navigate(typeof(EmployeeWindow));
         }
 
         private void removeButtonClick(object sender, RoutedEventArgs e)

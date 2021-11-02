@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using CS3230RentalSystemProject.Model;
 using DBAccess.DAL;
 using MySql.Data.MySqlClient;
@@ -21,7 +22,7 @@ namespace CS3230RentalSystemProject.DAL
 
                 foreach (var furniture in bag)
                 {
-                    string query = "insert into rentalitem (transactionID, furnitureID, quantity, rentalDate, dueDate) values (@transactionID, @furnitureID, @quantity, @rentalDate, @dueDate)";
+                    string query = "insert into rentalitem (rentalID, furnitureID, quantity, rentalDate, dueDate) values (@transactionID, @furnitureID, @quantity, @rentalDate, @dueDate)";
                     using MySqlCommand command = new MySqlCommand(query, connection);
                     command.Parameters.Add("@transactionID", MySqlDbType.Int32).Value = transactionID;
                     command.Parameters.Add("@furnitureID", MySqlDbType.Int32).Value = furniture.FurnitureID;
@@ -31,10 +32,11 @@ namespace CS3230RentalSystemProject.DAL
 
                     command.ExecuteNonQuery();
 
-                    string updateQuery = "update furniture set quantity=@quantity where furnitureID =@furnitureID";
+                    string updateQuery = "update furniture set quantity= quantity - @rentquantity where furnitureID =@furnitureID";
                     using MySqlCommand updateCommand = new MySqlCommand(updateQuery, connection);
-                    command.Parameters.Add("@quantity", MySqlDbType.Int32).Value = furniture.Quantity - furniture.RentQuantity;
-                    command.Parameters.Add("@furnitureID", MySqlDbType.Int32).Value = furniture.FurnitureID;
+
+                    updateCommand.Parameters.Add("@rentquantity", MySqlDbType.Int32).Value = furniture.RentQuantity;
+                    updateCommand.Parameters.Add("@furnitureID", MySqlDbType.Int32).Value = furniture.FurnitureID;
 
                     updateCommand.ExecuteNonQuery();
                 }
@@ -52,7 +54,7 @@ namespace CS3230RentalSystemProject.DAL
             {
                 connection.Open();
 
-                string query = "insert into rentaltransaction (employeeID, memberID, totalPrice) output INSERTED.transactionID values (@employeeID, @memberID, @total)";
+                string query = "insert into rentaltransaction (employeeID, memberID, totalPrice) values (@employeeID, @memberID, @total)";
                 
                 using MySqlCommand command = new MySqlCommand(query, connection);
                 command.Parameters.Add("@employeeID", MySqlDbType.Int32).Value = employee.EmployeeID;
@@ -70,18 +72,18 @@ namespace CS3230RentalSystemProject.DAL
             {
                 connection.Open();
 
-                string query = "select top 1 transactionID from rentaltransaction order by transactionID desc";
+                string query = "select max(transactionID) from rentaltransaction";
 
                 using MySqlCommand command = new MySqlCommand(query, connection);
 
-                using MySqlDataReader reader = command.ExecuteReader();
+                //using MySqlDataReader reader = command.ExecuteReader();
 
-                int idOrdinal = reader.GetOrdinal("transactionID");
+                id = (int)command.ExecuteScalar();
 
-                while (reader.Read())
+                /*while (reader.Read())
                 {
-                    id = reader.GetFieldValueCheckNull<int>(idOrdinal);
-                }
+                    
+                }*/
 
                 return id;
             }
