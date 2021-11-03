@@ -1,1 +1,1 @@
-C:\Users\jzeng1\Documents\GitHub\info_managment_project\CS3230RentalSystemProject\CS3230RentalSystemProject\CS3230RentalSystemProject.csproj;x86
+C:\Users\jason\source\repos\info_managment_project\CS3230RentalSystemProject\CS3230RentalSystemProject\CS3230RentalSystemProject.csproj;x86

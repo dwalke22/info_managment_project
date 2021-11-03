@@ -39,6 +39,8 @@ namespace CS3230RentalSystemProject.View
         private void Cancel_Click(object sender, RoutedEventArgs e)
         {
             this.Employee.FurnitureListData.Clear();
+            this.Employee.Member = null;
+            this.Employee.SelectedFurniture = null;
             Frame.Navigate(typeof(EmployeeWindow), this.Employee);
         }
 
@@ -62,8 +64,10 @@ namespace CS3230RentalSystemProject.View
             var messageDialog = new MessageDialog("Order Complete.");
 
             await messageDialog.ShowAsync();
-
-            Frame.Navigate(typeof(EmployeeWindow));
+            this.Employee.FurnitureListData.Clear();
+            this.Employee.Member = null;
+            this.Employee.SelectedFurniture = null;
+            Frame.Navigate(typeof(EmployeeWindow), this.Employee);
         }
 
         private void removeButtonClick(object sender, RoutedEventArgs e)
@@ -85,9 +89,22 @@ namespace CS3230RentalSystemProject.View
 
         private void quantity_changed(object sender, SelectionChangedEventArgs e)
         {
+            int quantity = (int)((ComboBox)sender).SelectedItem;
             int tag = (int)((ComboBox)sender).Tag;
-            this.Employee.FurnitureListData.Find(x => x.FurnitureID == tag).RentQuantity = (int)((ComboBox)sender).SelectedItem;
-            this.resetTotalText();
+            if (this.Employee.FurnitureListData.Find(x => x.FurnitureID == tag).RentQuantity != quantity)
+            {
+                this.Employee.FurnitureListData.Find(x => x.FurnitureID == tag).RentQuantity = (int)((ComboBox)sender).SelectedItem;
+                this.Employee.FurnitureListData.Find(x => x.FurnitureID == tag).setCurentTotalPrice();
+                List<Furniture> list = new List<Furniture>();
+                foreach (Furniture item in this.Employee.FurnitureListData)
+                {
+                    list.Add(item);
+                }
+                this.furnitureList.ItemsSource = list;
+                this.resetTotalText();
+            }
+
+            
         }
 
         private void date_changed(CalendarDatePicker sender, CalendarDatePickerDateChangedEventArgs args)
@@ -111,9 +128,10 @@ namespace CS3230RentalSystemProject.View
                 return;
             }
             this.furnitureListData = new List<Furniture>();
-            var info = (EmployeeWindow.SelectedInfo)e.Parameter;
-            this.Employee = info.Employee;
-            this.Member = info.Member;
+            this.Employee = (Employee)e.Parameter;
+            //var info = (EmployeeWindow.SelectedInfo)e.Parameter;
+            //this.Employee = info.Employee;
+            this.Member = Employee.Member;
             this.furnitureList.ItemsSource = this.Employee.FurnitureListData;
             this.furnitureListData = this.Employee.FurnitureListData;
             this.employeeName.Text = "Employee: " + this.Employee.ToString();

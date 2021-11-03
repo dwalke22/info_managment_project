@@ -37,6 +37,11 @@ namespace CS3230RentalSystemProject.Model
         public decimal RentPrice { get; set; }
 
         /// <summary>
+        /// The Furniture Current rent price
+        /// </summary>
+        public decimal CurrentToalPrice { get; set; }
+
+        /// <summary>
         /// The Furniture Quantity
         /// </summary>
         public int Quantity { get; set; }
@@ -79,6 +84,14 @@ namespace CS3230RentalSystemProject.Model
             {
                 this.QuantityList.Add(i);
             }
+        }
+
+        /// <summary>
+        /// Set current total price
+        /// </summary>
+        public void setCurentTotalPrice()
+        {
+            this.CurrentToalPrice = this.RentPrice * this.RentQuantity;
         }
 
         /// <summary>

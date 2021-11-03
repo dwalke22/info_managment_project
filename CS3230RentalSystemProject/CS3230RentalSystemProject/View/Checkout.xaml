@@ -15,15 +15,17 @@
 
                     <Grid>
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="300"/>
-                            <ColumnDefinition Width="180" />
-                            <ColumnDefinition Width="180" />
-                            <ColumnDefinition Width="180" />
+                            <ColumnDefinition Width="265" />
+                            <ColumnDefinition Width="140" />
+                            <ColumnDefinition Width="140" />
+                            <ColumnDefinition Width="140" />
+                            <ColumnDefinition Width="140" />
                         </Grid.ColumnDefinitions>
                         <TextBlock Grid.Column="0" Text="{Binding FurnitureName}" HorizontalAlignment="Left"/>
                         <ComboBox x:Name="quantityCombobox" Grid.Column="1" Tag="{Binding FurnitureID}" ItemsSource= "{Binding QuantityList}" SelectedItem="{Binding RentQuantity}" SelectionChanged="quantity_changed" HorizontalAlignment="Center" />
-                        <CalendarDatePicker x:Name="returndayPicker"  Grid.Column="2" Tag="{Binding FurnitureID}" DateChanged="date_changed" HorizontalAlignment="Center"/>
-                        <Button x:Name="removeButton" Tag="{Binding FurnitureID}" Content="Remove" Grid.Column="3" Width="80" Height="30" Foreground="#FF9C0E0E" FontSize="14" Click="removeButtonClick" HorizontalAlignment="Center">
+                        <TextBlock Grid.Column="2" Text="{Binding CurrentToalPrice}" HorizontalAlignment="Left"/>
+                        <CalendarDatePicker x:Name="returndayPicker"  Grid.Column="3" Tag="{Binding FurnitureID}" DateChanged="date_changed" HorizontalAlignment="Center"/>
+                        <Button x:Name="removeButton" Tag="{Binding FurnitureID}" Content="Remove" Grid.Column="4" Width="80" Height="30" Foreground="#FF9C0E0E" FontSize="14" Click="removeButtonClick" HorizontalAlignment="Center">
                         </Button>
                     </Grid>
 
@@ -39,10 +41,11 @@
                         </Grid.RowDefinitions>
                         <Grid Grid.Row="0">
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="300" />
-                                <ColumnDefinition Width="180" />
-                                <ColumnDefinition Width="180" />
-                                <ColumnDefinition Width="180" />
+                                <ColumnDefinition Width="265" />
+                                <ColumnDefinition Width="140" />
+                                <ColumnDefinition Width="140" />
+                                <ColumnDefinition Width="140" />
+                                <ColumnDefinition Width="140" />
                             </Grid.ColumnDefinitions>
                             <Border Grid.Column="0" BorderBrush="Black" BorderThickness="0,0,1,1">
                                 <TextBlock FontWeight="Bold" HorizontalAlignment="Left">Furniture Name</TextBlock>
@@ -51,9 +54,12 @@
                                 <TextBlock FontWeight="Bold" HorizontalAlignment="Center">Quantity</TextBlock>
                             </Border>
                             <Border Grid.Column="2" BorderBrush="Black" BorderThickness="0,0,1,1">
+                                <TextBlock FontWeight="Bold" HorizontalAlignment="Center">Total</TextBlock>
+                            </Border>
+                            <Border Grid.Column="3" BorderBrush="Black" BorderThickness="0,0,1,1">
                                 <TextBlock FontWeight="Bold" HorizontalAlignment="Center">ReturnDay</TextBlock>
                             </Border>
-                            <Border  Grid.Column="3" BorderBrush="Black" BorderThickness="0,0,1,1">
+                            <Border  Grid.Column="4" BorderBrush="Black" BorderThickness="0,0,1,1">
                                 <TextBlock FontWeight="Bold" HorizontalAlignment="Center">Action</TextBlock>
                             </Border>
                         </Grid>
@@ -64,9 +70,9 @@
         </ListBox>
 
         <TextBlock x:Name="employeeName" HorizontalAlignment="Left" Margin="20,20,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="300" Height="51" FontWeight="Bold" TextAlignment="Start" FontFamily="SimSun" FontSize="16"  Style="{ThemeResource SubheaderTextBlockStyle}" Foreground="#FFB03636"/>
-        <Button Content="Checkout" Margin="745,425,0,0" VerticalAlignment="Top" Height="60" Width="170" FontSize="36" Click="Checkout_Click"/>
-        <Button Content="Cancel" Margin="570,425,0,0" VerticalAlignment="Top" Height="60" Width="165" FontSize="36" Click="Cancel_Click"/>
-        <TextBlock x:Name="totalTextBlock" HorizontalAlignment="Left" Margin="80,450,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Height="30" Width="200" FontSize="20"/>
+        <Button Content="Checkout" Margin="615,440,0,0" VerticalAlignment="Top" Height="45" Width="125" FontSize="24" Click="Checkout_Click"/>
+        <Button Content="Cancel" Margin="490,440,0,0" VerticalAlignment="Top" Height="45" Width="115" FontSize="24" Click="Cancel_Click" RenderTransformOrigin="0.087,0.444"/>
+        <TextBlock x:Name="totalTextBlock" HorizontalAlignment="Left" Margin="615,405,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Height="30" Width="200" FontSize="20"/>
         <TextBlock x:Name="membername" HorizontalAlignment="Left" Margin="399,20,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="313" Height="51" FontWeight="Bold" TextAlignment="Start" FontFamily="SimSun" FontSize="16"  Style="{ThemeResource SubheaderTextBlockStyle}" Foreground="#FFB03636"/>
 
     </Grid>

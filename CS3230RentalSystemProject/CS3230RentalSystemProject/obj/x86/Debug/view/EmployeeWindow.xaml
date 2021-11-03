@@ -12,19 +12,19 @@
         <TextBlock x:ConnectionId='2' x:Name="employeeName" HorizontalAlignment="Left" Margin="5,10,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="176" Height="29" FontWeight="Bold" TextAlignment="Start" FontFamily="SimSun" FontSize="16"  Style="{ThemeResource SubheaderTextBlockStyle}" Foreground="#FFB03636"/>
         <Button x:ConnectionId='3' x:Name="registerMemberButton" Content="Register Member" Margin="690,10,0,0" VerticalAlignment="Top" Width="130" Height="35"                                    RenderTransformOrigin="0.538,0.714"/>
         <Button x:ConnectionId='4' x:Name="bagButton" Content="Bag(0)" Margin="845,10,0,0" VerticalAlignment="Top"                         RenderTransformOrigin="1,0.938" Height="35"/>
-        <TextBlock HorizontalAlignment="Left" Margin="5,63,0,0" Text="Search Members By: " TextWrapping="Wrap" VerticalAlignment="Top" Height="24" Width="143" TextAlignment="Center" FontSize="14"/>
-        <ComboBox x:ConnectionId='5' x:Name="criteriaList" Margin="146,57,0,0" Width="115"                                                  PlaceholderText="Select Filter"/>
-        <TextBox x:ConnectionId='6' x:Name="searchBox" HorizontalAlignment="Left" Margin="5,95,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Height="35" FontSize="14" PlaceholderText="eg: John Smith" AccessKey="" TextAlignment="Center"                                                                  />
+        <TextBlock HorizontalAlignment="Left" Margin="5,60,0,0" Text="Search Members By: " TextWrapping="Wrap" VerticalAlignment="Top" Height="24" Width="143" TextAlignment="Center" FontSize="14"/>
+        <ComboBox x:ConnectionId='5' x:Name="criteriaList" Margin="145,55,0,0" Width="115"                                                  PlaceholderText="Select Filter"/>
+        <TextBox x:ConnectionId='6' x:Name="searchBox" HorizontalAlignment="Left" Margin="10,90,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="205" Height="35" FontSize="14" PlaceholderText="eg: John Smith" AccessKey="" TextAlignment="Center"                                                                   RenderTransformOrigin="0.458,0.429"/>
         <TextBlock x:ConnectionId='7' x:Name="invalidSearch" HorizontalAlignment="Left" Margin="10,135,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="210" Height="29" Foreground="#FF9C0E0E" FontSize="14"/>
-        <ListBox x:ConnectionId='8' x:Name="memberList" Margin="5,170,790,5"                                          BorderBrush="Black" BorderThickness="1,1,1,1"/>
+        <ListBox x:ConnectionId='8' x:Name="memberList" Margin="5,170,790,5"                                          BorderBrush="Black" BorderThickness="1,1,1,1"                                               />
         <TextBlock HorizontalAlignment="Left" Margin="255,135,0,0" Text="Search Furniture By: " TextWrapping="Wrap" VerticalAlignment="Top" FontSize="14"/>
         <ComboBox x:ConnectionId='9' x:Name="furnitureFilterComboBox" Margin="382,125,0,0" Width="120" PlaceholderText="Select Filter"                                                      />
-        <Button x:ConnectionId='10' x:Name="resetFilterButton" Content="Reset Filters" Margin="382,81,0,0" VerticalAlignment="Top"                                />
-        <ComboBox x:ConnectionId='11' x:Name="styleComboBox" Margin="535,125,0,0" Width="120" PlaceholderText="Select Style"                                                   Visibility="Collapsed"/>
-        <ComboBox x:ConnectionId='12' x:Name="categoryComboBox" Margin="675,125,0,0" Width="145" PlaceholderText="Select Category" Visibility="Collapsed"                                                     />
-        <TextBox x:ConnectionId='13' x:Name="funiturePriceTextbox" HorizontalAlignment="Left" Margin="845,125,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="145"                                                PlaceholderText="Enter Max Price" Visibility="Collapsed"/>
-        <TextBlock x:ConnectionId='14' x:Name="priceErrorTextBlock" HorizontalAlignment="Left" Margin="784,101,0,0" Text="Enter Amount In Format ###.##" TextWrapping="Wrap" VerticalAlignment="Top" Width="205" Foreground="Red" Visibility="Collapsed"/>
-        <Button x:ConnectionId='15' x:Name="applyPriceFilter" Content="Apply" Margin="890,63,0,0" VerticalAlignment="Top"                                Visibility="Collapsed" IsEnabled="False"/>
+        <Button x:ConnectionId='10' x:Name="resetFilterButton" Content="Reset Filters" Margin="385,88,0,0" VerticalAlignment="Top"                                />
+        <ComboBox x:ConnectionId='11' x:Name="styleComboBox" Margin="530,123,0,0" Width="120" PlaceholderText="Select Style"                                                   Visibility="Collapsed"/>
+        <ComboBox x:ConnectionId='12' x:Name="categoryComboBox" Margin="530,123,0,0" Width="145" PlaceholderText="Select Category" Visibility="Collapsed"                                                     />
+        <TextBox x:ConnectionId='13' x:Name="funiturePriceTextbox" HorizontalAlignment="Left" Margin="530,123,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="145"                                                PlaceholderText="Enter Max Price" Visibility="Collapsed"/>
+        <TextBlock x:ConnectionId='14' x:Name="priceErrorTextBlock" HorizontalAlignment="Left" Margin="530,83,0,0" Text="Enter Amount In Format ###.##" TextWrapping="Wrap" VerticalAlignment="Top" Width="205" Foreground="Red" Visibility="Collapsed"/>
+        <Button x:ConnectionId='15' x:Name="applyPriceFilter" Content="Apply" Margin="715,123,0,0" VerticalAlignment="Top"                                Visibility="Collapsed" IsEnabled="False"/>
         <ListBox x:ConnectionId='16' x:Name="furnitureList" Margin="225,170,10,0"                                          >
             <ListBox.ItemTemplate>
                 <DataTemplate>
@@ -41,7 +41,7 @@
                         <TextBlock Grid.Column="1" Text="{Binding Style}" HorizontalAlignment="Center" />
                         <TextBlock Grid.Column="2" Text="{Binding Category}" HorizontalAlignment="Center" />
                         <TextBlock Grid.Column="3" Text="{Binding Quantity}" HorizontalAlignment="Center" />
-                        <Button x:ConnectionId='22' x:Name="addButton" Tag="{Binding FurnitureID}" Content="Add" Grid.Column="4" Width="50" Height="30" Foreground="#FF9C0E0E" FontSize="14"                        HorizontalAlignment="Right">
+                        <Button x:ConnectionId='23' x:Name="addButton" Tag="{Binding FurnitureID}" Content="Add" Grid.Column="4" Width="50" Height="30" Foreground="#FF9C0E0E" FontSize="14"                        HorizontalAlignment="Right">
                         </Button>
                     </Grid>
 
@@ -90,8 +90,9 @@
             </Button.FocusVisualPrimaryBrush>
         </Button>
         <TextBlock x:ConnectionId='18' x:Name="memberErrorLabel" HorizontalAlignment="Left" Margin="556,82,0,0" Text="Select Member Before Checkout." TextWrapping="Wrap" VerticalAlignment="Top" RenderTransformOrigin="0.623,-0.083" Foreground="#FFB03636" Width="251" FontSize="16" Visibility="Collapsed"/>
-        <TextBox x:ConnectionId='19' x:Name="furnitureIDSearch" HorizontalAlignment="Left" Margin="530,123,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Height="35" FontSize="14" PlaceholderText="" AccessKey="" TextAlignment="Center"                                                                                  />
-        <TextBlock x:ConnectionId='20' x:Name="invalidFurnitureSearch" HorizontalAlignment="Left" Margin="670,123,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="210" Height="29" Foreground="#FF9C0E0E" FontSize="14"/>
+        <TextBox x:ConnectionId='19' x:Name="furnitureIDSearch" HorizontalAlignment="Left" Margin="530,123,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Height="35" FontSize="14" PlaceholderText="eg: 1" AccessKey="" TextAlignment="Center"                                                                                  />
+        <TextBlock x:ConnectionId='20' x:Name="invalidFurnitureSearch" HorizontalAlignment="Left" Margin="659,125,0,0" Text="Invalid input!" TextWrapping="Wrap" VerticalAlignment="Top" Width="210" Height="29" Foreground="#FF9C0E0E" FontSize="14"/>
+        <TextBlock x:ConnectionId='21' x:Name="serveredMember" HorizontalAlignment="Left" Margin="695,50,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="284" Height="29" Foreground="#FF9C0E0E" FontSize="14"/>
     </Grid>
 </Page>
 

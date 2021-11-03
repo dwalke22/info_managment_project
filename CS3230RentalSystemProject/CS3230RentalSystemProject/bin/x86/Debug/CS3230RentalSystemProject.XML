@@ -761,6 +761,11 @@
             The Furniture Rent price
             </summary>
         </member>
+        <member name="P:CS3230RentalSystemProject.Model.Furniture.CurrentToalPrice">
+            <summary>
+            The Furniture Current rent price
+            </summary>
+        </member>
         <member name="P:CS3230RentalSystemProject.Model.Furniture.Quantity">
             <summary>
             The Furniture Quantity
@@ -794,6 +799,11 @@
         <member name="M:CS3230RentalSystemProject.Model.Furniture.setQuantityList">
             <summary>
             Set up quantity list
+            </summary>
+        </member>
+        <member name="M:CS3230RentalSystemProject.Model.Furniture.setCurentTotalPrice">
+            <summary>
+            Set current total price
             </summary>
         </member>
         <member name="M:CS3230RentalSystemProject.Model.Furniture.ToString">

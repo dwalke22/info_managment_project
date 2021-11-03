@@ -103,7 +103,6 @@ namespace CS3230RentalSystemProject.DAL
 
         }
 
-
         /// <summary>
         /// Get the furniture's most availability
         /// </summary>

@@ -162,6 +162,18 @@ namespace CS3230RentalSystemProject.view
         {
             this.searchType = this.criteriaList.SelectedItem.ToString();
             this.invalidSearch.Visibility = Visibility.Collapsed;
+            if (this.searchType == "MemberID")
+            {
+                this.searchBox.PlaceholderText = "eg: 1";
+            }
+            else if (this.searchType == "Phone")
+            {
+                this.searchBox.PlaceholderText = "eg: 6782960303";
+            }
+            else if (this.searchType == "FullName")
+            {
+                this.searchBox.PlaceholderText = "eg: John Simith";
+            }
         }
 
         private async void addButtonClick(object sender, RoutedEventArgs e)
@@ -190,12 +202,14 @@ namespace CS3230RentalSystemProject.view
             {
                 int index = this.employee.FurnitureListData.IndexOf(furniture);
                 this.employee.FurnitureListData.ElementAt(index).RentQuantity++;
+                this.employee.FurnitureListData.ElementAt(index).setCurentTotalPrice();
                 rentQuantity++;
                 this.bagButton.Content = "Bag(" + rentQuantity + ")";
             }
             else
             {
                 furniture.RentQuantity++;
+                furniture.setCurentTotalPrice();
                 this.employee.FurnitureListData.Add(furniture);
                 rentQuantity++;
                 this.bagButton.Content = "Bag(" + rentQuantity + ")";
@@ -212,7 +226,7 @@ namespace CS3230RentalSystemProject.view
             }
             else
             {
-                
+
                 this.memberErrorLabel.Visibility = Visibility.Collapsed;
                 //var selectedInfo = new SelectedInfo();
                 //selectedInfo.Employee = this.employee;
@@ -384,6 +398,12 @@ namespace CS3230RentalSystemProject.view
                 }
               
             }
+        }
+
+        private void memberList_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            this.memberErrorLabel.Visibility = Visibility.Collapsed;
+            this.serveredMember.Text = "Now Server: " + ((Member)this.memberList.SelectedItem).ToString();
         }
     }
 }
