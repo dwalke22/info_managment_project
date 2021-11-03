@@ -2,6 +2,7 @@
 <Roots >
   <Roots.PropertyPathNames>
     <RootPropertyPathName Name="FurnitureID" />
+    <RootPropertyPathName Name="ReturnDate" />
     <RootPropertyPathName Name="CurrentToalPrice" />
     <RootPropertyPathName Name="QuantityList" />
     <RootPropertyPathName Name="RentQuantity" />
@@ -147,6 +148,7 @@
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.CalendarDatePicker">
       <RootProperty Name="Tag" />
+      <RootProperty Name="Date" />
       <RootProperty Name="HorizontalAlignment" />
       <RootEvent Name="DateChanged" />
     </RootType>

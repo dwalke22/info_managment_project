@@ -24,7 +24,7 @@
                         <TextBlock Grid.Column="0" Text="{Binding FurnitureName}" HorizontalAlignment="Left"/>
                         <ComboBox x:ConnectionId='9' x:Name="quantityCombobox" Grid.Column="1" Tag="{Binding FurnitureID}" ItemsSource= "{Binding QuantityList}" SelectedItem="{Binding RentQuantity}"                                     HorizontalAlignment="Center" />
                         <TextBlock Grid.Column="2" Text="{Binding CurrentToalPrice}" HorizontalAlignment="Left"/>
-                        <CalendarDatePicker x:ConnectionId='10' x:Name="returndayPicker"  Grid.Column="3" Tag="{Binding FurnitureID}"                            HorizontalAlignment="Center"/>
+                        <CalendarDatePicker x:ConnectionId='10' x:Name="returndayPicker"  Grid.Column="3" Tag="{Binding FurnitureID}" Date="{Binding ReturnDate}"                            HorizontalAlignment="Center"/>
                         <Button x:ConnectionId='11' x:Name="removeButton" Tag="{Binding FurnitureID}" Content="Remove" Grid.Column="4" Width="80" Height="30" Foreground="#FF9C0E0E" FontSize="14"                           HorizontalAlignment="Center">
                         </Button>
                     </Grid>

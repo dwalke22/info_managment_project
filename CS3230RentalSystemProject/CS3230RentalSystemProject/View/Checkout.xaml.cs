@@ -109,9 +109,17 @@ namespace CS3230RentalSystemProject.View
 
         private void date_changed(CalendarDatePicker sender, CalendarDatePickerDateChangedEventArgs args)
         {
-            int tag = (int)((CalendarDatePicker)sender).Tag;
-            this.Employee.FurnitureListData.Find(x => x.FurnitureID == tag).ReturnDate = DateTimeOffset.Parse(((CalendarDatePicker)sender).Date.ToString()).DateTime;
-            this.resetTotalText();
+            if (((CalendarDatePicker)sender).Tag != null)
+            {
+                int tag = (int)((CalendarDatePicker)sender).Tag;
+                this.Employee.FurnitureListData.Find(x => x.FurnitureID == tag).ReturnDate =
+                    DateTimeOffset.Parse(((CalendarDatePicker)sender).Date.ToString()).DateTime;
+                this.Employee.FurnitureListData.Find(x => x.FurnitureID == tag).setCurentTotalPrice();
+
+                this.resetTotalText();
+
+            }
+
         }
 
         /// <summary>
@@ -150,7 +158,7 @@ namespace CS3230RentalSystemProject.View
                 decimal total = 0;
                 foreach (var furniture in this.Employee.FurnitureListData)
                 {
-                    total += furniture.RentPrice * furniture.RentQuantity;
+                    total += furniture.CurrentToalPrice;
                 }
                 this.totalTextBlock.Text = "Total: $" + total;
             }

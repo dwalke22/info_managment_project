@@ -73,6 +73,7 @@ namespace CS3230RentalSystemProject.Model
         {
             this.QuantityList = new List<int>();
             this.RentQuantity = 0;
+            this.ReturnDate = DateTime.UtcNow;
         }
 
         /// <summary>
@@ -91,7 +92,13 @@ namespace CS3230RentalSystemProject.Model
         /// </summary>
         public void setCurentTotalPrice()
         {
-            this.CurrentToalPrice = this.RentPrice * this.RentQuantity;
+            int days = 1;
+            days = (this.ReturnDate.Date - DateTime.Now.Date).Days;
+            if (days < 2)
+            {
+                days = 1;
+            }
+            this.CurrentToalPrice = this.RentPrice * this.RentQuantity * days;
         }
 
         /// <summary>
