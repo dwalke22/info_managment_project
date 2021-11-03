@@ -7,6 +7,7 @@ using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
 using CS3230RentalSystemProject.DAL;
+using System.Text.RegularExpressions;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
 
@@ -22,6 +23,9 @@ namespace CS3230RentalSystemProject.View
         /// </summary>
         public Employee Employee { get; set; }
 
+        /// <summary>
+        /// The Member
+        /// </summary>
         public Member Member { get; set; }
 
         private IList<Furniture> furnitureListData;
@@ -34,6 +38,7 @@ namespace CS3230RentalSystemProject.View
         {
             this.InitializeComponent();
             this.checkoutDal = new CheckoutDAL();
+            this.invalidForRentalDays.Visibility = Visibility.Collapsed;
         }
 
         private void Cancel_Click(object sender, RoutedEventArgs e)
@@ -46,16 +51,6 @@ namespace CS3230RentalSystemProject.View
 
         private async void Checkout_Click(object sender, RoutedEventArgs e)
         {
-            foreach (var furniture in this.Employee.FurnitureListData)
-            {
-                if (furniture.ReturnDate == DateTime.MinValue)
-                {
-                    var datemessageDialog = new MessageDialog("Please select return date for all items!");
-
-                    await datemessageDialog.ShowAsync();
-                    return;
-                }
-            }
             decimal total = Convert.ToDecimal(this.totalTextBlock.Text.Split("$")[1]);
             this.checkoutDal.CreateTransaction(this.Employee, total, this.Member);
             int transactionID = this.checkoutDal.GetTransactionID();
@@ -109,21 +104,39 @@ namespace CS3230RentalSystemProject.View
             }
         }
 
-        private void date_changed(CalendarDatePicker sender, CalendarDatePickerDateChangedEventArgs args)
+        private async void date_changed(CalendarDatePicker sender, CalendarDatePickerDateChangedEventArgs args)
         {
             if (((CalendarDatePicker)sender).Tag != null)
             {
-                int tag = (int)((CalendarDatePicker)sender).Tag;
-                this.Employee.FurnitureListData.Find(x => x.FurnitureID == tag).ReturnDate =
-                    DateTimeOffset.Parse(((CalendarDatePicker)sender).Date.ToString()).DateTime;
-                this.Employee.FurnitureListData.Find(x => x.FurnitureID == tag).setCurentTotalPrice();
-                if (this.Employee.FurnitureListData.Find(x => x.FurnitureID == tag).RentalDays != 1)
+                try
                 {
-                   
-                    
-                }
+                    DateTime date = DateTimeOffset.Parse(((CalendarDatePicker)sender).Date.ToString()).Date;
+                    if (date.AddDays(1) < DateTime.Now.AddDays(1))
+                    {
+                        var message = new MessageDialog(" Cannot select past date! Please try again!");
 
-                this.resetTotalText();
+                        sender.Date = args.OldDate;
+                        await message.ShowAsync();
+                    }
+                    else
+                    {
+                        int tag = (int)((CalendarDatePicker)sender).Tag;
+                        int days = (((CalendarDatePicker)sender).Date.Value.DateTime.Date - DateTime.Now).Days + 1;
+                        this.Employee.FurnitureListData.Find(x => x.FurnitureID == tag).RentalDays = days;
+                        this.Employee.FurnitureListData.Find(x => x.FurnitureID == tag).ReturnDate = DateTime.Now.AddDays(days);
+                        this.Employee.FurnitureListData.Find(x => x.FurnitureID == tag).setCurentTotalPrice();
+                        List<Furniture> list = new List<Furniture>();
+                        foreach (Furniture item in this.Employee.FurnitureListData)
+                        {
+                            list.Add(item);
+                        }
+                        this.furnitureList.ItemsSource = list;
+                        this.resetTotalText();
+                    }
+                }
+                catch (Exception e)
+                {
+                }
 
             }
 
@@ -151,6 +164,7 @@ namespace CS3230RentalSystemProject.View
             this.furnitureListData = this.Employee.FurnitureListData;
             this.employeeName.Text = "Employee: " + this.Employee.ToString();
             this.membername.Text = "Member: " + this.Member.ToString();
+            this.returndate.Date = DateTime.Now.AddDays(1);
             this.resetTotalText();
         }
 
@@ -171,25 +185,124 @@ namespace CS3230RentalSystemProject.View
             }
         }
 
-        private void TextBox_KeyDown(object sender, Windows.UI.Xaml.Input.KeyRoutedEventArgs e)
+        private async void TextBox_LostFocus(object sender, RoutedEventArgs e)
         {
-            var selectedItem = ((TextBox)sender).Text;
-            if (e.Key == Windows.System.VirtualKey.Enter)
+            var inputdays = ((TextBox)sender).Text;
+            int tag = (int)((TextBox)sender).Tag;
+            Regex regex = new Regex(@"[\d]");
+            if (!regex.IsMatch(inputdays))
             {
-                int days = Int32.Parse(selectedItem);
-                int tag = (int)((TextBox)sender).Tag;
-                this.Employee.FurnitureListData.Find(x => x.FurnitureID == tag).RentalDays = days;
-                DateTime date = DateTime.Now.AddDays(days);
-                this.Employee.FurnitureListData.Find(x => x.FurnitureID == tag).ReturnDate = DateTimeOffset.Now.AddDays(days);
-                this.Employee.FurnitureListData.Find(x => x.FurnitureID == tag).setCurentTotalPrice();
-                List<Furniture> list = new List<Furniture>();
-                foreach (Furniture item in this.Employee.FurnitureListData)
+                var message = new MessageDialog(" " + inputdays + " is not valid. Please type agian!");
+                await message.ShowAsync();
+                ((TextBox)sender).Text = "" + this.Employee.FurnitureListData.Find(x => x.FurnitureID == tag).RentalDays;
+                return;
+
+            }
+            if (regex.IsMatch(inputdays))
+            {
+                int day = Int32.Parse(inputdays);
+                if (day < 1)
                 {
-                    list.Add(item);
+                    var message = new MessageDialog(" " + inputdays + " is not valid. Please type agian!");
+                    await message.ShowAsync();
+                    ((TextBox)sender).Text = "" + this.Employee.FurnitureListData.Find(x => x.FurnitureID == tag).RentalDays;
+                    return;
                 }
-                this.furnitureList.ItemsSource = list;
-                this.resetTotalText();
+
+            }
+            int days = Int32.Parse(inputdays);
+            
+            this.Employee.FurnitureListData.Find(x => x.FurnitureID == tag).RentalDays = days;
+            this.Employee.FurnitureListData.Find(x => x.FurnitureID == tag).ReturnDate = DateTime.Now.AddDays(days);
+            this.Employee.FurnitureListData.Find(x => x.FurnitureID == tag).setCurentTotalPrice();
+            List<Furniture> list = new List<Furniture>();
+            foreach (Furniture item in this.Employee.FurnitureListData)
+            {
+                list.Add(item);
+            }
+            this.furnitureList.ItemsSource = list;
+            this.resetTotalText();
+
+        }
+
+        private void rentalDaysForAll_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            string text = this.rentalDaysForAll.Text;
+            if (text != "")
+            {
+                Regex regex = new Regex(@"[\d]");
+                if (!regex.IsMatch(text))
+                {
+                    this.invalidForRentalDays.Visibility = Visibility.Visible;
+                }
+                if (regex.IsMatch(text))
+                {
+                    int days = Int32.Parse(text);
+                    if (days < 1)
+                    {
+                        this.invalidForRentalDays.Visibility = Visibility.Visible;
+                    }
+
+                }
+            }
+            
+        }
+
+        private void rentalDaysForAll_TextChanging(TextBox sender, TextBoxTextChangingEventArgs args)
+        {
+            this.invalidForRentalDays.Visibility = Visibility.Collapsed;
+        }
+
+        private async void CalendarDatePicker_DateChanged(CalendarDatePicker sender, CalendarDatePickerDateChangedEventArgs args)
+        {
+            try
+            {
+                DateTime date = DateTimeOffset.Parse(((CalendarDatePicker)sender).Date.ToString()).Date;
+                if (date.AddDays(1) < DateTime.Now.AddDays(1))
+                {
+                    var message = new MessageDialog(" Cannot select past date! Please try again!");
+                    await message.ShowAsync();
+                    this.returndate.Date = DateTime.Now.AddDays(1);
+                }
+                else
+                {
+                    int days = (this.returndate.Date.Value.DateTime.Date - DateTime.Now).Days + 1;
+                    this.rentalDaysForAll.Text = days.ToString();
+                }
+            }
+            catch(Exception e)
+            {
+                this.returndate.Date = DateTime.Now.AddDays(1);
+            }
+            
+        }
+
+        private async void Button_Click(object sender, RoutedEventArgs e)
+        {
+            if (this.rentalDaysForAll.Text != null || this.rentalDaysForAll.Text != "")
+            {
+                if (this.invalidForRentalDays.Visibility != Visibility.Visible)
+                {
+                    this.returndate.Date = DateTimeOffset.Now.Date.AddDays(Int32.Parse(this.rentalDaysForAll.Text));
+                    List<Furniture> list = new List<Furniture>();
+                    foreach (Furniture item in this.Employee.FurnitureListData)
+                    {
+                        item.RentalDays = Int32.Parse(this.rentalDaysForAll.Text);
+                        item.ReturnDate = DateTimeOffset.Now.Date.AddDays(Int32.Parse(this.rentalDaysForAll.Text));
+                        item.setCurentTotalPrice();
+                        list.Add(item);
+                    }
+                    this.furnitureList.ItemsSource = list;
+                    this.resetTotalText();
+                }
+                
+            } 
+            else
+            {
+                var message = new MessageDialog("Please input your rental days or select your return day!");
+                await message.ShowAsync();
             }
         }
+
     }
 }

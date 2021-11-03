@@ -910,6 +910,11 @@
             The Employee
             </summary>
         </member>
+        <member name="P:CS3230RentalSystemProject.View.Checkout.Member">
+            <summary>
+            The Member
+            </summary>
+        </member>
         <member name="M:CS3230RentalSystemProject.View.Checkout.#ctor">
             <summary>
             Initialize constructor

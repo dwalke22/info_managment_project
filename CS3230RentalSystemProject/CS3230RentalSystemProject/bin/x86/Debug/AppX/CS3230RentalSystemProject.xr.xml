@@ -67,10 +67,10 @@
       <RootProperty Name="TextWrapping" />
       <RootProperty Name="VerticalAlignment" />
       <RootProperty Name="Width" />
+      <RootProperty Name="PlaceholderText" />
       <RootProperty Name="Tag" />
       <RootProperty Name="Height" />
       <RootProperty Name="FontSize" />
-      <RootProperty Name="PlaceholderText" />
       <RootProperty Name="AccessKey" />
       <RootProperty Name="TextAlignment" />
       <RootProperty Name="RenderTransformOrigin" />
@@ -78,9 +78,9 @@
       <RootProperty Name="Foreground" />
       <RootProperty Name="IsReadOnly" />
       <RootEvent Name="TextChanging" />
-      <RootEvent Name="KeyDown" />
       <RootEvent Name="TextChanged" />
       <RootEvent Name="LostFocus" />
+      <RootEvent Name="KeyDown" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.PasswordBox">
       <RootProperty Name="HorizontalAlignment" />
@@ -128,6 +128,14 @@
       <RootEvent Name="DoubleTapped" />
       <RootEvent Name="SelectionChanged" />
     </RootType>
+    <RootType FullName="Windows.UI.Xaml.Controls.CalendarDatePicker">
+      <RootProperty Name="Margin" />
+      <RootProperty Name="VerticalAlignment" />
+      <RootProperty Name="Tag" />
+      <RootProperty Name="Date" />
+      <RootProperty Name="HorizontalAlignment" />
+      <RootEvent Name="DateChanged" />
+    </RootType>
     <RootType FullName="Windows.UI.Xaml.DataTemplate">
       <RootProperty Name="Template" />
     </RootType>
@@ -147,12 +155,6 @@
       <RootProperty Name="VerticalAlignment" />
       <RootProperty Name="Height" />
       <RootEvent Name="SelectionChanged" />
-    </RootType>
-    <RootType FullName="Windows.UI.Xaml.Controls.CalendarDatePicker">
-      <RootProperty Name="Tag" />
-      <RootProperty Name="Date" />
-      <RootProperty Name="HorizontalAlignment" />
-      <RootEvent Name="DateChanged" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Data.Binding">
       <RootProperty Name="Mode" />
