@@ -28,7 +28,8 @@ namespace CS3230RentalSystemProject.DAL
                     command.Parameters.Add("@furnitureID", MySqlDbType.Int32).Value = furniture.FurnitureID;
                     command.Parameters.Add("@quantity", MySqlDbType.Int32).Value = furniture.RentQuantity;
                     command.Parameters.Add("@rentalDate", MySqlDbType.Date).Value = DateTime.Now.ToString("yyyy-MM-dd");
-                    command.Parameters.Add("@dueDate", MySqlDbType.Date).Value = furniture.ReturnDate.Date;
+                    if (furniture.ReturnDate != null)
+                        command.Parameters.Add("@dueDate", MySqlDbType.Date).Value = furniture.ReturnDate.Value.Date;
 
                     command.ExecuteNonQuery();
 

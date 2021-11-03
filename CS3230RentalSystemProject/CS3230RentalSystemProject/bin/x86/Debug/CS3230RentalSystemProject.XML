@@ -791,6 +791,14 @@
             The Furniture return availability
             </summary>
         </member>
+        <member name="P:CS3230RentalSystemProject.Model.Furniture.RentalDays">
+            <summary>
+            Gets or sets the rental days.
+            </summary>
+            <value>
+            The rental days.
+            </value>
+        </member>
         <member name="M:CS3230RentalSystemProject.Model.Furniture.#ctor">
             <summary>
             Initialize constructor

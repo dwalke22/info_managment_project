@@ -4,6 +4,7 @@
     <RootPropertyPathName Name="FurnitureID" />
     <RootPropertyPathName Name="ReturnDate" />
     <RootPropertyPathName Name="CurrentToalPrice" />
+    <RootPropertyPathName Name="RentalDays" />
     <RootPropertyPathName Name="QuantityList" />
     <RootPropertyPathName Name="RentQuantity" />
     <RootPropertyPathName Name="FurnitureName" />
@@ -66,6 +67,7 @@
       <RootProperty Name="TextWrapping" />
       <RootProperty Name="VerticalAlignment" />
       <RootProperty Name="Width" />
+      <RootProperty Name="Tag" />
       <RootProperty Name="Height" />
       <RootProperty Name="FontSize" />
       <RootProperty Name="PlaceholderText" />
@@ -152,7 +154,9 @@
       <RootProperty Name="HorizontalAlignment" />
       <RootEvent Name="DateChanged" />
     </RootType>
-    <RootType FullName="Windows.UI.Xaml.Data.Binding" />
+    <RootType FullName="Windows.UI.Xaml.Data.Binding">
+      <RootProperty Name="Mode" />
+    </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.ControlTemplate">
       <RootProperty Name="Template" />
     </RootType>

@@ -89,22 +89,24 @@ namespace CS3230RentalSystemProject.View
 
         private void quantity_changed(object sender, SelectionChangedEventArgs e)
         {
-            int quantity = (int)((ComboBox)sender).SelectedItem;
-            int tag = (int)((ComboBox)sender).Tag;
-            if (this.Employee.FurnitureListData.Find(x => x.FurnitureID == tag).RentQuantity != quantity)
+            var selectedItem = ((ComboBox)sender).SelectedItem;
+            if (selectedItem != null)
             {
-                this.Employee.FurnitureListData.Find(x => x.FurnitureID == tag).RentQuantity = (int)((ComboBox)sender).SelectedItem;
-                this.Employee.FurnitureListData.Find(x => x.FurnitureID == tag).setCurentTotalPrice();
-                List<Furniture> list = new List<Furniture>();
-                foreach (Furniture item in this.Employee.FurnitureListData)
+                int quantity = (int)selectedItem;
+                int tag = (int)((ComboBox)sender).Tag;
+                if (this.Employee.FurnitureListData.Find(x => x.FurnitureID == tag).RentQuantity != quantity)
                 {
-                    list.Add(item);
+                    this.Employee.FurnitureListData.Find(x => x.FurnitureID == tag).RentQuantity = (int)selectedItem;
+                    this.Employee.FurnitureListData.Find(x => x.FurnitureID == tag).setCurentTotalPrice();
+                    List<Furniture> list = new List<Furniture>();
+                    foreach (Furniture item in this.Employee.FurnitureListData)
+                    {
+                        list.Add(item);
+                    }
+                    this.furnitureList.ItemsSource = list;
+                    this.resetTotalText();
                 }
-                this.furnitureList.ItemsSource = list;
-                this.resetTotalText();
             }
-
-            
         }
 
         private void date_changed(CalendarDatePicker sender, CalendarDatePickerDateChangedEventArgs args)
@@ -115,6 +117,11 @@ namespace CS3230RentalSystemProject.View
                 this.Employee.FurnitureListData.Find(x => x.FurnitureID == tag).ReturnDate =
                     DateTimeOffset.Parse(((CalendarDatePicker)sender).Date.ToString()).DateTime;
                 this.Employee.FurnitureListData.Find(x => x.FurnitureID == tag).setCurentTotalPrice();
+                if (this.Employee.FurnitureListData.Find(x => x.FurnitureID == tag).RentalDays != 1)
+                {
+                   
+                    
+                }
 
                 this.resetTotalText();
 
@@ -164,5 +171,25 @@ namespace CS3230RentalSystemProject.View
             }
         }
 
+        private void TextBox_KeyDown(object sender, Windows.UI.Xaml.Input.KeyRoutedEventArgs e)
+        {
+            var selectedItem = ((TextBox)sender).Text;
+            if (e.Key == Windows.System.VirtualKey.Enter)
+            {
+                int days = Int32.Parse(selectedItem);
+                int tag = (int)((TextBox)sender).Tag;
+                this.Employee.FurnitureListData.Find(x => x.FurnitureID == tag).RentalDays = days;
+                DateTime date = DateTime.Now.AddDays(days);
+                this.Employee.FurnitureListData.Find(x => x.FurnitureID == tag).ReturnDate = DateTimeOffset.Now.AddDays(days);
+                this.Employee.FurnitureListData.Find(x => x.FurnitureID == tag).setCurentTotalPrice();
+                List<Furniture> list = new List<Furniture>();
+                foreach (Furniture item in this.Employee.FurnitureListData)
+                {
+                    list.Add(item);
+                }
+                this.furnitureList.ItemsSource = list;
+                this.resetTotalText();
+            }
+        }
     }
 }

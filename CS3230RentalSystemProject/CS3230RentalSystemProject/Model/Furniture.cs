@@ -59,12 +59,20 @@ namespace CS3230RentalSystemProject.Model
         /// <summary>
         /// The Furniture return date
         /// </summary>
-        public DateTime ReturnDate { get; set; }
+        public DateTimeOffset? ReturnDate { get; set; }
 
         /// <summary>
         /// The Furniture return availability
         /// </summary>
         public DateTime Availability { get; set; }
+
+        /// <summary>
+        /// Gets or sets the rental days.
+        /// </summary>
+        /// <value>
+        /// The rental days.
+        /// </value>
+        public int RentalDays { get; set; }
 
         /// <summary>
         /// Initialize constructor
@@ -73,7 +81,8 @@ namespace CS3230RentalSystemProject.Model
         {
             this.QuantityList = new List<int>();
             this.RentQuantity = 0;
-            this.ReturnDate = DateTime.UtcNow;
+            this.ReturnDate = DateTime.Now.AddDays(1);
+            this.RentalDays = 1;
         }
 
         /// <summary>
@@ -92,13 +101,8 @@ namespace CS3230RentalSystemProject.Model
         /// </summary>
         public void setCurentTotalPrice()
         {
-            int days = 1;
-            days = (this.ReturnDate.Date - DateTime.Now.Date).Days;
-            if (days < 2)
-            {
-                days = 1;
-            }
-            this.CurrentToalPrice = this.RentPrice * this.RentQuantity * days;
+            
+            this.CurrentToalPrice = this.RentPrice * this.RentQuantity * RentalDays;
         }
 
         /// <summary>

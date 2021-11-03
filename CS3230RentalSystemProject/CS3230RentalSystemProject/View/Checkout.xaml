@@ -15,17 +15,20 @@
 
                     <Grid>
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="265" />
+                            <ColumnDefinition Width="243" />
+                            <ColumnDefinition Width="80" />
+                            <ColumnDefinition Width="80" />
                             <ColumnDefinition Width="140" />
                             <ColumnDefinition Width="140" />
                             <ColumnDefinition Width="140" />
-                            <ColumnDefinition Width="140" />
+
                         </Grid.ColumnDefinitions>
                         <TextBlock Grid.Column="0" Text="{Binding FurnitureName}" HorizontalAlignment="Left"/>
                         <ComboBox x:Name="quantityCombobox" Grid.Column="1" Tag="{Binding FurnitureID}" ItemsSource= "{Binding QuantityList}" SelectedItem="{Binding RentQuantity}" SelectionChanged="quantity_changed" HorizontalAlignment="Center" />
-                        <TextBlock Grid.Column="2" Text="{Binding CurrentToalPrice}" HorizontalAlignment="Left"/>
-                        <CalendarDatePicker x:Name="returndayPicker"  Grid.Column="3" Tag="{Binding FurnitureID}" Date="{Binding ReturnDate}" DateChanged="date_changed" HorizontalAlignment="Center"/>
-                        <Button x:Name="removeButton" Tag="{Binding FurnitureID}" Content="Remove" Grid.Column="4" Width="80" Height="30" Foreground="#FF9C0E0E" FontSize="14" Click="removeButtonClick" HorizontalAlignment="Center">
+                        <TextBox Grid.Column="2" Tag="{Binding FurnitureID}" Text="{Binding RentalDays}"  HorizontalAlignment="Center" KeyDown="TextBox_KeyDown"/>
+                        <TextBlock Grid.Column="3" Text="{Binding CurrentToalPrice}" HorizontalAlignment="Left"/>
+                        <CalendarDatePicker x:Name="returndayPicker"  Grid.Column="4" Tag="{Binding FurnitureID}" Date="{Binding ReturnDate, Mode=TwoWay}" DateChanged="date_changed" HorizontalAlignment="Center"/>
+                        <Button x:Name="removeButton" Tag="{Binding FurnitureID}" Content="Remove" Grid.Column="5" Width="80" Height="30" Foreground="#FF9C0E0E" FontSize="14" Click="removeButtonClick" HorizontalAlignment="Center">
                         </Button>
                     </Grid>
 
@@ -41,8 +44,9 @@
                         </Grid.RowDefinitions>
                         <Grid Grid.Row="0">
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="265" />
-                                <ColumnDefinition Width="140" />
+                                <ColumnDefinition Width="243" />
+                                <ColumnDefinition Width="80" />
+                                <ColumnDefinition Width="80" />
                                 <ColumnDefinition Width="140" />
                                 <ColumnDefinition Width="140" />
                                 <ColumnDefinition Width="140" />
@@ -54,12 +58,15 @@
                                 <TextBlock FontWeight="Bold" HorizontalAlignment="Center">Quantity</TextBlock>
                             </Border>
                             <Border Grid.Column="2" BorderBrush="Black" BorderThickness="0,0,1,1">
-                                <TextBlock FontWeight="Bold" HorizontalAlignment="Center">Total</TextBlock>
+                                <TextBlock FontWeight="Bold" HorizontalAlignment="Center">RentalDays</TextBlock>
                             </Border>
                             <Border Grid.Column="3" BorderBrush="Black" BorderThickness="0,0,1,1">
+                                <TextBlock FontWeight="Bold" HorizontalAlignment="Center">Total</TextBlock>
+                            </Border>
+                            <Border Grid.Column="4" BorderBrush="Black" BorderThickness="0,0,1,1">
                                 <TextBlock FontWeight="Bold" HorizontalAlignment="Center">ReturnDay</TextBlock>
                             </Border>
-                            <Border  Grid.Column="4" BorderBrush="Black" BorderThickness="0,0,1,1">
+                            <Border  Grid.Column="5" BorderBrush="Black" BorderThickness="0,0,1,1">
                                 <TextBlock FontWeight="Bold" HorizontalAlignment="Center">Action</TextBlock>
                             </Border>
                         </Grid>
