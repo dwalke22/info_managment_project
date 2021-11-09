@@ -97,20 +97,20 @@ namespace CS3230RentalSystemProject.View
         private void pastDateToEmplyee()
         {
 
-            this.Employee.Member.FirstName = this.FirstName;
-            this.Employee.Member.LastName = this.LastName;
-            this.Employee.Member.Gender = this.Gender;
-            this.Employee.Member.Address1 = this.Address1;
-            this.Employee.Member.Address2 = this.Address2;
-            this.Employee.Member.City = this.City;
-            this.Employee.Member.State = this.State;
-            this.Employee.Member.Country = this.Country;
-            this.Employee.Member.Zipcode = this.Zipcode;
-            this.Employee.Member.PhoneNumber = this.PhoneNumber;
-            this.Employee.Member.Email = this.Email;
-            this.Employee.Member.Birthday = this.Birthday;
+            this.Employee.SelectedMember.FirstName = this.FirstName;
+            this.Employee.SelectedMember.LastName = this.LastName;
+            this.Employee.SelectedMember.Gender = this.Gender;
+            this.Employee.SelectedMember.Address1 = this.Address1;
+            this.Employee.SelectedMember.Address2 = this.Address2;
+            this.Employee.SelectedMember.City = this.City;
+            this.Employee.SelectedMember.State = this.State;
+            this.Employee.SelectedMember.Country = this.Country;
+            this.Employee.SelectedMember.Zipcode = this.Zipcode;
+            this.Employee.SelectedMember.PhoneNumber = this.PhoneNumber;
+            this.Employee.SelectedMember.Email = this.Email;
+            this.Employee.SelectedMember.Birthday = this.Birthday;
             MemberDAL dAL = new MemberDAL();
-            dAL.UpdateMemberInfo(this.Employee.Member);
+            dAL.UpdateMemberInfo(this.Employee.SelectedMember);
         }
 
         private void saveButton_Click(object sender, RoutedEventArgs e)
@@ -247,32 +247,32 @@ namespace CS3230RentalSystemProject.View
 
         private void setViewer()
         {
-            this.firstNameInputBox.Text = this.Employee.Member.FirstName;
-            this.lastNameInputBox.Text = this.Employee.Member.LastName;
-            this.genderChooser.SelectedItem = this.Employee.Member.Gender;
-            this.address1InputBox.Text = this.Employee.Member.Address1;
-            this.address2InputBox.Text = this.Employee.Member.Address2 == null ? "" : this.Employee.Member.Address2;
-            this.cityInputBox.Text = this.Employee.Member.City;
-            this.stateChooser.SelectedItem = this.Employee.Member.State;
-            this.CountryChooser.SelectedItem = this.Employee.Member.Country;
-            this.phoneInputBox.Text = this.Employee.Member.PhoneNumber;
-            this.emailInputBox.Text = this.Employee.Member.Email;
-            this.birtdayChooser.SelectedDate = this.Employee.Member.Birthday;
-            this.zipcodeInputBox.Text = this.Employee.Member.Zipcode;
-            this.idInputBox.Text = this.Employee.Member.MemberID.ToString();
+            this.firstNameInputBox.Text = this.Employee.SelectedMember.FirstName;
+            this.lastNameInputBox.Text = this.Employee.SelectedMember.LastName;
+            this.genderChooser.SelectedItem = this.Employee.SelectedMember.Gender;
+            this.address1InputBox.Text = this.Employee.SelectedMember.Address1;
+            this.address2InputBox.Text = this.Employee.SelectedMember.Address2 == null ? "" : this.Employee.SelectedMember.Address2;
+            this.cityInputBox.Text = this.Employee.SelectedMember.City;
+            this.stateChooser.SelectedItem = this.Employee.SelectedMember.State;
+            this.CountryChooser.SelectedItem = this.Employee.SelectedMember.Country;
+            this.phoneInputBox.Text = this.Employee.SelectedMember.PhoneNumber;
+            this.emailInputBox.Text = this.Employee.SelectedMember.Email;
+            this.birtdayChooser.SelectedDate = this.Employee.SelectedMember.Birthday;
+            this.zipcodeInputBox.Text = this.Employee.SelectedMember.Zipcode;
+            this.idInputBox.Text = this.Employee.SelectedMember.MemberID.ToString();
 
-            this.FirstName = this.Employee.Member.FirstName;
-            this.LastName = this.Employee.Member.LastName;
-            this.Gender = this.Employee.Member.Gender;
-            this.Address1 = this.Employee.Member.Address1;
-            this.Address2 = this.Employee.Member.Address2 == null ? "" : this.Employee.Member.Address2;
-            this.City = this.Employee.Member.City;
-            this.State = this.Employee.Member.State;
-            this.Country = this.Employee.Member.Country;
-            this.PhoneNumber = this.Employee.Member.PhoneNumber;
-            this.Email = this.Employee.Member.Email;
-            this.Birthday = this.Employee.Member.Birthday;
-            this.Zipcode = this.Employee.Member.Zipcode;
+            this.FirstName = this.Employee.SelectedMember.FirstName;
+            this.LastName = this.Employee.SelectedMember.LastName;
+            this.Gender = this.Employee.SelectedMember.Gender;
+            this.Address1 = this.Employee.SelectedMember.Address1;
+            this.Address2 = this.Employee.SelectedMember.Address2 == null ? "" : this.Employee.SelectedMember.Address2;
+            this.City = this.Employee.SelectedMember.City;
+            this.State = this.Employee.SelectedMember.State;
+            this.Country = this.Employee.SelectedMember.Country;
+            this.PhoneNumber = this.Employee.SelectedMember.PhoneNumber;
+            this.Email = this.Employee.SelectedMember.Email;
+            this.Birthday = this.Employee.SelectedMember.Birthday;
+            this.Zipcode = this.Employee.SelectedMember.Zipcode;
 
 
         }

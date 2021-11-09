@@ -80,6 +80,30 @@ namespace CS3230RentalSystemProject.Model
         public DateTime Birthday { get; set; }
 
         /// <summary>
+        /// The return Item list
+        /// </summary>
+        public List<ReturnItem> ReturnItemList { get; set; }
+
+        /// <summary>
+        /// The rental Item list
+        /// </summary>
+        public List<RentalItem> RentalItemList { get; set; }
+
+        /// <summary>
+        /// Furniture list that rent for the memebr
+        /// </summary>
+        public List<Furniture> FurnitureListData { get; set; }
+
+        /// <summary>
+        /// Initialize constructor
+        /// </summary>
+        public Member()
+        {
+            this.FurnitureListData = new List<Furniture>();
+        }
+
+
+        /// <summary>
         /// Override tostring
         /// </summary>
         /// <returns>

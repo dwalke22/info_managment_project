@@ -39,7 +39,7 @@ namespace CS3230RentalSystemProject.Model
         /// <summary>
         /// The member that employee server for
         /// </summary>
-        public Member Member { get; set; }
+        public Member SelectedMember { get; set; }
 
         /// <summary>
         /// Member list for the store
@@ -47,22 +47,9 @@ namespace CS3230RentalSystemProject.Model
         public List<Member> MemberList { get; set; }
 
         /// <summary>
-        /// Furniture list that rent for the memebr
-        /// </summary>
-        public List<Furniture> FurnitureListData { get; set; }
-
-        /// <summary>
         /// Selected Furniture
         /// </summary>
         public Furniture SelectedFurniture { get; set; }
-
-        /// <summary>
-        /// Initialize constructor
-        /// </summary>
-        public Employee() 
-        {
-            this.FurnitureListData = new List<Furniture>();
-        }
 
         /// <summary>
         /// Override tostring

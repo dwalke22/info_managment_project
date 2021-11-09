@@ -11,6 +11,11 @@
     <RootPropertyPathName Name="Quantity" />
     <RootPropertyPathName Name="Category" />
     <RootPropertyPathName Name="Style" />
+    <RootPropertyPathName Name="ReturnID" />
+    <RootPropertyPathName Name="RentalInfo" />
+    <RootPropertyPathName Name="DueDate" />
+    <RootPropertyPathName Name="RentalDate" />
+    <RootPropertyPathName Name="RentalID" />
   </Roots.PropertyPathNames>
   <Roots.RootTypes>
     <RootType FullName="Windows.UI.Xaml.Application" />
@@ -59,6 +64,7 @@
       <RootProperty Name="RenderTransform" />
       <RootProperty Name="FocusVisualPrimaryBrush" />
       <RootProperty Name="RequestedTheme" />
+      <RootProperty Name="LineHeight" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.TextBox">
       <RootProperty Name="HorizontalAlignment" />
@@ -165,11 +171,14 @@
     <RootType FullName="Windows.UI.Xaml.Controls.RowDefinition">
       <RootProperty Name="Height" />
     </RootType>
-    <RootType FullName="Windows.UI.Xaml.Controls.ItemsPresenter" />
+    <RootType FullName="Windows.UI.Xaml.Controls.ItemsPresenter">
+      <RootProperty Name="Margin" />
+    </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.Border">
       <RootProperty Name="BorderBrush" />
       <RootProperty Name="BorderThickness" />
       <RootProperty Name="Child" />
+      <RootProperty Name="Margin" />
     </RootType>
     <RootType FullName="CS3230RentalSystemProject.View.Checkout" />
     <RootType FullName="Windows.UI.Xaml.Media.ImageBrush">
@@ -190,5 +199,6 @@
     </RootType>
     <RootType FullName="CS3230RentalSystemProject.view.MemberRegistration" />
     <RootType FullName="CS3230RentalSystemProject.View.MemebrInformationViewer" />
+    <RootType FullName="CS3230RentalSystemProject.View.TransactionView" />
   </Roots.RootTypes>
 </Roots>

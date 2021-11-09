@@ -130,6 +130,7 @@
     <Compile Include="DAL\FurnitureDAL.cs" />
     <Compile Include="DAL\LogInDALI.cs" />
     <Compile Include="DAL\MemberDAL.cs" />
+    <Compile Include="DAL\TransanctionDAL.cs" />
     <Compile Include="Eums\Country.cs" />
     <Compile Include="Eums\Gender.cs" />
     <Compile Include="Eums\State.cs" />
@@ -139,6 +140,8 @@
     <Compile Include="Model\Employee.cs" />
     <Compile Include="Model\Furniture.cs" />
     <Compile Include="Model\Member.cs" />
+    <Compile Include="Model\RentalItem.cs" />
+    <Compile Include="Model\ReturnItem.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="View\Checkout.xaml.cs">
       <DependentUpon>Checkout.xaml</DependentUpon>
@@ -154,6 +157,9 @@
     </Compile>
     <Compile Include="View\MemebrInformationViewer.xaml.cs">
       <DependentUpon>MemebrInformationViewer.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\TransactionView.xaml.cs">
+      <DependentUpon>TransactionView.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -198,6 +204,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\MemebrInformationViewer.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\TransactionView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

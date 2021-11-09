@@ -176,6 +176,44 @@
                         The new member
             </param>
         </member>
+        <member name="T:CS3230RentalSystemProject.DAL.TransanctionDAL">
+            <summary>
+            The TransactionDAL class
+            </summary>
+        </member>
+        <member name="M:CS3230RentalSystemProject.DAL.TransanctionDAL.getAllRentalItems(System.Int32)">
+            <summary>
+            Get all rental items
+            </summary>
+            <returns>all rental items</returns>
+        </member>
+        <member name="M:CS3230RentalSystemProject.DAL.TransanctionDAL.getMemberTansactionsNumber(System.Int32)">
+            <summary>
+            Get all rental items
+            </summary>
+            <returns>all rental items</returns>
+        </member>
+        <member name="M:CS3230RentalSystemProject.DAL.TransanctionDAL.getAllRentalItemsByRentalID(System.Int32)">
+            <summary>
+            Get all rental items with specified rentalID
+            </summary>
+            <returns>all rental items with specified rentalID</returns>
+        </member>
+        <member name="M:CS3230RentalSystemProject.DAL.TransanctionDAL.getAllReturnItems(System.Int32)">
+            <summary>
+            Get all return items
+            </summary>
+            <returns>all return items</returns>
+        </member>
+        <member name="M:CS3230RentalSystemProject.DAL.TransanctionDAL.returnItems(System.Collections.Generic.List{CS3230RentalSystemProject.Model.RentalItem},CS3230RentalSystemProject.Model.Employee,CS3230RentalSystemProject.Model.Member,System.Decimal)">
+            <summary>
+            Return items
+            </summary>
+            <param name="items"> item to return </param>
+            <param name="employee"> the employee</param>
+            <param name="member"> the member </param>
+            <param name="fine">the fine if any </param>
+        </member>
         <member name="T:CS3230RentalSystemProject.Enums.Country">
             <summary>
             Enum Country
@@ -698,7 +736,7 @@
             The Employee's email
             </summary>
         </member>
-        <member name="P:CS3230RentalSystemProject.Model.Employee.Member">
+        <member name="P:CS3230RentalSystemProject.Model.Employee.SelectedMember">
             <summary>
             The member that employee server for
             </summary>
@@ -708,19 +746,9 @@
             Member list for the store
             </summary>
         </member>
-        <member name="P:CS3230RentalSystemProject.Model.Employee.FurnitureListData">
-            <summary>
-            Furniture list that rent for the memebr
-            </summary>
-        </member>
         <member name="P:CS3230RentalSystemProject.Model.Employee.SelectedFurniture">
             <summary>
             Selected Furniture
-            </summary>
-        </member>
-        <member name="M:CS3230RentalSystemProject.Model.Employee.#ctor">
-            <summary>
-            Initialize constructor
             </summary>
         </member>
         <member name="M:CS3230RentalSystemProject.Model.Employee.ToString">
@@ -892,6 +920,26 @@
             The Member birthday
             </summary>
         </member>
+        <member name="P:CS3230RentalSystemProject.Model.Member.ReturnItemList">
+            <summary>
+            The return Item list
+            </summary>
+        </member>
+        <member name="P:CS3230RentalSystemProject.Model.Member.RentalItemList">
+            <summary>
+            The rental Item list
+            </summary>
+        </member>
+        <member name="P:CS3230RentalSystemProject.Model.Member.FurnitureListData">
+            <summary>
+            Furniture list that rent for the memebr
+            </summary>
+        </member>
+        <member name="M:CS3230RentalSystemProject.Model.Member.#ctor">
+            <summary>
+            Initialize constructor
+            </summary>
+        </member>
         <member name="M:CS3230RentalSystemProject.Model.Member.ToString">
             <summary>
             Override tostring
@@ -899,6 +947,86 @@
             <returns>
             The Member's full name
             </returns>
+        </member>
+        <member name="T:CS3230RentalSystemProject.Model.RentalItem">
+            <summary>
+            The Rental Item class
+            </summary>
+        </member>
+        <member name="P:CS3230RentalSystemProject.Model.RentalItem.RentalID">
+            <summary>
+            The rental ID
+            </summary>
+        </member>
+        <member name="P:CS3230RentalSystemProject.Model.RentalItem.FurnitureID">
+            <summary>
+            The furniture ID
+            </summary>
+        </member>
+        <member name="P:CS3230RentalSystemProject.Model.RentalItem.FurnitureName">
+            <summary>
+            The Furniture Name
+            </summary>
+        </member>
+        <member name="P:CS3230RentalSystemProject.Model.RentalItem.Quantity">
+            <summary>
+            The quantity for the rental item
+            </summary>
+        </member>
+        <member name="P:CS3230RentalSystemProject.Model.RentalItem.RentalDate">
+            <summary>
+            The rental date
+            </summary>
+        </member>
+        <member name="P:CS3230RentalSystemProject.Model.RentalItem.DueDate">
+            <summary>
+            The Due date
+            </summary>
+        </member>
+        <member name="P:CS3230RentalSystemProject.Model.RentalItem.RentalInfo">
+            <summary>
+            The rental info
+            </summary>
+        </member>
+        <member name="M:CS3230RentalSystemProject.Model.RentalItem.setRentalIDInfor">
+            <summary>
+            Set rental info
+            </summary>
+        </member>
+        <member name="T:CS3230RentalSystemProject.Model.ReturnItem">
+            <summary>
+            The Return Item class
+            </summary>
+        </member>
+        <member name="P:CS3230RentalSystemProject.Model.ReturnItem.RentalID">
+            <summary>
+            The rental ID
+            </summary>
+        </member>
+        <member name="P:CS3230RentalSystemProject.Model.ReturnItem.ReturnID">
+            <summary>
+            The return ID
+            </summary>
+        </member>
+        <member name="P:CS3230RentalSystemProject.Model.ReturnItem.FurnitureID">
+            <summary>
+            The furniture ID
+            </summary>
+        </member>
+        <member name="P:CS3230RentalSystemProject.Model.ReturnItem.FurnitureName">
+            <summary>
+            The Furniture Name
+            </summary>
+        </member>
+        <member name="P:CS3230RentalSystemProject.Model.ReturnItem.Quantity">
+            <summary>
+            The quantity for the return item
+            </summary>
+        </member>
+        <member name="P:CS3230RentalSystemProject.Model.ReturnItem.ReturnDate">
+            <summary>
+            The reuturn date
+            </summary>
         </member>
         <member name="T:CS3230RentalSystemProject.View.Checkout">
             <summary>
@@ -1015,6 +1143,39 @@
             </summary>
         </member>
         <member name="M:CS3230RentalSystemProject.View.MemebrInformationViewer.GetBindingConnector(System.Int32,System.Object)">
+            <summary>
+            GetBindingConnector(int connectionId, object target)
+            </summary>
+        </member>
+        <member name="T:CS3230RentalSystemProject.View.TransactionView">
+            <summary>
+            An empty page that can be used on its own or navigated to within a Frame.
+            </summary>
+        </member>
+        <member name="M:CS3230RentalSystemProject.View.TransactionView.#ctor">
+            <summary>
+            Initialize constructor
+            </summary>
+        </member>
+        <member name="M:CS3230RentalSystemProject.View.TransactionView.OnNavigatedTo(Windows.UI.Xaml.Navigation.NavigationEventArgs)">
+            <summary>
+            Initialize parameter
+            </summary>
+            <param name="e">
+                    The parameter
+            </param>
+        </member>
+        <member name="M:CS3230RentalSystemProject.View.TransactionView.InitializeComponent">
+            <summary>
+            InitializeComponent()
+            </summary>
+        </member>
+        <member name="M:CS3230RentalSystemProject.View.TransactionView.Connect(System.Int32,System.Object)">
+            <summary>
+            Connect()
+            </summary>
+        </member>
+        <member name="M:CS3230RentalSystemProject.View.TransactionView.GetBindingConnector(System.Int32,System.Object)">
             <summary>
             GetBindingConnector(int connectionId, object target)
             </summary>

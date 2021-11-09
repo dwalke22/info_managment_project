@@ -33,7 +33,7 @@ namespace CS3230RentalSystemProject.view
 
         private FurnitureDAL furnitureDAL;
 
-        private Employee employee;
+        private Employee Employee;
 
         private string searchType;
 
@@ -76,8 +76,8 @@ namespace CS3230RentalSystemProject.view
 
         private void registerMemberButton_Click(object sender, RoutedEventArgs e)
         {
-            this.employee.MemberList = this.list;
-            Frame.Navigate(typeof(MemberRegistration), this.employee);
+            this.Employee.MemberList = this.list;
+            Frame.Navigate(typeof(MemberRegistration), this.Employee);
         }
 
         private void searchBox_TextChanging(TextBox sender, TextBoxTextChangingEventArgs args)
@@ -91,8 +91,9 @@ namespace CS3230RentalSystemProject.view
             ListBox box = sender as ListBox;
             if (box.SelectedItem != null)
             {
-                this.employee.Member = (Member)box.SelectedItem;
-                Frame.Navigate(typeof(MemebrInformationViewer), this.employee);
+                this.Employee.SelectedMember = (Member)box.SelectedItem;
+                Frame.Navigate(typeof(MemebrInformationViewer), this.Employee);
+                
             }
         }
 
@@ -198,11 +199,11 @@ namespace CS3230RentalSystemProject.view
             
             Furniture furniture = this.furnitureListData.Find(x => x.FurnitureID == tag);
             
-            if (this.employee.FurnitureListData.Contains(furniture))
+            if (this.Employee.SelectedMember.FurnitureListData.Contains(furniture))
             {
-                int index = this.employee.FurnitureListData.IndexOf(furniture);
-                this.employee.FurnitureListData.ElementAt(index).RentQuantity++;
-                this.employee.FurnitureListData.ElementAt(index).setCurentTotalPrice();
+                int index = this.Employee.SelectedMember.FurnitureListData.IndexOf(furniture);
+                this.Employee.SelectedMember.FurnitureListData.ElementAt(index).RentQuantity++;
+                this.Employee.SelectedMember.FurnitureListData.ElementAt(index).setCurentTotalPrice();
                 rentQuantity++;
                 this.bagButton.Content = "Bag(" + rentQuantity + ")";
             }
@@ -210,7 +211,7 @@ namespace CS3230RentalSystemProject.view
             {
                 furniture.RentQuantity++;
                 furniture.setCurentTotalPrice();
-                this.employee.FurnitureListData.Add(furniture);
+                this.Employee.SelectedMember.FurnitureListData.Add(furniture);
                 rentQuantity++;
                 this.bagButton.Content = "Bag(" + rentQuantity + ")";
             }
@@ -232,8 +233,8 @@ namespace CS3230RentalSystemProject.view
                 //selectedInfo.Employee = this.employee;
                 //selectedInfo.Member = (Member)this.memberList.SelectedItem;
                 //Member member = (Member)this.memberList.SelectedItem;
-                this.employee.Member = (Member)this.memberList.SelectedItem;
-                Frame.Navigate(typeof(Checkout), this.employee);
+                this.Employee.SelectedMember = (Member)this.memberList.SelectedItem;
+                Frame.Navigate(typeof(Checkout), this.Employee);
             }
         }
 
@@ -261,9 +262,18 @@ namespace CS3230RentalSystemProject.view
                 return;
             }
 
-            this.employee = (Employee)e.Parameter;
+            this.Employee = (Employee)e.Parameter;
 
-            this.employeeName.Text = "Welcome, " + this.employee.ToString();
+            this.employeeName.Text = "Welcome, " + this.Employee.ToString();
+
+            if (this.Employee.SelectedMember != null)
+            {
+                int size = this.Employee.SelectedMember.FurnitureListData.Count;
+                this.bagButton.Content = "Bag(" + size + ")";
+                this.rentQuantity = size;
+                this.serveredMember.Text = "Now Server: " + this.Employee.SelectedMember.ToString();
+                this.memberList.SelectedItem = this.Employee.SelectedMember;
+            }
         }
 
         private void furnitureComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -361,12 +371,12 @@ namespace CS3230RentalSystemProject.view
             ListBox box = sender as ListBox;
             if (box.SelectedItem != null)
             {
-                this.employee.SelectedFurniture = (Furniture)box.SelectedItem;
-                if (this.employee.SelectedFurniture.Quantity == 0)
+                this.Employee.SelectedFurniture = (Furniture)box.SelectedItem;
+                if (this.Employee.SelectedFurniture.Quantity == 0)
                 {
-                    this.employee.SelectedFurniture.Availability = this.furnitureDAL.GetAllFurnitureMostAvailability(this.employee.SelectedFurniture.FurnitureID);
+                    this.Employee.SelectedFurniture.Availability = this.furnitureDAL.GetAllFurnitureMostAvailability(this.Employee.SelectedFurniture.FurnitureID);
                 }
-                Frame.Navigate(typeof(FurnitureView), this.employee);
+                Frame.Navigate(typeof(FurnitureView), this.Employee);
             }
         }
 
@@ -404,6 +414,7 @@ namespace CS3230RentalSystemProject.view
         {
             this.memberErrorLabel.Visibility = Visibility.Collapsed;
             this.serveredMember.Text = "Now Server: " + ((Member)this.memberList.SelectedItem).ToString();
+           
         }
     }
 }

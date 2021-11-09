@@ -1,0 +1,149 @@
+﻿<Page
+    x:Class="CS3230RentalSystemProject.View.TransactionView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:CS3230RentalSystemProject.View"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" Width="940" Height="500">
+
+    <Grid Height="500" VerticalAlignment="Center" HorizontalAlignment="Center" Width="930">
+        <TextBlock x:Name="employeeName" HorizontalAlignment="Left" Margin="5,5,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="300" Height="43" FontWeight="Bold" TextAlignment="Start" FontFamily="SimSun" FontSize="16"  Style="{ThemeResource SubheaderTextBlockStyle}" Foreground="#FFB03636" RenderTransformOrigin="0.5,0.392"/>
+        <TextBlock x:Name="membername" HorizontalAlignment="Left" Margin="325,5,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="313" Height="43" FontWeight="Bold" TextAlignment="Start" FontFamily="SimSun" FontSize="16"  Style="{ThemeResource SubheaderTextBlockStyle}" Foreground="#FFB03636"/>
+        <TextBlock HorizontalAlignment="Left" Margin="5,60,0,0" Text="Search Members By: " TextWrapping="Wrap" VerticalAlignment="Top" Height="24" Width="143" TextAlignment="Center" FontSize="14"/>
+        <ComboBox x:Name="criteriaList" Margin="145,55,0,0" Width="115" SelectionChanged="criteriaList_SelectionChanged" PlaceholderText="Select Filter"/>
+        <TextBox x:Name="searchBox" HorizontalAlignment="Left" Margin="10,90,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="190" Height="35" FontSize="14" PlaceholderText="eg: John Smith" AccessKey="" TextAlignment="Center" TextChanging="searchBox_TextChanging" KeyDown="searchBox_KeyDown" RenderTransformOrigin="0.458,0.429"/>
+        <TextBlock x:Name="invalidSearch" HorizontalAlignment="Left" Margin="10,135,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="210" Height="29" Foreground="#FF9C0E0E" FontSize="14"/>
+        <ListBox x:Name="memberList" Margin="5,170,725,5" BorderBrush="Black" BorderThickness="1,1,1,1" SelectionChanged="memberList_SelectionChanged"/>
+        <ListBox x:Name="rentalItemList" Margin="215,125,0,215" HorizontalAlignment="Left" Width="710">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="98" />
+                            <ColumnDefinition Width="243" />
+                            <ColumnDefinition Width="80" />
+                            <ColumnDefinition Width="90" />
+                            <ColumnDefinition Width="90" />
+                            <ColumnDefinition Width="130" />
+
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Grid.Column="0" Text="{Binding RentalID}" HorizontalAlignment="Left"/>
+                        <TextBlock Grid.Column="1" Text="{Binding FurnitureName}" HorizontalAlignment="Center"/>
+                        <TextBlock Grid.Column="2" Text="{Binding Quantity}" HorizontalAlignment="Center"/>
+                        <TextBlock Grid.Column="3" Text="{Binding RentalDate}" HorizontalAlignment="Center"/>
+                        <TextBlock Grid.Column="4" Text="{Binding DueDate}" HorizontalAlignment="Center"/>
+                        <Button Tag="{Binding RentalInfo}" Content="Return" Grid.Column="5" Width="80" Height="30" Foreground="#FF9C0E0E" FontSize="14" Click="returnButtonClick" HorizontalAlignment="Center">
+                        </Button>
+                    </Grid>
+
+
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+            <ListBox.Template>
+                <ControlTemplate>
+                    <Grid BorderBrush="Black" BorderThickness="1,1,1,1">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <Grid Grid.Row="0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="98" />
+                                <ColumnDefinition Width="243" />
+                                <ColumnDefinition Width="80" />
+                                <ColumnDefinition Width="90" />
+                                <ColumnDefinition Width="90" />
+                                <ColumnDefinition Width="130" />
+                            </Grid.ColumnDefinitions>
+                            <Border Grid.Column="0" BorderBrush="Black" BorderThickness="0,0,1,1">
+                                <TextBlock FontWeight="Bold" HorizontalAlignment="Left">Transaction ID</TextBlock>
+                            </Border>
+                            <Border Grid.Column="1" BorderBrush="Black" BorderThickness="0,0,1,1">
+                                <TextBlock FontWeight="Bold" HorizontalAlignment="Center">Furniture Name</TextBlock>
+                            </Border>
+                            <Border Grid.Column="2" BorderBrush="Black" BorderThickness="0,0,1,1">
+                                <TextBlock FontWeight="Bold" HorizontalAlignment="Center">Quantity</TextBlock>
+                            </Border>
+                            <Border Grid.Column="3" BorderBrush="Black" BorderThickness="0,0,1,1">
+                                <TextBlock FontWeight="Bold" HorizontalAlignment="Center">Rental Date</TextBlock>
+                            </Border>
+                            <Border Grid.Column="4" BorderBrush="Black" BorderThickness="0,0,1,1">
+                                <TextBlock FontWeight="Bold" HorizontalAlignment="Center">Return Day</TextBlock>
+                            </Border>
+                            <Border  Grid.Column="5" BorderBrush="Black" BorderThickness="0,0,1,1" Margin="0,0,14,0">
+                                <TextBlock FontWeight="Bold" HorizontalAlignment="Center">Action</TextBlock>
+                            </Border>
+                        </Grid>
+                        <ItemsPresenter Grid.Row="1" Margin="2,2,2,-2"></ItemsPresenter>
+                    </Grid>
+                </ControlTemplate>
+            </ListBox.Template>
+        </ListBox>
+
+
+        <ListBox x:Name="returnItemList" Margin="215,330,0,5" HorizontalAlignment="Left" Width="710">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="150" />
+                            <ColumnDefinition Width="300" />
+                            <ColumnDefinition Width="150" />
+                            <ColumnDefinition Width="115" />
+
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Grid.Column="0" Text="{Binding ReturnID}" HorizontalAlignment="Left"/>
+                        <TextBlock Grid.Column="1" Text="{Binding FurnitureName}" HorizontalAlignment="Center"/>
+                        <TextBlock Grid.Column="2" Text="{Binding Quantity}" HorizontalAlignment="Center"/>
+                        <TextBlock Grid.Column="4" Text="{Binding ReturnDate}" HorizontalAlignment="Center"/>
+                    </Grid>
+
+
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+            <ListBox.Template>
+                <ControlTemplate>
+                    <Grid BorderBrush="Black" BorderThickness="1,1,1,1">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <Grid Grid.Row="0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="150" />
+                                <ColumnDefinition Width="300" />
+                                <ColumnDefinition Width="150" />
+                                <ColumnDefinition Width="115" />
+                            </Grid.ColumnDefinitions>
+                            <Border Grid.Column="0" BorderBrush="Black" BorderThickness="0,0,1,1">
+                                <TextBlock FontWeight="Bold" HorizontalAlignment="Left">Transaction ID</TextBlock>
+                            </Border>
+                            <Border Grid.Column="1" BorderBrush="Black" BorderThickness="0,0,1,1">
+                                <TextBlock FontWeight="Bold" HorizontalAlignment="Center">Furniture Name</TextBlock>
+                            </Border>
+                            <Border Grid.Column="2" BorderBrush="Black" BorderThickness="0,0,1,1">
+                                <TextBlock FontWeight="Bold" HorizontalAlignment="Center" Width="48">Quantity</TextBlock>
+                            </Border>
+                            <Border Grid.Column="3" BorderBrush="Black" BorderThickness="0,0,1,1">
+                                <TextBlock FontWeight="Bold" HorizontalAlignment="Center">Return Day</TextBlock>
+                            </Border>
+                        </Grid>
+                        <ItemsPresenter Grid.Row="1" Margin="2,2,2,-2"></ItemsPresenter>
+                    </Grid>
+                </ControlTemplate>
+            </ListBox.Template>
+        </ListBox>
+        <TextBlock HorizontalAlignment="Left" Margin="217,95,0,0" Text="Rental Transactions: " TextWrapping="Wrap" VerticalAlignment="Top" Height="24" Width="147" FontSize="16" TextAlignment="Left" LineHeight="10"/>
+        <TextBlock HorizontalAlignment="Left" Margin="219,294,0,0" Text="Return Transactions: " TextWrapping="Wrap" VerticalAlignment="Top" Height="28" Width="148" FontSize="16" TextAlignment="Left" LineHeight="10"/>
+        <Button x:Name="returnToMainPage" Content="Return To Main Page" Margin="750,8,0,0" VerticalAlignment="Top" Width="170" Click="returnToMainPage_Click"/>
+        <TextBlock HorizontalAlignment="Left" Margin="470,90,0,0" Text="Filter Transactions By ID: " TextWrapping="Wrap" VerticalAlignment="Top" Height="24" Width="183" FontSize="16" TextAlignment="Left" LineHeight="10"/>
+        <ComboBox x:Name="transactionIDBox" Margin="660,85,130,0" SelectionChanged="transactionIDBox_SelectionChanged" HorizontalAlignment="Stretch"/>
+        <Button x:Name="returnALl" Content="Return ALl" Margin="805,85,0,0" VerticalAlignment="Top" Width="112" Click="returnALl_Click"/>
+
+
+    </Grid>
+</Page>

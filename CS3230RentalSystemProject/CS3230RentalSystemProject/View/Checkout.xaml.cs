@@ -43,8 +43,6 @@ namespace CS3230RentalSystemProject.View
 
         private void Cancel_Click(object sender, RoutedEventArgs e)
         {
-            this.Employee.FurnitureListData.Clear();
-            this.Employee.Member = null;
             this.Employee.SelectedFurniture = null;
             Frame.Navigate(typeof(EmployeeWindow), this.Employee);
         }
@@ -54,13 +52,13 @@ namespace CS3230RentalSystemProject.View
             decimal total = Convert.ToDecimal(this.totalTextBlock.Text.Split("$")[1]);
             this.checkoutDal.CreateTransaction(this.Employee, total, this.Member);
             int transactionID = this.checkoutDal.GetTransactionID();
-            this.checkoutDal.CheckoutCart(this.Employee.FurnitureListData, this.Employee, transactionID);
+            this.checkoutDal.CheckoutCart(this.Employee.SelectedMember.FurnitureListData, this.Employee, transactionID);
 
             var messageDialog = new MessageDialog("Order Complete.");
 
             await messageDialog.ShowAsync();
-            this.Employee.FurnitureListData.Clear();
-            this.Employee.Member = null;
+            this.Employee.SelectedMember.FurnitureListData.Clear();
+            this.Employee.SelectedMember = null;
             this.Employee.SelectedFurniture = null;
             Frame.Navigate(typeof(EmployeeWindow), this.Employee);
         }
@@ -70,11 +68,11 @@ namespace CS3230RentalSystemProject.View
             int tag = (int)((Button)sender).Tag;
             
 
-            Furniture furniture = this.Employee.FurnitureListData.Find(x => x.FurnitureID == tag);
+            Furniture furniture = this.Employee.SelectedMember.FurnitureListData.Find(x => x.FurnitureID == tag);
 
-            this.Employee.FurnitureListData.Remove(furniture);
+            this.Employee.SelectedMember.FurnitureListData.Remove(furniture);
             List <Furniture> list = new List<Furniture>();
-            foreach(Furniture item in this.Employee.FurnitureListData)
+            foreach(Furniture item in this.Employee.SelectedMember.FurnitureListData)
             {
                 list.Add(item);
             }
@@ -89,12 +87,12 @@ namespace CS3230RentalSystemProject.View
             {
                 int quantity = (int)selectedItem;
                 int tag = (int)((ComboBox)sender).Tag;
-                if (this.Employee.FurnitureListData.Find(x => x.FurnitureID == tag).RentQuantity != quantity)
+                if (this.Employee.SelectedMember.FurnitureListData.Find(x => x.FurnitureID == tag).RentQuantity != quantity)
                 {
-                    this.Employee.FurnitureListData.Find(x => x.FurnitureID == tag).RentQuantity = (int)selectedItem;
-                    this.Employee.FurnitureListData.Find(x => x.FurnitureID == tag).setCurentTotalPrice();
+                    this.Employee.SelectedMember.FurnitureListData.Find(x => x.FurnitureID == tag).RentQuantity = (int)selectedItem;
+                    this.Employee.SelectedMember.FurnitureListData.Find(x => x.FurnitureID == tag).setCurentTotalPrice();
                     List<Furniture> list = new List<Furniture>();
-                    foreach (Furniture item in this.Employee.FurnitureListData)
+                    foreach (Furniture item in this.Employee.SelectedMember.FurnitureListData)
                     {
                         list.Add(item);
                     }
@@ -122,11 +120,11 @@ namespace CS3230RentalSystemProject.View
                     {
                         int tag = (int)((CalendarDatePicker)sender).Tag;
                         int days = (((CalendarDatePicker)sender).Date.Value.DateTime.Date - DateTime.Now).Days + 1;
-                        this.Employee.FurnitureListData.Find(x => x.FurnitureID == tag).RentalDays = days;
-                        this.Employee.FurnitureListData.Find(x => x.FurnitureID == tag).ReturnDate = DateTime.Now.AddDays(days);
-                        this.Employee.FurnitureListData.Find(x => x.FurnitureID == tag).setCurentTotalPrice();
+                        this.Employee.SelectedMember.FurnitureListData.Find(x => x.FurnitureID == tag).RentalDays = days;
+                        this.Employee.SelectedMember.FurnitureListData.Find(x => x.FurnitureID == tag).ReturnDate = DateTime.Now.AddDays(days);
+                        this.Employee.SelectedMember.FurnitureListData.Find(x => x.FurnitureID == tag).setCurentTotalPrice();
                         List<Furniture> list = new List<Furniture>();
-                        foreach (Furniture item in this.Employee.FurnitureListData)
+                        foreach (Furniture item in this.Employee.SelectedMember.FurnitureListData)
                         {
                             list.Add(item);
                         }
@@ -159,9 +157,9 @@ namespace CS3230RentalSystemProject.View
             this.Employee = (Employee)e.Parameter;
             //var info = (EmployeeWindow.SelectedInfo)e.Parameter;
             //this.Employee = info.Employee;
-            this.Member = Employee.Member;
-            this.furnitureList.ItemsSource = this.Employee.FurnitureListData;
-            this.furnitureListData = this.Employee.FurnitureListData;
+            this.Member = Employee.SelectedMember;
+            this.furnitureList.ItemsSource = this.Employee.SelectedMember.FurnitureListData;
+            this.furnitureListData = this.Employee.SelectedMember.FurnitureListData;
             this.employeeName.Text = "Employee: " + this.Employee.ToString();
             this.membername.Text = "Member: " + this.Member.ToString();
             this.returndate.Date = DateTime.Now.AddDays(1);
@@ -177,7 +175,7 @@ namespace CS3230RentalSystemProject.View
             else
             {
                 decimal total = 0;
-                foreach (var furniture in this.Employee.FurnitureListData)
+                foreach (var furniture in this.Employee.SelectedMember.FurnitureListData)
                 {
                     total += furniture.CurrentToalPrice;
                 }
@@ -194,7 +192,7 @@ namespace CS3230RentalSystemProject.View
             {
                 var message = new MessageDialog(" " + inputdays + " is not valid. Please type agian!");
                 await message.ShowAsync();
-                ((TextBox)sender).Text = "" + this.Employee.FurnitureListData.Find(x => x.FurnitureID == tag).RentalDays;
+                ((TextBox)sender).Text = "" + this.Employee.SelectedMember.FurnitureListData.Find(x => x.FurnitureID == tag).RentalDays;
                 return;
 
             }
@@ -205,18 +203,18 @@ namespace CS3230RentalSystemProject.View
                 {
                     var message = new MessageDialog(" " + inputdays + " is not valid. Please type agian!");
                     await message.ShowAsync();
-                    ((TextBox)sender).Text = "" + this.Employee.FurnitureListData.Find(x => x.FurnitureID == tag).RentalDays;
+                    ((TextBox)sender).Text = "" + this.Employee.SelectedMember.FurnitureListData.Find(x => x.FurnitureID == tag).RentalDays;
                     return;
                 }
 
             }
             int days = Int32.Parse(inputdays);
             
-            this.Employee.FurnitureListData.Find(x => x.FurnitureID == tag).RentalDays = days;
-            this.Employee.FurnitureListData.Find(x => x.FurnitureID == tag).ReturnDate = DateTime.Now.AddDays(days);
-            this.Employee.FurnitureListData.Find(x => x.FurnitureID == tag).setCurentTotalPrice();
+            this.Employee.SelectedMember.FurnitureListData.Find(x => x.FurnitureID == tag).RentalDays = days;
+            this.Employee.SelectedMember.FurnitureListData.Find(x => x.FurnitureID == tag).ReturnDate = DateTime.Now.AddDays(days);
+            this.Employee.SelectedMember.FurnitureListData.Find(x => x.FurnitureID == tag).setCurentTotalPrice();
             List<Furniture> list = new List<Furniture>();
-            foreach (Furniture item in this.Employee.FurnitureListData)
+            foreach (Furniture item in this.Employee.SelectedMember.FurnitureListData)
             {
                 list.Add(item);
             }
@@ -285,7 +283,7 @@ namespace CS3230RentalSystemProject.View
                 {
                     this.returndate.Date = DateTimeOffset.Now.Date.AddDays(Int32.Parse(this.rentalDaysForAll.Text));
                     List<Furniture> list = new List<Furniture>();
-                    foreach (Furniture item in this.Employee.FurnitureListData)
+                    foreach (Furniture item in this.Employee.SelectedMember.FurnitureListData)
                     {
                         item.RentalDays = Int32.Parse(this.rentalDaysForAll.Text);
                         item.ReturnDate = DateTimeOffset.Now.Date.AddDays(Int32.Parse(this.rentalDaysForAll.Text));
