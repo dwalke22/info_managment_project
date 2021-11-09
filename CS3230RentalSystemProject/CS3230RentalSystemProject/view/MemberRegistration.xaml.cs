@@ -110,17 +110,6 @@ namespace CS3230RentalSystemProject.view
 
         private void checkInput()
         {
-            
-            if (this.FirstName != null && this.LastName != null)
-            {
-                string fullName = this.FirstName + " " + this.LastName;
-                if (this.checkFirstAndLastName(fullName))
-                {
-                    this.usernameExist.Text = "The memebr (" + fullName + ") exists! Please try a different First Name or Last Name!";
-                    this.usernameExist.Visibility = Visibility.Visible;
-                    isvalid = false;
-                }
-            }
             if (this.FirstName == null || this.FirstName == "")
             {
                 this.invalidFirstname.Visibility = Visibility.Visible;
@@ -194,18 +183,6 @@ namespace CS3230RentalSystemProject.view
                 this.pastDateToEmplyee();
             }
 
-        }
-
-        private bool checkFirstAndLastName(string fullName)
-        {
-            foreach(Member member in this.Employee.MemberList)
-            {
-                if (fullName.Equals(member.ToString(), StringComparison.OrdinalIgnoreCase))
-                {
-                    return true;
-                }
-            }
-            return false;
         }
 
         private void phoneInputBox_LostFocus(object sender, RoutedEventArgs e)

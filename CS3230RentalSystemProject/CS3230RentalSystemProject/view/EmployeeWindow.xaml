@@ -16,7 +16,7 @@
         <ComboBox x:Name="criteriaList" Margin="145,55,0,0" Width="115" SelectionChanged="criteriaList_SelectionChanged" PlaceholderText="Select Filter"/>
         <TextBox x:Name="searchBox" HorizontalAlignment="Left" Margin="10,90,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="205" Height="35" FontSize="14" PlaceholderText="eg: John Smith" AccessKey="" TextAlignment="Center" TextChanging="searchBox_TextChanging" KeyDown="searchBox_KeyDown" RenderTransformOrigin="0.458,0.429"/>
         <TextBlock x:Name="invalidSearch" HorizontalAlignment="Left" Margin="10,135,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="210" Height="29" Foreground="#FF9C0E0E" FontSize="14"/>
-        <ListBox x:Name="memberList" Margin="5,170,790,5" DoubleTapped="employeeList_DoubleTapped" BorderBrush="Black" BorderThickness="1,1,1,1" SelectionChanged="memberList_SelectionChanged"/>
+        <ListBox x:Name="memberList" Margin="5,170,790,5" DoubleTapped="employeeList_DoubleTapped" BorderBrush="Black" BorderThickness="1,1,1,1" SelectedItem="{x:Bind Employee.SelectedMember}" SelectionChanged="memberList_SelectionChanged"/>
         <TextBlock HorizontalAlignment="Left" Margin="255,135,0,0" Text="Search Furniture By: " TextWrapping="Wrap" VerticalAlignment="Top" FontSize="14"/>
         <ComboBox x:Name="furnitureFilterComboBox" Margin="382,125,0,0" Width="120" PlaceholderText="Select Filter" SelectionChanged="furnitureComboBox_SelectionChanged"/>
         <Button x:Name="resetFilterButton" Content="Reset Filters" Margin="385,88,0,0" VerticalAlignment="Top" Click="resetFilterButton_Click"/>

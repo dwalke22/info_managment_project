@@ -131,6 +131,8 @@
       <RootProperty Name="Template" />
       <RootProperty Name="BorderBrush" />
       <RootProperty Name="BorderThickness" />
+      <RootProperty Name="SelectedItem" />
+      <RootProperty Name="Visibility" />
       <RootEvent Name="DoubleTapped" />
       <RootEvent Name="SelectionChanged" />
     </RootType>
@@ -184,6 +186,7 @@
     <RootType FullName="Windows.UI.Xaml.Media.ImageBrush">
       <RootProperty Name="ImageSource" />
     </RootType>
+    <RootType FullName="Microsoft.Xaml.DirectUI.ProxyTypes.BindExtension" />
     <RootType FullName="CS3230RentalSystemProject.view.EmployeeWindow" />
     <RootType FullName="Windows.UI.Xaml.Media.CompositeTransform">
       <RootProperty Name="Rotation" />
@@ -199,6 +202,18 @@
     </RootType>
     <RootType FullName="CS3230RentalSystemProject.view.MemberRegistration" />
     <RootType FullName="CS3230RentalSystemProject.View.MemebrInformationViewer" />
+    <RootType FullName="Windows.UI.Xaml.Controls.ScrollViewer">
+      <RootMethod Name="GetIsVerticalScrollChainingEnabled" />
+      <RootMethod Name="SetIsVerticalScrollChainingEnabled" />
+    </RootType>
+    <RootType FullName="Windows.UI.Xaml.Controls.ToggleSwitch">
+      <RootProperty Name="Header" />
+      <RootProperty Name="Margin" />
+      <RootProperty Name="VerticalAlignment" />
+      <RootProperty Name="Width" />
+      <RootProperty Name="Height" />
+      <RootEvent Name="Toggled" />
+    </RootType>
     <RootType FullName="CS3230RentalSystemProject.View.TransactionView" />
   </Roots.RootTypes>
 </Roots>

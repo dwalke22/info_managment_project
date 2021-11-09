@@ -187,6 +187,12 @@
             </summary>
             <returns>all rental items</returns>
         </member>
+        <member name="M:CS3230RentalSystemProject.DAL.TransanctionDAL.getRentalItem(System.Int32,System.Int32)">
+            <summary>
+            Get all rental items
+            </summary>
+            <returns>all rental items</returns>
+        </member>
         <member name="M:CS3230RentalSystemProject.DAL.TransanctionDAL.getMemberTansactionsNumber(System.Int32)">
             <summary>
             Get all rental items
@@ -213,6 +219,12 @@
             <param name="employee"> the employee</param>
             <param name="member"> the member </param>
             <param name="fine">the fine if any </param>
+        </member>
+        <member name="M:CS3230RentalSystemProject.DAL.TransanctionDAL.GetReturnTransactionID">
+            <summary>
+            Get return transaction ID
+            </summary>
+            <returns></returns>
         </member>
         <member name="T:CS3230RentalSystemProject.Enums.Country">
             <summary>
@@ -935,9 +947,9 @@
             Furniture list that rent for the memebr
             </summary>
         </member>
-        <member name="M:CS3230RentalSystemProject.Model.Member.#ctor">
+        <member name="M:CS3230RentalSystemProject.Model.Member.InitializeFurnitureList">
             <summary>
-            Initialize constructor
+            Initialize FurnitureList
             </summary>
         </member>
         <member name="M:CS3230RentalSystemProject.Model.Member.ToString">

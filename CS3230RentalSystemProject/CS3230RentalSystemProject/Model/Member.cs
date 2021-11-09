@@ -95,13 +95,11 @@ namespace CS3230RentalSystemProject.Model
         public List<Furniture> FurnitureListData { get; set; }
 
         /// <summary>
-        /// Initialize constructor
+        /// Initialize FurnitureList
         /// </summary>
-        public Member()
-        {
+        public void InitializeFurnitureList() {
             this.FurnitureListData = new List<Furniture>();
         }
-
 
         /// <summary>
         /// Override tostring

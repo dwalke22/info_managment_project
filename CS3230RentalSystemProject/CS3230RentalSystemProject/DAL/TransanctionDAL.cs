@@ -24,14 +24,16 @@ namespace CS3230RentalSystemProject.DAL
             using (MySqlConnection connection = new MySqlConnection(Connection.connectionString))
             {
                 connection.Open();
-                using (var cmd = new MySqlCommand("uspGetMemberRentalItems(" + id + ")", connection))
+                using (var cmd = new MySqlCommand("uspGetMemberRentalItems", connection))
                 {
+                    
                     cmd.CommandType = System.Data.CommandType.StoredProcedure;
+                    cmd.Parameters.Add("@id", MySqlDbType.Int32).Value = id;
                     using (MySqlDataReader reader = cmd.ExecuteReader())
                     {
                         int rentalIDoridinal = reader.GetOrdinal("rentalID");
                         int furnitureIDoridinal = reader.GetOrdinal("furnitureID");
-                        int funitureNameoridinal = reader.GetOrdinal("funitureName");
+                        int funitureNameoridinal = reader.GetOrdinal("furnitureName");
                         int quantityoridinal = reader.GetOrdinal("quantity");
 
                         int rentalDateoridinal = reader.GetOrdinal("rentalDate");
@@ -66,9 +68,11 @@ namespace CS3230RentalSystemProject.DAL
             using (MySqlConnection connection = new MySqlConnection(Connection.connectionString))
             {
                 connection.Open();
-                using (var cmd = new MySqlCommand("uspGetRentalItem(" + renttalID + "," + furnitureID + ")", connection))
+                using (var cmd = new MySqlCommand("uspGetRentalItem", connection))
                 {
                     cmd.CommandType = System.Data.CommandType.StoredProcedure;
+                    cmd.Parameters.Add("@rentalID", MySqlDbType.Int32).Value = renttalID;
+                    cmd.Parameters.Add("@furnitureID", MySqlDbType.Int32).Value = furnitureID;
                     using (MySqlDataReader reader = cmd.ExecuteReader())
                     {
                         int rentalIDoridinal = reader.GetOrdinal("rentalID");
@@ -106,12 +110,14 @@ namespace CS3230RentalSystemProject.DAL
             using (MySqlConnection connection = new MySqlConnection(Connection.connectionString))
             {
                 connection.Open();
-                using (var cmd = new MySqlCommand("uspGetMemberTransactionsNumber(" + id + ")", connection))
+                using (var cmd = new MySqlCommand("uspGetMemberTransactionsNumber", connection))
                 {
                     cmd.CommandType = System.Data.CommandType.StoredProcedure;
+                    cmd.Parameters.Add("@id", MySqlDbType.Int32).Value = id;
+
                     using (MySqlDataReader reader = cmd.ExecuteReader())
                     {
-                        int iDoridinal = reader.GetOrdinal("transactionID ");
+                        int iDoridinal = reader.GetOrdinal("transactionID");
 
                         while (reader.Read())
                         {
@@ -135,14 +141,16 @@ namespace CS3230RentalSystemProject.DAL
             using (MySqlConnection connection = new MySqlConnection(Connection.connectionString))
             {
                 connection.Open();
-                using (var cmd = new MySqlCommand("uspGetMemberRentalItemsByTransactionID(" + id+")", connection))
+                using (var cmd = new MySqlCommand("uspGetMemberRentalItemsByTransactionID", connection))
                 {
                     cmd.CommandType = System.Data.CommandType.StoredProcedure;
+                    cmd.Parameters.Add("@id", MySqlDbType.Int32).Value = id;
+
                     using (MySqlDataReader reader = cmd.ExecuteReader())
                     {
                         int rentalIDoridinal = reader.GetOrdinal("rentalID");
                         int furnitureIDoridinal = reader.GetOrdinal("furnitureID");
-                        int funitureNameoridinal = reader.GetOrdinal("funitureName");
+                        int funitureNameoridinal = reader.GetOrdinal("furnitureName");
                         int quantityoridinal = reader.GetOrdinal("quantity");
 
                         int rentalDateoridinal = reader.GetOrdinal("rentalDate");
@@ -177,14 +185,16 @@ namespace CS3230RentalSystemProject.DAL
             using (MySqlConnection connection = new MySqlConnection(Connection.connectionString))
             {
                 connection.Open();
-                using (var cmd = new MySqlCommand("uspGetMemberRentalItems(" + id + ")", connection))
+                using (var cmd = new MySqlCommand("uspGetMemberReturnItems", connection))
                 {
                     cmd.CommandType = System.Data.CommandType.StoredProcedure;
+                    cmd.Parameters.Add("@id", MySqlDbType.Int32).Value = id;
+
                     using (MySqlDataReader reader = cmd.ExecuteReader())
                     {
                         int rentalIDoridinal = reader.GetOrdinal("rentalID");
                         int furnitureIDoridinal = reader.GetOrdinal("furnitureID");
-                        int funitureNameoridinal = reader.GetOrdinal("funitureName");
+                        int funitureNameoridinal = reader.GetOrdinal("furnitureName");
                         int quantityoridinal = reader.GetOrdinal("quantity");
                         int returnIDoridinal = reader.GetOrdinal("returnID");
                         int returnDateoridinal = reader.GetOrdinal("returnDate");
@@ -234,19 +244,19 @@ namespace CS3230RentalSystemProject.DAL
 
                 using MySqlCommand tranactionIDCommand = new MySqlCommand(tranactionIDQuery, connection);
 
-                transactionID = (int)command.ExecuteScalar();
+                transactionID = (int)tranactionIDCommand.ExecuteScalar();
 
                 foreach (var rentalItem in items)
                 {
-                    string returnQuery = "insert into returnitem (rentalID, furnitureID, returnID, quantity, returnDate) values (@transactionID, @furnitureID, @returnID, @quantity, @returnDate)";
+                    string returnQuery = "insert into returnitem (rentalID, furnitureID, returnID, quantity, returnDate) values (@rentalID, @furnitureID, @returnID, @quantity, @returnDate)";
                     using MySqlCommand returnCommand = new MySqlCommand(returnQuery, connection);
-                    command.Parameters.Add("@transactionID", MySqlDbType.Int32).Value = transactionID;
-                    command.Parameters.Add("@furnitureID", MySqlDbType.Int32).Value = rentalItem.FurnitureID;
-                    command.Parameters.Add("@returnID", MySqlDbType.Int32).Value = rentalItem.RentalID;
-                    command.Parameters.Add("@quantity", MySqlDbType.Date).Value = rentalItem.Quantity;
-                    command.Parameters.Add("@returnDate", MySqlDbType.Date).Value = DateTime.Now.ToString("yyyy-MM-dd");
+                    returnCommand.Parameters.Add("@rentalID", MySqlDbType.Int32).Value = rentalItem.RentalID;
+                    returnCommand.Parameters.Add("@furnitureID", MySqlDbType.Int32).Value = rentalItem.FurnitureID;
+                    returnCommand.Parameters.Add("@returnID", MySqlDbType.Int32).Value = transactionID;
+                    returnCommand.Parameters.Add("@quantity", MySqlDbType.Int32).Value = rentalItem.Quantity;
+                    returnCommand.Parameters.Add("@returnDate", MySqlDbType.Date).Value = DateTime.Now.ToString("yyyy-MM-dd");
 
-                    command.ExecuteNonQuery();
+                    returnCommand.ExecuteNonQuery();
 
                     string updateQuery = "update furniture set quantity= quantity + @returnquantity where furnitureID = @furnitureID";
                     using MySqlCommand updateCommand = new MySqlCommand(updateQuery, connection);

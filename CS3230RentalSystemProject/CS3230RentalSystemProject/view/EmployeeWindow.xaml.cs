@@ -59,8 +59,9 @@ namespace CS3230RentalSystemProject.view
             this.furnitureListData = this.furnitureDAL.GetAllFurnitureList();
             this.furnitureListData.ForEach(x => x.setQuantityList());
             this.furnitureList.ItemsSource = this.furnitureListData;
-            
-            this.memberList.ItemsSource = dAL.GetAllMemberList();
+            List<Member> newlist = dAL.GetAllMemberList();
+            newlist.ForEach(x => x.InitializeFurnitureList());
+            this.memberList.ItemsSource = newlist;
             
             this.list = this.convertList();
             this.invalidSearch.Visibility = Visibility.Collapsed;
@@ -71,6 +72,8 @@ namespace CS3230RentalSystemProject.view
 
             this.categoryComboBox.ItemsSource = this.furnitureDAL.GetAllFurnitureCategories();
             this.styleComboBox.ItemsSource = this.furnitureDAL.GetAllFurnitureStyles();
+
+           
         }
 
 
@@ -84,6 +87,7 @@ namespace CS3230RentalSystemProject.view
         {
             this.memberList.ItemsSource = dAL.GetAllMemberList();
             this.invalidSearch.Visibility = Visibility.Collapsed;
+            this.serveredMember.Text = "";
         }
 
         private void employeeList_DoubleTapped(object sender, DoubleTappedRoutedEventArgs e)
@@ -143,7 +147,7 @@ namespace CS3230RentalSystemProject.view
                         this.memberList.ItemsSource = this.dAL.GetMemberByPhone(text);
                     }
                 }
-                else if (this.searchType == "FullName")
+                else if (this.searchType == "Full Name")
                 {
                     Regex nameRegex = new Regex(@"^[\w]+\s[\w]");
                     if (text != null && !nameRegex.IsMatch(text))
@@ -171,7 +175,7 @@ namespace CS3230RentalSystemProject.view
             {
                 this.searchBox.PlaceholderText = "eg: 6782960303";
             }
-            else if (this.searchType == "FullName")
+            else if (this.searchType == "Full Name")
             {
                 this.searchBox.PlaceholderText = "eg: John Simith";
             }
@@ -179,44 +183,66 @@ namespace CS3230RentalSystemProject.view
 
         private async void addButtonClick(object sender, RoutedEventArgs e)
         {
-            int tag = (int)((Button)sender).Tag;
 
-            List<Furniture> list = new List<Furniture>();
-            foreach (Furniture item in this.furnitureList.Items)
+            if (this.memberList.SelectedItem == null)
             {
-                if (item.FurnitureID == tag)
-                {
-                    if (item.Quantity == 0)
-                    {
-                        var message = new MessageDialog(" " + item.FurnitureName + " is not available now!");
-                        await message.ShowAsync();
-                        return;
-                    }
-                    item.Quantity--;
-                }
-                list.Add(item);
-            }
-            
-            Furniture furniture = this.furnitureListData.Find(x => x.FurnitureID == tag);
-            
-            if (this.Employee.SelectedMember.FurnitureListData.Contains(furniture))
-            {
-                int index = this.Employee.SelectedMember.FurnitureListData.IndexOf(furniture);
-                this.Employee.SelectedMember.FurnitureListData.ElementAt(index).RentQuantity++;
-                this.Employee.SelectedMember.FurnitureListData.ElementAt(index).setCurentTotalPrice();
-                rentQuantity++;
-                this.bagButton.Content = "Bag(" + rentQuantity + ")";
+                this.memberErrorLabel.Visibility = Visibility.Visible;
             }
             else
             {
-                furniture.RentQuantity++;
-                furniture.setCurentTotalPrice();
-                this.Employee.SelectedMember.FurnitureListData.Add(furniture);
-                rentQuantity++;
-                this.bagButton.Content = "Bag(" + rentQuantity + ")";
+                if (this.Employee.SelectedMember != null)
+                {
+                    List<Furniture> listFurniture = this.Employee.SelectedMember.FurnitureListData;
+                    this.Employee.SelectedMember = (Member)this.memberList.SelectedItem;
+                    this.Employee.SelectedMember.FurnitureListData = listFurniture;
+                }
+                else
+                {
+                    this.Employee.SelectedMember = (Member)this.memberList.SelectedItem;
+                }
+                
+                int tag = (int)((Button)sender).Tag;
+
+                List<Furniture> list = new List<Furniture>();
+                foreach (Furniture item in this.furnitureList.Items)
+                {
+                    if (item.FurnitureID == tag)
+                    {
+                        if (item.Quantity == 0)
+                        {
+                            var message = new MessageDialog(" " + item.FurnitureName + " is not available now!");
+                            await message.ShowAsync();
+                            return;
+                        }
+                        item.Quantity--;
+                    }
+                    list.Add(item);
+                }
+
+                Furniture furniture = this.furnitureListData.Find(x => x.FurnitureID == tag);
+
+                if (this.Employee.SelectedMember.FurnitureListData.Exists(x=> x.FurnitureID == furniture.FurnitureID))
+                {
+                    int index = this.Employee.SelectedMember.FurnitureListData.FindIndex(x=> x.FurnitureID == furniture.FurnitureID);
+                    this.Employee.SelectedMember.FurnitureListData.ElementAt(index).RentQuantity++;
+                    this.Employee.SelectedMember.FurnitureListData.ElementAt(index).setCurentTotalPrice();
+                    rentQuantity++;
+                    this.bagButton.Content = "Bag(" + rentQuantity + ")";
+                }
+                else
+                {
+                    furniture.RentQuantity++;
+                    furniture.setCurentTotalPrice();
+                    this.Employee.SelectedMember.FurnitureListData.Add(furniture);
+                    rentQuantity++;
+                    this.bagButton.Content = "Bag(" + rentQuantity + ")";
+                }
+
+                this.furnitureList.ItemsSource = list;
+
             }
 
-            this.furnitureList.ItemsSource = list;
+            
         }
 
         private void bagButton_Click(object sender, RoutedEventArgs e)
@@ -233,7 +259,11 @@ namespace CS3230RentalSystemProject.view
                 //selectedInfo.Employee = this.employee;
                 //selectedInfo.Member = (Member)this.memberList.SelectedItem;
                 //Member member = (Member)this.memberList.SelectedItem;
-                this.Employee.SelectedMember = (Member)this.memberList.SelectedItem;
+                if (this.Employee.SelectedMember == null)
+                {
+                    this.Employee.SelectedMember = (Member)this.memberList.SelectedItem;
+                }
+                
                 Frame.Navigate(typeof(Checkout), this.Employee);
             }
         }
@@ -265,15 +295,34 @@ namespace CS3230RentalSystemProject.view
             this.Employee = (Employee)e.Parameter;
 
             this.employeeName.Text = "Welcome, " + this.Employee.ToString();
-
             if (this.Employee.SelectedMember != null)
             {
-                int size = this.Employee.SelectedMember.FurnitureListData.Count;
+                int size =0;
+                List<Furniture> list = new List<Furniture>();
+                foreach (Furniture item in this.furnitureList.Items)
+                {
+                    list.Add(item);
+                }
+                if (this.Employee.SelectedMember.FurnitureListData != null)
+                {
+                    foreach (var item in this.Employee.SelectedMember.FurnitureListData)
+                    {
+                        size += item.RentQuantity;
+                        if (list.Exists(x => x.FurnitureID == item.FurnitureID))
+                        {
+                            list.Find(x => x.FurnitureID == item.FurnitureID).Quantity -= item.RentQuantity;
+                        }
+                    }
+                }
+               
                 this.bagButton.Content = "Bag(" + size + ")";
                 this.rentQuantity = size;
                 this.serveredMember.Text = "Now Server: " + this.Employee.SelectedMember.ToString();
-                this.memberList.SelectedItem = this.Employee.SelectedMember;
+                
+                this.memberList.SelectedIndex = this.list.FindIndex(x=>x.MemberID == this.Employee.SelectedMember.MemberID);
+                this.furnitureList.ItemsSource = list;
             }
+
         }
 
         private void furnitureComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -413,8 +462,21 @@ namespace CS3230RentalSystemProject.view
         private void memberList_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             this.memberErrorLabel.Visibility = Visibility.Collapsed;
-            this.serveredMember.Text = "Now Server: " + ((Member)this.memberList.SelectedItem).ToString();
-           
+            if (this.memberList.SelectedItem != null)
+            {
+                this.serveredMember.Text = "Now Server: " + ((Member)this.memberList.SelectedItem).ToString();
+                if (this.Employee.SelectedMember != null && this.Employee.SelectedMember.MemberID != ((Member)this.memberList.SelectedItem).MemberID)
+                {
+                    this.Employee.SelectedMember = (Member)this.memberList.SelectedItem;
+
+                    this.bagButton.Content = "Bag(0)";
+                    this.furnitureListData = this.furnitureDAL.GetAllFurnitureList();
+                    this.furnitureListData.ForEach(x => x.setQuantityList());
+                    this.furnitureList.ItemsSource = this.furnitureListData;
+
+                }
+            }
+            
         }
 
         private void transactionButton_Click(object sender, RoutedEventArgs e)

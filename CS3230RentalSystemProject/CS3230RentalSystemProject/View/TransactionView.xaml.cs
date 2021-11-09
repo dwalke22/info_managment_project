@@ -58,13 +58,14 @@ namespace CS3230RentalSystemProject.View
             this.RentalItemsWithSameID = new List<RentalItem>();
             this.invalidSearch.Visibility = Visibility.Collapsed;
             this.criteriaList.ItemsSource = this.criteriaListInfo;
-            
+            this.returnALl.Visibility = Visibility.Collapsed;
         }
 
         private void searchBox_TextChanging(TextBox sender, TextBoxTextChangingEventArgs args)
         {
             this.memberList.ItemsSource = dAL.GetAllMemberList();
             this.invalidSearch.Visibility = Visibility.Collapsed;
+            this.membername.Text = "";
         }
 
         private void searchBox_KeyDown(object sender, KeyRoutedEventArgs e)
@@ -108,7 +109,7 @@ namespace CS3230RentalSystemProject.View
                         this.memberList.ItemsSource = this.dAL.GetMemberByPhone(text);
                     }
                 }
-                else if (this.searchType == "FullName")
+                else if (this.searchType == "Full Name")
                 {
                     Regex nameRegex = new Regex(@"^[\w]+\s[\w]");
                     if (text != null && !nameRegex.IsMatch(text))
@@ -136,7 +137,7 @@ namespace CS3230RentalSystemProject.View
             {
                 this.searchBox.PlaceholderText = "eg: 6782960303";
             }
-            else if (this.searchType == "FullName")
+            else if (this.searchType == "Full Name")
             {
                 this.searchBox.PlaceholderText = "eg: John Simith";
             }
@@ -197,10 +198,10 @@ namespace CS3230RentalSystemProject.View
                 reciept += "Transaction ID: " + transactionID + "\n";
                 reciept += "Employee:" + this.Employee.FirstName + " " + this.Employee.LastName + "\n";
                 reciept += "Customer:" + member.FirstName + " " + member.LastName + "\n";
-                reciept += "Return Items: " + "                   " + "Return Quantity: " + "\n";
+                reciept += "Return Items: " + "                       " + "Return Quantity: " + "\n";
                 foreach (var returnItem in rentalItems)
                 {
-                    reciept += "" + returnItem.FurnitureName + "           " + returnItem.Quantity + "\n";
+                    reciept += "" + returnItem.FurnitureName + "               " + returnItem.Quantity + "\n";
                 }
                 reciept += "\n";
                 reciept += "Thanks for your business! Have A Nice Day!";
@@ -225,20 +226,41 @@ namespace CS3230RentalSystemProject.View
 
         private void memberList_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            Member member = (Member)this.memberList.SelectedItem;
-            this.rentalItemList.ItemsSource = this.TransanctionDAL.getAllRentalItems((int)member.MemberID);
-            this.returnItemList.ItemsSource = this.TransanctionDAL.getAllReturnItems((int)member.MemberID);
-            this.transactionIDBox.ItemsSource = this.TransanctionDAL.getMemberTansactionsNumber((int)member.MemberID);
-            this.membername.Text = "Member: " + member.ToString();
+            if (this.memberList.SelectedItem != null)
+            {
+                Member member = (Member)this.memberList.SelectedItem;
+                List<RentalItem> list = this.TransanctionDAL.getAllRentalItems((int)member.MemberID);
+                list.ForEach(x => x.setRentalIDInfor());
+                this.rentalItemList.ItemsSource = list;
+                this.returnItemList.ItemsSource = this.TransanctionDAL.getAllReturnItems((int)member.MemberID);
+                this.transactionIDBox.ItemsSource = this.TransanctionDAL.getMemberTansactionsNumber((int)member.MemberID);
+                this.membername.Text = "Member: " + member.ToString();
+            }
+            
         }
 
         private void transactionIDBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            string text = (string)this.transactionIDBox.SelectedItem;
-            int id = Int32.Parse(text);
-            List<RentalItem> list = this.TransanctionDAL.getAllRentalItemsByRentalID(id);
-            this.rentalItemList.ItemsSource = list;
-            this.RentalItemsWithSameID = list;
+            this.returnALl.Visibility = Visibility.Collapsed;
+            if (this.transactionIDBox.SelectedItem != null)
+            {
+                int id = (int)this.transactionIDBox.SelectedItem;
+
+                List<RentalItem> list = this.TransanctionDAL.getAllRentalItemsByRentalID(id);
+                list.ForEach(x => x.setRentalIDInfor());
+                this.rentalItemList.ItemsSource = list;
+                this.RentalItemsWithSameID = list;
+                if (list.Count != 0)
+                {
+                    this.returnALl.Visibility = Visibility.Visible;
+                } 
+                else
+                {
+                    this.returnALl.Visibility = Visibility.Collapsed;
+                }
+            }
+            
+            
         }
 
         private void returnToMainPage_Click(object sender, RoutedEventArgs e)
@@ -261,25 +283,25 @@ namespace CS3230RentalSystemProject.View
             showDialog.DefaultCommandIndex = 0;
             showDialog.CancelCommandIndex = 1;
             var result = await showDialog.ShowAsync();
+            Member member = (Member)this.memberList.SelectedItem;
             if ((int)result.Id == 0)
             {
-                Member member = (Member)this.memberList.SelectedItem;
+               
 
                 this.TransanctionDAL.returnItems(this.RentalItemsWithSameID, this.Employee, member, 0);
 
                 this.rentalItemList.ItemsSource = this.TransanctionDAL.getAllRentalItems((int)member.MemberID);
                 this.returnItemList.ItemsSource = this.TransanctionDAL.getAllReturnItems((int)member.MemberID);
-                this.transactionIDBox.ItemsSource = this.TransanctionDAL.getMemberTansactionsNumber((int)member.MemberID);
 
                 int transactionID = this.TransanctionDAL.GetReturnTransactionID();
                 string reciept = "";
                 reciept += "Transaction ID: " + transactionID + "\n";
                 reciept += "Employee:" + this.Employee.FirstName + " " + this.Employee.LastName + "\n";
                 reciept += "Customer:" + member.FirstName + " " + member.LastName + "\n";
-                reciept += "Return Items: " + "                   " + "Return Quantity: " + "\n";
+                reciept += "Return Items: " + "                       " + "Return Quantity: " + "\n";
                 foreach(var returnItem in this.RentalItemsWithSameID)
                 {
-                    reciept += "" + returnItem.FurnitureName + "           " + returnItem.Quantity + "\n";
+                    reciept += "" + returnItem.FurnitureName + "               " + returnItem.Quantity + "\n";
                 }
                 reciept += "\n";
                 reciept += "Thanks for your business! Have A Nice Day!";
@@ -297,7 +319,38 @@ namespace CS3230RentalSystemProject.View
                 recieptDialog.CancelCommandIndex = 1;
                 await recieptDialog.ShowAsync();
             }
-            
+            this.transactionIDBox.ItemsSource = this.TransanctionDAL.getMemberTansactionsNumber((int)member.MemberID);
+        }
+
+        private void _switch_Toggled(object sender, RoutedEventArgs e)
+        {
+            ToggleSwitch toggleSwitch = sender as ToggleSwitch;
+
+            if (toggleSwitch != null)
+            {
+                if (toggleSwitch.IsOn == true)
+                {
+                    this.returnItemList.Visibility = Visibility.Visible;
+                    this.returnTransactionLabel.Visibility = Visibility.Visible;
+
+                    this.rentalItemList.Visibility = Visibility.Collapsed;
+                    this.rentalTransactionLabel.Visibility = Visibility.Collapsed;
+                    this.filterTransactionLabel.Visibility = Visibility.Collapsed;
+                    this.transactionIDBox.Visibility = Visibility.Collapsed;
+                    this.returnALl.Visibility = Visibility.Collapsed;
+                }
+                else
+                {
+                    this.returnItemList.Visibility = Visibility.Collapsed;
+                    this.returnTransactionLabel.Visibility = Visibility.Collapsed;
+
+                    this.rentalItemList.Visibility = Visibility.Visible;
+                    this.rentalTransactionLabel.Visibility = Visibility.Visible;
+                    this.filterTransactionLabel.Visibility = Visibility.Visible;
+                    this.transactionIDBox.Visibility = Visibility.Visible;
+                    this.returnALl.Visibility = Visibility.Collapsed;
+                }
+            }
         }
     }
     
