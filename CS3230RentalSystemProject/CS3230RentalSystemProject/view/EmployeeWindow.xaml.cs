@@ -416,5 +416,10 @@ namespace CS3230RentalSystemProject.view
             this.serveredMember.Text = "Now Server: " + ((Member)this.memberList.SelectedItem).ToString();
            
         }
+
+        private void transactionButton_Click(object sender, RoutedEventArgs e)
+        {
+            Frame.Navigate(typeof(TransactionView), this.Employee);
+        }
     }
 }

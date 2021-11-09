@@ -93,5 +93,6 @@
         <TextBox x:Name="furnitureIDSearch" HorizontalAlignment="Left" Margin="530,123,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Height="35" FontSize="14" PlaceholderText="eg: 1" AccessKey="" TextAlignment="Center" TextChanging="furnitureIDSearch_TextChanging" KeyDown="furnitureIDSearch_KeyDown"/>
         <TextBlock x:Name="invalidFurnitureSearch" HorizontalAlignment="Left" Margin="659,125,0,0" Text="Invalid input!" TextWrapping="Wrap" VerticalAlignment="Top" Width="210" Height="29" Foreground="#FF9C0E0E" FontSize="14"/>
         <TextBlock x:Name="serveredMember" HorizontalAlignment="Left" Margin="695,50,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="284" Height="29" Foreground="#FF9C0E0E" FontSize="14"/>
+        <Button x:Name="transactionButton" Content="Transactions" Margin="550,10,0,0" VerticalAlignment="Top" Width="130" Height="35" Click="transactionButton_Click" RenderTransformOrigin="0.538,0.714"/>
     </Grid>
 </Page>

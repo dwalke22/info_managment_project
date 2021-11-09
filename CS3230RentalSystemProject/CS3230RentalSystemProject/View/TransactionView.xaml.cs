@@ -1,5 +1,6 @@
 ﻿using CS3230RentalSystemProject.DAL;
 using CS3230RentalSystemProject.Model;
+using CS3230RentalSystemProject.view;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -242,7 +243,7 @@ namespace CS3230RentalSystemProject.View
 
         private void returnToMainPage_Click(object sender, RoutedEventArgs e)
         {
-
+            Frame.Navigate(typeof(EmployeeWindow), this.Employee);
         }
 
         private async void returnALl_Click(object sender, RoutedEventArgs e)
