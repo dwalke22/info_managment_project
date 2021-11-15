@@ -47,8 +47,8 @@ namespace CS3230RentalSystemProject.DAL
                                 FurnitureID = reader.GetFieldValueCheckNull<Int32>(furnitureIDoridinal),
                                 FurnitureName = reader.GetFieldValueCheckNull<string>(funitureNameoridinal),
                                 Quantity = reader.GetFieldValueCheckNull<Int32>(quantityoridinal),
-                                RentalDate = reader.GetFieldValueCheckNull<DateTime>(rentalDateoridinal),
-                                DueDate = reader.GetFieldValueCheckNull<DateTime>(dueDateoridinal),
+                                RentalDate = reader.GetFieldValueCheckNull<DateTime>(rentalDateoridinal).Date.ToString("yyyy-MM-dd"),
+                                DueDate = reader.GetFieldValueCheckNull<DateTime>(dueDateoridinal).Date.ToString("yyyy-MM-dd"),
                             });
 
                         }
@@ -89,8 +89,52 @@ namespace CS3230RentalSystemProject.DAL
                                 RentalID = reader.GetFieldValueCheckNull<Int32>(rentalIDoridinal),
                                 FurnitureID = reader.GetFieldValueCheckNull<Int32>(furnitureIDoridinal),
                                 Quantity = reader.GetFieldValueCheckNull<Int32>(quantityoridinal),
-                                RentalDate = reader.GetFieldValueCheckNull<DateTime>(rentalDateoridinal),
-                                DueDate = reader.GetFieldValueCheckNull<DateTime>(dueDateoridinal),
+                                RentalDate = reader.GetFieldValueCheckNull<DateTime>(rentalDateoridinal).Date.ToString("yyyy-MM-dd"),
+                                DueDate = reader.GetFieldValueCheckNull<DateTime>(dueDateoridinal).Date.ToString("yyyy-MM-dd"),
+                            });
+
+                        }
+                    }
+                }
+            }
+            return list;
+        }
+
+        /// <summary>
+        /// Get all current rentaled items
+        /// </summary>
+        /// <returns>all current rentaled items</returns>
+        public List<RentalItem> getAllCurrentRentaledItems(int id)
+        {
+            List<RentalItem> list = new List<RentalItem>();
+            using (MySqlConnection connection = new MySqlConnection(Connection.connectionString))
+            {
+                connection.Open();
+                using (var cmd = new MySqlCommand("uspGetMemberCurrentRentaledItems", connection))
+                {
+
+                    cmd.CommandType = System.Data.CommandType.StoredProcedure;
+                    cmd.Parameters.Add("@id", MySqlDbType.Int32).Value = id;
+                    using (MySqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        int rentalIDoridinal = reader.GetOrdinal("rentalID");
+                        int furnitureIDoridinal = reader.GetOrdinal("furnitureID");
+                        int funitureNameoridinal = reader.GetOrdinal("furnitureName");
+                        int quantityoridinal = reader.GetOrdinal("quantity");
+
+                        int rentalDateoridinal = reader.GetOrdinal("rentalDate");
+                        int dueDateoridinal = reader.GetOrdinal("dueDate");
+
+                        while (reader.Read())
+                        {
+                            list.Add(new RentalItem
+                            {
+                                RentalID = reader.GetFieldValueCheckNull<Int32>(rentalIDoridinal),
+                                FurnitureID = reader.GetFieldValueCheckNull<Int32>(furnitureIDoridinal),
+                                FurnitureName = reader.GetFieldValueCheckNull<string>(funitureNameoridinal),
+                                Quantity = reader.GetFieldValueCheckNull<Int32>(quantityoridinal),
+                                RentalDate = reader.GetFieldValueCheckNull<DateTime>(rentalDateoridinal).Date.ToString("yyyy-MM-dd"),
+                                DueDate = reader.GetFieldValueCheckNull<DateTime>(dueDateoridinal).Date.ToString("yyyy-MM-dd"),
                             });
 
                         }
@@ -164,8 +208,8 @@ namespace CS3230RentalSystemProject.DAL
                                 FurnitureID = reader.GetFieldValueCheckNull<Int32>(furnitureIDoridinal),
                                 FurnitureName = reader.GetFieldValueCheckNull<string>(funitureNameoridinal),
                                 Quantity = reader.GetFieldValueCheckNull<Int32>(quantityoridinal),
-                                RentalDate = reader.GetFieldValueCheckNull<DateTime>(rentalDateoridinal),
-                                DueDate = reader.GetFieldValueCheckNull<DateTime>(dueDateoridinal),
+                                RentalDate = reader.GetFieldValueCheckNull<DateTime>(rentalDateoridinal).Date.ToString("yyyy-MM-dd"),
+                                DueDate = reader.GetFieldValueCheckNull<DateTime>(dueDateoridinal).Date.ToString("yyyy-MM-dd"),
                             });
 
                         }
@@ -207,7 +251,7 @@ namespace CS3230RentalSystemProject.DAL
                                 FurnitureID = reader.GetFieldValueCheckNull<Int32>(furnitureIDoridinal),
                                 FurnitureName = reader.GetFieldValueCheckNull<string>(funitureNameoridinal),
                                 Quantity = reader.GetFieldValueCheckNull<Int32>(quantityoridinal),
-                                ReturnDate = reader.GetFieldValueCheckNull<DateTime>(returnDateoridinal),
+                                ReturnDate = reader.GetFieldValueCheckNull<DateTime>(returnDateoridinal).Date.ToString("yyyy-MM-dd"),
                                 ReturnID = reader.GetFieldValueCheckNull<Int32>(returnIDoridinal),
                             });
 
@@ -265,14 +309,6 @@ namespace CS3230RentalSystemProject.DAL
                     updateCommand.Parameters.Add("@furnitureID", MySqlDbType.Int32).Value = rentalItem.FurnitureID;
 
                     updateCommand.ExecuteNonQuery();
-
-                    string deleteQuery = "delete rentalitem from `rentalitem` where furnitureID = @furnitureID and rentalID = @rentalID";
-                    using MySqlCommand deleteCommand = new MySqlCommand(deleteQuery, connection);
-
-                    deleteCommand.Parameters.Add("@furnitureID", MySqlDbType.Int32).Value = rentalItem.FurnitureID;
-                    deleteCommand.Parameters.Add("@rentalID", MySqlDbType.Int32).Value = rentalItem.RentalID;
-
-                    deleteCommand.ExecuteNonQuery();
                 }
             }
         }

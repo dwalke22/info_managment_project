@@ -34,12 +34,12 @@ namespace CS3230RentalSystemProject.Model
         /// <summary>
         /// The rental date
         /// </summary>
-        public DateTime RentalDate { get; set; }
+        public string RentalDate { get; set; }
 
         /// <summary>
         /// The Due date
         /// </summary>
-        public DateTime DueDate { get; set; }
+        public string DueDate { get; set; }
 
         /// <summary>
         /// The rental info

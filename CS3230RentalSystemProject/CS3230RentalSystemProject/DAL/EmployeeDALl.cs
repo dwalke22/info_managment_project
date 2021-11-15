@@ -42,6 +42,8 @@ namespace DBAccess.DAL
                 int phoneoridinal = reader.GetOrdinal("phoneNumber");
                 int emailoridinal = reader.GetOrdinal("email");
 
+                int isAdminemailoridinal = reader.GetOrdinal("isAdmin");
+
                 while (reader.Read())
                 {
                     employee = new Employee
@@ -50,7 +52,8 @@ namespace DBAccess.DAL
                         FirstName = reader.GetFieldValueCheckNull<string>(fnameoridinal),
                         LastName = reader.GetFieldValueCheckNull<string>(lnameoridinal),
                         PhoneNumber = reader.GetFieldValueCheckNull<string>(phoneoridinal),
-                        Email = reader.GetFieldValueCheckNull<string>(emailoridinal)
+                        Email = reader.GetFieldValueCheckNull<string>(emailoridinal),
+                        IsAdmin = reader.GetFieldValueCheckNull<bool>(isAdminemailoridinal)
                     };
                 }
                 return employee;

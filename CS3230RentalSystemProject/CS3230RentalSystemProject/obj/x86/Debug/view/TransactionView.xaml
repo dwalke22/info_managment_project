@@ -7,7 +7,6 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" Width="990" Height="500">
-
     <Grid Height="500" VerticalAlignment="Center" HorizontalAlignment="Center" Width="990">
         <TextBlock x:ConnectionId='2' x:Name="employeeName" HorizontalAlignment="Left" Margin="5,5,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="300" Height="43" FontWeight="Bold" TextAlignment="Start" FontFamily="SimSun" FontSize="16"  Style="{ThemeResource SubheaderTextBlockStyle}" Foreground="#FFB03636" RenderTransformOrigin="0.5,0.392"/>
         <TextBlock x:ConnectionId='3' x:Name="membername" HorizontalAlignment="Left" Margin="325,5,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="313" Height="43" FontWeight="Bold" TextAlignment="Start" FontFamily="SimSun" FontSize="16"  Style="{ThemeResource SubheaderTextBlockStyle}" Foreground="#FFB03636"/>
@@ -25,9 +24,9 @@
                             <ColumnDefinition Width="60" />
                             <ColumnDefinition Width="180" />
                             <ColumnDefinition Width="60" />
-                            <ColumnDefinition Width="165" />
-                            <ColumnDefinition Width="165" />
-                            <ColumnDefinition Width="140" />
+                            <ColumnDefinition Width="150" />
+                            <ColumnDefinition Width="150" />
+                            <ColumnDefinition Width="167" />
 
                         </Grid.ColumnDefinitions>
                         <TextBlock Grid.Column="0" Text="{Binding RentalID}" HorizontalAlignment="Left"/>
@@ -35,8 +34,8 @@
                         <TextBlock Grid.Column="2" Text="{Binding Quantity}" HorizontalAlignment="Center"/>
                         <TextBlock Grid.Column="3" Text="{Binding RentalDate}" HorizontalAlignment="Center"/>
                         <TextBlock Grid.Column="4" Text="{Binding DueDate}" HorizontalAlignment="Center"/>
-                        <Button x:ConnectionId='20' Tag="{Binding RentalInfo}" Content="Return" Grid.Column="5" Width="80" Height="30" Foreground="#FF9C0E0E" FontSize="14"                           HorizontalAlignment="Center">
-                        </Button>
+                        <CheckBox x:ConnectionId='24' Tag="{Binding RentalInfo}" Content="Return" Grid.Column="5" Width="80" Height="30" Foreground="#FF9C0E0E" FontSize="14"                                                     HorizontalAlignment="Center">
+                        </CheckBox>
                     </Grid>
 
 
@@ -54,9 +53,9 @@
                                 <ColumnDefinition Width="60" />
                                 <ColumnDefinition Width="180" />
                                 <ColumnDefinition Width="60" />
-                                <ColumnDefinition Width="165" />
-                                <ColumnDefinition Width="165" />
-                                <ColumnDefinition Width="140" />
+                                <ColumnDefinition Width="150" />
+                                <ColumnDefinition Width="150" />
+                                <ColumnDefinition Width="167" />
                             </Grid.ColumnDefinitions>
                             <Border Grid.Column="0" BorderBrush="Black" BorderThickness="0,0,1,1">
                                 <TextBlock FontWeight="Bold" HorizontalAlignment="Left">Rental ID</TextBlock>
@@ -83,22 +82,84 @@
             </ListBox.Template>
         </ListBox>
 
+        <ListBox x:ConnectionId='9' x:Name="rentalItemHistoryList" Margin="220,125,0,220" HorizontalAlignment="Left" Width="755" ScrollViewer.IsVerticalScrollChainingEnabled="True" Visibility="Collapsed">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
 
-        <ListBox x:ConnectionId='9' x:Name="returnItemList" Margin="220,125,0,10" HorizontalAlignment="Left" Width="745" Visibility="Collapsed">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="60" />
+                            <ColumnDefinition Width="220" />
+                            <ColumnDefinition Width="73" />
+                            <ColumnDefinition Width="200" />
+                            <ColumnDefinition Width="200" />
+
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Grid.Column="0" Text="{Binding RentalID}" HorizontalAlignment="Left"/>
+                        <TextBlock Grid.Column="1" Text="{Binding FurnitureName}" HorizontalAlignment="Center"/>
+                        <TextBlock Grid.Column="2" Text="{Binding Quantity}" HorizontalAlignment="Center"/>
+                        <TextBlock Grid.Column="3" Text="{Binding RentalDate}" HorizontalAlignment="Center"/>
+                        <TextBlock Grid.Column="4" Text="{Binding DueDate}" HorizontalAlignment="Center"/>
+                    </Grid>
+
+
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+            <ListBox.Template>
+                <ControlTemplate>
+                    <Grid BorderBrush="Black" BorderThickness="1,1,1,1">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <Grid Grid.Row="0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="60" />
+                                <ColumnDefinition Width="220" />
+                                <ColumnDefinition Width="73" />
+                                <ColumnDefinition Width="200" />
+                                <ColumnDefinition Width="200" />
+                            </Grid.ColumnDefinitions>
+                            <Border Grid.Column="0" BorderBrush="Black" BorderThickness="0,0,1,1">
+                                <TextBlock FontWeight="Bold" HorizontalAlignment="Left">Rental ID</TextBlock>
+                            </Border>
+                            <Border Grid.Column="1" BorderBrush="Black" BorderThickness="0,0,1,1">
+                                <TextBlock FontWeight="Bold" HorizontalAlignment="Center">Furniture Name</TextBlock>
+                            </Border>
+                            <Border Grid.Column="2" BorderBrush="Black" BorderThickness="0,0,1,1">
+                                <TextBlock FontWeight="Bold" HorizontalAlignment="Center">Quantity</TextBlock>
+                            </Border>
+                            <Border Grid.Column="3" BorderBrush="Black" BorderThickness="0,0,1,1">
+                                <TextBlock FontWeight="Bold" HorizontalAlignment="Center">Rental Date</TextBlock>
+                            </Border>
+                            <Border Grid.Column="4" BorderBrush="Black" BorderThickness="0,0,1,1">
+                                <TextBlock FontWeight="Bold" HorizontalAlignment="Center">Return Day</TextBlock>
+                            </Border>
+                        </Grid>
+                        <ItemsPresenter Grid.Row="1" Margin="2,2,2,-2"></ItemsPresenter>
+                    </Grid>
+                </ControlTemplate>
+            </ListBox.Template>
+        </ListBox>
+
+
+        <ListBox x:ConnectionId='10' x:Name="returnItemList" Margin="220,315,0,10" HorizontalAlignment="Left" Width="755" Visibility="Collapsed">
             <ListBox.ItemTemplate>
                 <DataTemplate>
 
                     <Grid>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="95" />
+                            <ColumnDefinition Width="95" />
                             <ColumnDefinition Width="250" />
-                            <ColumnDefinition Width="150" />
-                            <ColumnDefinition Width="250" />
+                            <ColumnDefinition Width="155" />
+                            <ColumnDefinition Width="157" />
 
                         </Grid.ColumnDefinitions>
                         <TextBlock Grid.Column="0" Text="{Binding ReturnID}" HorizontalAlignment="Left"/>
-                        <TextBlock Grid.Column="1" Text="{Binding FurnitureName}" HorizontalAlignment="Center"/>
-                        <TextBlock Grid.Column="2" Text="{Binding Quantity}" HorizontalAlignment="Center"/>
+                        <TextBlock Grid.Column="1" Text="{Binding RentalID}" HorizontalAlignment="Left"/>
+                        <TextBlock Grid.Column="2" Text="{Binding FurnitureName}" HorizontalAlignment="Center"/>
+                        <TextBlock Grid.Column="3" Text="{Binding Quantity}" HorizontalAlignment="Center"/>
                         <TextBlock Grid.Column="4" Text="{Binding ReturnDate}" HorizontalAlignment="Center"/>
                     </Grid>
 
@@ -115,20 +176,24 @@
                         <Grid Grid.Row="0">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="95" />
+                                <ColumnDefinition Width="95" />
                                 <ColumnDefinition Width="250" />
-                                <ColumnDefinition Width="150" />
-                                <ColumnDefinition Width="250" />
+                                <ColumnDefinition Width="155" />
+                                <ColumnDefinition Width="157" />
                             </Grid.ColumnDefinitions>
                             <Border Grid.Column="0" BorderBrush="Black" BorderThickness="0,0,1,1">
                                 <TextBlock FontWeight="Bold" HorizontalAlignment="Left">Return ID</TextBlock>
                             </Border>
                             <Border Grid.Column="1" BorderBrush="Black" BorderThickness="0,0,1,1">
-                                <TextBlock FontWeight="Bold" HorizontalAlignment="Center">Furniture Name</TextBlock>
+                                <TextBlock FontWeight="Bold" HorizontalAlignment="Center">Rental ID</TextBlock>
                             </Border>
                             <Border Grid.Column="2" BorderBrush="Black" BorderThickness="0,0,1,1">
-                                <TextBlock FontWeight="Bold" HorizontalAlignment="Center" Width="69">Quantity</TextBlock>
+                                <TextBlock FontWeight="Bold" HorizontalAlignment="Center">Furniture Name</TextBlock>
                             </Border>
                             <Border Grid.Column="3" BorderBrush="Black" BorderThickness="0,0,1,1">
+                                <TextBlock FontWeight="Bold" HorizontalAlignment="Center" Width="69">Quantity</TextBlock>
+                            </Border>
+                            <Border Grid.Column="4" BorderBrush="Black" BorderThickness="0,0,1,1">
                                 <TextBlock FontWeight="Bold" HorizontalAlignment="Center">Return Day</TextBlock>
                             </Border>
                         </Grid>
@@ -137,13 +202,14 @@
                 </ControlTemplate>
             </ListBox.Template>
         </ListBox>
-        <TextBlock x:ConnectionId='10' x:Name="rentalTransactionLabel" HorizontalAlignment="Left" Margin="217,95,0,0" Text="Rental Transactions: " TextWrapping="Wrap" VerticalAlignment="Top" Height="24" Width="147" FontSize="16" TextAlignment="Left" LineHeight="10"/>
-        <TextBlock x:ConnectionId='11' x:Name="returnTransactionLabel" HorizontalAlignment="Left" Margin="215,94,0,0" Text="Return Transactions: " TextWrapping="Wrap" VerticalAlignment="Top" Height="28" Width="148" FontSize="16" TextAlignment="Left" LineHeight="10" Visibility="Collapsed"/>
+        <TextBlock x:ConnectionId='11' x:Name="rentalTransactionLabel" HorizontalAlignment="Left" Margin="217,95,0,0" Text="Rental Transactions: " TextWrapping="Wrap" VerticalAlignment="Top" Height="24" Width="147" FontSize="16" TextAlignment="Left" LineHeight="10"/>
         <Button x:ConnectionId='12' x:Name="returnToMainPage" Content="Return To Main Page" Margin="750,8,0,0" VerticalAlignment="Top" Width="170"                               />
         <TextBlock x:ConnectionId='13' x:Name="filterTransactionLabel" HorizontalAlignment="Left" Margin="484,94,0,0" Text="Filter Transactions By ID: " TextWrapping="Wrap" VerticalAlignment="Top" Height="24" Width="172" FontSize="16" TextAlignment="Left" LineHeight="10"/>
         <ComboBox x:ConnectionId='14' x:Name="transactionIDBox" Margin="665,88,140,0"                                                      HorizontalAlignment="Stretch" PlaceholderText="Select Transaction ID"/>
-        <Button x:ConnectionId='15' x:Name="returnALl" Content="Return ALl" Margin="860,88,0,0" VerticalAlignment="Top" Width="112"                        />
-        <ToggleSwitch x:ConnectionId='16' x:Name="_switch" Header="Return Transaction" Margin="360,70,0,0" VerticalAlignment="Top" Width="120"                           Height="50"/>
+        <Button x:ConnectionId='15' x:Name="returnALl" Content="Return ALl" Margin="855,48,0,0" VerticalAlignment="Top" Width="105"                        />
+        <ToggleSwitch x:ConnectionId='16' x:Name="_switch" Header="Transaction History" Margin="360,70,0,0" VerticalAlignment="Top" Width="120"                           Height="50"/>
+        <Button x:ConnectionId='17' x:Name="returnButton" Content="Return" Margin="855,85,0,0" VerticalAlignment="Top" Width="105"                           />
+        <TextBlock x:ConnectionId='18' x:Name="returnLabel" HorizontalAlignment="Left" Margin="220,285,0,0" Text="Return Transactions: " TextWrapping="Wrap" VerticalAlignment="Top" Height="24" Width="147" FontSize="16" TextAlignment="Left" LineHeight="10" Visibility="Collapsed"/>
 
 
     </Grid>

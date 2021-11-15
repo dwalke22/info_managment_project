@@ -40,6 +40,6 @@ namespace CS3230RentalSystemProject.Model
         /// <summary>
         /// The reuturn date
         /// </summary>
-        public DateTime ReturnDate { get; set; }
+        public string ReturnDate { get; set; }
     }
 }

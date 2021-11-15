@@ -41,6 +41,8 @@ namespace CS3230RentalSystemProject.View
 
         private List<ReturnItem> ReturnItemList { get; set; }
 
+        private List<RentalItem> CheckedReturnItemList { get; set; }
+
         private string searchType;
 
         private TransanctionDAL TransanctionDAL;
@@ -161,77 +163,36 @@ namespace CS3230RentalSystemProject.View
             this.employeeName.Text = "Employee: " + this.Employee.ToString();
         }
 
-        private async void returnButtonClick(object sender, RoutedEventArgs e)
+        private async void  returnChecked(object sender, RoutedEventArgs e)
         {
-            
-
-            MessageDialog showDialog = new MessageDialog("Are you sure want to return all items? \n fine: 0.00");
-            showDialog.Title = "Comfirmation";
-            showDialog.Commands.Add(new UICommand("Yes")
-            {
-                Id = 0
-            });
-            showDialog.Commands.Add(new UICommand("No")
-            {
-                Id = 1
-            });
-            showDialog.DefaultCommandIndex = 0;
-            showDialog.CancelCommandIndex = 1;
-            var result = await showDialog.ShowAsync();
-            if ((int)result.Id == 0)
-            {
-                Member member = (Member)this.memberList.SelectedItem;
-                string tag = (string)((Button)sender).Tag;
-                string[] list = tag.Split(",");
-                int rentalID = Int32.Parse(list[0]);
-                int furnitureID = Int32.Parse(list[1]);
-                List<RentalItem> rentalItems = this.TransanctionDAL.getRentalItem(rentalID, furnitureID);
-
-                this.TransanctionDAL.returnItems(rentalItems, this.Employee, member, 0);
-
-                this.rentalItemList.ItemsSource = this.TransanctionDAL.getAllRentalItems((int)member.MemberID);
-                this.returnItemList.ItemsSource = this.TransanctionDAL.getAllReturnItems((int)member.MemberID);
-                this.transactionIDBox.ItemsSource = this.TransanctionDAL.getMemberTansactionsNumber((int)member.MemberID);
-
-                int transactionID = this.TransanctionDAL.GetReturnTransactionID();
-                string reciept = "";
-                reciept += "Transaction ID: " + transactionID + "\n";
-                reciept += "Employee:" + this.Employee.FirstName + " " + this.Employee.LastName + "\n";
-                reciept += "Customer:" + member.FirstName + " " + member.LastName + "\n";
-                reciept += "Return Items: " + "                       " + "Return Quantity: " + "\n";
-                foreach (var returnItem in rentalItems)
-                {
-                    reciept += "" + returnItem.FurnitureName + "               " + returnItem.Quantity + "\n";
-                }
-                reciept += "\n";
-                reciept += "Thanks for your business! Have A Nice Day!";
-                MessageDialog recieptDialog = new MessageDialog(reciept);
-                recieptDialog.Title = "Reciept";
-                recieptDialog.Commands.Add(new UICommand("Print")
-                {
-                    Id = 0
-                });
-                recieptDialog.Commands.Add(new UICommand("Exist")
-                {
-                    Id = 1
-                });
-                recieptDialog.DefaultCommandIndex = 0;
-                recieptDialog.CancelCommandIndex = 1;
-                await recieptDialog.ShowAsync();
-            }
-
-
+            string tag = (string)((CheckBox)sender).Tag;
+            string[] list = tag.Split(",");
+            int rentalID = Int32.Parse(list[0]);
+            int furnitureID = Int32.Parse(list[1]);
+            List<RentalItem> rentalItems = this.TransanctionDAL.getRentalItem(rentalID, furnitureID);
+            rentalItems.ForEach(x => this.CheckedReturnItemList.Add(x));
         }
 
+        private async void returnUnchecked(object sender, RoutedEventArgs e)
+        {
+            string tag = (string)((CheckBox)sender).Tag;
+            string[] list = tag.Split(",");
+            int rentalID = Int32.Parse(list[0]);
+            int furnitureID = Int32.Parse(list[1]);
+            List<RentalItem> rentalItems = this.TransanctionDAL.getRentalItem(rentalID, furnitureID);
+            rentalItems.ForEach(x => this.CheckedReturnItemList.RemoveAt(this.CheckedReturnItemList.FindIndex(y => y.RentalID == x.RentalID && y.FurnitureID == x.FurnitureID)));
+        }
 
         private void memberList_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (this.memberList.SelectedItem != null)
             {
+                this.CheckedReturnItemList = new List<RentalItem>();
                 Member member = (Member)this.memberList.SelectedItem;
-                List<RentalItem> list = this.TransanctionDAL.getAllRentalItems((int)member.MemberID);
+                List<RentalItem> list = this.TransanctionDAL.getAllCurrentRentaledItems((int)member.MemberID);
                 list.ForEach(x => x.setRentalIDInfor());
                 this.rentalItemList.ItemsSource = list;
+                this.rentalItemHistoryList.ItemsSource = this.TransanctionDAL.getAllRentalItems((int)member.MemberID);
                 this.returnItemList.ItemsSource = this.TransanctionDAL.getAllReturnItems((int)member.MemberID);
                 this.transactionIDBox.ItemsSource = this.TransanctionDAL.getMemberTansactionsNumber((int)member.MemberID);
                 this.membername.Text = "Member: " + member.ToString();
@@ -290,7 +251,8 @@ namespace CS3230RentalSystemProject.View
 
                 this.TransanctionDAL.returnItems(this.RentalItemsWithSameID, this.Employee, member, 0);
 
-                this.rentalItemList.ItemsSource = this.TransanctionDAL.getAllRentalItems((int)member.MemberID);
+                this.rentalItemList.ItemsSource = this.TransanctionDAL.getAllCurrentRentaledItems((int)member.MemberID);
+                this.rentalItemHistoryList.ItemsSource = this.TransanctionDAL.getAllRentalItems((int)member.MemberID);
                 this.returnItemList.ItemsSource = this.TransanctionDAL.getAllReturnItems((int)member.MemberID);
 
                 int transactionID = this.TransanctionDAL.GetReturnTransactionID();
@@ -331,25 +293,93 @@ namespace CS3230RentalSystemProject.View
                 if (toggleSwitch.IsOn == true)
                 {
                     this.returnItemList.Visibility = Visibility.Visible;
-                    this.returnTransactionLabel.Visibility = Visibility.Visible;
 
                     this.rentalItemList.Visibility = Visibility.Collapsed;
-                    this.rentalTransactionLabel.Visibility = Visibility.Collapsed;
                     this.filterTransactionLabel.Visibility = Visibility.Collapsed;
                     this.transactionIDBox.Visibility = Visibility.Collapsed;
                     this.returnALl.Visibility = Visibility.Collapsed;
+
+                    this.rentalItemHistoryList.Visibility = Visibility.Visible;
+                    this.returnLabel.Visibility = Visibility.Visible;
+
+                    this.returnButton.Visibility = Visibility.Collapsed;
                 }
                 else
                 {
                     this.returnItemList.Visibility = Visibility.Collapsed;
-                    this.returnTransactionLabel.Visibility = Visibility.Collapsed;
 
                     this.rentalItemList.Visibility = Visibility.Visible;
-                    this.rentalTransactionLabel.Visibility = Visibility.Visible;
                     this.filterTransactionLabel.Visibility = Visibility.Visible;
                     this.transactionIDBox.Visibility = Visibility.Visible;
                     this.returnALl.Visibility = Visibility.Collapsed;
+                    this.rentalItemHistoryList.Visibility = Visibility.Collapsed;
+                    this.returnLabel.Visibility = Visibility.Collapsed;
+                    this.returnButton.Visibility = Visibility.Visible;
                 }
+            }
+        }
+
+        private async void returnButton_Click(object sender, RoutedEventArgs e)
+        {
+            MessageDialog showDialog = new MessageDialog("Are you sure want to return all items? \n fine: 0.00");
+            showDialog.Title = "Comfirmation";
+            showDialog.Commands.Add(new UICommand("Yes")
+            {
+                Id = 0
+            });
+            showDialog.Commands.Add(new UICommand("No")
+            {
+                Id = 1
+            });
+            showDialog.DefaultCommandIndex = 0;
+            showDialog.CancelCommandIndex = 1;
+            var result = await showDialog.ShowAsync();
+            if ((int)result.Id == 0)
+            {
+
+                if (this.CheckedReturnItemList.Count == 0)
+                {
+                    MessageDialog dialog = new MessageDialog("Please check at least one return item!");
+                    await dialog.ShowAsync();
+                }
+                else
+                {
+                    Member member = (Member)this.memberList.SelectedItem;
+
+                    this.TransanctionDAL.returnItems(this.CheckedReturnItemList, this.Employee, member, 0);
+
+                    this.rentalItemList.ItemsSource = this.TransanctionDAL.getAllCurrentRentaledItems((int)member.MemberID);
+                    this.rentalItemHistoryList.ItemsSource = this.TransanctionDAL.getAllRentalItems((int)member.MemberID);
+                    this.returnItemList.ItemsSource = this.TransanctionDAL.getAllReturnItems((int)member.MemberID);
+                    this.transactionIDBox.ItemsSource = this.TransanctionDAL.getMemberTansactionsNumber((int)member.MemberID);
+
+                    int transactionID = this.TransanctionDAL.GetReturnTransactionID();
+                    string reciept = "";
+                    reciept += "Transaction ID: " + transactionID + "\n";
+                    reciept += "Employee:" + this.Employee.FirstName + " " + this.Employee.LastName + "\n";
+                    reciept += "Customer:" + member.FirstName + " " + member.LastName + "\n";
+                    reciept += "Return Items: " + "                       " + "Return Quantity: " + "\n";
+                    foreach (var returnItem in this.CheckedReturnItemList)
+                    {
+                        reciept += "" + returnItem.FurnitureName + "               " + returnItem.Quantity + "\n";
+                    }
+                    reciept += "\n";
+                    reciept += "Thanks for your business! Have A Nice Day!";
+                    MessageDialog recieptDialog = new MessageDialog(reciept);
+                    recieptDialog.Title = "Reciept";
+                    recieptDialog.Commands.Add(new UICommand("Print")
+                    {
+                        Id = 0
+                    });
+                    recieptDialog.Commands.Add(new UICommand("Exist")
+                    {
+                        Id = 1
+                    });
+                    recieptDialog.DefaultCommandIndex = 0;
+                    recieptDialog.CancelCommandIndex = 1;
+                    await recieptDialog.ShowAsync();
+                }
+                
             }
         }
     }

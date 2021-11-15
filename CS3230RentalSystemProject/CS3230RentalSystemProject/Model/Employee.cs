@@ -12,6 +12,11 @@ namespace CS3230RentalSystemProject.Model
     public class Employee
     {
         /// <summary>
+        /// True of employee is admin, false otherwise
+        /// </summary>
+        public bool IsAdmin { get; set; }
+
+        /// <summary>
         /// The Employee Id
         /// </summary>
         public int EmployeeID { get; set; }

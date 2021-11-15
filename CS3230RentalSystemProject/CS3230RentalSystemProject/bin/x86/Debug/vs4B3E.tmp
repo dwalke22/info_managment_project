@@ -193,12 +193,6 @@
             </summary>
             <returns>all rental items</returns>
         </member>
-        <member name="M:CS3230RentalSystemProject.DAL.TransanctionDAL.getAllCurrentRentaledItems(System.Int32)">
-            <summary>
-            Get all current rentaled items
-            </summary>
-            <returns>all current rentaled items</returns>
-        </member>
         <member name="M:CS3230RentalSystemProject.DAL.TransanctionDAL.getMemberTansactionsNumber(System.Int32)">
             <summary>
             Get all rental items
