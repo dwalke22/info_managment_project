@@ -1,0 +1,30 @@
+﻿<ContentDialog
+    x:Class="CS3230RentalSystemProject.View.AddEmployeeContentDialog"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:CS3230RentalSystemProject.View"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Title="Add Employee"
+    PrimaryButtonText="Add Employee"
+    SecondaryButtonText="Cancel"
+    PrimaryButtonClick="ContentDialog_PrimaryButtonClick"
+    SecondaryButtonClick="ContentDialog_SecondaryButtonClick">
+
+    <Grid Margin="0,0,0,0">
+        <TextBlock HorizontalAlignment="Left" Margin="5,10,0,0" Text="First Name:" TextWrapping="Wrap" VerticalAlignment="Top"/>
+        <TextBox x:Name="employeeFirstNameBox" HorizontalAlignment="Left" Margin="110,5,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="150" RenderTransformOrigin="0.69,0.484"/>
+        <TextBlock HorizontalAlignment="Left" Margin="270,10,0,0" Text="Last Name:" TextWrapping="Wrap" VerticalAlignment="Top"/>
+        <TextBox x:Name="employeeLastNameBox" HorizontalAlignment="Left" Margin="345,5,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="150"/>
+        <TextBlock HorizontalAlignment="Left" Margin="5,58,0,0" Text="Phone Number:" TextWrapping="Wrap" VerticalAlignment="Top"/>
+        <TextBox x:Name="phoneNumberBox" HorizontalAlignment="Left" Margin="110,52,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="150"/>
+        <TextBlock HorizontalAlignment="Left" Margin="270,58,0,0" Text="Email:" TextWrapping="Wrap" VerticalAlignment="Top"/>
+        <TextBox x:Name="emailBox" HorizontalAlignment="Left" Margin="345,52,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="150"/>
+        <CheckBox x:Name="isAdminCheckBox" Content="Is Admin" Margin="271,89,0,0" VerticalAlignment="Top"/>
+        <TextBlock HorizontalAlignment="Left" Margin="7,130,0,0" Text="Username:" TextWrapping="Wrap" VerticalAlignment="Top"/>
+        <TextBox x:Name="usernameBox" HorizontalAlignment="Left" Margin="110,120,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="150"/>
+        <TextBlock HorizontalAlignment="Left" Margin="270,130,0,0" Text="Password:" TextWrapping="Wrap" VerticalAlignment="Top"/>
+        <TextBox x:Name="passwordBox" HorizontalAlignment="Left" Margin="345,120,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="150"/>
+    </Grid>
+</ContentDialog>
