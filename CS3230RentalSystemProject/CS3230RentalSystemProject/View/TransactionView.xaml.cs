@@ -47,6 +47,8 @@ namespace CS3230RentalSystemProject.View
 
         private TransanctionDAL TransanctionDAL;
 
+        private const double LATE_FEE_RATE = 50.00;
+
         /// <summary>
         /// Initialize constructor
         /// </summary>
@@ -242,7 +244,7 @@ namespace CS3230RentalSystemProject.View
 
         private async void returnALl_Click(object sender, RoutedEventArgs e)
         {
-            MessageDialog showDialog = new MessageDialog("Are you sure want to return all items? \n fine: 0.00");
+            MessageDialog showDialog = new MessageDialog("Are you sure want to return all items? \n fine: $" + this.calculateFine());
             showDialog.Title = "Comfirmation";
             showDialog.Commands.Add(new UICommand("Yes")
             {
@@ -341,7 +343,7 @@ namespace CS3230RentalSystemProject.View
             }
             else
             {
-                MessageDialog showDialog = new MessageDialog("Are you sure want to return all items? \n fine: 0.00");
+                MessageDialog showDialog = new MessageDialog("Are you sure want to return all items? \n fine: $" + this.calculateFine());
                 showDialog.Title = "Comfirmation";
                 showDialog.Commands.Add(new UICommand("Yes")
                 {
@@ -396,6 +398,22 @@ namespace CS3230RentalSystemProject.View
                     await recieptDialog.ShowAsync();
                 }
             }
+        }
+
+        private double calculateFine()
+        {
+            double fines = 0.0;
+            foreach (var furniture in this.CheckedReturnItemList)
+            {
+                double daysPast = (DateTime.Parse(furniture.DueDate) - DateTime.Today).TotalDays;
+
+                if (daysPast < 0)
+                {
+                    double fee = daysPast * -1 * LATE_FEE_RATE;
+                    fines += fee;
+                }
+            }
+            return fines;
         }
     }
     
