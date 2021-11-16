@@ -170,7 +170,10 @@ namespace CS3230RentalSystemProject.View
             int rentalID = Int32.Parse(list[0]);
             int furnitureID = Int32.Parse(list[1]);
             List<RentalItem> rentalItems = this.TransanctionDAL.getRentalItem(rentalID, furnitureID);
-            rentalItems.ForEach(x => this.CheckedReturnItemList.Add(x));
+            foreach (var item in rentalItems)
+            {
+                this.CheckedReturnItemList.Add(item);
+            }
         }
 
         private async void returnUnchecked(object sender, RoutedEventArgs e)
@@ -321,28 +324,27 @@ namespace CS3230RentalSystemProject.View
 
         private async void returnButton_Click(object sender, RoutedEventArgs e)
         {
-            MessageDialog showDialog = new MessageDialog("Are you sure want to return all items? \n fine: 0.00");
-            showDialog.Title = "Comfirmation";
-            showDialog.Commands.Add(new UICommand("Yes")
+            if (this.CheckedReturnItemList.Count == 0)
             {
-                Id = 0
-            });
-            showDialog.Commands.Add(new UICommand("No")
+                MessageDialog dialog = new MessageDialog("Please check at least one return item!");
+                await dialog.ShowAsync();
+            }
+            else
             {
-                Id = 1
-            });
-            showDialog.DefaultCommandIndex = 0;
-            showDialog.CancelCommandIndex = 1;
-            var result = await showDialog.ShowAsync();
-            if ((int)result.Id == 0)
-            {
-
-                if (this.CheckedReturnItemList.Count == 0)
+                MessageDialog showDialog = new MessageDialog("Are you sure want to return all items? \n fine: 0.00");
+                showDialog.Title = "Comfirmation";
+                showDialog.Commands.Add(new UICommand("Yes")
                 {
-                    MessageDialog dialog = new MessageDialog("Please check at least one return item!");
-                    await dialog.ShowAsync();
-                }
-                else
+                    Id = 0
+                });
+                showDialog.Commands.Add(new UICommand("No")
+                {
+                    Id = 1
+                });
+                showDialog.DefaultCommandIndex = 0;
+                showDialog.CancelCommandIndex = 1;
+                var result = await showDialog.ShowAsync();
+                if ((int)result.Id == 0)
                 {
                     Member member = (Member)this.memberList.SelectedItem;
 
@@ -379,7 +381,6 @@ namespace CS3230RentalSystemProject.View
                     recieptDialog.CancelCommandIndex = 1;
                     await recieptDialog.ShowAsync();
                 }
-                
             }
         }
     }

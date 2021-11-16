@@ -14,7 +14,7 @@
         <ComboBox x:ConnectionId='4' x:Name="criteriaList" Margin="145,55,0,0" Width="115"                                                  PlaceholderText="Select Filter"/>
         <TextBox x:ConnectionId='5' x:Name="searchBox" HorizontalAlignment="Left" Margin="10,90,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="190" Height="35" FontSize="14" PlaceholderText="eg: John Smith" AccessKey="" TextAlignment="Center"                                                                   RenderTransformOrigin="0.458,0.429"/>
         <TextBlock x:ConnectionId='6' x:Name="invalidSearch" HorizontalAlignment="Left" Margin="10,135,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="210" Height="29" Foreground="#FF9C0E0E" FontSize="14"/>
-        <ListBox x:ConnectionId='7' x:Name="memberList" Margin="5,170,790,5" BorderBrush="Black" BorderThickness="1,1,1,1"                                               />
+        <ListBox x:ConnectionId='7' x:Name="memberList" Margin="5,170,790,5" ScrollViewer.VerticalScrollBarVisibility="Visible" BorderBrush="Black" BorderThickness="1,1,1,1"                                               />
         <ListBox x:ConnectionId='8' x:Name="rentalItemList" Margin="220,125,0,10" HorizontalAlignment="Left" Width="755" ScrollViewer.IsVerticalScrollChainingEnabled="True" Visibility="Visible">
             <ListBox.ItemTemplate>
                 <DataTemplate>
@@ -34,7 +34,7 @@
                         <TextBlock Grid.Column="2" Text="{Binding Quantity}" HorizontalAlignment="Center"/>
                         <TextBlock Grid.Column="3" Text="{Binding RentalDate}" HorizontalAlignment="Center"/>
                         <TextBlock Grid.Column="4" Text="{Binding DueDate}" HorizontalAlignment="Center"/>
-                        <CheckBox x:ConnectionId='24' Tag="{Binding RentalInfo}" Content="Return" Grid.Column="5" Width="80" Height="30" Foreground="#FF9C0E0E" FontSize="14"                                                     HorizontalAlignment="Center">
+                        <CheckBox x:ConnectionId='26' Tag="{Binding RentalInfo}" Content="Return" Grid.Column="5" Width="80" Height="30" Foreground="#FF9C0E0E" FontSize="14"                                                     HorizontalAlignment="Center">
                         </CheckBox>
                     </Grid>
 
@@ -76,16 +76,17 @@
                                 <TextBlock FontWeight="Bold" HorizontalAlignment="Center">Action</TextBlock>
                             </Border>
                         </Grid>
-                        <ItemsPresenter Grid.Row="1" Margin="2,2,2,-2"></ItemsPresenter>
+                        <ScrollViewer Grid.Row="1" Name="svMain" VerticalScrollBarVisibility="Visible">
+                            <ItemsPresenter Grid.Row="1" Margin="2,2,2,-2"></ItemsPresenter>
+                        </ScrollViewer>
                     </Grid>
                 </ControlTemplate>
             </ListBox.Template>
         </ListBox>
 
-        <ListBox x:ConnectionId='9' x:Name="rentalItemHistoryList" Margin="220,125,0,220" HorizontalAlignment="Left" Width="755" ScrollViewer.IsVerticalScrollChainingEnabled="True" Visibility="Collapsed">
+        <ListBox x:ConnectionId='9' x:Name="rentalItemHistoryList" Margin="220,125,0,220" HorizontalAlignment="Left" Width="755" ScrollViewer.VerticalScrollBarVisibility="Auto" Visibility="Collapsed">
             <ListBox.ItemTemplate>
                 <DataTemplate>
-
                     <Grid>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="60" />
@@ -101,7 +102,6 @@
                         <TextBlock Grid.Column="3" Text="{Binding RentalDate}" HorizontalAlignment="Center"/>
                         <TextBlock Grid.Column="4" Text="{Binding DueDate}" HorizontalAlignment="Center"/>
                     </Grid>
-
 
                 </DataTemplate>
             </ListBox.ItemTemplate>
@@ -136,7 +136,9 @@
                                 <TextBlock FontWeight="Bold" HorizontalAlignment="Center">Return Day</TextBlock>
                             </Border>
                         </Grid>
-                        <ItemsPresenter Grid.Row="1" Margin="2,2,2,-2"></ItemsPresenter>
+                        <ScrollViewer Grid.Row="1" Name="svMain" VerticalScrollBarVisibility="Visible">
+                            <ItemsPresenter Grid.Row="2" Margin="2,2,2,-2"></ItemsPresenter>
+                        </ScrollViewer>
                     </Grid>
                 </ControlTemplate>
             </ListBox.Template>
@@ -197,7 +199,9 @@
                                 <TextBlock FontWeight="Bold" HorizontalAlignment="Center">Return Day</TextBlock>
                             </Border>
                         </Grid>
-                        <ItemsPresenter Grid.Row="1" Margin="3,3,0,-3"></ItemsPresenter>
+                        <ScrollViewer Grid.Row="1" Name="svMain" VerticalScrollBarVisibility="Visible">
+                            <ItemsPresenter Grid.Row="1" Margin="3,3,0,-3"></ItemsPresenter>
+                        </ScrollViewer>
                     </Grid>
                 </ControlTemplate>
             </ListBox.Template>

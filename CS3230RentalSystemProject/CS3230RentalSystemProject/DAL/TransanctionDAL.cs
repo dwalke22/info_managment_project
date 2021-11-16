@@ -77,6 +77,7 @@ namespace CS3230RentalSystemProject.DAL
                     {
                         int rentalIDoridinal = reader.GetOrdinal("rentalID");
                         int furnitureIDoridinal = reader.GetOrdinal("furnitureID");
+                        int furnitureNameoridinal = reader.GetOrdinal("furnitureName");
                         int quantityoridinal = reader.GetOrdinal("quantity");
 
                         int rentalDateoridinal = reader.GetOrdinal("rentalDate");
@@ -88,6 +89,7 @@ namespace CS3230RentalSystemProject.DAL
                             {
                                 RentalID = reader.GetFieldValueCheckNull<Int32>(rentalIDoridinal),
                                 FurnitureID = reader.GetFieldValueCheckNull<Int32>(furnitureIDoridinal),
+                                FurnitureName = reader.GetFieldValueCheckNull<string>(furnitureNameoridinal),
                                 Quantity = reader.GetFieldValueCheckNull<Int32>(quantityoridinal),
                                 RentalDate = reader.GetFieldValueCheckNull<DateTime>(rentalDateoridinal).Date.ToString("yyyy-MM-dd"),
                                 DueDate = reader.GetFieldValueCheckNull<DateTime>(dueDateoridinal).Date.ToString("yyyy-MM-dd"),

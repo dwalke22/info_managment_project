@@ -70,7 +70,9 @@
                                 <TextBlock FontWeight="Bold" HorizontalAlignment="Center">Action</TextBlock>
                             </Border>
                         </Grid>
-                        <ItemsPresenter Grid.Row="1"></ItemsPresenter>
+                        <ScrollViewer Grid.Row="1" Name="svMain" VerticalScrollBarVisibility="Visible">
+                            <ItemsPresenter Grid.Row="1"></ItemsPresenter>
+                        </ScrollViewer>
                     </Grid>
                 </ControlTemplate>
             </ListBox.Template>
