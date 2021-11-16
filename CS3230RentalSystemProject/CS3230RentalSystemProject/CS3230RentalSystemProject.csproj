@@ -158,6 +158,9 @@
     <Compile Include="View\MemebrInformationViewer.xaml.cs">
       <DependentUpon>MemebrInformationViewer.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\RecieptDialog.xaml.cs">
+      <DependentUpon>RecieptDialog.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\TransactionView.xaml.cs">
       <DependentUpon>TransactionView.xaml</DependentUpon>
     </Compile>
@@ -204,6 +207,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\MemebrInformationViewer.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\RecieptDialog.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

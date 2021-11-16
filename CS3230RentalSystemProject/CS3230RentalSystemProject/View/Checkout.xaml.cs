@@ -57,6 +57,13 @@ namespace CS3230RentalSystemProject.View
             var messageDialog = new MessageDialog("Order Complete.");
 
             await messageDialog.ShowAsync();
+
+            var reciept = new RecieptDialog(this.Employee.SelectedMember.FurnitureListData);
+            reciept.Width = 400;
+            reciept.Height = 400;
+            
+            await reciept.ShowAsync();
+
             this.Employee.SelectedMember.FurnitureListData.Clear();
             this.Employee.SelectedMember = null;
             this.Employee.SelectedFurniture = null;
