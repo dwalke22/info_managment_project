@@ -166,24 +166,32 @@ namespace CS3230RentalSystemProject.View
         private async void  returnChecked(object sender, RoutedEventArgs e)
         {
             string tag = (string)((CheckBox)sender).Tag;
-            string[] list = tag.Split(",");
-            int rentalID = Int32.Parse(list[0]);
-            int furnitureID = Int32.Parse(list[1]);
-            List<RentalItem> rentalItems = this.TransanctionDAL.getRentalItem(rentalID, furnitureID);
-            foreach (var item in rentalItems)
+            if (tag != null)
             {
-                this.CheckedReturnItemList.Add(item);
+                string[] list = tag.Split(",");
+                int rentalID = Int32.Parse(list[0]);
+                int furnitureID = Int32.Parse(list[1]);
+                List<RentalItem> rentalItems = this.TransanctionDAL.getRentalItem(rentalID, furnitureID);
+                foreach (var item in rentalItems)
+                {
+                    this.CheckedReturnItemList.Add(item);
+                }
             }
+            
         }
 
         private async void returnUnchecked(object sender, RoutedEventArgs e)
         {
             string tag = (string)((CheckBox)sender).Tag;
-            string[] list = tag.Split(",");
-            int rentalID = Int32.Parse(list[0]);
-            int furnitureID = Int32.Parse(list[1]);
-            List<RentalItem> rentalItems = this.TransanctionDAL.getRentalItem(rentalID, furnitureID);
-            rentalItems.ForEach(x => this.CheckedReturnItemList.RemoveAt(this.CheckedReturnItemList.FindIndex(y => y.RentalID == x.RentalID && y.FurnitureID == x.FurnitureID)));
+            if (tag != null)
+            {
+                string[] list = tag.Split(",");
+                int rentalID = Int32.Parse(list[0]);
+                int furnitureID = Int32.Parse(list[1]);
+                List<RentalItem> rentalItems = this.TransanctionDAL.getRentalItem(rentalID, furnitureID);
+                rentalItems.ForEach(x => this.CheckedReturnItemList.RemoveAt(this.CheckedReturnItemList.FindIndex(y => y.RentalID == x.RentalID && y.FurnitureID == x.FurnitureID)));
+            }
+           
         }
 
         private void memberList_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -253,8 +261,9 @@ namespace CS3230RentalSystemProject.View
                
 
                 this.TransanctionDAL.returnItems(this.RentalItemsWithSameID, this.Employee, member, 0);
-
-                this.rentalItemList.ItemsSource = this.TransanctionDAL.getAllCurrentRentaledItems((int)member.MemberID);
+                List<RentalItem> list = this.TransanctionDAL.getAllCurrentRentaledItems((int)member.MemberID);
+                list.ForEach(x => x.setRentalIDInfor());
+                this.rentalItemList.ItemsSource = list;
                 this.rentalItemHistoryList.ItemsSource = this.TransanctionDAL.getAllRentalItems((int)member.MemberID);
                 this.returnItemList.ItemsSource = this.TransanctionDAL.getAllReturnItems((int)member.MemberID);
 
@@ -270,6 +279,7 @@ namespace CS3230RentalSystemProject.View
                 }
                 reciept += "\n";
                 reciept += "Thanks for your business! Have A Nice Day!";
+                
                 MessageDialog recieptDialog = new MessageDialog(reciept);
                 recieptDialog.Title = "Reciept";
                 recieptDialog.Commands.Add(new UICommand("Print")
@@ -350,7 +360,9 @@ namespace CS3230RentalSystemProject.View
 
                     this.TransanctionDAL.returnItems(this.CheckedReturnItemList, this.Employee, member, 0);
 
-                    this.rentalItemList.ItemsSource = this.TransanctionDAL.getAllCurrentRentaledItems((int)member.MemberID);
+                    List<RentalItem> list = this.TransanctionDAL.getAllCurrentRentaledItems((int)member.MemberID);
+                    list.ForEach(x => x.setRentalIDInfor());
+                    this.rentalItemList.ItemsSource = list;
                     this.rentalItemHistoryList.ItemsSource = this.TransanctionDAL.getAllRentalItems((int)member.MemberID);
                     this.returnItemList.ItemsSource = this.TransanctionDAL.getAllReturnItems((int)member.MemberID);
                     this.transactionIDBox.ItemsSource = this.TransanctionDAL.getMemberTansactionsNumber((int)member.MemberID);
@@ -365,6 +377,8 @@ namespace CS3230RentalSystemProject.View
                     {
                         reciept += "" + returnItem.FurnitureName + "               " + returnItem.Quantity + "\n";
                     }
+
+                    this.CheckedReturnItemList = new List<RentalItem>();
                     reciept += "\n";
                     reciept += "Thanks for your business! Have A Nice Day!";
                     MessageDialog recieptDialog = new MessageDialog(reciept);
