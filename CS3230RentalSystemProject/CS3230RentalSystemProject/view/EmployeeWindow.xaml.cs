@@ -483,5 +483,10 @@ namespace CS3230RentalSystemProject.view
         {
             Frame.Navigate(typeof(TransactionView), this.Employee);
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
