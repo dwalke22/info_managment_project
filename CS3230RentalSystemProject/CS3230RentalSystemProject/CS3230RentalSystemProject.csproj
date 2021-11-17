@@ -123,6 +123,7 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="DAL\AdminQueryDAL.cs" />
     <Compile Include="DAL\CheckoutDAL.cs" />
     <Compile Include="DAL\Connection.cs" />
     <Compile Include="DAL\DataReaderHelper.cs" />
@@ -146,6 +147,9 @@
     <Compile Include="Utils\PasswordHash.cs" />
     <Compile Include="View\AddEmployeeContentDialog.xaml.cs">
       <DependentUpon>AddEmployeeContentDialog.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\AdminInterface.xaml.cs">
+      <DependentUpon>AdminInterface.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\Checkout.xaml.cs">
       <DependentUpon>Checkout.xaml</DependentUpon>
@@ -195,6 +199,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="View\AddEmployeeContentDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\AdminInterface.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -22,8 +22,8 @@
     <RootType FullName="Windows.UI.Xaml.Controls.Page">
       <RootProperty Name="Content" />
       <RootProperty Name="Background" />
-      <RootProperty Name="Height" />
       <RootProperty Name="Width" />
+      <RootProperty Name="Height" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.Grid">
       <RootProperty Name="HorizontalAlignment" />
@@ -53,10 +53,10 @@
       <RootProperty Name="Width" />
       <RootProperty Name="Height" />
       <RootProperty Name="Foreground" />
+      <RootProperty Name="FontSize" />
+      <RootProperty Name="FontFamily" />
       <RootProperty Name="FontWeight" />
       <RootProperty Name="TextAlignment" />
-      <RootProperty Name="FontFamily" />
-      <RootProperty Name="FontSize" />
       <RootProperty Name="Style" />
       <RootProperty Name="Inlines" />
       <RootProperty Name="Visibility" />
@@ -74,15 +74,15 @@
       <RootProperty Name="VerticalAlignment" />
       <RootProperty Name="Width" />
       <RootProperty Name="RenderTransformOrigin" />
-      <RootProperty Name="PlaceholderText" />
-      <RootProperty Name="Tag" />
       <RootProperty Name="Height" />
       <RootProperty Name="FontSize" />
+      <RootProperty Name="IsReadOnly" />
+      <RootProperty Name="PlaceholderText" />
+      <RootProperty Name="Tag" />
       <RootProperty Name="AccessKey" />
       <RootProperty Name="TextAlignment" />
       <RootProperty Name="Visibility" />
       <RootProperty Name="Foreground" />
-      <RootProperty Name="IsReadOnly" />
       <RootEvent Name="TextChanging" />
       <RootEvent Name="TextChanged" />
       <RootEvent Name="LostFocus" />
@@ -145,6 +145,16 @@
     </RootType>
     <RootType FullName="CS3230RentalSystemProject.View.AddEmployeeContentDialog" />
     <RootType FullName="Microsoft.Xaml.DirectUI.ProxyTypes.ThemeResourceExtension" />
+    <RootType FullName="Windows.UI.Xaml.Controls.ScrollViewer">
+      <RootProperty Name="Name" />
+      <RootProperty Name="VerticalScrollBarVisibility" />
+      <RootProperty Name="Content" />
+      <RootMethod Name="GetVerticalScrollBarVisibility" />
+      <RootMethod Name="SetVerticalScrollBarVisibility" />
+      <RootMethod Name="GetIsVerticalScrollChainingEnabled" />
+      <RootMethod Name="SetIsVerticalScrollChainingEnabled" />
+    </RootType>
+    <RootType FullName="CS3230RentalSystemProject.View.AdminInterface" />
     <RootType FullName="Windows.UI.Xaml.Controls.ListBox">
       <RootProperty Name="Margin" />
       <RootProperty Name="HorizontalAlignment" />
@@ -196,15 +206,6 @@
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.RowDefinition">
       <RootProperty Name="Height" />
-    </RootType>
-    <RootType FullName="Windows.UI.Xaml.Controls.ScrollViewer">
-      <RootProperty Name="Name" />
-      <RootProperty Name="VerticalScrollBarVisibility" />
-      <RootProperty Name="Content" />
-      <RootMethod Name="GetVerticalScrollBarVisibility" />
-      <RootMethod Name="SetVerticalScrollBarVisibility" />
-      <RootMethod Name="GetIsVerticalScrollChainingEnabled" />
-      <RootMethod Name="SetIsVerticalScrollChainingEnabled" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.ItemsPresenter">
       <RootProperty Name="Margin" />

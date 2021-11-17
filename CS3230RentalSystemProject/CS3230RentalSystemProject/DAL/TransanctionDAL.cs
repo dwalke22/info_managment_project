@@ -271,47 +271,67 @@ namespace CS3230RentalSystemProject.DAL
         /// <param name="employee"> the employee</param>
         /// <param name="member"> the member </param>
         /// <param name="fine">the fine if any </param>
-        public void returnItems(List<RentalItem> items, Employee employee, Member member, decimal fine)
+        public bool returnItems(List<RentalItem> items, Employee employee, Member member, decimal fine)
         {
             using (MySqlConnection connection = new MySqlConnection(Connection.connectionString))
             {
                 connection.Open();
-                string query = "insert into returntransaction (fine, employeeID, memberID) values (@fine, @employeeID, @memberID)";
+                MySqlCommand myCommand = connection.CreateCommand();
+                MySqlTransaction myTrans;
 
-                using MySqlCommand command = new MySqlCommand(query, connection);
-                command.Parameters.Add("@fine", MySqlDbType.Decimal).Value = fine;
-                command.Parameters.Add("@employeeID", MySqlDbType.Int32).Value = employee.EmployeeID;
-                command.Parameters.Add("@memberID", MySqlDbType.Int32).Value = member.MemberID;
-
-                command.ExecuteNonQuery();
-
-                int transactionID = -1;
-                string tranactionIDQuery = "select max(transactionID) from returntransaction";
-
-                using MySqlCommand tranactionIDCommand = new MySqlCommand(tranactionIDQuery, connection);
-
-                transactionID = (int)tranactionIDCommand.ExecuteScalar();
-
-                foreach (var rentalItem in items)
+                myTrans = connection.BeginTransaction();
+                myCommand.Connection = connection;
+                myCommand.Transaction = myTrans;
+                
+               try
                 {
-                    string returnQuery = "insert into returnitem (rentalID, furnitureID, returnID, quantity, returnDate) values (@rentalID, @furnitureID, @returnID, @quantity, @returnDate)";
-                    using MySqlCommand returnCommand = new MySqlCommand(returnQuery, connection);
-                    returnCommand.Parameters.Add("@rentalID", MySqlDbType.Int32).Value = rentalItem.RentalID;
-                    returnCommand.Parameters.Add("@furnitureID", MySqlDbType.Int32).Value = rentalItem.FurnitureID;
-                    returnCommand.Parameters.Add("@returnID", MySqlDbType.Int32).Value = transactionID;
-                    returnCommand.Parameters.Add("@quantity", MySqlDbType.Int32).Value = rentalItem.Quantity;
-                    returnCommand.Parameters.Add("@returnDate", MySqlDbType.Date).Value = DateTime.Now.ToString("yyyy-MM-dd");
+                    myCommand.CommandText = "insert into returntransaction (fine, employeeID, memberID) values (@fine, @employeeID, @memberID)";
 
-                    returnCommand.ExecuteNonQuery();
+                    myCommand.Parameters.Add("@fine", MySqlDbType.Decimal).Value = fine;
+                    myCommand.Parameters.Add("@employeeID", MySqlDbType.Int32).Value = employee.EmployeeID;
+                    myCommand.Parameters.Add("@memberID", MySqlDbType.Int32).Value = member.MemberID;
 
-                    string updateQuery = "update furniture set quantity= quantity + @returnquantity where furnitureID = @furnitureID";
-                    using MySqlCommand updateCommand = new MySqlCommand(updateQuery, connection);
+                    myCommand.ExecuteNonQuery();
 
-                    updateCommand.Parameters.Add("@returnquantity", MySqlDbType.Int32).Value = rentalItem.Quantity;
-                    updateCommand.Parameters.Add("@furnitureID", MySqlDbType.Int32).Value = rentalItem.FurnitureID;
+                    int transactionID = -1;
+                    myCommand.CommandText = "select max(transactionID) from returntransaction";
 
-                    updateCommand.ExecuteNonQuery();
+                    transactionID = (int)myCommand.ExecuteScalar();
+
+                    foreach (var rentalItem in items)
+                    {
+                        myCommand.CommandText = "insert into returnitem (rentalID, furnitureID, returnID, quantity, returnDate) values (@rentalID, @furnitureID, @returnID, @quantity, @returnDate)";
+                        myCommand.Parameters.Add("@rentalID", MySqlDbType.Int32).Value = rentalItem.RentalID;
+                        myCommand.Parameters.Add("@furnitureID", MySqlDbType.Int32).Value = rentalItem.FurnitureID;
+                        myCommand.Parameters.Add("@returnID", MySqlDbType.Int32).Value = transactionID;
+                        myCommand.Parameters.Add("@quantity", MySqlDbType.Int32).Value = rentalItem.Quantity;
+                        myCommand.Parameters.Add("@returnDate", MySqlDbType.Date).Value = DateTime.Now.ToString("yyyy-MM-dd");
+
+                        myCommand.ExecuteNonQuery();
+
+                        myCommand.CommandText = "update furniture set quantity= quantity + @returnquantity where furnitureID = @furnitureID";
+
+                        myCommand.Parameters.Add("@returnquantity", MySqlDbType.Int32).Value = rentalItem.Quantity;
+                        myCommand.Parameters.Add("@furnitureID", MySqlDbType.Int32).Value = rentalItem.FurnitureID;
+
+                        myCommand.ExecuteNonQuery();
+                        myTrans.Commit();
+                    }
+                    
+                } 
+                catch (Exception)
+                {
+                    try
+                    {
+                        myTrans.Rollback();
+                        return false;
+                    } 
+                    catch (MySqlException)
+                    {
+                        return false;
+                    }
                 }
+                return true;
             }
         }
 

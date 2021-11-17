@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
-    <Machine>CSVLAB-VM14</Machine>
-    <WindowsUser>jzeng1</WindowsUser>
+    <Machine>JASON</Machine>
+    <WindowsUser>jason</WindowsUser>
     <TargetPlatformIdentifier>UAP</TargetPlatformIdentifier>
     <TargetOsVersion>10.0</TargetOsVersion>
     <TargetOsDescription>Windows 10.0</TargetOsDescription>
@@ -10,7 +10,7 @@
     <PackageArchitecture>x86</PackageArchitecture>
     <PackageIdentityName>78cb38f4-6d03-4f08-89f2-8dae058724e2</PackageIdentityName>
     <PackageIdentityPublisher>CN=jason</PackageIdentityPublisher>
-    <IntermediateOutputPath>C:\Users\jzeng1\Source\Repos\info_managment_project\CS3230RentalSystemProject\CS3230RentalSystemProject\obj\x86\Debug\</IntermediateOutputPath>
+    <IntermediateOutputPath>C:\Users\jason\source\repos\info_managment_project\CS3230RentalSystemProject\CS3230RentalSystemProject\obj\x86\Debug\</IntermediateOutputPath>
     <RemoteDeploymentType>
     </RemoteDeploymentType>
     <PackageRegistrationPath>
@@ -18,8 +18,8 @@
     <RemoveNonLayoutFiles>true</RemoveNonLayoutFiles>
     <DeployOptionalPackages>false</DeployOptionalPackages>
     <WindowsSdkPath>C:\Program Files %28x86%29\Windows Kits\10\</WindowsSdkPath>
-    <LayoutDir>C:\Users\jzeng1\Source\Repos\info_managment_project\CS3230RentalSystemProject\CS3230RentalSystemProject\bin\x86\Debug\AppX</LayoutDir>
-    <RegisteredManifestChecksum>1F391489875ED36A9D2E5C121E92E643D513226E7D2B69F4459BF99DC11DA7C8</RegisteredManifestChecksum>
+    <LayoutDir>C:\Users\jason\source\repos\info_managment_project\CS3230RentalSystemProject\CS3230RentalSystemProject\bin\x86\Debug\AppX</LayoutDir>
+    <RegisteredManifestChecksum>DF0B318769B0C3609BB3CB3B7D41047A48CBB4C75CED233DD603E52F422562AE</RegisteredManifestChecksum>
     <RegisteredPackageMoniker>78cb38f4-6d03-4f08-89f2-8dae058724e2_1.0.0.0_x86__t9sbtj4kj4cst</RegisteredPackageMoniker>
     <RegisteredUserModeAppID>78cb38f4-6d03-4f08-89f2-8dae058724e2_t9sbtj4kj4cst!App</RegisteredUserModeAppID>
     <RegisteredPackageID>78cb38f4-6d03-4f08-89f2-8dae058724e2</RegisteredPackageID>
@@ -27,50 +27,50 @@
     <RegisteredVersion>1.0.0.0</RegisteredVersion>
   </PropertyGroup>
   <ItemGroup>
-    <AppXManifest Include="C:\Users\jzeng1\Source\Repos\info_managment_project\CS3230RentalSystemProject\CS3230RentalSystemProject\bin\x86\Debug\Core\AppxManifest.xml">
+    <AppXManifest Include="C:\Users\jason\source\repos\info_managment_project\CS3230RentalSystemProject\CS3230RentalSystemProject\bin\x86\Debug\Core\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2021-11-17T02:35:59.782</Modified>
+      <Modified>2021-11-17T21:32:38.576</Modified>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
-    <AppxPackagedFile Include="C:\Users\jzeng1\Source\Repos\info_managment_project\CS3230RentalSystemProject\CS3230RentalSystemProject\bin\x86\Debug\CS3230RentalSystemProject.exe">
+    <AppxPackagedFile Include="C:\Users\jason\source\repos\info_managment_project\CS3230RentalSystemProject\CS3230RentalSystemProject\bin\x86\Debug\CS3230RentalSystemProject.exe">
       <PackagePath>entrypoint\CS3230RentalSystemProject.exe</PackagePath>
-      <Modified>2021-11-17T02:35:59.070</Modified>
+      <Modified>2021-11-17T21:32:38.262</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\jzeng1\.nuget\packages\bouncycastle.netcore\1.8.5\lib\netstandard2.0\BouncyCastle.Crypto.dll">
+    <AppxPackagedFile Include="C:\Users\jason\.nuget\packages\bouncycastle.netcore\1.8.5\lib\netstandard2.0\BouncyCastle.Crypto.dll">
       <PackagePath>BouncyCastle.Crypto.dll</PackagePath>
       <Modified>2019-03-18T11:53:36.000</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\jzeng1\.nuget\packages\google.protobuf\3.14.0\lib\netstandard2.0\Google.Protobuf.dll">
+    <AppxPackagedFile Include="C:\Users\jason\.nuget\packages\google.protobuf\3.14.0\lib\netstandard2.0\Google.Protobuf.dll">
       <PackagePath>Google.Protobuf.dll</PackagePath>
       <Modified>2020-11-13T15:09:34.000</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\jzeng1\.nuget\packages\k4os.compression.lz4\1.1.11\lib\netstandard2.0\K4os.Compression.LZ4.dll">
+    <AppxPackagedFile Include="C:\Users\jason\.nuget\packages\k4os.compression.lz4\1.1.11\lib\netstandard2.0\K4os.Compression.LZ4.dll">
       <PackagePath>K4os.Compression.LZ4.dll</PackagePath>
       <Modified>2019-07-03T22:59:30.000</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\jzeng1\.nuget\packages\k4os.compression.lz4.streams\1.1.11\lib\netstandard2.0\K4os.Compression.LZ4.Streams.dll">
+    <AppxPackagedFile Include="C:\Users\jason\.nuget\packages\k4os.compression.lz4.streams\1.1.11\lib\netstandard2.0\K4os.Compression.LZ4.Streams.dll">
       <PackagePath>K4os.Compression.LZ4.Streams.dll</PackagePath>
       <Modified>2019-07-03T22:59:30.000</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\jzeng1\.nuget\packages\k4os.hash.xxhash\1.0.6\lib\netstandard2.0\K4os.Hash.xxHash.dll">
+    <AppxPackagedFile Include="C:\Users\jason\.nuget\packages\k4os.hash.xxhash\1.0.6\lib\netstandard2.0\K4os.Hash.xxHash.dll">
       <PackagePath>K4os.Hash.xxHash.dll</PackagePath>
       <Modified>2019-07-03T20:39:02.000</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\jzeng1\.nuget\packages\mysql.data\8.0.26\lib\netstandard2.0\MySql.Data.dll">
+    <AppxPackagedFile Include="C:\Users\jason\.nuget\packages\mysql.data\8.0.26\lib\netstandard2.0\MySql.Data.dll">
       <PackagePath>MySql.Data.dll</PackagePath>
       <Modified>2021-05-31T15:26:30.000</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\jzeng1\.nuget\packages\mysql.data\8.0.26\lib\netstandard2.0\Ubiety.Dns.Core.dll">
+    <AppxPackagedFile Include="C:\Users\jason\.nuget\packages\mysql.data\8.0.26\lib\netstandard2.0\Ubiety.Dns.Core.dll">
       <PackagePath>Ubiety.Dns.Core.dll</PackagePath>
       <Modified>2021-05-31T15:25:08.000</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\jzeng1\.nuget\packages\mysql.data\8.0.26\lib\netstandard2.0\Zstandard.Net.dll">
+    <AppxPackagedFile Include="C:\Users\jason\.nuget\packages\mysql.data\8.0.26\lib\netstandard2.0\Zstandard.Net.dll">
       <PackagePath>Zstandard.Net.dll</PackagePath>
       <Modified>2021-05-31T15:25:08.000</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\jzeng1\.nuget\packages\mysqlconnector\1.3.13\lib\netstandard2.0\MySqlConnector.dll">
+    <AppxPackagedFile Include="C:\Users\jason\.nuget\packages\mysqlconnector\1.3.13\lib\netstandard2.0\MySqlConnector.dll">
       <PackagePath>MySqlConnector.dll</PackagePath>
       <Modified>2021-10-02T17:46:10.000</Modified>
     </AppxPackagedFile>
@@ -78,19 +78,19 @@
       <PackagePath>System.Runtime.dll</PackagePath>
       <Modified>2021-02-05T05:15:46.000</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\jzeng1\.nuget\packages\system.configuration.configurationmanager\4.4.1\lib\netstandard2.0\System.Configuration.ConfigurationManager.dll">
+    <AppxPackagedFile Include="C:\Users\jason\.nuget\packages\system.configuration.configurationmanager\4.4.1\lib\netstandard2.0\System.Configuration.ConfigurationManager.dll">
       <PackagePath>System.Configuration.ConfigurationManager.dll</PackagePath>
       <Modified>2017-11-20T18:09:04.000</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\jzeng1\.nuget\packages\system.runtime.compilerservices.unsafe\4.5.2\lib\netstandard2.0\System.Runtime.CompilerServices.Unsafe.dll">
+    <AppxPackagedFile Include="C:\Users\jason\.nuget\packages\system.runtime.compilerservices.unsafe\4.5.2\lib\netstandard2.0\System.Runtime.CompilerServices.Unsafe.dll">
       <PackagePath>System.Runtime.CompilerServices.Unsafe.dll</PackagePath>
       <Modified>2018-09-18T19:38:10.000</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\jzeng1\.nuget\packages\system.security.cryptography.protecteddata\4.4.0\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll">
+    <AppxPackagedFile Include="C:\Users\jason\.nuget\packages\system.security.cryptography.protecteddata\4.4.0\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll">
       <PackagePath>System.Security.Cryptography.ProtectedData.dll</PackagePath>
       <Modified>2017-07-19T10:01:34.000</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\jzeng1\.nuget\packages\system.security.permissions\4.7.0\lib\netstandard2.0\System.Security.Permissions.dll">
+    <AppxPackagedFile Include="C:\Users\jason\.nuget\packages\system.security.permissions\4.7.0\lib\netstandard2.0\System.Security.Permissions.dll">
       <PackagePath>System.Security.Permissions.dll</PackagePath>
       <Modified>2019-11-15T08:37:44.000</Modified>
     </AppxPackagedFile>
@@ -98,103 +98,107 @@
       <PackagePath>Microsoft.UI.Xaml.Markup.winmd</PackagePath>
       <Modified>2020-12-02T08:52:00.000</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\jzeng1\Source\Repos\info_managment_project\CS3230RentalSystemProject\CS3230RentalSystemProject\logo\logo.PNG">
+    <AppxPackagedFile Include="C:\Users\jason\source\repos\info_managment_project\CS3230RentalSystemProject\CS3230RentalSystemProject\logo\logo.PNG">
       <PackagePath>logo\logo.PNG</PackagePath>
-      <Modified>2021-11-17T00:45:10.959</Modified>
+      <Modified>2021-10-17T23:49:41.933</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\jzeng1\Source\Repos\info_managment_project\CS3230RentalSystemProject\CS3230RentalSystemProject\Assets\LockScreenLogo.scale-200.png">
+    <AppxPackagedFile Include="C:\Users\jason\source\repos\info_managment_project\CS3230RentalSystemProject\CS3230RentalSystemProject\Assets\LockScreenLogo.scale-200.png">
       <PackagePath>Assets\LockScreenLogo.scale-200.png</PackagePath>
-      <Modified>2021-11-17T00:45:10.627</Modified>
+      <Modified>2021-09-07T01:06:14.397</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\jzeng1\Source\Repos\info_managment_project\CS3230RentalSystemProject\CS3230RentalSystemProject\Assets\SplashScreen.scale-200.png">
+    <AppxPackagedFile Include="C:\Users\jason\source\repos\info_managment_project\CS3230RentalSystemProject\CS3230RentalSystemProject\Assets\SplashScreen.scale-200.png">
       <PackagePath>Assets\SplashScreen.scale-200.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2021-11-17T00:45:10.628</Modified>
+      <Modified>2021-09-07T01:06:14.400</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\jzeng1\Source\Repos\info_managment_project\CS3230RentalSystemProject\CS3230RentalSystemProject\Assets\Square150x150Logo.scale-200.png">
+    <AppxPackagedFile Include="C:\Users\jason\source\repos\info_managment_project\CS3230RentalSystemProject\CS3230RentalSystemProject\Assets\Square150x150Logo.scale-200.png">
       <PackagePath>Assets\Square150x150Logo.scale-200.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2021-11-17T00:45:10.629</Modified>
+      <Modified>2021-09-07T01:06:14.400</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\jzeng1\Source\Repos\info_managment_project\CS3230RentalSystemProject\CS3230RentalSystemProject\Assets\Square44x44Logo.scale-200.png">
+    <AppxPackagedFile Include="C:\Users\jason\source\repos\info_managment_project\CS3230RentalSystemProject\CS3230RentalSystemProject\Assets\Square44x44Logo.scale-200.png">
       <PackagePath>Assets\Square44x44Logo.scale-200.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2021-11-17T00:45:10.630</Modified>
+      <Modified>2021-09-07T01:06:14.401</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\jzeng1\Source\Repos\info_managment_project\CS3230RentalSystemProject\CS3230RentalSystemProject\Assets\Square44x44Logo.targetsize-24_altform-unplated.png">
+    <AppxPackagedFile Include="C:\Users\jason\source\repos\info_managment_project\CS3230RentalSystemProject\CS3230RentalSystemProject\Assets\Square44x44Logo.targetsize-24_altform-unplated.png">
       <PackagePath>Assets\Square44x44Logo.targetsize-24_altform-unplated.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2021-11-17T00:45:10.630</Modified>
+      <Modified>2021-09-07T01:06:14.402</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\jzeng1\Source\Repos\info_managment_project\CS3230RentalSystemProject\CS3230RentalSystemProject\Assets\StoreLogo.png">
+    <AppxPackagedFile Include="C:\Users\jason\source\repos\info_managment_project\CS3230RentalSystemProject\CS3230RentalSystemProject\Assets\StoreLogo.png">
       <PackagePath>Assets\StoreLogo.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2021-11-17T00:45:10.631</Modified>
+      <Modified>2021-09-07T01:06:14.402</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\jzeng1\Source\Repos\info_managment_project\CS3230RentalSystemProject\CS3230RentalSystemProject\Assets\Wide310x150Logo.scale-200.png">
+    <AppxPackagedFile Include="C:\Users\jason\source\repos\info_managment_project\CS3230RentalSystemProject\CS3230RentalSystemProject\Assets\Wide310x150Logo.scale-200.png">
       <PackagePath>Assets\Wide310x150Logo.scale-200.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2021-11-17T00:45:10.632</Modified>
+      <Modified>2021-09-07T01:06:14.403</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\jzeng1\Source\Repos\info_managment_project\CS3230RentalSystemProject\CS3230RentalSystemProject\Properties\Default.rd.xml">
+    <AppxPackagedFile Include="C:\Users\jason\source\repos\info_managment_project\CS3230RentalSystemProject\CS3230RentalSystemProject\Properties\Default.rd.xml">
       <PackagePath>Properties\Default.rd.xml</PackagePath>
-      <Modified>2021-11-17T00:45:10.662</Modified>
+      <Modified>2021-10-11T23:13:22.542</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\jzeng1\Source\Repos\info_managment_project\CS3230RentalSystemProject\CS3230RentalSystemProject\bin\x86\Debug\CS3230RentalSystemProject.xr.xml">
+    <AppxPackagedFile Include="C:\Users\jason\source\repos\info_managment_project\CS3230RentalSystemProject\CS3230RentalSystemProject\bin\x86\Debug\CS3230RentalSystemProject.xr.xml">
       <PackagePath>CS3230RentalSystemProject.xr.xml</PackagePath>
-      <Modified>2021-11-17T00:47:50.138</Modified>
+      <Modified>2021-11-17T20:19:21.617</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\jzeng1\Source\Repos\info_managment_project\CS3230RentalSystemProject\CS3230RentalSystemProject\bin\x86\Debug\App.xbf">
+    <AppxPackagedFile Include="C:\Users\jason\source\repos\info_managment_project\CS3230RentalSystemProject\CS3230RentalSystemProject\bin\x86\Debug\App.xbf">
       <PackagePath>App.xbf</PackagePath>
-      <Modified>2021-11-17T02:35:58.775</Modified>
+      <Modified>2021-11-17T21:32:38.152</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\jzeng1\Source\Repos\info_managment_project\CS3230RentalSystemProject\CS3230RentalSystemProject\bin\x86\Debug\MainPage.xbf">
+    <AppxPackagedFile Include="C:\Users\jason\source\repos\info_managment_project\CS3230RentalSystemProject\CS3230RentalSystemProject\bin\x86\Debug\MainPage.xbf">
       <PackagePath>MainPage.xbf</PackagePath>
-      <Modified>2021-11-17T02:35:58.775</Modified>
+      <Modified>2021-11-17T21:32:38.153</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\jzeng1\Source\Repos\info_managment_project\CS3230RentalSystemProject\CS3230RentalSystemProject\bin\x86\Debug\View\AddEmployeeContentDialog.xbf">
+    <AppxPackagedFile Include="C:\Users\jason\source\repos\info_managment_project\CS3230RentalSystemProject\CS3230RentalSystemProject\bin\x86\Debug\View\AddEmployeeContentDialog.xbf">
       <PackagePath>View\AddEmployeeContentDialog.xbf</PackagePath>
-      <Modified>2021-11-17T02:35:58.776</Modified>
+      <Modified>2021-11-17T21:32:38.153</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\jzeng1\Source\Repos\info_managment_project\CS3230RentalSystemProject\CS3230RentalSystemProject\bin\x86\Debug\View\Checkout.xbf">
+    <AppxPackagedFile Include="C:\Users\jason\source\repos\info_managment_project\CS3230RentalSystemProject\CS3230RentalSystemProject\bin\x86\Debug\View\AdminInterface.xbf">
+      <PackagePath>View\AdminInterface.xbf</PackagePath>
+      <Modified>2021-11-17T21:32:38.153</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\jason\source\repos\info_managment_project\CS3230RentalSystemProject\CS3230RentalSystemProject\bin\x86\Debug\View\Checkout.xbf">
       <PackagePath>View\Checkout.xbf</PackagePath>
-      <Modified>2021-11-17T02:35:58.721</Modified>
+      <Modified>2021-11-17T21:32:38.129</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\jzeng1\Source\Repos\info_managment_project\CS3230RentalSystemProject\CS3230RentalSystemProject\bin\x86\Debug\View\EmployeeWindow.xbf">
+    <AppxPackagedFile Include="C:\Users\jason\source\repos\info_managment_project\CS3230RentalSystemProject\CS3230RentalSystemProject\bin\x86\Debug\View\EmployeeWindow.xbf">
       <PackagePath>View\EmployeeWindow.xbf</PackagePath>
-      <Modified>2021-11-17T02:35:58.730</Modified>
+      <Modified>2021-11-17T21:32:38.133</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\jzeng1\Source\Repos\info_managment_project\CS3230RentalSystemProject\CS3230RentalSystemProject\bin\x86\Debug\View\FurnitureView.xbf">
+    <AppxPackagedFile Include="C:\Users\jason\source\repos\info_managment_project\CS3230RentalSystemProject\CS3230RentalSystemProject\bin\x86\Debug\View\FurnitureView.xbf">
       <PackagePath>View\FurnitureView.xbf</PackagePath>
-      <Modified>2021-11-17T02:35:58.736</Modified>
+      <Modified>2021-11-17T21:32:38.136</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\jzeng1\Source\Repos\info_managment_project\CS3230RentalSystemProject\CS3230RentalSystemProject\bin\x86\Debug\View\MemberRegistration.xbf">
+    <AppxPackagedFile Include="C:\Users\jason\source\repos\info_managment_project\CS3230RentalSystemProject\CS3230RentalSystemProject\bin\x86\Debug\View\MemberRegistration.xbf">
       <PackagePath>View\MemberRegistration.xbf</PackagePath>
-      <Modified>2021-11-17T02:35:58.745</Modified>
+      <Modified>2021-11-17T21:32:38.140</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\jzeng1\Source\Repos\info_managment_project\CS3230RentalSystemProject\CS3230RentalSystemProject\bin\x86\Debug\View\MemebrInformationViewer.xbf">
+    <AppxPackagedFile Include="C:\Users\jason\source\repos\info_managment_project\CS3230RentalSystemProject\CS3230RentalSystemProject\bin\x86\Debug\View\MemebrInformationViewer.xbf">
       <PackagePath>View\MemebrInformationViewer.xbf</PackagePath>
-      <Modified>2021-11-17T02:35:58.756</Modified>
+      <Modified>2021-11-17T21:32:38.145</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\jzeng1\Source\Repos\info_managment_project\CS3230RentalSystemProject\CS3230RentalSystemProject\bin\x86\Debug\View\RecieptDialog.xbf">
+    <AppxPackagedFile Include="C:\Users\jason\source\repos\info_managment_project\CS3230RentalSystemProject\CS3230RentalSystemProject\bin\x86\Debug\View\RecieptDialog.xbf">
       <PackagePath>View\RecieptDialog.xbf</PackagePath>
-      <Modified>2021-11-17T02:35:58.778</Modified>
+      <Modified>2021-11-17T21:32:38.153</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\jzeng1\Source\Repos\info_managment_project\CS3230RentalSystemProject\CS3230RentalSystemProject\bin\x86\Debug\View\TransactionView.xbf">
+    <AppxPackagedFile Include="C:\Users\jason\source\repos\info_managment_project\CS3230RentalSystemProject\CS3230RentalSystemProject\bin\x86\Debug\View\TransactionView.xbf">
       <PackagePath>View\TransactionView.xbf</PackagePath>
-      <Modified>2021-11-17T02:35:58.775</Modified>
+      <Modified>2021-11-17T21:32:38.152</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Windows Kits\10\UnionMetadata\10.0.19041.0\Windows.winmd">
       <PackagePath>WinMetadata\Windows.winmd</PackagePath>
       <Modified>2020-12-02T06:52:06.000</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\jzeng1\Source\Repos\info_managment_project\CS3230RentalSystemProject\CS3230RentalSystemProject\bin\x86\Debug\resources.pri">
+    <AppxPackagedFile Include="C:\Users\jason\source\repos\info_managment_project\CS3230RentalSystemProject\CS3230RentalSystemProject\bin\x86\Debug\resources.pri">
       <PackagePath>resources.pri</PackagePath>
-      <Modified>2021-11-17T00:58:08.529</Modified>
+      <Modified>2021-11-17T19:56:57.914</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\jzeng1\Source\Repos\info_managment_project\CS3230RentalSystemProject\CS3230RentalSystemProject\bin\x86\Debug\Core\CS3230RentalSystemProject.exe">
+    <AppxPackagedFile Include="C:\Users\jason\source\repos\info_managment_project\CS3230RentalSystemProject\CS3230RentalSystemProject\bin\x86\Debug\Core\CS3230RentalSystemProject.exe">
       <PackagePath>CS3230RentalSystemProject.exe</PackagePath>
-      <Modified>2021-11-17T02:35:59.773</Modified>
+      <Modified>2021-11-17T21:32:38.573</Modified>
     </AppxPackagedFile>
   </ItemGroup>
   <ItemGroup>
@@ -254,36 +258,36 @@
     </ResolvedSDKReference>
     <ResolvedSDKReference Include="C:\Program Files %28x86%29\Microsoft SDKs\Windows Kits\10\ExtensionSDKs\Microsoft.VCLibs\14.0\">
       <Name>Microsoft.VCLibs.140.00.Debug</Name>
-      <Version>14.0.29231.0</Version>
+      <Version>14.0.30035.0</Version>
       <Architecture>ARM</Architecture>
-      <FrameworkIdentity>Name = Microsoft.VCLibs.140.00.Debug, MinVersion = 14.0.29231.0, Publisher = %27CN=Microsoft Corporation, O=Microsoft Corporation, L=Redmond, S=Washington, C=US%27</FrameworkIdentity>
+      <FrameworkIdentity>Name = Microsoft.VCLibs.140.00.Debug, MinVersion = 14.0.30035.0, Publisher = %27CN=Microsoft Corporation, O=Microsoft Corporation, L=Redmond, S=Washington, C=US%27</FrameworkIdentity>
       <AppxLocation>C:\Program Files %28x86%29\Microsoft SDKs\Windows Kits\10\ExtensionSDKs\Microsoft.VCLibs\14.0\.\AppX\Debug\ARM\Microsoft.VCLibs.ARM.Debug.14.00.appx</AppxLocation>
       <MoreInfo>
       </MoreInfo>
     </ResolvedSDKReference>
     <ResolvedSDKReference Include="C:\Program Files %28x86%29\Microsoft SDKs\Windows Kits\10\ExtensionSDKs\Microsoft.VCLibs\14.0\">
       <Name>Microsoft.VCLibs.140.00.Debug</Name>
-      <Version>14.0.29231.0</Version>
+      <Version>14.0.30035.0</Version>
       <Architecture>ARM64</Architecture>
-      <FrameworkIdentity>Name = Microsoft.VCLibs.140.00.Debug, MinVersion = 14.0.29231.0, Publisher = %27CN=Microsoft Corporation, O=Microsoft Corporation, L=Redmond, S=Washington, C=US%27</FrameworkIdentity>
+      <FrameworkIdentity>Name = Microsoft.VCLibs.140.00.Debug, MinVersion = 14.0.30035.0, Publisher = %27CN=Microsoft Corporation, O=Microsoft Corporation, L=Redmond, S=Washington, C=US%27</FrameworkIdentity>
       <AppxLocation>C:\Program Files %28x86%29\Microsoft SDKs\Windows Kits\10\ExtensionSDKs\Microsoft.VCLibs\14.0\.\AppX\Debug\ARM64\Microsoft.VCLibs.ARM64.Debug.14.00.appx</AppxLocation>
       <MoreInfo>
       </MoreInfo>
     </ResolvedSDKReference>
     <ResolvedSDKReference Include="C:\Program Files %28x86%29\Microsoft SDKs\Windows Kits\10\ExtensionSDKs\Microsoft.VCLibs\14.0\">
       <Name>Microsoft.VCLibs.140.00.Debug</Name>
-      <Version>14.0.29231.0</Version>
+      <Version>14.0.30035.0</Version>
       <Architecture>x64</Architecture>
-      <FrameworkIdentity>Name = Microsoft.VCLibs.140.00.Debug, MinVersion = 14.0.29231.0, Publisher = %27CN=Microsoft Corporation, O=Microsoft Corporation, L=Redmond, S=Washington, C=US%27</FrameworkIdentity>
+      <FrameworkIdentity>Name = Microsoft.VCLibs.140.00.Debug, MinVersion = 14.0.30035.0, Publisher = %27CN=Microsoft Corporation, O=Microsoft Corporation, L=Redmond, S=Washington, C=US%27</FrameworkIdentity>
       <AppxLocation>C:\Program Files %28x86%29\Microsoft SDKs\Windows Kits\10\ExtensionSDKs\Microsoft.VCLibs\14.0\.\AppX\Debug\x64\Microsoft.VCLibs.x64.Debug.14.00.appx</AppxLocation>
       <MoreInfo>
       </MoreInfo>
     </ResolvedSDKReference>
     <ResolvedSDKReference Include="C:\Program Files %28x86%29\Microsoft SDKs\Windows Kits\10\ExtensionSDKs\Microsoft.VCLibs\14.0\">
       <Name>Microsoft.VCLibs.140.00.Debug</Name>
-      <Version>14.0.29231.0</Version>
+      <Version>14.0.30035.0</Version>
       <Architecture>x86</Architecture>
-      <FrameworkIdentity>Name = Microsoft.VCLibs.140.00.Debug, MinVersion = 14.0.29231.0, Publisher = %27CN=Microsoft Corporation, O=Microsoft Corporation, L=Redmond, S=Washington, C=US%27</FrameworkIdentity>
+      <FrameworkIdentity>Name = Microsoft.VCLibs.140.00.Debug, MinVersion = 14.0.30035.0, Publisher = %27CN=Microsoft Corporation, O=Microsoft Corporation, L=Redmond, S=Washington, C=US%27</FrameworkIdentity>
       <AppxLocation>C:\Program Files %28x86%29\Microsoft SDKs\Windows Kits\10\ExtensionSDKs\Microsoft.VCLibs\14.0\.\AppX\Debug\x86\Microsoft.VCLibs.x86.Debug.14.00.appx</AppxLocation>
       <MoreInfo>
       </MoreInfo>

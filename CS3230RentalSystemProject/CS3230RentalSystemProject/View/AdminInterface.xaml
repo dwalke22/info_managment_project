@@ -1,0 +1,19 @@
+﻿<Page
+    x:Class="CS3230RentalSystemProject.View.AdminInterface"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:CS3230RentalSystemProject.View"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" Width="670" Height="510">
+
+    <Grid Height="500" VerticalAlignment="Center" HorizontalAlignment="Center" Width="670">
+        <TextBlock x:Name="adminName" HorizontalAlignment="Left" Margin="60,15,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Height="50" Width="348" FontSize="36" FontFamily="Berlin Sans FB Demi" Foreground="#FF9C0D0D"/>
+        <TextBlock HorizontalAlignment="Left" Margin="55,75,0,0" Text="Please Entry Your Query:" TextWrapping="Wrap" VerticalAlignment="Top" Height="27" Width="202" FontSize="18" FontFamily="Berlin Sans FB Demi" Foreground="Black"/>
+        <TextBox x:Name="queryBox" HorizontalAlignment="Left" Margin="55,105,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Height="95" Width="540" FontSize="14"/>
+        <TextBox x:Name="resultBox" Margin="55,270,75,25" ScrollViewer.VerticalScrollBarVisibility="Visible" Text="" TextWrapping="Wrap" FontSize="14" IsReadOnly="True"/>
+        <Button x:Name="excuteButton" Content="Excute" Margin="480,210,0,0" VerticalAlignment="Top" Height="45" Width="115" FontSize="16" Click="excuteButton_Click"/>
+
+    </Grid>
+</Page>

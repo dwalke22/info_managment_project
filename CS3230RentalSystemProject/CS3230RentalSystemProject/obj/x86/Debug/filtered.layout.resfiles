@@ -10,6 +10,7 @@ App.xbf
 CS3230RentalSystemProject.xr.xml
 MainPage.xbf
 View\AddEmployeeContentDialog.xbf
+View\AdminInterface.xbf
 View\Checkout.xbf
 View\EmployeeWindow.xbf
 View\FurnitureView.xbf
