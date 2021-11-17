@@ -5,6 +5,7 @@ using DBAccess.DAL;
 using Windows.UI.Popups;
 using System;
 using CS3230RentalSystemProject.Model;
+using CS3230RentalSystemProject.Utils;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x409
 
@@ -42,15 +43,17 @@ namespace CS3230RentalSystemProject
             }
             if (isvalid)
             {
-                int loginSuccess = LoginDALI.LoginValidation(this.userNameBox.Text, this.passwordBox.Password.ToString());
+                string hashedpassword = PasswordHash.CreateMD5(this.passwordBox.Password.ToString());
+                int loginSuccess = LoginDALI.LoginValidation(this.userNameBox.Text, hashedpassword);
 
                 if (loginSuccess != -1)
                 {
                     Employee emploee = EmployeeDAL.GetEmployee(loginSuccess);
-                    if (!emploee.IsAdmin)
+                    /*if (!emploee.IsAdmin)
                     {
                         Frame.Navigate(typeof(EmployeeWindow), emploee);
-                    }
+                    }*/
+                    Frame.Navigate(typeof(EmployeeWindow), emploee);
                 }
                 else
                 {
