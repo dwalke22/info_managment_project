@@ -1,0 +1,65 @@
+﻿<ContentDialog
+    x:Class="CS3230RentalSystemProject.View.RecieptDialog"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:CS3230RentalSystemProject.View"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Title="Transaction Receipt"
+    PrimaryButtonText="Close">
+    <Grid Margin="0,0,0,33">
+        <ListBox x:ConnectionId='2' x:Name="itemListBox" Height="99" VerticalAlignment="Top">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="255"/>
+                            <ColumnDefinition Width="80"/>
+                            <ColumnDefinition Width="80"/>
+                            <ColumnDefinition Width="80"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Grid.Column="0" Text="{Binding FurnitureName}" HorizontalAlignment="Left"/>
+                        <TextBlock Grid.Column="1" Text="{Binding RentQuantity }" HorizontalAlignment="Left"/>
+                        <TextBlock Grid.Column="2" Text="{Binding CurrentToalPrice}" HorizontalAlignment="Left"/>
+                        <TextBlock Grid.Column="3" Text="{Binding ReturnDate}" HorizontalAlignment="Left"/>
+                    </Grid>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+            <ListBox.Template>
+                <ControlTemplate>
+                    <Grid BorderBrush="Black" BorderThickness="1,1,1,1">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <Grid Grid.Row="0" Margin="1,1,1,1">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="255" />
+                                <ColumnDefinition Width="80" />
+                                <ColumnDefinition Width="80" />
+                                <ColumnDefinition Width="80" />
+                            </Grid.ColumnDefinitions>
+                            <Border Grid.Column="0" BorderBrush="Black" BorderThickness="0,0,1,1">
+                                <TextBlock FontWeight="Bold" HorizontalAlignment="Left">Furniture Name</TextBlock>
+                            </Border>
+                            <Border Grid.Column="1" BorderBrush="Black" BorderThickness="0,0,1,1">
+                                <TextBlock FontWeight="Bold" HorizontalAlignment="Center">Quantity</TextBlock>
+                            </Border>
+                            <Border Grid.Column="2" BorderBrush="Black" BorderThickness="0,0,1,1">
+                                <TextBlock FontWeight="Bold" HorizontalAlignment="Center">Price</TextBlock>
+                            </Border>
+                            <Border Grid.Column="3" BorderBrush="Black" BorderThickness="0,0,1,1">
+                                <TextBlock FontWeight="Bold" HorizontalAlignment="Center">Return Date</TextBlock>
+                            </Border>
+                        </Grid>
+                        <ScrollViewer Grid.Row="1" Name="svMain" VerticalScrollBarVisibility="Visible">
+                            <ItemsPresenter Grid.Row="1"></ItemsPresenter>
+                        </ScrollViewer>
+                    </Grid>
+                </ControlTemplate>
+            </ListBox.Template>
+        </ListBox>
+    </Grid>
+</ContentDialog>
+
