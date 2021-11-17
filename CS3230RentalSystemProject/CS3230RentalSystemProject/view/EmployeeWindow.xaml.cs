@@ -11,6 +11,7 @@ using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Navigation;
 using K4os.Compression.LZ4.Internal;
+using Org.BouncyCastle.Cms;
 using Org.BouncyCastle.Security;
 
 // The User Control item template is documented at https://go.microsoft.com/fwlink/?LinkId=234236
@@ -486,7 +487,9 @@ namespace CS3230RentalSystemProject.view
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
+            AddEmployeeContentDialog dialog = new AddEmployeeContentDialog();
 
+            dialog.ShowAsync();
         }
     }
 }

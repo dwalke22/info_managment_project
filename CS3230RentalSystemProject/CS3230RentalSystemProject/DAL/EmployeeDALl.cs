@@ -68,16 +68,16 @@ namespace DBAccess.DAL
         /// <param name="isAdmin">The is admin.</param>
         public void AddEmployee(Employee employee, int isAdmin)
         {
+            string query =
+                "insert into employee (firstName, lastName, phoneNumber, email, isAdmin) values (@firstName, @lastName, @phoneNumber, @email, @isAdmin)";
+
             using (MySqlConnection connection = new MySqlConnection(Connection.connectionString))
             {
-                string query =
-                    "insert into employee (firstName, lastName, phoneNumber, email, isAdmin) values(@firstname, @lastname, @phoneNumber, @email, @isAdmin";
-
                 connection.Open();
 
                 using MySqlCommand command = new MySqlCommand(query, connection);
-                command.Parameters.Add("@firstname", MySqlDbType.VarChar).Value = employee.FirstName;
-                command.Parameters.Add("@lastname", MySqlDbType.VarChar).Value = employee.LastName;
+                command.Parameters.Add("@firstName", MySqlDbType.VarChar).Value = employee.FirstName;
+                command.Parameters.Add("@lastName", MySqlDbType.VarChar).Value = employee.LastName;
                 command.Parameters.Add("@email", MySqlDbType.VarChar).Value = employee.Email;
                 command.Parameters.Add("@phoneNumber", MySqlDbType.VarChar).Value = employee.PhoneNumber;
                 command.Parameters.Add("@isAdmin", MySqlDbType.Int32).Value = isAdmin;
@@ -120,6 +120,8 @@ namespace DBAccess.DAL
             using (MySqlConnection connection = new MySqlConnection(Connection.connectionString))
             {
                 string query = "select max(employeeID) from employee";
+
+                connection.Open();
 
                 using MySqlCommand command = new MySqlCommand(query, connection);
                 id = (int)command.ExecuteScalar();
