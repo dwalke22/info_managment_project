@@ -1051,6 +1051,33 @@
             The reuturn date
             </summary>
         </member>
+        <member name="T:CS3230RentalSystemProject.Utils.PasswordHash">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:CS3230RentalSystemProject.Utils.PasswordHash.CreateMD5(System.String)">
+            <summary>
+            Creates the m d5.
+            </summary>
+            <param name="input">The input.</param>
+            <returns></returns>
+        </member>
+        <member name="M:CS3230RentalSystemProject.View.AddEmployeeContentDialog.InitializeComponent">
+            <summary>
+            InitializeComponent()
+            </summary>
+        </member>
+        <member name="M:CS3230RentalSystemProject.View.AddEmployeeContentDialog.Connect(System.Int32,System.Object)">
+            <summary>
+            Connect()
+            </summary>
+        </member>
+        <member name="M:CS3230RentalSystemProject.View.AddEmployeeContentDialog.GetBindingConnector(System.Int32,System.Object)">
+            <summary>
+            GetBindingConnector(int connectionId, object target)
+            </summary>
+        </member>
         <member name="T:CS3230RentalSystemProject.View.Checkout">
             <summary>
             An empty page that can be used on its own or navigated to within a Frame.
@@ -1166,6 +1193,26 @@
             </summary>
         </member>
         <member name="M:CS3230RentalSystemProject.View.MemebrInformationViewer.GetBindingConnector(System.Int32,System.Object)">
+            <summary>
+            GetBindingConnector(int connectionId, object target)
+            </summary>
+        </member>
+        <member name="F:CS3230RentalSystemProject.View.RecieptDialog.furnitureListData">
+            <summary>
+            The furniture list data
+            </summary>
+        </member>
+        <member name="M:CS3230RentalSystemProject.View.RecieptDialog.InitializeComponent">
+            <summary>
+            InitializeComponent()
+            </summary>
+        </member>
+        <member name="M:CS3230RentalSystemProject.View.RecieptDialog.Connect(System.Int32,System.Object)">
+            <summary>
+            Connect()
+            </summary>
+        </member>
+        <member name="M:CS3230RentalSystemProject.View.RecieptDialog.GetBindingConnector(System.Int32,System.Object)">
             <summary>
             GetBindingConnector(int connectionId, object target)
             </summary>
@@ -1339,6 +1386,27 @@
             <returns>
                 The employee associated with the id
             </returns>
+        </member>
+        <member name="M:DBAccess.DAL.EmployeeDAL.AddEmployee(CS3230RentalSystemProject.Model.Employee,System.Int32)">
+            <summary>
+            Adds the employee.
+            </summary>
+            <param name="employee">The employee.</param>
+            <param name="isAdmin">The is admin.</param>
+        </member>
+        <member name="M:DBAccess.DAL.EmployeeDAL.AddEmployeeUsernamePassword(System.Int32,System.String,System.String)">
+            <summary>
+            Adds the employee username password.
+            </summary>
+            <param name="employeeid">The employeeid.</param>
+            <param name="username">The username.</param>
+            <param name="password">The password.</param>
+        </member>
+        <member name="M:DBAccess.DAL.EmployeeDAL.GetNewestEmployeeID">
+            <summary>
+            Gets the newest employee identifier.
+            </summary>
+            <returns></returns>
         </member>
         <member name="T:DBAccess.DAL.LoginDALI">
             <summary>

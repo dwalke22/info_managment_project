@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
-    <Machine>CSVLAB-VM15</Machine>
+    <Machine>CSVLAB-VM14</Machine>
     <WindowsUser>jzeng1</WindowsUser>
     <TargetPlatformIdentifier>UAP</TargetPlatformIdentifier>
     <TargetOsVersion>10.0</TargetOsVersion>
@@ -115,6 +115,9 @@
     <AppxPackagedFile Include="C:\Users\jzeng1\Source\Repos\info_managment_project\CS3230RentalSystemProject\CS3230RentalSystemProject\bin\x86\Debug\MainPage.xbf">
       <PackagePath>MainPage.xbf</PackagePath>
     </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\jzeng1\Source\Repos\info_managment_project\CS3230RentalSystemProject\CS3230RentalSystemProject\bin\x86\Debug\View\AddEmployeeContentDialog.xbf">
+      <PackagePath>View\AddEmployeeContentDialog.xbf</PackagePath>
+    </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\jzeng1\Source\Repos\info_managment_project\CS3230RentalSystemProject\CS3230RentalSystemProject\bin\x86\Debug\View\Checkout.xbf">
       <PackagePath>View\Checkout.xbf</PackagePath>
     </AppxPackagedFile>
@@ -129,6 +132,9 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\jzeng1\Source\Repos\info_managment_project\CS3230RentalSystemProject\CS3230RentalSystemProject\bin\x86\Debug\View\MemebrInformationViewer.xbf">
       <PackagePath>View\MemebrInformationViewer.xbf</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\jzeng1\Source\Repos\info_managment_project\CS3230RentalSystemProject\CS3230RentalSystemProject\bin\x86\Debug\View\RecieptDialog.xbf">
+      <PackagePath>View\RecieptDialog.xbf</PackagePath>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\jzeng1\Source\Repos\info_managment_project\CS3230RentalSystemProject\CS3230RentalSystemProject\bin\x86\Debug\View\TransactionView.xbf">
       <PackagePath>View\TransactionView.xbf</PackagePath>

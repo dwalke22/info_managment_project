@@ -41,7 +41,7 @@
                         <TextBlock Grid.Column="1" Text="{Binding Style}" HorizontalAlignment="Center" />
                         <TextBlock Grid.Column="2" Text="{Binding Category}" HorizontalAlignment="Center" />
                         <TextBlock Grid.Column="3" Text="{Binding Quantity}" HorizontalAlignment="Center" />
-                        <Button x:ConnectionId='24' x:Name="addButton" Tag="{Binding FurnitureID}" Content="Add" Grid.Column="4" Width="50" Height="30" Foreground="#FF9C0E0E" FontSize="14"                        HorizontalAlignment="Right">
+                        <Button x:ConnectionId='25' x:Name="addButton" Tag="{Binding FurnitureID}" Content="Add" Grid.Column="4" Width="50" Height="30" Foreground="#FF9C0E0E" FontSize="14"                        HorizontalAlignment="Right">
                         </Button>
                     </Grid>
 
@@ -96,6 +96,7 @@
         <TextBlock x:ConnectionId='20' x:Name="invalidFurnitureSearch" HorizontalAlignment="Left" Margin="659,125,0,0" Text="Invalid input!" TextWrapping="Wrap" VerticalAlignment="Top" Width="210" Height="29" Foreground="#FF9C0E0E" FontSize="14"/>
         <TextBlock x:ConnectionId='21' x:Name="serveredMember" HorizontalAlignment="Left" Margin="695,50,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="284" Height="29" Foreground="#FF9C0E0E" FontSize="14"/>
         <Button x:ConnectionId='22' x:Name="transactionButton" Content="Transactions" Margin="550,10,0,0" VerticalAlignment="Top" Width="130" Height="35"                                 RenderTransformOrigin="0.538,0.714"/>
+        <Button x:ConnectionId='23' x:Name="addEmployeeButton" Content="Add Employee" Margin="425,10,0,0" VerticalAlignment="Top"                     />
     </Grid>
 </Page>
 

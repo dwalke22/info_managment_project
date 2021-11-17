@@ -9,6 +9,7 @@ using System.Runtime.InteropServices.WindowsRuntime;
 using System.Text.RegularExpressions;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.Globalization.DateTimeFormatting;
 using Windows.UI.Popups;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
@@ -343,7 +344,7 @@ namespace CS3230RentalSystemProject.View
             }
             else
             {
-                MessageDialog showDialog = new MessageDialog("Are you sure want to return all items? \n fine: $" + this.calculateFine());
+                MessageDialog showDialog = new MessageDialog("Are you sure want to return all items?" + "\n" + "\n" + "Total Fine: $" + this.calculateFine());
                 showDialog.Title = "Comfirmation";
                 showDialog.Commands.Add(new UICommand("Yes")
                 {
@@ -371,17 +372,21 @@ namespace CS3230RentalSystemProject.View
 
                     int transactionID = this.TransanctionDAL.GetReturnTransactionID();
                     string reciept = "";
-                    reciept += "Transaction ID: " + transactionID + "\n";
-                    reciept += "Employee:" + this.Employee.FirstName + " " + this.Employee.LastName + "\n";
-                    reciept += "Customer:" + member.FirstName + " " + member.LastName + "\n";
-                    reciept += "Return Items: " + "                       " + "Return Quantity: " + "\n";
+                    reciept += "Transaction ID: " + transactionID + "\n" + "\n";
+                    reciept += "Employee:       " + this.Employee.FirstName + " " + this.Employee.LastName + "\n" + "\n";
+                    reciept += "Customer:       " + member.FirstName + " " + member.LastName + "\n" + "\n";
+                    reciept += "Return Date:    " + DateTime.Now.ToString("yyyy-MM-dd") + "\n" + "\n";
+                    reciept += "Return Items".PadRight(50) + "Return Quantity" + "\n";
                     foreach (var returnItem in this.CheckedReturnItemList)
                     {
-                        reciept += "" + returnItem.FurnitureName + "               " + returnItem.Quantity + "\n";
+                        reciept += returnItem.FurnitureName.PadRight(70, '.');
+                        reciept += returnItem.Quantity + "\n";
                     }
 
                     this.CheckedReturnItemList = new List<RentalItem>();
-                    reciept += "\n";
+                    reciept += "\n" + "\n";
+                    reciept += "Total fine: $" + this.calculateFine();
+                    reciept += "\n" + "\n";
                     reciept += "Thanks for your business! Have A Nice Day!";
                     MessageDialog recieptDialog = new MessageDialog(reciept);
                     recieptDialog.Title = "Reciept";
