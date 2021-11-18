@@ -5,6 +5,7 @@ using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.UI.Popups;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -30,7 +31,7 @@ namespace CS3230RentalSystemProject.View
             this.categoryComboBox.ItemsSource = this.funitureDal.GetAllFurnitureCategories();
         }
 
-        private void ContentDialog_PrimaryButtonClick(ContentDialog sender, ContentDialogButtonClickEventArgs args)
+        private async void ContentDialog_PrimaryButtonClick(ContentDialog sender, ContentDialogButtonClickEventArgs args)
         {
             var quantity = Int32.Parse(this.quantityTextBox.Text);
             var price = Decimal.Parse(this.priceTextBox.Text);
@@ -39,6 +40,10 @@ namespace CS3230RentalSystemProject.View
 
 
             this.funitureDal.AddFurnitureToInventory(this.furnitureTextBox.Text, style, category, price, quantity);
+
+            var message = new MessageDialog("Furniture added to inventory.");
+
+            await message.ShowAsync();
         }
 
         private void ContentDialog_SecondaryButtonClick(ContentDialog sender, ContentDialogButtonClickEventArgs args)
