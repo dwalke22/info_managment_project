@@ -50,15 +50,8 @@ namespace CS3230RentalSystemProject
                 if (loginSuccess != -1)
                 {
                     Employee emploee = EmployeeDAL.GetEmployee(loginSuccess);
-                    if (!emploee.IsAdmin)
-                    {
-                        Frame.Navigate(typeof(EmployeeWindow), emploee);
-                    }
-                    else
-                    {
-                        Frame.Navigate(typeof(AdminInterface), emploee);
-                    }
-                    
+                    Frame.Navigate(typeof(EmployeeWindow), emploee);
+
                 }
                 else
                 {

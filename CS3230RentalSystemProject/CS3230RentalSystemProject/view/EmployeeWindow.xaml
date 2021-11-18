@@ -98,5 +98,6 @@
         <Button x:Name="transactionButton" Content="Transactions" Margin="550,10,0,0" VerticalAlignment="Top" Width="130" Height="35" Click="transactionButton_Click" RenderTransformOrigin="0.538,0.714"/>
         <Button x:Name="addEmployeeButton" Content="Add Employee" Margin="425,10,0,0" VerticalAlignment="Top" Click="Add_Employee_Click"/>
         <Button Content="Add Furniture" Margin="305,10,0,0" VerticalAlignment="Top" Click="Add_Furniture_Click"/>
+        <Button x:Name="adminQueryButton" Content="Admin Query" Margin="307,50,0,0" VerticalAlignment="Top" Click="Button_Click" Visibility="Collapsed"/>
     </Grid>
 </Page>

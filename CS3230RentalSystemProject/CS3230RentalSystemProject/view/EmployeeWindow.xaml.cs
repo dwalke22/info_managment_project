@@ -74,7 +74,6 @@ namespace CS3230RentalSystemProject.view
             this.categoryComboBox.ItemsSource = this.furnitureDAL.GetAllFurnitureCategories();
             this.styleComboBox.ItemsSource = this.furnitureDAL.GetAllFurnitureStyles();
 
-           
         }
 
 
@@ -322,8 +321,13 @@ namespace CS3230RentalSystemProject.view
                 
                 this.memberList.SelectedIndex = this.list.FindIndex(x=>x.MemberID == this.Employee.SelectedMember.MemberID);
                 this.furnitureList.ItemsSource = list;
+
             }
 
+            if (this.Employee.IsAdmin)
+            {
+                this.adminQueryButton.Visibility = Visibility.Visible;
+            }
         }
 
         private void furnitureComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -497,6 +501,11 @@ namespace CS3230RentalSystemProject.view
             AddFurnitureContentDialog1 dialog = new AddFurnitureContentDialog1();
 
             dialog.ShowAsync();
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            Frame.Navigate(typeof(AdminInterface), this.Employee);
         }
     }
 }
