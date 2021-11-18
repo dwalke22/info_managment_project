@@ -342,15 +342,15 @@ namespace CS3230RentalSystemProject.DAL
                     command.Parameters["@style"].Direction = ParameterDirection.Input;
 
                     command.Parameters.Add("@category", MySqlDbType.VarChar);
-                    command.Parameters["@category"].Value = style;
+                    command.Parameters["@category"].Value = category;
                     command.Parameters["@category"].Direction = ParameterDirection.Input;
 
                     command.Parameters.Add("@price", MySqlDbType.Decimal);
-                    command.Parameters["@price"].Value = style;
+                    command.Parameters["@price"].Value = price;
                     command.Parameters["@price"].Direction = ParameterDirection.Input;
 
                     command.Parameters.Add("@quantity", MySqlDbType.Int32);
-                    command.Parameters["@quantity"].Value = style;
+                    command.Parameters["@quantity"].Value = quantity;
                     command.Parameters["@quantity"].Direction = ParameterDirection.Input;
 
                     command.ExecuteNonQuery();

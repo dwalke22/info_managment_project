@@ -485,9 +485,16 @@ namespace CS3230RentalSystemProject.view
             Frame.Navigate(typeof(TransactionView), this.Employee);
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void Add_Employee_Click(object sender, RoutedEventArgs e)
         {
             AddEmployeeContentDialog dialog = new AddEmployeeContentDialog();
+
+            dialog.ShowAsync();
+        }
+
+        private void Add_Furniture_Click(object sender, RoutedEventArgs e)
+        {
+            AddFurnitureContentDialog1 dialog = new AddFurnitureContentDialog1();
 
             dialog.ShowAsync();
         }
