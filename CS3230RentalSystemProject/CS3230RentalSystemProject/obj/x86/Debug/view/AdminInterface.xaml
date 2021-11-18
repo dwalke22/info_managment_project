@@ -8,12 +8,13 @@
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" Width="670" Height="510">
 
-    <Grid Height="500" VerticalAlignment="Center" HorizontalAlignment="Center" Width="670">
-        <TextBlock x:ConnectionId='2' x:Name="adminName" HorizontalAlignment="Left" Margin="60,15,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Height="50" Width="348" FontSize="36" FontFamily="Berlin Sans FB Demi" Foreground="#FF9C0D0D"/>
+    <Grid x:ConnectionId='2' x:Name="grid" Height="500" VerticalAlignment="Center" HorizontalAlignment="Center" Width="670">
+        <TextBlock x:ConnectionId='3' x:Name="adminName" HorizontalAlignment="Left" Margin="60,15,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Height="50" Width="348" FontSize="36" FontFamily="Berlin Sans FB Demi" Foreground="#FF9C0D0D"/>
         <TextBlock HorizontalAlignment="Left" Margin="55,75,0,0" Text="Please Entry Your Query:" TextWrapping="Wrap" VerticalAlignment="Top" Height="27" Width="202" FontSize="18" FontFamily="Berlin Sans FB Demi" Foreground="Black"/>
-        <TextBox x:ConnectionId='3' x:Name="queryBox" HorizontalAlignment="Left" Margin="55,105,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Height="95" Width="540" FontSize="14"/>
-        <TextBox x:ConnectionId='4' x:Name="resultBox" Margin="55,270,75,25" ScrollViewer.VerticalScrollBarVisibility="Visible" Text="" TextWrapping="Wrap" FontSize="14" IsReadOnly="True"/>
-        <Button x:ConnectionId='5' x:Name="excuteButton" Content="Excute" Margin="480,210,0,0" VerticalAlignment="Top" Height="45" Width="115" FontSize="16"                           />
+        <TextBox x:ConnectionId='4' x:Name="queryBox" HorizontalAlignment="Left" Margin="55,105,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Height="95" Width="540" FontSize="14"/>
+        <TextBox x:ConnectionId='5' x:Name="resultBox" Margin="55,270,75,25" ScrollViewer.VerticalScrollBarVisibility="Visible" Text="" TextWrapping="Wrap" FontSize="14" IsReadOnly="True" Visibility="Visible"/>
+        <Button x:ConnectionId='6' x:Name="excuteButton" Content="Excute" Margin="480,210,0,0" VerticalAlignment="Top" Height="45" Width="115" FontSize="16"                           />
+        <Button x:ConnectionId='7' x:Name="logout" Content="Logout" Margin="550,13,0,0" VerticalAlignment="Top"                     />
 
     </Grid>
 </Page>

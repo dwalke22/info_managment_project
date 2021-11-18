@@ -30,13 +30,13 @@
     <AppXManifest Include="C:\Users\jason\source\repos\info_managment_project\CS3230RentalSystemProject\CS3230RentalSystemProject\bin\x86\Debug\Core\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2021-11-17T21:32:38.576</Modified>
+      <Modified>2021-11-18T01:13:39.073</Modified>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
     <AppxPackagedFile Include="C:\Users\jason\source\repos\info_managment_project\CS3230RentalSystemProject\CS3230RentalSystemProject\bin\x86\Debug\CS3230RentalSystemProject.exe">
       <PackagePath>entrypoint\CS3230RentalSystemProject.exe</PackagePath>
-      <Modified>2021-11-17T21:32:38.262</Modified>
+      <Modified>2021-11-18T01:13:38.764</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\jason\.nuget\packages\bouncycastle.netcore\1.8.5\lib\netstandard2.0\BouncyCastle.Crypto.dll">
       <PackagePath>BouncyCastle.Crypto.dll</PackagePath>
@@ -142,51 +142,51 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\jason\source\repos\info_managment_project\CS3230RentalSystemProject\CS3230RentalSystemProject\bin\x86\Debug\CS3230RentalSystemProject.xr.xml">
       <PackagePath>CS3230RentalSystemProject.xr.xml</PackagePath>
-      <Modified>2021-11-17T20:19:21.617</Modified>
+      <Modified>2021-11-18T01:07:58.087</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\jason\source\repos\info_managment_project\CS3230RentalSystemProject\CS3230RentalSystemProject\bin\x86\Debug\App.xbf">
       <PackagePath>App.xbf</PackagePath>
-      <Modified>2021-11-17T21:32:38.152</Modified>
+      <Modified>2021-11-18T01:13:38.653</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\jason\source\repos\info_managment_project\CS3230RentalSystemProject\CS3230RentalSystemProject\bin\x86\Debug\MainPage.xbf">
       <PackagePath>MainPage.xbf</PackagePath>
-      <Modified>2021-11-17T21:32:38.153</Modified>
+      <Modified>2021-11-18T01:13:38.653</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\jason\source\repos\info_managment_project\CS3230RentalSystemProject\CS3230RentalSystemProject\bin\x86\Debug\View\AddEmployeeContentDialog.xbf">
       <PackagePath>View\AddEmployeeContentDialog.xbf</PackagePath>
-      <Modified>2021-11-17T21:32:38.153</Modified>
+      <Modified>2021-11-18T01:13:38.653</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\jason\source\repos\info_managment_project\CS3230RentalSystemProject\CS3230RentalSystemProject\bin\x86\Debug\View\AdminInterface.xbf">
       <PackagePath>View\AdminInterface.xbf</PackagePath>
-      <Modified>2021-11-17T21:32:38.153</Modified>
+      <Modified>2021-11-18T01:13:38.653</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\jason\source\repos\info_managment_project\CS3230RentalSystemProject\CS3230RentalSystemProject\bin\x86\Debug\View\Checkout.xbf">
       <PackagePath>View\Checkout.xbf</PackagePath>
-      <Modified>2021-11-17T21:32:38.129</Modified>
+      <Modified>2021-11-18T01:13:38.630</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\jason\source\repos\info_managment_project\CS3230RentalSystemProject\CS3230RentalSystemProject\bin\x86\Debug\View\EmployeeWindow.xbf">
       <PackagePath>View\EmployeeWindow.xbf</PackagePath>
-      <Modified>2021-11-17T21:32:38.133</Modified>
+      <Modified>2021-11-18T01:13:38.634</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\jason\source\repos\info_managment_project\CS3230RentalSystemProject\CS3230RentalSystemProject\bin\x86\Debug\View\FurnitureView.xbf">
       <PackagePath>View\FurnitureView.xbf</PackagePath>
-      <Modified>2021-11-17T21:32:38.136</Modified>
+      <Modified>2021-11-18T01:13:38.636</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\jason\source\repos\info_managment_project\CS3230RentalSystemProject\CS3230RentalSystemProject\bin\x86\Debug\View\MemberRegistration.xbf">
       <PackagePath>View\MemberRegistration.xbf</PackagePath>
-      <Modified>2021-11-17T21:32:38.140</Modified>
+      <Modified>2021-11-18T01:13:38.641</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\jason\source\repos\info_managment_project\CS3230RentalSystemProject\CS3230RentalSystemProject\bin\x86\Debug\View\MemebrInformationViewer.xbf">
       <PackagePath>View\MemebrInformationViewer.xbf</PackagePath>
-      <Modified>2021-11-17T21:32:38.145</Modified>
+      <Modified>2021-11-18T01:13:38.645</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\jason\source\repos\info_managment_project\CS3230RentalSystemProject\CS3230RentalSystemProject\bin\x86\Debug\View\RecieptDialog.xbf">
       <PackagePath>View\RecieptDialog.xbf</PackagePath>
-      <Modified>2021-11-17T21:32:38.153</Modified>
+      <Modified>2021-11-18T01:13:38.653</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\jason\source\repos\info_managment_project\CS3230RentalSystemProject\CS3230RentalSystemProject\bin\x86\Debug\View\TransactionView.xbf">
       <PackagePath>View\TransactionView.xbf</PackagePath>
-      <Modified>2021-11-17T21:32:38.152</Modified>
+      <Modified>2021-11-18T01:13:38.653</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Windows Kits\10\UnionMetadata\10.0.19041.0\Windows.winmd">
       <PackagePath>WinMetadata\Windows.winmd</PackagePath>
@@ -198,7 +198,7 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\jason\source\repos\info_managment_project\CS3230RentalSystemProject\CS3230RentalSystemProject\bin\x86\Debug\Core\CS3230RentalSystemProject.exe">
       <PackagePath>CS3230RentalSystemProject.exe</PackagePath>
-      <Modified>2021-11-17T21:32:38.573</Modified>
+      <Modified>2021-11-18T01:13:39.070</Modified>
     </AppxPackagedFile>
   </ItemGroup>
   <ItemGroup>

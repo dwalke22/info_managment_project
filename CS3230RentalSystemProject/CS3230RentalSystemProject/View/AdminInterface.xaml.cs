@@ -101,5 +101,10 @@ namespace CS3230RentalSystemProject.View
             this.Employee = (Employee)e.Parameter;
             this.adminName.Text = "Admin: " + this.Employee.ToString();
         }
+
+        private void logout_Click(object sender, RoutedEventArgs e)
+        {
+            Frame.Navigate(typeof(MainPage));
+        }
     }
 }

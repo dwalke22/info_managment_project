@@ -77,11 +77,11 @@
       <RootProperty Name="Height" />
       <RootProperty Name="FontSize" />
       <RootProperty Name="IsReadOnly" />
+      <RootProperty Name="Visibility" />
       <RootProperty Name="PlaceholderText" />
       <RootProperty Name="Tag" />
       <RootProperty Name="AccessKey" />
       <RootProperty Name="TextAlignment" />
-      <RootProperty Name="Visibility" />
       <RootProperty Name="Foreground" />
       <RootEvent Name="TextChanging" />
       <RootEvent Name="TextChanged" />

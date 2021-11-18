@@ -361,53 +361,93 @@ namespace CS3230RentalSystemProject.View
                 {
                     Member member = (Member)this.memberList.SelectedItem;
 
-                    if (this.TransanctionDAL.returnItems(this.CheckedReturnItemList, this.Employee, member, (decimal)this.calculateFine()))
-                    {
-                        List<RentalItem> list = this.TransanctionDAL.getAllCurrentRentaledItems((int)member.MemberID);
-                        list.ForEach(x => x.setRentalIDInfor());
-                        this.rentalItemList.ItemsSource = list;
-                        this.rentalItemHistoryList.ItemsSource = this.TransanctionDAL.getAllRentalItems((int)member.MemberID);
-                        this.returnItemList.ItemsSource = this.TransanctionDAL.getAllReturnItems((int)member.MemberID);
-                        this.transactionIDBox.ItemsSource = this.TransanctionDAL.getMemberTansactionsNumber((int)member.MemberID);
+                    //if (this.TransanctionDAL.returnItems(this.CheckedReturnItemList, this.Employee, member, (decimal)this.calculateFine()))
+                    //{
+                    //    List<RentalItem> list = this.TransanctionDAL.getAllCurrentRentaledItems((int)member.MemberID);
+                    //    list.ForEach(x => x.setRentalIDInfor());
+                    //    this.rentalItemList.ItemsSource = list;
+                    //    this.rentalItemHistoryList.ItemsSource = this.TransanctionDAL.getAllRentalItems((int)member.MemberID);
+                    //    this.returnItemList.ItemsSource = this.TransanctionDAL.getAllReturnItems((int)member.MemberID);
+                    //    this.transactionIDBox.ItemsSource = this.TransanctionDAL.getMemberTansactionsNumber((int)member.MemberID);
 
-                        int transactionID = this.TransanctionDAL.GetReturnTransactionID();
-                        string reciept = "";
-                        reciept += "Transaction ID: " + transactionID + "\n" + "\n";
-                        reciept += "Employee:       " + this.Employee.FirstName + " " + this.Employee.LastName + "\n" + "\n";
-                        reciept += "Customer:       " + member.FirstName + " " + member.LastName + "\n" + "\n";
-                        reciept += "Return Date:    " + DateTime.Now.ToString("yyyy-MM-dd") + "\n" + "\n";
-                        reciept += "Return Items".PadRight(50) + "Return Quantity" + "\n";
-                        foreach (var returnItem in this.CheckedReturnItemList)
-                        {
-                            reciept += returnItem.FurnitureName.PadRight(70, '.');
-                            reciept += returnItem.Quantity + "\n";
-                        }
+                    //    int transactionID = this.TransanctionDAL.GetReturnTransactionID();
+                    //    string reciept = "";
+                    //    reciept += "Transaction ID: " + transactionID + "\n" + "\n";
+                    //    reciept += "Employee:       " + this.Employee.FirstName + " " + this.Employee.LastName + "\n" + "\n";
+                    //    reciept += "Customer:       " + member.FirstName + " " + member.LastName + "\n" + "\n";
+                    //    reciept += "Return Date:    " + DateTime.Now.ToString("yyyy-MM-dd") + "\n" + "\n";
+                    //    reciept += "Return Items".PadRight(50) + "Return Quantity" + "\n";
+                    //    foreach (var returnItem in this.CheckedReturnItemList)
+                    //    {
+                    //        reciept += returnItem.FurnitureName.PadRight(70, '.');
+                    //        reciept += returnItem.Quantity + "\n";
+                    //    }
 
-                        this.CheckedReturnItemList = new List<RentalItem>();
-                        reciept += "\n" + "\n";
-                        reciept += "Total fine: $" + this.calculateFine();
-                        reciept += "\n" + "\n";
-                        reciept += "Thanks for your business! Have A Nice Day!";
-                        MessageDialog recieptDialog = new MessageDialog(reciept);
-                        recieptDialog.Title = "Reciept";
-                        recieptDialog.Commands.Add(new UICommand("Print")
-                        {
-                            Id = 0
-                        });
-                        recieptDialog.Commands.Add(new UICommand("Exist")
-                        {
-                            Id = 1
-                        });
-                        recieptDialog.DefaultCommandIndex = 0;
-                        recieptDialog.CancelCommandIndex = 1;
-                        await recieptDialog.ShowAsync();
-                    }
-                    else
+                    //    this.CheckedReturnItemList = new List<RentalItem>();
+                    //    reciept += "\n" + "\n";
+                    //    reciept += "Total fine: $" + this.calculateFine();
+                    //    reciept += "\n" + "\n";
+                    //    reciept += "Thanks for your business! Have A Nice Day!";
+                    //    MessageDialog recieptDialog = new MessageDialog(reciept);
+                    //    recieptDialog.Title = "Reciept";
+                    //    recieptDialog.Commands.Add(new UICommand("Print")
+                    //    {
+                    //        Id = 0
+                    //    });
+                    //    recieptDialog.Commands.Add(new UICommand("Exist")
+                    //    {
+                    //        Id = 1
+                    //    });
+                    //    recieptDialog.DefaultCommandIndex = 0;
+                    //    recieptDialog.CancelCommandIndex = 1;
+                    //    await recieptDialog.ShowAsync();
+                    //}
+                    //else
+                    //{
+                    //    MessageDialog dialog = new MessageDialog("An exception of type was encountered while inserting the data! Neither record was written to database!");
+                    //    await dialog.ShowAsync();
+                    //}
+                    this.TransanctionDAL.returnItems(this.CheckedReturnItemList, this.Employee, member, 0);
+
+                    List<RentalItem> list = this.TransanctionDAL.getAllCurrentRentaledItems((int)member.MemberID);
+                    list.ForEach(x => x.setRentalIDInfor());
+                    this.rentalItemList.ItemsSource = list;
+                    this.rentalItemHistoryList.ItemsSource = this.TransanctionDAL.getAllRentalItems((int)member.MemberID);
+                    this.returnItemList.ItemsSource = this.TransanctionDAL.getAllReturnItems((int)member.MemberID);
+                    this.transactionIDBox.ItemsSource = this.TransanctionDAL.getMemberTansactionsNumber((int)member.MemberID);
+
+                    int transactionID = this.TransanctionDAL.GetReturnTransactionID();
+                    string reciept = "";
+                    reciept += "Transaction ID: " + transactionID + "\n" + "\n";
+                    reciept += "Employee:       " + this.Employee.FirstName + " " + this.Employee.LastName + "\n" + "\n";
+                    reciept += "Customer:       " + member.FirstName + " " + member.LastName + "\n" + "\n";
+                    reciept += "Return Date:    " + DateTime.Now.ToString("yyyy-MM-dd") + "\n" + "\n";
+                    reciept += "Return Items".PadRight(50) + "Return Quantity" + "\n";
+                    foreach (var returnItem in this.CheckedReturnItemList)
                     {
-                        MessageDialog dialog = new MessageDialog("An exception of type was encountered while inserting the data! Neither record was written to database!");
-                        await dialog.ShowAsync();
+                        reciept += returnItem.FurnitureName.PadRight(70, '.');
+                        reciept += returnItem.Quantity + "\n";
                     }
-                   
+
+                    this.CheckedReturnItemList = new List<RentalItem>();
+                    reciept += "\n" + "\n";
+                    reciept += "Total fine: $" + this.calculateFine();
+                    reciept += "\n" + "\n";
+                    reciept += "Thanks for your business! Have A Nice Day!";
+                    MessageDialog recieptDialog = new MessageDialog(reciept);
+                    recieptDialog.Title = "Reciept";
+                    recieptDialog.Commands.Add(new UICommand("Print")
+                    {
+                        Id = 0
+                    });
+                    recieptDialog.Commands.Add(new UICommand("Exist")
+                    {
+                        Id = 1
+                    });
+                    recieptDialog.DefaultCommandIndex = 0;
+                    recieptDialog.CancelCommandIndex = 1;
+                    await recieptDialog.ShowAsync();
+
                 }
             }
         }
