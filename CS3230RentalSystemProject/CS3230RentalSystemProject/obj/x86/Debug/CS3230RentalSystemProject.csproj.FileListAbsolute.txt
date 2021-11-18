@@ -392,3 +392,13 @@ C:\Users\jason\source\repos\info_managment_project\CS3230RentalSystemProject\CS3
 C:\Users\jason\source\repos\info_managment_project\CS3230RentalSystemProject\CS3230RentalSystemProject\obj\x86\Debug\View\AdminInterface.xaml
 C:\Users\jason\source\repos\info_managment_project\CS3230RentalSystemProject\CS3230RentalSystemProject\obj\x86\Debug\View\AdminInterface.xbf
 C:\Users\jason\source\repos\info_managment_project\CS3230RentalSystemProject\CS3230RentalSystemProject\obj\x86\Debug\CS3230RentalSystemProject.csproj.CopyComplete
+C:\Users\jzeng1\Source\Repos\info_managment_project\CS3230RentalSystemProject\CS3230RentalSystemProject\bin\x86\Debug\View\AddFurnitureContentDialog1.xbf
+C:\Users\jzeng1\Source\Repos\info_managment_project\CS3230RentalSystemProject\CS3230RentalSystemProject\bin\x86\Debug\View\AdminInterface.xbf
+C:\Users\jzeng1\Source\Repos\info_managment_project\CS3230RentalSystemProject\CS3230RentalSystemProject\obj\x86\Debug\View\AdminInterface.g.i.cs
+C:\Users\jzeng1\Source\Repos\info_managment_project\CS3230RentalSystemProject\CS3230RentalSystemProject\obj\x86\Debug\View\AdminInterface.g.cs
+C:\Users\jzeng1\Source\Repos\info_managment_project\CS3230RentalSystemProject\CS3230RentalSystemProject\obj\x86\Debug\View\AddFurnitureContentDialog1.g.i.cs
+C:\Users\jzeng1\Source\Repos\info_managment_project\CS3230RentalSystemProject\CS3230RentalSystemProject\obj\x86\Debug\View\AddFurnitureContentDialog1.g.cs
+C:\Users\jzeng1\Source\Repos\info_managment_project\CS3230RentalSystemProject\CS3230RentalSystemProject\obj\x86\Debug\View\AddFurnitureContentDialog1.xaml
+C:\Users\jzeng1\Source\Repos\info_managment_project\CS3230RentalSystemProject\CS3230RentalSystemProject\obj\x86\Debug\View\AdminInterface.xaml
+C:\Users\jzeng1\Source\Repos\info_managment_project\CS3230RentalSystemProject\CS3230RentalSystemProject\obj\x86\Debug\View\AddFurnitureContentDialog1.xbf
+C:\Users\jzeng1\Source\Repos\info_managment_project\CS3230RentalSystemProject\CS3230RentalSystemProject\obj\x86\Debug\View\AdminInterface.xbf

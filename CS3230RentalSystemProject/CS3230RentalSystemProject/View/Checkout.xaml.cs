@@ -50,48 +50,28 @@ namespace CS3230RentalSystemProject.View
         private async void Checkout_Click(object sender, RoutedEventArgs e)
         {
             decimal total = Convert.ToDecimal(this.totalTextBlock.Text.Split("$")[1]);
-            //if (this.checkoutDal.CheckoutCart(this.Employee.SelectedMember.FurnitureListData, this.Employee, total, this.Member))
-            //{
-            //    var messageDialog = new MessageDialog("Order Complete.");
+            if (this.checkoutDal.CheckoutCart(this.Employee.SelectedMember.FurnitureListData, this.Employee, total, this.Member))
+            {
+                var messageDialog = new MessageDialog("Order Complete.");
 
-            //    await messageDialog.ShowAsync();
+                await messageDialog.ShowAsync();
 
-            //    var reciept = new RecieptDialog(this.Employee.SelectedMember.FurnitureListData);
-            //    reciept.Width = 400;
-            //    reciept.Height = 400;
+                var reciept = new RecieptDialog(this.Employee.SelectedMember.FurnitureListData);
+                reciept.Width = 400;
+                reciept.Height = 400;
 
-            //    await reciept.ShowAsync();
+                await reciept.ShowAsync();
 
-            //    this.Employee.SelectedMember.FurnitureListData.Clear();
-            //    this.Employee.SelectedMember = null;
-            //    this.Employee.SelectedFurniture = null;
-            //    Frame.Navigate(typeof(EmployeeWindow), this.Employee);
-            //}
-            //else
-            //{
-            //    MessageDialog dialog = new MessageDialog("An exception of type was encountered while inserting the data! Neither record was written to database!");
-            //    await dialog.ShowAsync();
-            //}
-
-            this.checkoutDal.CreateTransaction(this.Employee, total, this.Member);
-            int transactionID = this.checkoutDal.GetTransactionID();
-            this.checkoutDal.CheckoutCart(this.Employee.SelectedMember.FurnitureListData, this.Employee, transactionID);
-
-            var messageDialog = new MessageDialog("Order Complete.");
-
-            await messageDialog.ShowAsync();
-
-            var reciept = new RecieptDialog(this.Employee.SelectedMember.FurnitureListData);
-            reciept.Width = 400;
-            reciept.Height = 400;
-
-            await reciept.ShowAsync();
-
-            this.Employee.SelectedMember.FurnitureListData.Clear();
-            this.Employee.SelectedMember = null;
-            this.Employee.SelectedFurniture = null;
-            Frame.Navigate(typeof(EmployeeWindow), this.Employee);
-
+                this.Employee.SelectedMember.FurnitureListData.Clear();
+                this.Employee.SelectedMember = null;
+                this.Employee.SelectedFurniture = null;
+                Frame.Navigate(typeof(EmployeeWindow), this.Employee);
+            }
+            else
+            {
+                MessageDialog dialog = new MessageDialog("An exception of type was encountered while inserting the data! Neither record was written to database!");
+                await dialog.ShowAsync();
+            }
         }
 
         private void removeButtonClick(object sender, RoutedEventArgs e)
