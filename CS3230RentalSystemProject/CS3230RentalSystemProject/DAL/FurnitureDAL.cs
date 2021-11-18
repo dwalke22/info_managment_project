@@ -3,9 +3,11 @@ using DBAccess.DAL;
 using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Windows.ApplicationModel.Chat;
 
 namespace CS3230RentalSystemProject.DAL
 {
@@ -319,6 +321,41 @@ namespace CS3230RentalSystemProject.DAL
                 }
             }
             return filteredFurniture;
+        }
+
+        public void AddFurnitureToInventory(string name, string style, string category, decimal price, int quantity)
+        {
+            using (MySqlConnection connection = new MySqlConnection(Connection.connectionString))
+            {
+                connection.Open();
+
+                using (MySqlCommand command = new MySqlCommand("uspAddFurnitureToInventory", connection))
+                {
+                    command.CommandType = CommandType.StoredProcedure;
+
+                    command.Parameters.Add("@furnitureName", MySqlDbType.VarChar);
+                    command.Parameters["@furnitureName"].Value = name;
+                    command.Parameters["@furnitureName"].Direction = ParameterDirection.Input;
+
+                    command.Parameters.Add("@style", MySqlDbType.VarChar);
+                    command.Parameters["@style"].Value = style;
+                    command.Parameters["@style"].Direction = ParameterDirection.Input;
+
+                    command.Parameters.Add("@category", MySqlDbType.VarChar);
+                    command.Parameters["@category"].Value = style;
+                    command.Parameters["@category"].Direction = ParameterDirection.Input;
+
+                    command.Parameters.Add("@price", MySqlDbType.Decimal);
+                    command.Parameters["@price"].Value = style;
+                    command.Parameters["@price"].Direction = ParameterDirection.Input;
+
+                    command.Parameters.Add("@quantity", MySqlDbType.Int32);
+                    command.Parameters["@quantity"].Value = style;
+                    command.Parameters["@quantity"].Direction = ParameterDirection.Input;
+
+                    command.ExecuteNonQuery();
+                }
+            }
         }
     }
 }
