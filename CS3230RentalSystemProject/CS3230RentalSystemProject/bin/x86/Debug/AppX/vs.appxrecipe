@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
-    <Machine>CSVLAB-VM04</Machine>
+    <Machine>CSVLAB-VM10</Machine>
     <WindowsUser>jzeng1</WindowsUser>
     <TargetPlatformIdentifier>UAP</TargetPlatformIdentifier>
     <TargetOsVersion>10.0</TargetOsVersion>
@@ -30,13 +30,13 @@
     <AppXManifest Include="C:\Users\jzeng1\Source\Repos\info_managment_project\CS3230RentalSystemProject\CS3230RentalSystemProject\bin\x86\Debug\Core\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2021-11-18T21:19:12.235</Modified>
+      <Modified>2021-11-21T03:14:34.003</Modified>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
     <AppxPackagedFile Include="C:\Users\jzeng1\Source\Repos\info_managment_project\CS3230RentalSystemProject\CS3230RentalSystemProject\bin\x86\Debug\CS3230RentalSystemProject.exe">
       <PackagePath>entrypoint\CS3230RentalSystemProject.exe</PackagePath>
-      <Modified>2021-11-18T21:19:11.561</Modified>
+      <Modified>2021-11-21T03:14:31.384</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\jzeng1\.nuget\packages\bouncycastle.netcore\1.8.5\lib\netstandard2.0\BouncyCastle.Crypto.dll">
       <PackagePath>BouncyCastle.Crypto.dll</PackagePath>
@@ -100,97 +100,97 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\jzeng1\Source\Repos\info_managment_project\CS3230RentalSystemProject\CS3230RentalSystemProject\logo\logo.PNG">
       <PackagePath>logo\logo.PNG</PackagePath>
-      <Modified>2021-11-18T20:59:44.900</Modified>
+      <Modified>2021-11-21T01:18:46.437</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\jzeng1\Source\Repos\info_managment_project\CS3230RentalSystemProject\CS3230RentalSystemProject\Assets\LockScreenLogo.scale-200.png">
       <PackagePath>Assets\LockScreenLogo.scale-200.png</PackagePath>
-      <Modified>2021-11-18T20:59:44.572</Modified>
+      <Modified>2021-11-21T01:18:45.734</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\jzeng1\Source\Repos\info_managment_project\CS3230RentalSystemProject\CS3230RentalSystemProject\Assets\SplashScreen.scale-200.png">
       <PackagePath>Assets\SplashScreen.scale-200.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2021-11-18T20:59:44.573</Modified>
+      <Modified>2021-11-21T01:18:45.736</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\jzeng1\Source\Repos\info_managment_project\CS3230RentalSystemProject\CS3230RentalSystemProject\Assets\Square150x150Logo.scale-200.png">
       <PackagePath>Assets\Square150x150Logo.scale-200.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2021-11-18T20:59:44.574</Modified>
+      <Modified>2021-11-21T01:18:45.738</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\jzeng1\Source\Repos\info_managment_project\CS3230RentalSystemProject\CS3230RentalSystemProject\Assets\Square44x44Logo.scale-200.png">
       <PackagePath>Assets\Square44x44Logo.scale-200.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2021-11-18T20:59:44.575</Modified>
+      <Modified>2021-11-21T01:18:45.739</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\jzeng1\Source\Repos\info_managment_project\CS3230RentalSystemProject\CS3230RentalSystemProject\Assets\Square44x44Logo.targetsize-24_altform-unplated.png">
       <PackagePath>Assets\Square44x44Logo.targetsize-24_altform-unplated.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2021-11-18T20:59:44.576</Modified>
+      <Modified>2021-11-21T01:18:45.741</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\jzeng1\Source\Repos\info_managment_project\CS3230RentalSystemProject\CS3230RentalSystemProject\Assets\StoreLogo.png">
       <PackagePath>Assets\StoreLogo.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2021-11-18T20:59:44.576</Modified>
+      <Modified>2021-11-21T01:18:45.743</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\jzeng1\Source\Repos\info_managment_project\CS3230RentalSystemProject\CS3230RentalSystemProject\Assets\Wide310x150Logo.scale-200.png">
       <PackagePath>Assets\Wide310x150Logo.scale-200.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2021-11-18T20:59:44.577</Modified>
+      <Modified>2021-11-21T01:18:45.744</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\jzeng1\Source\Repos\info_managment_project\CS3230RentalSystemProject\CS3230RentalSystemProject\Properties\Default.rd.xml">
       <PackagePath>Properties\Default.rd.xml</PackagePath>
-      <Modified>2021-11-18T20:59:44.604</Modified>
+      <Modified>2021-11-21T01:18:45.798</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\jzeng1\Source\Repos\info_managment_project\CS3230RentalSystemProject\CS3230RentalSystemProject\bin\x86\Debug\CS3230RentalSystemProject.xr.xml">
       <PackagePath>CS3230RentalSystemProject.xr.xml</PackagePath>
-      <Modified>2021-11-18T21:01:43.730</Modified>
+      <Modified>2021-11-21T01:18:46.826</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\jzeng1\Source\Repos\info_managment_project\CS3230RentalSystemProject\CS3230RentalSystemProject\bin\x86\Debug\App.xbf">
       <PackagePath>App.xbf</PackagePath>
-      <Modified>2021-11-18T21:19:11.255</Modified>
+      <Modified>2021-11-21T03:14:30.710</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\jzeng1\Source\Repos\info_managment_project\CS3230RentalSystemProject\CS3230RentalSystemProject\bin\x86\Debug\MainPage.xbf">
       <PackagePath>MainPage.xbf</PackagePath>
-      <Modified>2021-11-18T21:19:11.255</Modified>
+      <Modified>2021-11-21T03:14:30.710</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\jzeng1\Source\Repos\info_managment_project\CS3230RentalSystemProject\CS3230RentalSystemProject\bin\x86\Debug\View\AddEmployeeContentDialog.xbf">
       <PackagePath>View\AddEmployeeContentDialog.xbf</PackagePath>
-      <Modified>2021-11-18T21:19:11.256</Modified>
+      <Modified>2021-11-21T03:14:30.711</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\jzeng1\Source\Repos\info_managment_project\CS3230RentalSystemProject\CS3230RentalSystemProject\bin\x86\Debug\View\AddFurnitureContentDialog1.xbf">
       <PackagePath>View\AddFurnitureContentDialog1.xbf</PackagePath>
-      <Modified>2021-11-18T21:19:11.256</Modified>
+      <Modified>2021-11-21T03:14:30.711</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\jzeng1\Source\Repos\info_managment_project\CS3230RentalSystemProject\CS3230RentalSystemProject\bin\x86\Debug\View\AdminInterface.xbf">
       <PackagePath>View\AdminInterface.xbf</PackagePath>
-      <Modified>2021-11-18T21:19:11.256</Modified>
+      <Modified>2021-11-21T03:14:30.712</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\jzeng1\Source\Repos\info_managment_project\CS3230RentalSystemProject\CS3230RentalSystemProject\bin\x86\Debug\View\Checkout.xbf">
       <PackagePath>View\Checkout.xbf</PackagePath>
-      <Modified>2021-11-18T21:19:11.204</Modified>
+      <Modified>2021-11-21T03:14:30.598</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\jzeng1\Source\Repos\info_managment_project\CS3230RentalSystemProject\CS3230RentalSystemProject\bin\x86\Debug\View\EmployeeWindow.xbf">
       <PackagePath>View\EmployeeWindow.xbf</PackagePath>
-      <Modified>2021-11-18T21:19:11.212</Modified>
+      <Modified>2021-11-21T03:14:30.611</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\jzeng1\Source\Repos\info_managment_project\CS3230RentalSystemProject\CS3230RentalSystemProject\bin\x86\Debug\View\FurnitureView.xbf">
       <PackagePath>View\FurnitureView.xbf</PackagePath>
-      <Modified>2021-11-18T21:19:11.218</Modified>
+      <Modified>2021-11-21T03:14:30.625</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\jzeng1\Source\Repos\info_managment_project\CS3230RentalSystemProject\CS3230RentalSystemProject\bin\x86\Debug\View\MemberRegistration.xbf">
       <PackagePath>View\MemberRegistration.xbf</PackagePath>
-      <Modified>2021-11-18T21:19:11.227</Modified>
+      <Modified>2021-11-21T03:14:30.648</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\jzeng1\Source\Repos\info_managment_project\CS3230RentalSystemProject\CS3230RentalSystemProject\bin\x86\Debug\View\MemebrInformationViewer.xbf">
       <PackagePath>View\MemebrInformationViewer.xbf</PackagePath>
-      <Modified>2021-11-18T21:19:11.238</Modified>
+      <Modified>2021-11-21T03:14:30.672</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\jzeng1\Source\Repos\info_managment_project\CS3230RentalSystemProject\CS3230RentalSystemProject\bin\x86\Debug\View\RecieptDialog.xbf">
       <PackagePath>View\RecieptDialog.xbf</PackagePath>
-      <Modified>2021-11-18T21:19:11.258</Modified>
+      <Modified>2021-11-21T03:14:30.713</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\jzeng1\Source\Repos\info_managment_project\CS3230RentalSystemProject\CS3230RentalSystemProject\bin\x86\Debug\View\TransactionView.xbf">
       <PackagePath>View\TransactionView.xbf</PackagePath>
-      <Modified>2021-11-18T21:19:11.255</Modified>
+      <Modified>2021-11-21T03:14:30.709</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Windows Kits\10\UnionMetadata\10.0.19041.0\Windows.winmd">
       <PackagePath>WinMetadata\Windows.winmd</PackagePath>
@@ -198,11 +198,11 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\jzeng1\Source\Repos\info_managment_project\CS3230RentalSystemProject\CS3230RentalSystemProject\bin\x86\Debug\resources.pri">
       <PackagePath>resources.pri</PackagePath>
-      <Modified>2021-11-18T21:01:45.317</Modified>
+      <Modified>2021-11-21T01:23:36.236</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\jzeng1\Source\Repos\info_managment_project\CS3230RentalSystemProject\CS3230RentalSystemProject\bin\x86\Debug\Core\CS3230RentalSystemProject.exe">
       <PackagePath>CS3230RentalSystemProject.exe</PackagePath>
-      <Modified>2021-11-18T21:19:12.228</Modified>
+      <Modified>2021-11-21T03:14:33.978</Modified>
     </AppxPackagedFile>
   </ItemGroup>
   <ItemGroup>

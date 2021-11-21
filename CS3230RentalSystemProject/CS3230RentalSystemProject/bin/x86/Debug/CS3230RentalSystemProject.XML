@@ -1004,9 +1004,24 @@
             The rental info
             </summary>
         </member>
+        <member name="P:CS3230RentalSystemProject.Model.RentalItem.QuantityList">
+            <summary>
+            The Quantity list
+            </summary>
+        </member>
+        <member name="M:CS3230RentalSystemProject.Model.RentalItem.#ctor">
+            <summary>
+            Initialize constructor
+            </summary>
+        </member>
         <member name="M:CS3230RentalSystemProject.Model.RentalItem.setRentalIDInfor">
             <summary>
             Set rental info
+            </summary>
+        </member>
+        <member name="M:CS3230RentalSystemProject.Model.RentalItem.setQuantityList">
+            <summary>
+            Set up quantity list
             </summary>
         </member>
         <member name="T:CS3230RentalSystemProject.Model.ReturnItem">

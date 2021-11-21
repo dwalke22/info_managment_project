@@ -131,10 +131,10 @@ namespace CS3230RentalSystemProject.DAL
                         {
                             list.Add(new RentalItem
                             {
-                                RentalID = reader.GetFieldValueCheckNull<Int32>(rentalIDoridinal),
-                                FurnitureID = reader.GetFieldValueCheckNull<Int32>(furnitureIDoridinal),
+                                RentalID = reader.GetFieldValueCheckNull<int>(rentalIDoridinal),
+                                FurnitureID = reader.GetFieldValueCheckNull<int>(furnitureIDoridinal),
                                 FurnitureName = reader.GetFieldValueCheckNull<string>(funitureNameoridinal),
-                                Quantity = reader.GetFieldValueCheckNull<Int32>(quantityoridinal),
+                                Quantity = (int)reader.GetFieldValueCheckNull<decimal>(quantityoridinal),
                                 RentalDate = reader.GetFieldValueCheckNull<DateTime>(rentalDateoridinal).Date.ToString("yyyy-MM-dd"),
                                 DueDate = reader.GetFieldValueCheckNull<DateTime>(dueDateoridinal).Date.ToString("yyyy-MM-dd"),
                             });

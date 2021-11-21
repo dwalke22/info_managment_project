@@ -47,11 +47,35 @@ namespace CS3230RentalSystemProject.Model
         public string RentalInfo { get; set; }
 
         /// <summary>
+        /// The Quantity list
+        /// </summary>
+        public IList<int> QuantityList { get; set; }
+
+        /// <summary>
+        /// Initialize constructor
+        /// </summary>
+        public RentalItem()
+        {
+            this.QuantityList = new List<int>();
+        }
+
+        /// <summary>
         /// Set rental info
         /// </summary>
         public void setRentalIDInfor()
         {
             this.RentalInfo = "" + this.RentalID + "," + this.FurnitureID;
+        }
+
+        /// <summary>
+        /// Set up quantity list
+        /// </summary>
+        public void setQuantityList()
+        {
+            for (int i = 1; i <= this.Quantity; i++)
+            {
+                this.QuantityList.Add(i);
+            }
         }
     }
 }

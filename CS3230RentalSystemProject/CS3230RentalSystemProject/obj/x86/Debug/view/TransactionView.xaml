@@ -23,18 +23,18 @@
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="60" />
                             <ColumnDefinition Width="180" />
-                            <ColumnDefinition Width="60" />
                             <ColumnDefinition Width="150" />
-                            <ColumnDefinition Width="150" />
+                            <ColumnDefinition Width="105" />
+                            <ColumnDefinition Width="105" />
                             <ColumnDefinition Width="167" />
 
                         </Grid.ColumnDefinitions>
-                        <TextBlock Grid.Column="0" Text="{Binding RentalID}" HorizontalAlignment="Left"/>
+                        <TextBlock Grid.Column="0" Text="{Binding RentalID}" HorizontalAlignment="Center"/>
                         <TextBlock Grid.Column="1" Text="{Binding FurnitureName}" HorizontalAlignment="Center"/>
-                        <TextBlock Grid.Column="2" Text="{Binding Quantity}" HorizontalAlignment="Center"/>
+                        <ComboBox x:ConnectionId='26' Grid.Column="2" Tag="{Binding RentalInfo}" ItemsSource= "{Binding QuantityList}" SelectedItem="{Binding Quantity}"                                     HorizontalAlignment="Center"/>
                         <TextBlock Grid.Column="3" Text="{Binding RentalDate}" HorizontalAlignment="Center"/>
                         <TextBlock Grid.Column="4" Text="{Binding DueDate}" HorizontalAlignment="Center"/>
-                        <CheckBox x:ConnectionId='26' Tag="{Binding RentalInfo}" Content="Return" Grid.Column="5" Width="80" Height="30" Foreground="#FF9C0E0E" FontSize="14"                                                     HorizontalAlignment="Center">
+                        <CheckBox x:ConnectionId='27' Tag="{Binding RentalInfo}" Content="Return" Grid.Column="5" Width="80" Height="30" Foreground="#FF9C0E0E" FontSize="14"                                                     HorizontalAlignment="Center">
                         </CheckBox>
                     </Grid>
 
@@ -52,9 +52,9 @@
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="60" />
                                 <ColumnDefinition Width="180" />
-                                <ColumnDefinition Width="60" />
                                 <ColumnDefinition Width="150" />
-                                <ColumnDefinition Width="150" />
+                                <ColumnDefinition Width="105" />
+                                <ColumnDefinition Width="105" />
                                 <ColumnDefinition Width="167" />
                             </Grid.ColumnDefinitions>
                             <Border Grid.Column="0" BorderBrush="Black" BorderThickness="0,0,1,1">

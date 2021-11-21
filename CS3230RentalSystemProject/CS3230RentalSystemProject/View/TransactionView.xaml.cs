@@ -3,6 +3,7 @@ using CS3230RentalSystemProject.Model;
 using CS3230RentalSystemProject.view;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
@@ -43,6 +44,8 @@ namespace CS3230RentalSystemProject.View
         private List<ReturnItem> ReturnItemList { get; set; }
 
         private List<RentalItem> CheckedReturnItemList { get; set; }
+
+        private List<RentalItem> PreReturnItemList { get; set; }
 
         private string searchType;
 
@@ -174,11 +177,7 @@ namespace CS3230RentalSystemProject.View
                 string[] list = tag.Split(",");
                 int rentalID = Int32.Parse(list[0]);
                 int furnitureID = Int32.Parse(list[1]);
-                List<RentalItem> rentalItems = this.TransanctionDAL.getRentalItem(rentalID, furnitureID);
-                foreach (var item in rentalItems)
-                {
-                    this.CheckedReturnItemList.Add(item);
-                }
+                this.CheckedReturnItemList.Add(this.PreReturnItemList.Find(x=> x.RentalID == rentalID && x.FurnitureID == furnitureID));
             }
             
         }
@@ -191,8 +190,7 @@ namespace CS3230RentalSystemProject.View
                 string[] list = tag.Split(",");
                 int rentalID = Int32.Parse(list[0]);
                 int furnitureID = Int32.Parse(list[1]);
-                List<RentalItem> rentalItems = this.TransanctionDAL.getRentalItem(rentalID, furnitureID);
-                rentalItems.ForEach(x => this.CheckedReturnItemList.RemoveAt(this.CheckedReturnItemList.FindIndex(y => y.RentalID == x.RentalID && y.FurnitureID == x.FurnitureID)));
+                this.CheckedReturnItemList.RemoveAt(this.CheckedReturnItemList.FindIndex(y => y.RentalID == rentalID && y.FurnitureID == furnitureID));
             }
            
         }
@@ -202,10 +200,13 @@ namespace CS3230RentalSystemProject.View
             if (this.memberList.SelectedItem != null)
             {
                 this.CheckedReturnItemList = new List<RentalItem>();
+                this.PreReturnItemList = new List<RentalItem>();
                 Member member = (Member)this.memberList.SelectedItem;
                 List<RentalItem> list = this.TransanctionDAL.getAllCurrentRentaledItems((int)member.MemberID);
                 list.ForEach(x => x.setRentalIDInfor());
+                list.ForEach(x => x.setQuantityList());
                 this.rentalItemList.ItemsSource = list;
+                this.PreReturnItemList = list;
                 this.rentalItemHistoryList.ItemsSource = this.TransanctionDAL.getAllRentalItems((int)member.MemberID);
                 this.returnItemList.ItemsSource = this.TransanctionDAL.getAllReturnItems((int)member.MemberID);
                 this.transactionIDBox.ItemsSource = this.TransanctionDAL.getMemberTansactionsNumber((int)member.MemberID);
@@ -266,7 +267,9 @@ namespace CS3230RentalSystemProject.View
                 this.TransanctionDAL.returnItems(this.RentalItemsWithSameID, this.Employee, member, 0);
                 List<RentalItem> list = this.TransanctionDAL.getAllCurrentRentaledItems((int)member.MemberID);
                 list.ForEach(x => x.setRentalIDInfor());
+                list.ForEach(x => x.setQuantityList());
                 this.rentalItemList.ItemsSource = list;
+                this.PreReturnItemList = list;
                 this.rentalItemHistoryList.ItemsSource = this.TransanctionDAL.getAllRentalItems((int)member.MemberID);
                 this.returnItemList.ItemsSource = this.TransanctionDAL.getAllReturnItems((int)member.MemberID);
 
@@ -365,7 +368,9 @@ namespace CS3230RentalSystemProject.View
                     {
                         List<RentalItem> list = this.TransanctionDAL.getAllCurrentRentaledItems((int)member.MemberID);
                         list.ForEach(x => x.setRentalIDInfor());
+                        list.ForEach(x => x.setQuantityList());
                         this.rentalItemList.ItemsSource = list;
+                        this.PreReturnItemList = list;
                         this.rentalItemHistoryList.ItemsSource = this.TransanctionDAL.getAllRentalItems((int)member.MemberID);
                         this.returnItemList.ItemsSource = this.TransanctionDAL.getAllReturnItems((int)member.MemberID);
                         this.transactionIDBox.ItemsSource = this.TransanctionDAL.getMemberTansactionsNumber((int)member.MemberID);
@@ -427,6 +432,27 @@ namespace CS3230RentalSystemProject.View
                 }
             }
             return fines;
+        }
+
+        private void quantity_changed(object sender, SelectionChangedEventArgs e)
+        {
+            var selectedItem = ((ComboBox)sender).SelectedItem;
+            if (selectedItem != null)
+            {
+                int quantity = (int)selectedItem;
+                string tag = (string)((ComboBox)sender).Tag;
+                if (tag != null)
+                {
+                    string[] list = tag.Split(",");
+                    int rentalID = Int32.Parse(list[0]);
+                    int furnitureID = Int32.Parse(list[1]);
+                    this.PreReturnItemList.Find(y => y.RentalID == rentalID && y.FurnitureID == furnitureID).Quantity = quantity;
+                    if (this.CheckedReturnItemList.Exists(x=> x.FurnitureID == furnitureID && x.RentalID == rentalID))
+                    {
+                        this.CheckedReturnItemList.Find(y => y.RentalID == rentalID && y.FurnitureID == furnitureID).Quantity = quantity;
+                    }
+                }
+            }
         }
     }
     
