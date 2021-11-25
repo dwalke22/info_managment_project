@@ -1,5 +1,6 @@
 ﻿using CS3230RentalSystemProject.DAL;
 using CS3230RentalSystemProject.Model;
+using CS3230RentalSystemProject.view;
 using System;
 using System.Data;
 using Windows.UI.Popups;
@@ -163,9 +164,67 @@ namespace CS3230RentalSystemProject.View
             this.adminName.Text = "Admin: " + this.Employee.ToString();
         }
 
-        private void logout_Click(object sender, RoutedEventArgs e)
+        private void mainPage_Click(object sender, RoutedEventArgs e)
         {
-            Frame.Navigate(typeof(MainPage));
+            Frame.Navigate(typeof(EmployeeWindow), this.Employee);
+        }
+
+        private void report_Click(object sender, RoutedEventArgs e)
+        {
+            this.queryPage.Visibility = Visibility.Visible;
+            this.firstDate.Visibility = Visibility.Visible;
+            this.secondDate.Visibility = Visibility.Visible;
+            this.firstDateLabel.Visibility = Visibility.Visible;
+            this.secondDateLabel.Visibility = Visibility.Visible;
+            this.executeReportButton.Visibility = Visibility.Visible;
+            this.reportList.Visibility = Visibility.Visible;
+
+            this.entryQueryLabel.Visibility = Visibility.Collapsed;
+            this.queryBox.Visibility = Visibility.Collapsed;
+            this.excuteButton.Visibility = Visibility.Collapsed;
+            this.resultBox.Visibility = Visibility.Collapsed;
+            this.mainpage.Visibility = Visibility.Collapsed;
+            this.report.Visibility = Visibility.Collapsed;
+        }
+
+        private void queryPage_Click(object sender, RoutedEventArgs e)
+        {
+            this.queryPage.Visibility = Visibility.Collapsed;
+            this.firstDate.Visibility = Visibility.Collapsed;
+            this.secondDate.Visibility = Visibility.Collapsed;
+            this.firstDateLabel.Visibility = Visibility.Collapsed;
+            this.secondDateLabel.Visibility = Visibility.Collapsed;
+            this.executeReportButton.Visibility = Visibility.Collapsed;
+            this.reportList.Visibility = Visibility.Collapsed;
+
+            this.entryQueryLabel.Visibility = Visibility.Visible;
+            this.queryBox.Visibility = Visibility.Visible;
+            this.excuteButton.Visibility = Visibility.Visible;
+            this.resultBox.Visibility = Visibility.Visible;
+            this.mainpage.Visibility = Visibility.Visible;
+            this.report.Visibility = Visibility.Visible;
+
+        }
+
+        private async void executeReportButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (this.firstDate.Date == DateTime.MinValue || this.secondDate.Date == DateTime.MinValue)
+            {
+                var message = new MessageDialog("Please select your first date and second date!");
+                await message.ShowAsync();
+            } else if (this.firstDate.Date >= this.secondDate.Date)
+            {
+                var message = new MessageDialog("Please make sure your first date is before your second date!");
+                await message.ShowAsync();
+            } else
+            {
+                this.reportList.ItemsSource = AdminQueryDAL.getReportByDates(DateTimeOffset.Parse(this.firstDate.Date.ToString()).Date, DateTimeOffset.Parse(this.secondDate.Date.ToString()).Date);
+            }
+        }
+
+        private void queryBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            this.resultBox.Text = "";
         }
     }
 }

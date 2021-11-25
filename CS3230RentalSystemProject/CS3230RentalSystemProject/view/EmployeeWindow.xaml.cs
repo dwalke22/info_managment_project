@@ -327,6 +327,8 @@ namespace CS3230RentalSystemProject.view
             if (this.Employee.IsAdmin)
             {
                 this.adminQueryButton.Visibility = Visibility.Visible;
+                this.addFurniture.Visibility = Visibility.Visible;
+                this.addEmployeeButton.Visibility = Visibility.Visible;
             }
         }
 

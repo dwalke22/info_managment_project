@@ -6,15 +6,112 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
-    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" Width="670" Height="510">
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" Width="1000" Height="600">
 
-    <Grid x:Name="grid" Height="500" VerticalAlignment="Center" HorizontalAlignment="Center" Width="670">
-        <TextBlock x:Name="adminName" HorizontalAlignment="Left" Margin="60,15,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Height="50" Width="348" FontSize="36" FontFamily="Berlin Sans FB Demi" Foreground="#FF9C0D0D"/>
-        <TextBlock HorizontalAlignment="Left" Margin="55,75,0,0" Text="Please Entry Your Query:" TextWrapping="Wrap" VerticalAlignment="Top" Height="27" Width="202" FontSize="18" FontFamily="Berlin Sans FB Demi" Foreground="Black"/>
-        <TextBox x:Name="queryBox" HorizontalAlignment="Left" Margin="55,105,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Height="95" Width="540" FontSize="14"/>
-        <TextBox x:Name="resultBox" Margin="55,270,75,25" ScrollViewer.VerticalScrollBarVisibility="Visible" Text="" TextWrapping="Wrap" FontSize="14" IsReadOnly="True" Visibility="Visible"/>
-        <Button x:Name="excuteButton" Content="Excute" Margin="480,210,0,0" VerticalAlignment="Top" Height="45" Width="115" FontSize="16" Click="excuteButton_Click"/>
-        <Button x:Name="logout" Content="Logout" Margin="550,13,0,0" VerticalAlignment="Top" Click="logout_Click"/>
+    <Grid Height="600" VerticalAlignment="Center" Margin="0,0,0,0" HorizontalAlignment="Left" Width="1000">
+        <TextBlock x:Name="adminName" HorizontalAlignment="Left" Margin="60,15,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Height="42" Width="348" FontSize="36" FontFamily="Berlin Sans FB Demi" Foreground="#FF9C0D0D"/>
+        <TextBlock x:Name="entryQueryLabel" HorizontalAlignment="Left" Margin="12,73,0,0" Text="Please Entry Your Query:" TextWrapping="Wrap" VerticalAlignment="Top" Height="27" Width="202" FontSize="18" FontFamily="Berlin Sans FB Demi" Foreground="Black" Visibility="Visible"/>
+        <TextBox x:Name="queryBox" HorizontalAlignment="Center" Margin="0,105,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Height="95" Width="980" FontSize="14" Visibility="Visible" TextChanged="queryBox_TextChanged"/>
+        <TextBox x:Name="resultBox" Margin="15,270,15,25" ScrollViewer.VerticalScrollBarVisibility="Visible" Text="" TextWrapping="Wrap" FontSize="14" IsReadOnly="True" Visibility="Visible"/>
+        <Button x:Name="excuteButton" Content="Execute" Margin="865,215,0,0" VerticalAlignment="Top" Height="45" Width="115" FontSize="16" Click="excuteButton_Click" Visibility="Visible"/>
+        <Button x:Name="mainpage" Content="MainPage" Margin="893,8,0,0" VerticalAlignment="Top" Click="mainPage_Click" Visibility="Visible"/>
+        <Button x:Name="report" Content="Report" Margin="770,10,0,0" VerticalAlignment="Top" Click="report_Click" Width="82" Visibility="Visible"/>
+        <Button x:Name="queryPage" Content="QueryPage" Margin="877,8,0,0" VerticalAlignment="Top" Click="queryPage_Click" Visibility="Collapsed"/>
+        <TextBlock x:Name="firstDateLabel" HorizontalAlignment="Left" Margin="18,81,0,0" Text="First Date: " TextWrapping="Wrap" VerticalAlignment="Top" Height="24" Width="69" Visibility="Collapsed"/>
+        <CalendarDatePicker x:Name="firstDate" Margin="90,75,0,0" VerticalAlignment="Top" Visibility="Collapsed"/>
+        <CalendarDatePicker x:Name="secondDate" Margin="313,75,0,0" VerticalAlignment="Top" Visibility="Collapsed"/>
+        <TextBlock x:Name="secondDateLabel" HorizontalAlignment="Left" Margin="225,81,0,0" Text="Second Date: " TextWrapping="Wrap" VerticalAlignment="Top" Height="24" Width="89" Visibility="Collapsed"/>
+        <Button x:Name="executeReportButton" Content="Execute" Margin="0,75,0,0" VerticalAlignment="Top" Width="92" Click="executeReportButton_Click" HorizontalAlignment="Center" Visibility="Collapsed"/>
+        <ListBox x:Name="reportList" Margin="0,125,0,10" HorizontalAlignment="Center" Width="980" ScrollViewer.IsVerticalScrollChainingEnabled="True" Visibility="Collapsed">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
 
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="75" />
+                            <ColumnDefinition Width="108" />
+                            <ColumnDefinition Width="82" />
+                            <ColumnDefinition Width="138" />
+                            <ColumnDefinition Width="105" />
+                            <ColumnDefinition Width="145" />
+                            <ColumnDefinition Width="45" />
+                            <ColumnDefinition Width="93" />
+                            <ColumnDefinition Width="93" />
+                            <ColumnDefinition Width="93" />
+
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Grid.Column="0" Text="{Binding MemeberID}" HorizontalAlignment="Center"/>
+                        <TextBlock Grid.Column="1" Text="{Binding FullName}" HorizontalAlignment="Center"/>
+                        <TextBlock Grid.Column="2" Text="{Binding FunitureID}" HorizontalAlignment="Center"/>
+                        <TextBlock Grid.Column="3" Text="{Binding FunitureName}" HorizontalAlignment="Center"/>
+                        <TextBlock Grid.Column="4" Text="{Binding StyleName}" HorizontalAlignment="Center"/>
+                        <TextBlock Grid.Column="5" Text="{Binding CategoryName}" HorizontalAlignment="Center"/>
+                        <TextBlock Grid.Column="6" Text="{Binding Quantity}" HorizontalAlignment="Center"/>
+                        <TextBlock Grid.Column="7" Text="{Binding RentalDate}" HorizontalAlignment="Center"/>
+                        <TextBlock Grid.Column="8" Text="{Binding DueDate}" HorizontalAlignment="Center"/>
+                        <TextBlock Grid.Column="9" Text="{Binding ReturnDate}" HorizontalAlignment="Center"/>
+                    </Grid>
+
+
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+            <ListBox.Template>
+                <ControlTemplate>
+                    <Grid BorderBrush="Black" BorderThickness="1,1,1,1">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <Grid Grid.Row="0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="75" />
+                                <ColumnDefinition Width="108" />
+                                <ColumnDefinition Width="82" />
+                                <ColumnDefinition Width="138" />
+                                <ColumnDefinition Width="105" />
+                                <ColumnDefinition Width="145" />
+                                <ColumnDefinition Width="45" />
+                                <ColumnDefinition Width="93" />
+                                <ColumnDefinition Width="93" />
+                                <ColumnDefinition Width="93" />
+                            </Grid.ColumnDefinitions>
+                            <Border Grid.Column="0" BorderBrush="Black" BorderThickness="0,0,1,1">
+                                <TextBlock FontWeight="Bold" HorizontalAlignment="Left">Member ID</TextBlock>
+                            </Border>
+                            <Border Grid.Column="1" BorderBrush="Black" BorderThickness="0,0,1,1">
+                                <TextBlock FontWeight="Bold" HorizontalAlignment="Center">FullName</TextBlock>
+                            </Border>
+                            <Border Grid.Column="2" BorderBrush="Black" BorderThickness="0,0,1,1">
+                                <TextBlock FontWeight="Bold" HorizontalAlignment="Center">Furniture ID</TextBlock>
+                            </Border>
+                            <Border Grid.Column="3" BorderBrush="Black" BorderThickness="0,0,1,1">
+                                <TextBlock FontWeight="Bold" HorizontalAlignment="Center">Furniture Name</TextBlock>
+                            </Border>
+                            <Border Grid.Column="4" BorderBrush="Black" BorderThickness="0,0,1,1">
+                                <TextBlock FontWeight="Bold" HorizontalAlignment="Center">Furniture Style</TextBlock>
+                            </Border>
+                            <Border  Grid.Column="5" BorderBrush="Black" BorderThickness="0,0,1,1" Margin="0,0,14,0">
+                                <TextBlock FontWeight="Bold" HorizontalAlignment="Center">Furniture Category</TextBlock>
+                            </Border>
+                            <Border Grid.Column="6" BorderBrush="Black" BorderThickness="0,0,1,1">
+                                <TextBlock FontWeight="Bold" HorizontalAlignment="Left" Margin="-13,0,0,0" Width="100">Quantity</TextBlock>
+                            </Border>
+                            <Border Grid.Column="7" BorderBrush="Black" BorderThickness="0,0,1,1">
+                                <TextBlock FontWeight="Bold" HorizontalAlignment="Center">Rental Date</TextBlock>
+                            </Border>
+                            <Border Grid.Column="8" BorderBrush="Black" BorderThickness="0,0,1,1">
+                                <TextBlock FontWeight="Bold" HorizontalAlignment="Center">Due Date</TextBlock>
+                            </Border>
+                            <Border Grid.Column="9" BorderBrush="Black" BorderThickness="0,0,1,1">
+                                <TextBlock FontWeight="Bold" HorizontalAlignment="Center">Return Date</TextBlock>
+                            </Border>
+                        </Grid>
+                        <ScrollViewer Grid.Row="1" Name="svMain" VerticalScrollBarVisibility="Visible">
+                            <ItemsPresenter Grid.Row="1" Margin="2,2,2,-2"></ItemsPresenter>
+                        </ScrollViewer>
+                    </Grid>
+                </ControlTemplate>
+            </ListBox.Template>
+        </ListBox>
     </Grid>
 </Page>

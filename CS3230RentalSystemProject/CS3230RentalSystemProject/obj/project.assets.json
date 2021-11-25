@@ -9967,18 +9967,18 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\jzeng1\\.nuget\\packages\\": {},
+    "C:\\Users\\jason\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {},
     "C:\\Program Files (x86)\\Microsoft SDKs\\UWPNuGetPackages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\jzeng1\\Source\\Repos\\info_managment_project\\CS3230RentalSystemProject\\CS3230RentalSystemProject\\CS3230RentalSystemProject.csproj",
+      "projectUniqueName": "C:\\Users\\jason\\source\\repos\\info_managment_project\\CS3230RentalSystemProject\\CS3230RentalSystemProject\\CS3230RentalSystemProject.csproj",
       "projectName": "CS3230RentalSystemProject",
-      "projectPath": "C:\\Users\\jzeng1\\Source\\Repos\\info_managment_project\\CS3230RentalSystemProject\\CS3230RentalSystemProject\\CS3230RentalSystemProject.csproj",
-      "packagesPath": "C:\\Users\\jzeng1\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\jzeng1\\Source\\Repos\\info_managment_project\\CS3230RentalSystemProject\\CS3230RentalSystemProject\\obj\\",
+      "projectPath": "C:\\Users\\jason\\source\\repos\\info_managment_project\\CS3230RentalSystemProject\\CS3230RentalSystemProject\\CS3230RentalSystemProject.csproj",
+      "packagesPath": "C:\\Users\\jason\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\jason\\source\\repos\\info_managment_project\\CS3230RentalSystemProject\\CS3230RentalSystemProject\\obj\\",
       "projectStyle": "PackageReference",
       "skipContentFileWrite": true,
       "fallbackFolders": [
@@ -9986,7 +9986,7 @@
         "C:\\Program Files (x86)\\Microsoft SDKs\\UWPNuGetPackages\\"
       ],
       "configFilePaths": [
-        "C:\\Users\\jzeng1\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\jason\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
