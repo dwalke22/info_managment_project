@@ -8,7 +8,7 @@
     mc:Ignorable="d"
     d:DesignHeight="600" Width="1000">
 
-    <Grid Height="600" VerticalAlignment="Center" Margin="0,0,0,0" HorizontalAlignment="Left" Width="1000">
+    <Grid Height="600" VerticalAlignment="Center" Margin="0,0,0,0" HorizontalAlignment="Left" Width="1000" Visibility="Visible">
         <TextBlock x:ConnectionId='2' x:Name="employeeName" HorizontalAlignment="Left" Margin="5,10,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="176" Height="29" FontWeight="Bold" TextAlignment="Start" FontFamily="SimSun" FontSize="16"  Style="{ThemeResource SubheaderTextBlockStyle}" Foreground="#FFB03636"/>
         <Button x:ConnectionId='3' x:Name="registerMemberButton" Content="Register Member" Margin="690,10,0,0" VerticalAlignment="Top" Width="130" Height="35"                                    RenderTransformOrigin="0.538,0.714"/>
         <Button x:ConnectionId='4' x:Name="bagButton" Content="Bag(0)" Margin="845,10,0,0" VerticalAlignment="Top"                         RenderTransformOrigin="1,0.938" Height="35"/>
@@ -96,9 +96,9 @@
         <TextBlock x:ConnectionId='20' x:Name="invalidFurnitureSearch" HorizontalAlignment="Left" Margin="659,125,0,0" Text="Invalid input!" TextWrapping="Wrap" VerticalAlignment="Top" Width="210" Height="29" Foreground="#FF9C0E0E" FontSize="14"/>
         <TextBlock x:ConnectionId='21' x:Name="serveredMember" HorizontalAlignment="Left" Margin="695,50,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="284" Height="29" Foreground="#FF9C0E0E" FontSize="14"/>
         <Button x:ConnectionId='22' x:Name="transactionButton" Content="Transactions" Margin="550,10,0,0" VerticalAlignment="Top" Width="130" Height="35"                                 RenderTransformOrigin="0.538,0.714"/>
-        <Button x:ConnectionId='23' x:Name="addEmployeeButton" Content="Add Employee" Margin="425,10,0,0" VerticalAlignment="Top"                           />
-        <Button x:ConnectionId='24' Content="Add Furniture" Margin="305,10,0,0" VerticalAlignment="Top"                            />
-        <Button x:ConnectionId='25' x:Name="adminQueryButton" Content="Admin Query" Margin="307,50,0,0" VerticalAlignment="Top"                      Visibility="Collapsed"/>
+        <Button x:ConnectionId='23' x:Name="addEmployeeButton" Content="Add Employee" Margin="425,10,0,0" VerticalAlignment="Top"                            Visibility="Collapsed"/>
+        <Button x:ConnectionId='24' x:Name="addFurniture" Content="Add Furniture" Margin="305,10,0,0" VerticalAlignment="Top"                             Visibility="Collapsed"/>
+        <Button x:ConnectionId='25' x:Name="adminQueryButton" Content="Admin Query" Margin="193,10,0,0" VerticalAlignment="Top"                      Visibility="Collapsed"/>
     </Grid>
 </Page>
 

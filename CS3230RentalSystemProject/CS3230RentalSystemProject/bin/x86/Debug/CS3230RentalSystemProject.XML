@@ -58,6 +58,28 @@
             GetXmlnsDefinitions()
             </summary>
         </member>
+        <member name="T:CS3230RentalSystemProject.DAL.AdminQueryDAL">
+            <summary>
+            The AdminQureyDAL class
+            </summary>
+        </member>
+        <member name="M:CS3230RentalSystemProject.DAL.AdminQueryDAL.AdminQuery(System.String)">
+            <summary>
+            Get date table for specific admin query
+            </summary>
+            <param name="query">
+            	The admin query statement
+            </param>
+            <returns>
+            	The date table for that admin query statement
+            </returns>
+        </member>
+        <member name="M:CS3230RentalSystemProject.DAL.AdminQueryDAL.getReportByDates(System.DateTime,System.DateTime)">
+            <summary>
+            Get all rental items
+            </summary>
+            <returns>all rental items</returns>
+        </member>
         <member name="M:CS3230RentalSystemProject.DAL.CheckoutDAL.CheckoutCart(System.Collections.Generic.List{CS3230RentalSystemProject.Model.Furniture},CS3230RentalSystemProject.Model.Employee,System.Decimal,CS3230RentalSystemProject.Model.Member)">
             <summary>
             Checkouts the cart.
@@ -1022,6 +1044,61 @@
         <member name="M:CS3230RentalSystemProject.Model.RentalItem.setQuantityList">
             <summary>
             Set up quantity list
+            </summary>
+        </member>
+        <member name="T:CS3230RentalSystemProject.Model.Report">
+            <summary>
+            The repor class
+            </summary>
+        </member>
+        <member name="P:CS3230RentalSystemProject.Model.Report.MemeberID">
+            <summary>
+            The MemeberID
+            </summary>
+        </member>
+        <member name="P:CS3230RentalSystemProject.Model.Report.FullName">
+            <summary>
+            The Member FullName
+            </summary>
+        </member>
+        <member name="P:CS3230RentalSystemProject.Model.Report.FunitureID">
+            <summary>
+            The FunitureID
+            </summary>
+        </member>
+        <member name="P:CS3230RentalSystemProject.Model.Report.FunitureName">
+            <summary>
+            The FunitureName
+            </summary>
+        </member>
+        <member name="P:CS3230RentalSystemProject.Model.Report.StyleName">
+            <summary>
+            The Furniture StyleName
+            </summary>
+        </member>
+        <member name="P:CS3230RentalSystemProject.Model.Report.CategoryName">
+            <summary>
+            The Furniture CategoryName
+            </summary>
+        </member>
+        <member name="P:CS3230RentalSystemProject.Model.Report.Quantity">
+            <summary>
+            The Rental Quantity
+            </summary>
+        </member>
+        <member name="P:CS3230RentalSystemProject.Model.Report.RentalDate">
+            <summary>
+            The Furniture RentalDate
+            </summary>
+        </member>
+        <member name="P:CS3230RentalSystemProject.Model.Report.DueDate">
+            <summary>
+            The Furniture DueDate
+            </summary>
+        </member>
+        <member name="P:CS3230RentalSystemProject.Model.Report.ReturnDate">
+            <summary>
+            The Furniture ReturnDate
             </summary>
         </member>
         <member name="T:CS3230RentalSystemProject.Model.ReturnItem">

@@ -1,20 +1,26 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Roots >
   <Roots.PropertyPathNames>
-    <RootPropertyPathName Name="FurnitureID" />
     <RootPropertyPathName Name="ReturnDate" />
+    <RootPropertyPathName Name="DueDate" />
+    <RootPropertyPathName Name="RentalDate" />
+    <RootPropertyPathName Name="Quantity" />
+    <RootPropertyPathName Name="CategoryName" />
+    <RootPropertyPathName Name="StyleName" />
+    <RootPropertyPathName Name="FunitureName" />
+    <RootPropertyPathName Name="FunitureID" />
+    <RootPropertyPathName Name="FullName" />
+    <RootPropertyPathName Name="MemeberID" />
+    <RootPropertyPathName Name="FurnitureID" />
     <RootPropertyPathName Name="CurrentToalPrice" />
     <RootPropertyPathName Name="RentalDays" />
     <RootPropertyPathName Name="QuantityList" />
     <RootPropertyPathName Name="RentQuantity" />
     <RootPropertyPathName Name="FurnitureName" />
-    <RootPropertyPathName Name="Quantity" />
     <RootPropertyPathName Name="Category" />
     <RootPropertyPathName Name="Style" />
     <RootPropertyPathName Name="RentalID" />
     <RootPropertyPathName Name="ReturnID" />
-    <RootPropertyPathName Name="DueDate" />
-    <RootPropertyPathName Name="RentalDate" />
     <RootPropertyPathName Name="RentalInfo" />
   </Roots.PropertyPathNames>
   <Roots.RootTypes>
@@ -36,6 +42,7 @@
       <RootProperty Name="BorderBrush" />
       <RootProperty Name="BorderThickness" />
       <RootProperty Name="RowDefinitions" />
+      <RootProperty Name="Visibility" />
       <RootMethod Name="GetColumn" />
       <RootMethod Name="SetColumn" />
       <RootMethod Name="GetRow" />
@@ -55,11 +62,11 @@
       <RootProperty Name="Foreground" />
       <RootProperty Name="FontSize" />
       <RootProperty Name="FontFamily" />
+      <RootProperty Name="Visibility" />
       <RootProperty Name="FontWeight" />
+      <RootProperty Name="Inlines" />
       <RootProperty Name="TextAlignment" />
       <RootProperty Name="Style" />
-      <RootProperty Name="Inlines" />
-      <RootProperty Name="Visibility" />
       <RootProperty Name="UseLayoutRounding" />
       <RootProperty Name="RenderTransform" />
       <RootProperty Name="FocusVisualPrimaryBrush" />
@@ -76,8 +83,8 @@
       <RootProperty Name="RenderTransformOrigin" />
       <RootProperty Name="Height" />
       <RootProperty Name="FontSize" />
-      <RootProperty Name="IsReadOnly" />
       <RootProperty Name="Visibility" />
+      <RootProperty Name="IsReadOnly" />
       <RootProperty Name="PlaceholderText" />
       <RootProperty Name="Tag" />
       <RootProperty Name="AccessKey" />
@@ -104,10 +111,10 @@
       <RootProperty Name="Height" />
       <RootProperty Name="Width" />
       <RootProperty Name="FontSize" />
+      <RootProperty Name="Visibility" />
       <RootProperty Name="RenderTransformOrigin" />
       <RootProperty Name="Tag" />
       <RootProperty Name="Foreground" />
-      <RootProperty Name="Visibility" />
       <RootProperty Name="IsEnabled" />
       <RootProperty Name="FocusVisualPrimaryBrush" />
       <RootEvent Name="Click" />
@@ -169,11 +176,20 @@
       <RootMethod Name="GetIsVerticalScrollChainingEnabled" />
       <RootMethod Name="SetIsVerticalScrollChainingEnabled" />
     </RootType>
-    <RootType FullName="CS3230RentalSystemProject.View.AdminInterface" />
+    <RootType FullName="Windows.UI.Xaml.Controls.CalendarDatePicker">
+      <RootProperty Name="Margin" />
+      <RootProperty Name="VerticalAlignment" />
+      <RootProperty Name="Visibility" />
+      <RootProperty Name="Tag" />
+      <RootProperty Name="Date" />
+      <RootProperty Name="HorizontalAlignment" />
+      <RootEvent Name="DateChanged" />
+    </RootType>
     <RootType FullName="Windows.UI.Xaml.Controls.ListBox">
       <RootProperty Name="Margin" />
       <RootProperty Name="HorizontalAlignment" />
       <RootProperty Name="Width" />
+      <RootProperty Name="Visibility" />
       <RootProperty Name="ItemTemplate" />
       <RootProperty Name="Template" />
       <RootProperty Name="BorderBrush" />
@@ -181,17 +197,8 @@
       <RootProperty Name="SelectedItem" />
       <RootProperty Name="Height" />
       <RootProperty Name="VerticalAlignment" />
-      <RootProperty Name="Visibility" />
       <RootEvent Name="DoubleTapped" />
       <RootEvent Name="SelectionChanged" />
-    </RootType>
-    <RootType FullName="Windows.UI.Xaml.Controls.CalendarDatePicker">
-      <RootProperty Name="Margin" />
-      <RootProperty Name="VerticalAlignment" />
-      <RootProperty Name="Tag" />
-      <RootProperty Name="Date" />
-      <RootProperty Name="HorizontalAlignment" />
-      <RootEvent Name="DateChanged" />
     </RootType>
     <RootType FullName="Windows.UI.Xaml.DataTemplate">
       <RootProperty Name="Template" />
@@ -217,6 +224,7 @@
       <RootProperty Name="Child" />
       <RootProperty Name="Margin" />
     </RootType>
+    <RootType FullName="CS3230RentalSystemProject.View.AdminInterface" />
     <RootType FullName="CS3230RentalSystemProject.View.Checkout" />
     <RootType FullName="Windows.UI.Xaml.Media.ImageBrush">
       <RootProperty Name="ImageSource" />

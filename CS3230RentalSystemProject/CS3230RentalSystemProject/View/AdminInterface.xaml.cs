@@ -2,6 +2,7 @@
 using CS3230RentalSystemProject.Model;
 using CS3230RentalSystemProject.view;
 using System;
+using System.Collections.Generic;
 using System.Data;
 using Windows.UI.Popups;
 using Windows.UI.Xaml;
@@ -185,6 +186,9 @@ namespace CS3230RentalSystemProject.View
             this.resultBox.Visibility = Visibility.Collapsed;
             this.mainpage.Visibility = Visibility.Collapsed;
             this.report.Visibility = Visibility.Collapsed;
+
+            this.queryBox.Text = "";
+            this.resultBox.Text = "";
         }
 
         private void queryPage_Click(object sender, RoutedEventArgs e)
@@ -204,11 +208,15 @@ namespace CS3230RentalSystemProject.View
             this.mainpage.Visibility = Visibility.Visible;
             this.report.Visibility = Visibility.Visible;
 
+            this.firstDate.Date = null;
+            this.secondDate.Date = null;
+            this.reportList.ItemsSource = new List<Report>();
+
         }
 
         private async void executeReportButton_Click(object sender, RoutedEventArgs e)
         {
-            if (this.firstDate.Date == DateTime.MinValue || this.secondDate.Date == DateTime.MinValue)
+            if (this.firstDate.Date == null || this.secondDate.Date == null)
             {
                 var message = new MessageDialog("Please select your first date and second date!");
                 await message.ShowAsync();
