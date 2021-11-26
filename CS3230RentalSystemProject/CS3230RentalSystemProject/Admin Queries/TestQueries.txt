@@ -1,0 +1,12 @@
+﻿Test Query 1:
+
+select f.furnitureName, s.styleName, c.categoryName, b.quantity, o.transactionID as rentalId, b.dueDate, t.transactionID, i.returnDate, o.employeeID as checkoutemployee, t.employeeID as returnemployee
+from returntransaction t
+left join returnitem i on i.returnId = t.transactionID
+left join rentaltransaction o on o.transactionID = i.rentalID
+left join furniture f on f.furnitureID = i.furnitureID
+left join style s on s.styleId = f.styleID
+left join category c on c.categoryId = f.categoryID
+left join rentalitem b on b.rentalID = o.transactionID
+left join member m on m.memberID = t.memberID
+where m.firstName = "Joe" and m.lastName = "Smith"
