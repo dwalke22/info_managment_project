@@ -1,19 +1,7 @@
 ﻿Test Query 1:
 
-select f.furnitureName, s.styleName, c.categoryName, b.quantity, o.transactionID as rentalId, b.dueDate, t.transactionID, i.returnDate, o.employeeID as checkoutemployee, t.employeeID as returnemployee
-from returntransaction t
-left join returnitem i on i.returnId = t.transactionID
-left join rentaltransaction o on o.transactionID = i.rentalID
-left join furniture f on f.furnitureID = i.furnitureID
-left join style s on s.styleId = f.styleID
-left join category c on c.categoryId = f.categoryID
-left join rentalitem b on b.rentalID = o.transactionID
-left join member m on m.memberID = t.memberID
-where m.firstName = "Joe" and m.lastName = "Smith"
+select m.memberID, concat(m.firstName, ' ', m.lastName) as customerFullName, i.rentalDate, i.dueDate, sum(i.quantity) as totalItems from member m, rentaltransaction r, rentalitem i where m.memberID = r.memberID and i.rentalID = r.transactionID and ((select count(rentali.furnitureID) from `rentaltransaction` rental, `rentalitem` rentali where rental.transactionID = rentali.rentalID and rental.memberID = r.memberID and rentali.rentalDate = i.rentalDate) >= 2) GROUP by m.memberID, i.rentalDate, i.dueDate order by m.memberID, i.rentalDate
 
 Test Query 2
 
-select m.memberID, concat(m.firstName, " ", m.lastName) as customerFullName, i.rentalDate, i.dueDate
-from member m, rentaltransaction r, rentalitem i
-where m.memberID = r.memberID and i.rentalID = r.transactionID
-order by m.memberID, i.rentalDate
+select m.memberID, concat(m.firstName, ' ', m.lastName) as customerFullName, i.rentalDate, i.dueDate, sum(i.quantity) as totalItems from member m, rentaltransaction r, rentalitem i where m.memberID = r.memberID and i.rentalID = r.transactionID and ((select count(rentali.furnitureID) from `rentaltransaction` rental, `rentalitem` rentali where rental.transactionID = rentali.rentalID and rental.memberID = r.memberID and rentali.rentalDate = i.rentalDate) >= 2) GROUP by m.memberID, i.rentalDate, i.dueDate order by m.memberID, i.rentalDate
