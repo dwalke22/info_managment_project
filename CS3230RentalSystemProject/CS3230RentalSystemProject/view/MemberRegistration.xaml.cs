@@ -1,23 +1,10 @@
 ﻿using CS3230RentalSystemProject.DAL;
 using CS3230RentalSystemProject.Enums;
 using CS3230RentalSystemProject.Model;
-using DBAccess.DAL;
 using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
-using Windows.Foundation;
-using Windows.Foundation.Collections;
-using Windows.UI.Popups;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Data;
-using Windows.UI.Xaml.Input;
-using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 
 // The User Control item template is documented at https://go.microsoft.com/fwlink/?LinkId=234236
@@ -72,7 +59,25 @@ namespace CS3230RentalSystemProject.view
             this.genderChooser.ItemsSource = Enum.GetNames(typeof(Gender));
 
             this.disableInvalidlable();
+        }
 
+        /// <summary>
+        /// Initialize parameter
+        /// </summary>
+        /// <param name="e">
+        ///         The parameter
+        /// </param>
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            base.OnNavigatedTo(e);
+            if (e.Parameter == null)
+            {
+                return;
+            }
+
+            this.Employee = (Employee)e.Parameter;
+
+            this.employeeName.Text = this.Employee.ToString();
         }
 
         private void registerButton_Click(object sender, RoutedEventArgs e)
@@ -81,108 +86,9 @@ namespace CS3230RentalSystemProject.view
            
         }
 
-        private void pastDateToEmplyee()
-        {
-            Member member = new Member
-            {
-                FirstName = this.FirstName,
-                LastName = this.LastName,
-                Gender = this.Gender,
-                Address1 = this.Address1,
-                Address2 = this.Address2,
-                City = this.City,
-                State = this.State,
-                Country = this.Country,
-                Zipcode = this.Zipcode,
-                PhoneNumber = this.PhoneNumber,
-                Email = this.Email,
-                Birthday = this.Birthday
-            };
-            MemberDAL dAL = new MemberDAL();
-            dAL.RegisterMember(member);
-            Frame.Navigate(typeof(EmployeeWindow), this.Employee);
-        }
-
         private void cancelButton_Click(object sender, RoutedEventArgs e)
         {
             Frame.Navigate(typeof(EmployeeWindow), this.Employee);
-        }
-
-        private void checkInput()
-        {
-            if (this.FirstName == null || this.FirstName == "")
-            {
-                this.invalidFirstname.Visibility = Visibility.Visible;
-                isvalid = false;
-            } 
-            if (this.LastName == null || this.LastName == "")
-            {
-                this.invalidLastname.Visibility = Visibility.Visible;
-                isvalid = false;
-            }
-            if (this.Gender == null)
-            {
-                this.InvalidGender.Visibility = Visibility.Visible;
-                isvalid = false;
-            }
-            if (this.Address1 == null || this.Address1 == "")
-            {
-               this.invalidAddress1.Visibility = Visibility.Visible;
-                isvalid = false;
-            }
-            if (this.City == null || this.City == "")
-            {
-                this.invalidCity.Visibility = Visibility.Visible;
-                isvalid = false;
-            }
-            if (this.State == null)
-            {
-                this.invalidState.Visibility = Visibility.Visible;
-                isvalid = false;
-            }
-            if (this.Country == null)
-            {
-                this.invalidCountry.Visibility = Visibility.Visible;
-                isvalid = false;
-            }
-            if (this.Zipcode == null || this.Zipcode == "")
-            {
-                this.invalidZipcode.Visibility = Visibility.Visible;
-                isvalid = false;
-            }
-            if (this.PhoneNumber == null || this.PhoneNumber == "")
-            {
-                this.invalidPhone.Visibility = Visibility.Visible;
-                isvalid = false;
-            }
-            if (this.Email == null || this.Email == "")
-            {
-                this.invalidEmail.Visibility = Visibility.Visible;
-                isvalid = false;
-            }
-            if (this.Birthday == DateTime.MinValue)
-            {
-                this.invalidBirthday.Visibility = Visibility.Visible;
-                isvalid = false;
-            }
-            if (this.invalidEmail.Visibility == Visibility.Visible)
-            {
-                isvalid = false;
-            }
-            if (this.invalidPhone.Visibility == Visibility.Visible)
-            {
-                isvalid = false;
-            }
-            if (this.invalidZipcode.Visibility == Visibility.Visible)
-            {
-                isvalid = false;
-            }
-
-            if (isvalid)
-            {
-                this.pastDateToEmplyee();
-            }
-
         }
 
         private void phoneInputBox_LostFocus(object sender, RoutedEventArgs e)
@@ -246,23 +152,102 @@ namespace CS3230RentalSystemProject.view
             this.usernameExist.Visibility = Visibility.Collapsed;
         }
 
-        /// <summary>
-        /// Initialize parameter
-        /// </summary>
-        /// <param name="e">
-        ///         The parameter
-        /// </param>
-        protected override void OnNavigatedTo(NavigationEventArgs e)
+        private void checkInput()
         {
-            base.OnNavigatedTo(e);
-            if (e.Parameter == null)
+            if (this.FirstName == null || this.FirstName == "")
             {
-                return;
+                this.invalidFirstname.Visibility = Visibility.Visible;
+                isvalid = false;
+            }
+            if (this.LastName == null || this.LastName == "")
+            {
+                this.invalidLastname.Visibility = Visibility.Visible;
+                isvalid = false;
+            }
+            if (this.Gender == null)
+            {
+                this.InvalidGender.Visibility = Visibility.Visible;
+                isvalid = false;
+            }
+            if (this.Address1 == null || this.Address1 == "")
+            {
+                this.invalidAddress1.Visibility = Visibility.Visible;
+                isvalid = false;
+            }
+            if (this.City == null || this.City == "")
+            {
+                this.invalidCity.Visibility = Visibility.Visible;
+                isvalid = false;
+            }
+            if (this.State == null)
+            {
+                this.invalidState.Visibility = Visibility.Visible;
+                isvalid = false;
+            }
+            if (this.Country == null)
+            {
+                this.invalidCountry.Visibility = Visibility.Visible;
+                isvalid = false;
+            }
+            if (this.Zipcode == null || this.Zipcode == "")
+            {
+                this.invalidZipcode.Visibility = Visibility.Visible;
+                isvalid = false;
+            }
+            if (this.PhoneNumber == null || this.PhoneNumber == "")
+            {
+                this.invalidPhone.Visibility = Visibility.Visible;
+                isvalid = false;
+            }
+            if (this.Email == null || this.Email == "")
+            {
+                this.invalidEmail.Visibility = Visibility.Visible;
+                isvalid = false;
+            }
+            if (this.Birthday == DateTime.MinValue)
+            {
+                this.invalidBirthday.Visibility = Visibility.Visible;
+                isvalid = false;
+            }
+            if (this.invalidEmail.Visibility == Visibility.Visible)
+            {
+                isvalid = false;
+            }
+            if (this.invalidPhone.Visibility == Visibility.Visible)
+            {
+                isvalid = false;
+            }
+            if (this.invalidZipcode.Visibility == Visibility.Visible)
+            {
+                isvalid = false;
             }
 
-            this.Employee = (Employee)e.Parameter;
+            if (isvalid)
+            {
+                this.pastDateToEmplyee();
+            }
+        }
 
-            this.employeeName.Text = this.Employee.ToString();
+        private void pastDateToEmplyee()
+        {
+            Member member = new Member
+            {
+                FirstName = this.FirstName,
+                LastName = this.LastName,
+                Gender = this.Gender,
+                Address1 = this.Address1,
+                Address2 = this.Address2,
+                City = this.City,
+                State = this.State,
+                Country = this.Country,
+                Zipcode = this.Zipcode,
+                PhoneNumber = this.PhoneNumber,
+                Email = this.Email,
+                Birthday = this.Birthday
+            };
+            MemberDAL dAL = new MemberDAL();
+            dAL.RegisterMember(member);
+            Frame.Navigate(typeof(EmployeeWindow), this.Employee);
         }
 
         private void firstNameInputBox_TextChanged(object sender, TextChangedEventArgs e)

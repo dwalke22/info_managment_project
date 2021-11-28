@@ -1,5 +1,4 @@
-﻿using CS3230RentalSystemProject.Model;
-using MySql.Data.MySqlClient;
+﻿using MySql.Data.MySqlClient;
 
 namespace DBAccess.DAL
 {
@@ -37,8 +36,5 @@ namespace DBAccess.DAL
             }
             return id;
         }
-
-       
-        
     }
 }

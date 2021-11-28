@@ -2,21 +2,10 @@
 using CS3230RentalSystemProject.Enums;
 using CS3230RentalSystemProject.Model;
 using CS3230RentalSystemProject.view;
-using DBAccess.DAL;
 using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
 using System.Text.RegularExpressions;
-using Windows.Foundation;
-using Windows.Foundation.Collections;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Data;
-using Windows.UI.Xaml.Input;
-using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
@@ -77,6 +66,26 @@ namespace CS3230RentalSystemProject.View
             this.disableInvalidlable();
         }
 
+        /// <summary>
+        /// Initialize parameter
+        /// </summary>
+        /// <param name="e">
+        ///         The parameter
+        /// </param>
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            base.OnNavigatedTo(e);
+            if (e.Parameter == null)
+            {
+                return;
+            }
+
+            this.Employee = (Employee)e.Parameter;
+
+            this.setViewer();
+            this.employeeName.Text = this.Employee.ToString();
+        }
+
         private void okButton_Click(object sender, RoutedEventArgs e)
         {
             Frame.Navigate(typeof(EmployeeWindow), this.Employee);
@@ -92,25 +101,6 @@ namespace CS3230RentalSystemProject.View
 
             this.allowChooser(true);
             this.isReadOnly(false);
-        }
-
-        private void pastDateToEmplyee()
-        {
-
-            this.Employee.SelectedMember.FirstName = this.FirstName;
-            this.Employee.SelectedMember.LastName = this.LastName;
-            this.Employee.SelectedMember.Gender = this.Gender;
-            this.Employee.SelectedMember.Address1 = this.Address1;
-            this.Employee.SelectedMember.Address2 = this.Address2;
-            this.Employee.SelectedMember.City = this.City;
-            this.Employee.SelectedMember.State = this.State;
-            this.Employee.SelectedMember.Country = this.Country;
-            this.Employee.SelectedMember.Zipcode = this.Zipcode;
-            this.Employee.SelectedMember.PhoneNumber = this.PhoneNumber;
-            this.Employee.SelectedMember.Email = this.Email;
-            this.Employee.SelectedMember.Birthday = this.Birthday;
-            MemberDAL dAL = new MemberDAL();
-            dAL.UpdateMemberInfo(this.Employee.SelectedMember);
         }
 
         private void saveButton_Click(object sender, RoutedEventArgs e)
@@ -210,6 +200,25 @@ namespace CS3230RentalSystemProject.View
             this.setViewer();
         }
 
+        private void pastDateToEmplyee()
+        {
+
+            this.Employee.SelectedMember.FirstName = this.FirstName;
+            this.Employee.SelectedMember.LastName = this.LastName;
+            this.Employee.SelectedMember.Gender = this.Gender;
+            this.Employee.SelectedMember.Address1 = this.Address1;
+            this.Employee.SelectedMember.Address2 = this.Address2;
+            this.Employee.SelectedMember.City = this.City;
+            this.Employee.SelectedMember.State = this.State;
+            this.Employee.SelectedMember.Country = this.Country;
+            this.Employee.SelectedMember.Zipcode = this.Zipcode;
+            this.Employee.SelectedMember.PhoneNumber = this.PhoneNumber;
+            this.Employee.SelectedMember.Email = this.Email;
+            this.Employee.SelectedMember.Birthday = this.Birthday;
+            MemberDAL dAL = new MemberDAL();
+            dAL.UpdateMemberInfo(this.Employee.SelectedMember);
+        }
+
         private void isReadOnly(bool action)
         {
             this.address1InputBox.IsReadOnly = action;
@@ -273,28 +282,6 @@ namespace CS3230RentalSystemProject.View
             this.Email = this.Employee.SelectedMember.Email;
             this.Birthday = this.Employee.SelectedMember.Birthday;
             this.Zipcode = this.Employee.SelectedMember.Zipcode;
-
-
-        }
-
-        /// <summary>
-        /// Initialize parameter
-        /// </summary>
-        /// <param name="e">
-        ///         The parameter
-        /// </param>
-        protected override void OnNavigatedTo(NavigationEventArgs e)
-        {
-            base.OnNavigatedTo(e);
-            if (e.Parameter == null)
-            {
-                return;
-            }
-
-            this.Employee = (Employee)e.Parameter;
-
-            this.setViewer();
-            this.employeeName.Text = this.Employee.ToString();
         }
 
         private void firstNameInputBox_TextChanged(object sender, TextChangedEventArgs e)

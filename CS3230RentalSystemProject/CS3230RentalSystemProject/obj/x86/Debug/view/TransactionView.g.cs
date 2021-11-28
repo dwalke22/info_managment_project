@@ -127,7 +127,7 @@ namespace CS3230RentalSystemProject.View
             case 27: // View\TransactionView.xaml line 37
                 {
                     global::Windows.UI.Xaml.Controls.CheckBox element27 = (global::Windows.UI.Xaml.Controls.CheckBox)(target);
-                    ((global::Windows.UI.Xaml.Controls.CheckBox)element27).Checked += this.returnChecked;
+                    ((global::Windows.UI.Xaml.Controls.CheckBox)element27).Checked += this.ReturnChecked;
                     ((global::Windows.UI.Xaml.Controls.CheckBox)element27).Unchecked += this.returnUnchecked;
                 }
                 break;

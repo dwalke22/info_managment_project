@@ -1,8 +1,5 @@
 ﻿using CS3230RentalSystemProject.Model;
 using MySql.Data.MySqlClient;
-using System;
-using System.Collections.Generic;
-using System.Net.Sockets;
 
 
 namespace DBAccess.DAL
@@ -113,7 +110,7 @@ namespace DBAccess.DAL
         /// <summary>
         /// Gets the newest employee identifier.
         /// </summary>
-        /// <returns></returns>
+        /// <returns>The id for the newest employee</returns>
         public int GetNewestEmployeeID()
         {
             int id = -1;

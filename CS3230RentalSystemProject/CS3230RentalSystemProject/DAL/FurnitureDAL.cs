@@ -4,10 +4,6 @@ using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
 using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Windows.ApplicationModel.Chat;
 
 namespace CS3230RentalSystemProject.DAL
 {
@@ -63,6 +59,7 @@ namespace CS3230RentalSystemProject.DAL
         /// <summary>
         /// Get the Furniture tha match the id
         /// </summary>
+        /// <param name="id">The furniture ID</param>
         /// <returns> the Furniture that match the id</returns>
         public List<Furniture> GetFurnitureById(int id)
         {
@@ -108,6 +105,7 @@ namespace CS3230RentalSystemProject.DAL
         /// <summary>
         /// Get the furniture's most availability
         /// </summary>
+        /// <param name="id">The furniture ID</param>
         /// <returns> all furniture's most availability</returns>
         public DateTime GetAllFurnitureMostAvailability(int id)
         {
@@ -323,6 +321,14 @@ namespace CS3230RentalSystemProject.DAL
             return filteredFurniture;
         }
 
+        /// <summary>
+        /// Add a new furniture to inventory
+        /// </summary>
+        /// <param name="name">The furniture name</param>
+        /// <param name="style">The furniture style</param>
+        /// <param name="category">The furniture category</param>
+        /// <param name="price">The furniture price</param>
+        /// <param name="quantity">The furniture quantity</param>
         public void AddFurnitureToInventory(string name, string style, string category, decimal price, int quantity)
         {
             using (MySqlConnection connection = new MySqlConnection(Connection.connectionString))

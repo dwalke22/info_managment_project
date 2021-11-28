@@ -3,9 +3,6 @@ using DBAccess.DAL;
 using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CS3230RentalSystemProject.DAL
 {
@@ -17,6 +14,7 @@ namespace CS3230RentalSystemProject.DAL
         /// <summary>
         /// Get all rental items
         /// </summary>
+        /// <param name="id">The transaction ID</param>
         /// <returns>all rental items</returns>
         public List<RentalItem> getAllRentalItems(int id)
         {
@@ -61,6 +59,8 @@ namespace CS3230RentalSystemProject.DAL
         /// <summary>
         /// Get all rental items
         /// </summary>
+        /// <param name="furnitureID">The furniture ID</param>
+        /// <param name="renttalID"> The rental ID</param>
         /// <returns>all rental items</returns>
         public List<RentalItem> getRentalItem(int renttalID, int furnitureID)
         {
@@ -105,6 +105,7 @@ namespace CS3230RentalSystemProject.DAL
         /// <summary>
         /// Get all current rentaled items
         /// </summary>
+        /// <param name="id">THe rental ID</param>
         /// <returns>all current rentaled items</returns>
         public List<RentalItem> getAllCurrentRentaledItems(int id)
         {
@@ -149,6 +150,7 @@ namespace CS3230RentalSystemProject.DAL
         /// <summary>
         /// Get all rental items
         /// </summary>
+        /// <param name="id">The member ID</param>
         /// <returns>all rental items</returns>
         public List<Int32> getMemberTansactionsNumber(int id)
         {
@@ -180,6 +182,7 @@ namespace CS3230RentalSystemProject.DAL
         /// <summary>
         /// Get all rental items with specified rentalID
         /// </summary>
+        /// <param name="id">The rental ID</param>
         /// <returns>all rental items with specified rentalID</returns>
         public List<RentalItem> getAllRentalItemsByRentalID(int id)
         {
@@ -224,6 +227,7 @@ namespace CS3230RentalSystemProject.DAL
         /// <summary>
         /// Get all return items
         /// </summary>
+        /// <param name="id">The member ID</param>
         /// <returns>all return items</returns>
         public List<ReturnItem> getAllReturnItems(int id)
         {
@@ -271,6 +275,7 @@ namespace CS3230RentalSystemProject.DAL
         /// <param name="employee"> the employee</param>
         /// <param name="member"> the member </param>
         /// <param name="fine">the fine if any </param>
+        /// <return>true if items returned successful, false otherwise</return>
         public bool returnItems(List<RentalItem> items, Employee employee, Member member, decimal fine)
         {
             using (MySqlConnection connection = new MySqlConnection(Connection.connectionString))
@@ -343,7 +348,7 @@ namespace CS3230RentalSystemProject.DAL
         /// <summary>
         /// Get return transaction ID
         /// </summary>
-        /// <returns></returns>
+        /// <returns>The newest return transaction ID</returns>
         public int GetReturnTransactionID()
         {
             int id = -1;

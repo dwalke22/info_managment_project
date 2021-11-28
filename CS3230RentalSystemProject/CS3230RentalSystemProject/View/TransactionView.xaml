@@ -34,7 +34,7 @@
                         <ComboBox Grid.Column="2" Tag="{Binding RentalInfo}" ItemsSource= "{Binding QuantityList}" SelectedItem="{Binding Quantity}" SelectionChanged="quantity_changed" HorizontalAlignment="Center"/>
                         <TextBlock Grid.Column="3" Text="{Binding RentalDate}" HorizontalAlignment="Center"/>
                         <TextBlock Grid.Column="4" Text="{Binding DueDate}" HorizontalAlignment="Center"/>
-                        <CheckBox Tag="{Binding RentalInfo}" Content="Return" Grid.Column="5" Width="80" Height="30" Foreground="#FF9C0E0E" FontSize="14" Checked="returnChecked" Unchecked="returnUnchecked" HorizontalAlignment="Center">
+                        <CheckBox Tag="{Binding RentalInfo}" Content="Return" Grid.Column="5" Width="80" Height="30" Foreground="#FF9C0E0E" FontSize="14" Checked="ReturnChecked" Unchecked="returnUnchecked" HorizontalAlignment="Center">
                         </CheckBox>
                     </Grid>
 

@@ -3,21 +3,11 @@ using CS3230RentalSystemProject.Model;
 using CS3230RentalSystemProject.view;
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
-using System.IO;
-using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
 using System.Text.RegularExpressions;
-using Windows.Foundation;
-using Windows.Foundation.Collections;
-using Windows.Globalization.DateTimeFormatting;
 using Windows.UI.Popups;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
-using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
@@ -169,7 +159,7 @@ namespace CS3230RentalSystemProject.View
             this.employeeName.Text = "Employee: " + this.Employee.ToString();
         }
 
-        private async void  returnChecked(object sender, RoutedEventArgs e)
+        private void ReturnChecked(object sender, RoutedEventArgs e)
         {
             string tag = (string)((CheckBox)sender).Tag;
             if (tag != null)
@@ -177,12 +167,12 @@ namespace CS3230RentalSystemProject.View
                 string[] list = tag.Split(",");
                 int rentalID = Int32.Parse(list[0]);
                 int furnitureID = Int32.Parse(list[1]);
-                this.CheckedReturnItemList.Add(this.PreReturnItemList.Find(x=> x.RentalID == rentalID && x.FurnitureID == furnitureID));
+                this.CheckedReturnItemList.Add(this.PreReturnItemList.Find(x => x.RentalID == rentalID && x.FurnitureID == furnitureID));
             }
-            
+
         }
 
-        private async void returnUnchecked(object sender, RoutedEventArgs e)
+        private void returnUnchecked(object sender, RoutedEventArgs e)
         {
             string tag = (string)((CheckBox)sender).Tag;
             if (tag != null)
@@ -235,8 +225,6 @@ namespace CS3230RentalSystemProject.View
                     this.returnALl.Visibility = Visibility.Collapsed;
                 }
             }
-            
-            
         }
 
         private void returnToMainPage_Click(object sender, RoutedEventArgs e)
@@ -262,8 +250,6 @@ namespace CS3230RentalSystemProject.View
             Member member = (Member)this.memberList.SelectedItem;
             if ((int)result.Id == 0)
             {
-               
-
                 this.TransanctionDAL.returnItems(this.RentalItemsWithSameID, this.Employee, member, 0);
                 List<RentalItem> list = this.TransanctionDAL.getAllCurrentRentaledItems((int)member.MemberID);
                 list.ForEach(x => x.setRentalIDInfor());
@@ -274,19 +260,7 @@ namespace CS3230RentalSystemProject.View
                 this.returnItemList.ItemsSource = this.TransanctionDAL.getAllReturnItems((int)member.MemberID);
 
                 int transactionID = this.TransanctionDAL.GetReturnTransactionID();
-                string reciept = "";
-                reciept += "Transaction ID: " + transactionID + "\n";
-                reciept += "Employee:" + this.Employee.FirstName + " " + this.Employee.LastName + "\n";
-                reciept += "Customer:" + member.FirstName + " " + member.LastName + "\n";
-                reciept += "Return Items: " + "                       " + "Return Quantity: " + "\n";
-                foreach(var returnItem in this.RentalItemsWithSameID)
-                {
-                    reciept += "" + returnItem.FurnitureName + "               " + returnItem.Quantity + "\n";
-                }
-                reciept += "\n";
-                reciept += "Thanks for your business! Have A Nice Day!";
-                
-                MessageDialog recieptDialog = new MessageDialog(reciept);
+                MessageDialog recieptDialog = new MessageDialog(this.createReciept(transactionID, member));
                 recieptDialog.Title = "Reciept";
                 recieptDialog.Commands.Add(new UICommand("Print")
                 {
@@ -376,24 +350,8 @@ namespace CS3230RentalSystemProject.View
                         this.transactionIDBox.ItemsSource = this.TransanctionDAL.getMemberTansactionsNumber((int)member.MemberID);
 
                         int transactionID = this.TransanctionDAL.GetReturnTransactionID();
-                        string reciept = "";
-                        reciept += "Transaction ID: " + transactionID + "\n" + "\n";
-                        reciept += "Employee:       " + this.Employee.FirstName + " " + this.Employee.LastName + "\n" + "\n";
-                        reciept += "Customer:       " + member.FirstName + " " + member.LastName + "\n" + "\n";
-                        reciept += "Return Date:    " + DateTime.Now.ToString("yyyy-MM-dd") + "\n" + "\n";
-                        reciept += "Return Items".PadRight(50) + "Return Quantity" + "\n";
-                        foreach (var returnItem in this.CheckedReturnItemList)
-                        {
-                            reciept += returnItem.FurnitureName.PadRight(70, '.');
-                            reciept += returnItem.Quantity + "\n";
-                        }
-
-                        this.CheckedReturnItemList = new List<RentalItem>();
-                        reciept += "\n" + "\n";
-                        reciept += "Total fine: $" + this.calculateFine();
-                        reciept += "\n" + "\n";
-                        reciept += "Thanks for your business! Have A Nice Day!";
-                        MessageDialog recieptDialog = new MessageDialog(reciept);
+                        
+                        MessageDialog recieptDialog = new MessageDialog(this.createReciept(transactionID, member));
                         recieptDialog.Title = "Reciept";
                         recieptDialog.Commands.Add(new UICommand("Print")
                         {
@@ -412,10 +370,30 @@ namespace CS3230RentalSystemProject.View
                         MessageDialog dialog = new MessageDialog("An exception of type was encountered while inserting the data! Neither record was written to database!");
                         await dialog.ShowAsync();
                     }
-
-
                 }
             }
+        }
+
+        private string createReciept(int transactionID, Member member)
+        {
+            string reciept = "";
+            reciept += "Transaction ID: " + transactionID + "\n" + "\n";
+            reciept += "Employee:       " + this.Employee.FirstName + " " + this.Employee.LastName + "\n" + "\n";
+            reciept += "Customer:       " + member.FirstName + " " + member.LastName + "\n" + "\n";
+            reciept += "Return Date:    " + DateTime.Now.ToString("yyyy-MM-dd") + "\n" + "\n";
+            reciept += "Return Items".PadRight(50) + "Return Quantity" + "\n";
+            foreach (var returnItem in this.CheckedReturnItemList)
+            {
+                reciept += returnItem.FurnitureName.PadRight(70, '.');
+                reciept += returnItem.Quantity + "\n";
+            }
+
+            this.CheckedReturnItemList = new List<RentalItem>();
+            reciept += "\n" + "\n";
+            reciept += "Total fine: $" + this.calculateFine();
+            reciept += "\n" + "\n";
+            reciept += "Thanks for your business! Have A Nice Day!";
+            return reciept;
         }
 
         private double calculateFine()

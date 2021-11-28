@@ -6,6 +6,9 @@ using MySql.Data.MySqlClient;
 
 namespace CS3230RentalSystemProject.DAL
 {
+    /// <summary>
+    /// The CheckoutDAL class
+    /// </summary>
     public class CheckoutDAL
     {
         /// <summary>
@@ -13,7 +16,11 @@ namespace CS3230RentalSystemProject.DAL
         /// </summary>
         /// <param name="bag">The list of furniture to checkout.</param>
         /// <param name="employee">The employee creating the transaction.</param>
-        /// <param name="transactionID">The transaction id.</param>
+        /// <param name="total">The total cost of the transaction.</param>
+        /// <param name="member">The employee who checked out for the transaction.</param>
+        /// <return>
+        /// True if the transaction is created successful, false otherwise.
+        /// </return>
         public bool CheckoutCart(List<Furniture> bag, Employee employee, decimal total, Member member)
         {
             using (MySqlConnection connection = new MySqlConnection(Connection.connectionString))

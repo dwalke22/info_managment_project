@@ -1,17 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
-using Windows.Foundation;
-using Windows.Foundation.Collections;
-using Windows.UI.Xaml;
-using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Data;
-using Windows.UI.Xaml.Input;
-using Windows.UI.Xaml.Media;
-using Windows.UI.Xaml.Navigation;
+﻿using Windows.UI.Xaml.Controls;
 using CS3230RentalSystemProject.Model;
 using CS3230RentalSystemProject.Utils;
 using DBAccess.DAL;
@@ -20,10 +7,17 @@ using DBAccess.DAL;
 
 namespace CS3230RentalSystemProject.View
 {
+    /// <summary>
+    /// The class AddEmployeeContentDialog
+    /// </summary>
     public sealed partial class AddEmployeeContentDialog : ContentDialog
     {
+
         private EmployeeDAL employeeDal;
 
+        /// <summary>
+        /// Initialize constructor
+        /// </summary>
         public AddEmployeeContentDialog()
         {
             this.InitializeComponent();
@@ -57,6 +51,7 @@ namespace CS3230RentalSystemProject.View
 
         private void ContentDialog_SecondaryButtonClick(ContentDialog sender, ContentDialogButtonClickEventArgs args)
         {
+            //Close dialog, no need to implement
         }
     }
 }

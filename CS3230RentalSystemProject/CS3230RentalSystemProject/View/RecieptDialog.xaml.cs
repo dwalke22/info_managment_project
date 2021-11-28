@@ -1,23 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
-using Windows.Foundation;
-using Windows.Foundation.Collections;
-using Windows.UI.Xaml;
+﻿using System.Collections.Generic;
 using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Data;
-using Windows.UI.Xaml.Input;
-using Windows.UI.Xaml.Media;
-using Windows.UI.Xaml.Navigation;
 using CS3230RentalSystemProject.Model;
 
 // The Content Dialog item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
 
 namespace CS3230RentalSystemProject.View
 {
+    /// <summary>
+    /// The class RecieptDialog
+    /// </summary>
     public sealed partial class RecieptDialog : ContentDialog
     {
         /// <summary>
@@ -25,6 +16,10 @@ namespace CS3230RentalSystemProject.View
         /// </summary>
         public IList<Furniture> furnitureListData;
 
+        /// <summary>
+        /// Initalize constructor
+        /// </summary>
+        /// <param name="furnitureList"> The rentaled furniture List</param>
         public RecieptDialog(List<Furniture> furnitureList)
         {
             this.InitializeComponent();
@@ -35,7 +30,7 @@ namespace CS3230RentalSystemProject.View
 
         private void ContentDialog_PrimaryButtonClick(ContentDialog sender, ContentDialogButtonClickEventArgs args)
         {
+            //Close dialog
         }
-
     }
 }

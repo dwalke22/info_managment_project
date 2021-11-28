@@ -10,9 +10,6 @@ using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Navigation;
-using K4os.Compression.LZ4.Internal;
-using Org.BouncyCastle.Cms;
-using Org.BouncyCastle.Security;
 
 // The User Control item template is documented at https://go.microsoft.com/fwlink/?LinkId=234236
 
@@ -42,12 +39,6 @@ namespace CS3230RentalSystemProject.view
 
         private List<Furniture> furnitureListData;
 
-        public class SelectedInfo
-        {
-            public Employee Employee { get; set; }
-            public Member Member { get; set; }
-        }
-
         /// <summary>
         /// Initialize constructor
         /// </summary>
@@ -76,6 +67,59 @@ namespace CS3230RentalSystemProject.view
 
         }
 
+        /// <summary>
+        /// Initialize parameter
+        /// </summary>
+        /// <param name="e">
+        ///         The parameter
+        /// </param>
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            base.OnNavigatedTo(e);
+            if (e.Parameter == null)
+            {
+                return;
+            }
+
+            this.Employee = (Employee)e.Parameter;
+
+            this.employeeName.Text = "Welcome, " + this.Employee.ToString();
+            if (this.Employee.SelectedMember != null)
+            {
+                int size = 0;
+                List<Furniture> list = new List<Furniture>();
+                foreach (Furniture item in this.furnitureList.Items)
+                {
+                    list.Add(item);
+                }
+                if (this.Employee.SelectedMember.FurnitureListData != null)
+                {
+                    foreach (var item in this.Employee.SelectedMember.FurnitureListData)
+                    {
+                        size += item.RentQuantity;
+                        if (list.Exists(x => x.FurnitureID == item.FurnitureID))
+                        {
+                            list.Find(x => x.FurnitureID == item.FurnitureID).Quantity -= item.RentQuantity;
+                        }
+                    }
+                }
+
+                this.bagButton.Content = "Bag(" + size + ")";
+                this.rentQuantity = size;
+                this.serveredMember.Text = "Now Server: " + this.Employee.SelectedMember.ToString();
+
+                this.memberList.SelectedIndex = this.list.FindIndex(x => x.MemberID == this.Employee.SelectedMember.MemberID);
+                this.furnitureList.ItemsSource = list;
+
+            }
+
+            if (this.Employee.IsAdmin)
+            {
+                this.adminQueryButton.Visibility = Visibility.Visible;
+                this.addFurniture.Visibility = Visibility.Visible;
+                this.addEmployeeButton.Visibility = Visibility.Visible;
+            }
+        }
 
         private void registerMemberButton_Click(object sender, RoutedEventArgs e)
         {
@@ -241,8 +285,6 @@ namespace CS3230RentalSystemProject.view
                 this.furnitureList.ItemsSource = list;
 
             }
-
-            
         }
 
         private void bagButton_Click(object sender, RoutedEventArgs e)
@@ -255,80 +297,12 @@ namespace CS3230RentalSystemProject.view
             {
 
                 this.memberErrorLabel.Visibility = Visibility.Collapsed;
-                //var selectedInfo = new SelectedInfo();
-                //selectedInfo.Employee = this.employee;
-                //selectedInfo.Member = (Member)this.memberList.SelectedItem;
-                //Member member = (Member)this.memberList.SelectedItem;
                 if (this.Employee.SelectedMember == null)
                 {
                     this.Employee.SelectedMember = (Member)this.memberList.SelectedItem;
                 }
                 
                 Frame.Navigate(typeof(Checkout), this.Employee);
-            }
-        }
-
-        private List<Member> convertList()
-        {
-            List<Member> list = new List<Member>();
-            foreach (Member member in this.memberList.Items)
-            {
-                list.Add(member);
-            }
-            return list;
-        }
-
-        /// <summary>
-        /// Initialize parameter
-        /// </summary>
-        /// <param name="e">
-        ///         The parameter
-        /// </param>
-        protected override void OnNavigatedTo(NavigationEventArgs e)
-        {
-            base.OnNavigatedTo(e);
-            if (e.Parameter == null)
-            {
-                return;
-            }
-
-            this.Employee = (Employee)e.Parameter;
-
-            this.employeeName.Text = "Welcome, " + this.Employee.ToString();
-            if (this.Employee.SelectedMember != null)
-            {
-                int size =0;
-                List<Furniture> list = new List<Furniture>();
-                foreach (Furniture item in this.furnitureList.Items)
-                {
-                    list.Add(item);
-                }
-                if (this.Employee.SelectedMember.FurnitureListData != null)
-                {
-                    foreach (var item in this.Employee.SelectedMember.FurnitureListData)
-                    {
-                        size += item.RentQuantity;
-                        if (list.Exists(x => x.FurnitureID == item.FurnitureID))
-                        {
-                            list.Find(x => x.FurnitureID == item.FurnitureID).Quantity -= item.RentQuantity;
-                        }
-                    }
-                }
-               
-                this.bagButton.Content = "Bag(" + size + ")";
-                this.rentQuantity = size;
-                this.serveredMember.Text = "Now Server: " + this.Employee.SelectedMember.ToString();
-                
-                this.memberList.SelectedIndex = this.list.FindIndex(x=>x.MemberID == this.Employee.SelectedMember.MemberID);
-                this.furnitureList.ItemsSource = list;
-
-            }
-
-            if (this.Employee.IsAdmin)
-            {
-                this.adminQueryButton.Visibility = Visibility.Visible;
-                this.addFurniture.Visibility = Visibility.Visible;
-                this.addEmployeeButton.Visibility = Visibility.Visible;
             }
         }
 
@@ -475,15 +449,12 @@ namespace CS3230RentalSystemProject.view
                 if (this.Employee.SelectedMember != null && this.Employee.SelectedMember.MemberID != ((Member)this.memberList.SelectedItem).MemberID)
                 {
                     this.Employee.SelectedMember = (Member)this.memberList.SelectedItem;
-
                     this.bagButton.Content = "Bag(0)";
                     this.furnitureListData = this.furnitureDAL.GetAllFurnitureList();
                     this.furnitureListData.ForEach(x => x.setQuantityList());
                     this.furnitureList.ItemsSource = this.furnitureListData;
-
                 }
             }
-            
         }
 
         private void transactionButton_Click(object sender, RoutedEventArgs e)
@@ -495,19 +466,29 @@ namespace CS3230RentalSystemProject.view
         {
             AddEmployeeContentDialog dialog = new AddEmployeeContentDialog();
 
-            dialog.ShowAsync();
+            _ = dialog.ShowAsync();
         }
 
         private void Add_Furniture_Click(object sender, RoutedEventArgs e)
         {
             AddFurnitureContentDialog1 dialog = new AddFurnitureContentDialog1();
 
-            dialog.ShowAsync();
+            _ = dialog.ShowAsync();
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             Frame.Navigate(typeof(AdminInterface), this.Employee);
+        }
+
+        private List<Member> convertList()
+        {
+            List<Member> list = new List<Member>();
+            foreach (Member member in this.memberList.Items)
+            {
+                list.Add(member);
+            }
+            return list;
         }
     }
 }

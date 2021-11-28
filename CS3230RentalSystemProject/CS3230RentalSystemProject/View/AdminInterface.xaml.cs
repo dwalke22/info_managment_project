@@ -24,127 +24,12 @@ namespace CS3230RentalSystemProject.View
         /// </summary>
         public Employee Employee { get; set; }
 
+        /// <summary>
+        /// Initialize constructor
+        /// </summary>
         public AdminInterface()
         {
             this.InitializeComponent();
-        }
-
-        private async void excuteButton_Click(object sender, RoutedEventArgs e)
-        {
-            if (this.queryBox.Text == "" || this.queryBox.Text == null)
-            {
-                MessageDialog dialog = new MessageDialog("Please Input your Query Statement!");
-                await dialog.ShowAsync();
-            }
-            else
-            {
-                DataTable data = AdminQueryDAL.AdminQuery(this.queryBox.Text);
-                if (data == null)
-                {
-                    MessageDialog dialog = new MessageDialog("Invalid Query Statement!");
-                    await dialog.ShowAsync();
-                }
-                else
-                {
-                    string text = string.Empty;
-
-                    int coumnCount = data.Columns.Count;
-                    int maxLenght = 0;
-                    for (int i = 0; i <coumnCount; i++)
-                    {
-                        if (data.Columns[i].ColumnName.Length > maxLenght)
-                        {
-                            maxLenght = data.Columns[i].ColumnName.Length;
-                        }
-                    }
-                    int columnWidth = maxLenght + 2;
-
-                    text += this.formattTableHeaders(data, columnWidth);
-
-                    text += Environment.NewLine;
-
-                    int rowsCount = data.Rows.Count;
-                    for (int i = 0; i < rowsCount; i++)
-                    {
-                        DataRow row = data.Rows[i];
-                        text += this.formatRow(row, columnWidth);
-                    }
-
-                    this.resultBox.Text = text;
-                }
-            }
-           
-        }
-
-        private string formattTableHeaders(DataTable data, int columnWidth)
-        {
-            string text = "";
-            for (int i = 0; i < data.Columns.Count; i++)
-            {
-                if (i == data.Columns.Count - 1)
-                {
-                    text += data.Columns[i].ColumnName;
-                }
-                else
-                {
-                    string rowData = data.Columns[i].ColumnName;
-                    int width = data.Columns[i].ColumnName.Length;
-                    while (width < columnWidth)
-                    {
-                        rowData += " ";
-                        width++;
-                    }
-
-                    text += rowData;
-                }
-            }
-
-            return text;
-        }
-
-        private string formatRow(DataRow row, int columnWidth)
-        {
-            string text = "";
-            int count = row.ItemArray.Length;
-            for (int k = 0; k < count; k++)
-            {
-                string rowData = "";
-                if (k == count - 1)
-                {
-                    rowData = row[k].ToString();
-                    if (row[k].GetType() == typeof(DateTime))
-                    {
-                        rowData = ((DateTime)row[k]).ToString("yyyy-MM-dd");
-                    }
-                }
-                else
-                {
-                    rowData = row[k].ToString();
-                    if (row[k].GetType() == typeof(DateTime))
-                    {
-                        rowData = ((DateTime)row[k]).ToString("yyyy-MM-dd");
-                    }
-
-                    if (rowData.Length > columnWidth)
-                    {
-                        string tempString = rowData.Substring(0, columnWidth - 4);
-                        tempString = tempString + "...";
-                        rowData = tempString;
-                    }
-                    else
-                    {
-                        int width = rowData.Length;
-                        while (width < columnWidth)
-                        {
-                            rowData += " ";
-                            width++;
-                        }
-                    }
-                }
-                text += rowData;
-            }
-            text += Environment.NewLine;
-            return text;
         }
 
         /// <summary>
@@ -228,6 +113,124 @@ namespace CS3230RentalSystemProject.View
             {
                 this.reportList.ItemsSource = AdminQueryDAL.getReportByDates(DateTimeOffset.Parse(this.firstDate.Date.ToString()).Date, DateTimeOffset.Parse(this.secondDate.Date.ToString()).Date);
             }
+        }
+
+        private async void excuteButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (this.queryBox.Text == "" || this.queryBox.Text == null)
+            {
+                MessageDialog dialog = new MessageDialog("Please Input your Query Statement!");
+                await dialog.ShowAsync();
+            }
+            else
+            {
+                DataTable data = AdminQueryDAL.AdminQuery(this.queryBox.Text);
+                if (data == null)
+                {
+                    MessageDialog dialog = new MessageDialog("Invalid Query Statement!");
+                    await dialog.ShowAsync();
+                }
+                else
+                {
+                    string text = string.Empty;
+
+                    int coumnCount = data.Columns.Count;
+                    int maxLenght = 0;
+                    for (int i = 0; i < coumnCount; i++)
+                    {
+                        if (data.Columns[i].ColumnName.Length > maxLenght)
+                        {
+                            maxLenght = data.Columns[i].ColumnName.Length;
+                        }
+                    }
+                    int columnWidth = maxLenght + 2;
+
+                    text += this.formattTableHeaders(data, columnWidth);
+
+                    text += Environment.NewLine;
+
+                    int rowsCount = data.Rows.Count;
+                    for (int i = 0; i < rowsCount; i++)
+                    {
+                        DataRow row = data.Rows[i];
+                        text += this.formatRow(row, columnWidth);
+                    }
+
+                    this.resultBox.Text = text;
+                }
+            }
+
+        }
+
+        private string formattTableHeaders(DataTable data, int columnWidth)
+        {
+            string text = "";
+            for (int i = 0; i < data.Columns.Count; i++)
+            {
+                if (i == data.Columns.Count - 1)
+                {
+                    text += data.Columns[i].ColumnName;
+                }
+                else
+                {
+                    string rowData = data.Columns[i].ColumnName;
+                    int width = data.Columns[i].ColumnName.Length;
+                    while (width < columnWidth)
+                    {
+                        rowData += " ";
+                        width++;
+                    }
+
+                    text += rowData;
+                }
+            }
+
+            return text;
+        }
+
+        private string formatRow(DataRow row, int columnWidth)
+        {
+            string text = "";
+            int count = row.ItemArray.Length;
+            for (int k = 0; k < count; k++)
+            {
+                string rowData = "";
+                if (k == count - 1)
+                {
+                    rowData = row[k].ToString();
+                    if (row[k].GetType() == typeof(DateTime))
+                    {
+                        rowData = ((DateTime)row[k]).ToString("yyyy-MM-dd");
+                    }
+                }
+                else
+                {
+                    rowData = row[k].ToString();
+                    if (row[k].GetType() == typeof(DateTime))
+                    {
+                        rowData = ((DateTime)row[k]).ToString("yyyy-MM-dd");
+                    }
+
+                    if (rowData.Length > columnWidth)
+                    {
+                        string tempString = rowData.Substring(0, columnWidth - 4);
+                        tempString = tempString + "...";
+                        rowData = tempString;
+                    }
+                    else
+                    {
+                        int width = rowData.Length;
+                        while (width < columnWidth)
+                        {
+                            rowData += " ";
+                            width++;
+                        }
+                    }
+                }
+                text += rowData;
+            }
+            text += Environment.NewLine;
+            return text;
         }
 
         private void queryBox_TextChanged(object sender, TextChangedEventArgs e)

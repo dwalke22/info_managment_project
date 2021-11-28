@@ -4,15 +4,12 @@ using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
 using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CS3230RentalSystemProject.DAL
 {
-	/// <summary>
-	/// The AdminQureyDAL class
-	/// </summary>
+    /// <summary>
+    /// The AdminQureyDAL class
+    /// </summary>
     public class AdminQueryDAL
     {
 		/// <summary>
@@ -51,9 +48,17 @@ namespace CS3230RentalSystemProject.DAL
         }
 
         /// <summary>
-        /// Get all rental items
+        ///     Get report between two dates
         /// </summary>
-        /// <returns>all rental items</returns>
+        /// <param name="date1">
+        ///     The first date of the report
+        /// </param>
+        /// <param name="date2">
+        ///     Teh second date of the report
+        /// </param>
+        /// <returns>
+        ///     The report between the given two dates
+        /// </returns>
         public static List<Report> getReportByDates(DateTime date1, DateTime date2)
         {
             List<Report> list = new List<Report>();

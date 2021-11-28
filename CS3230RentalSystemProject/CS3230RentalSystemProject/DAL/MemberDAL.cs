@@ -3,9 +3,6 @@ using DBAccess.DAL;
 using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CS3230RentalSystemProject.DAL
 {
@@ -80,6 +77,7 @@ namespace CS3230RentalSystemProject.DAL
         /// <summary>
         /// Get the member tha match the id
         /// </summary>
+        /// <param name="id">The member ID</param>
         /// <returns> the member that match the id</returns>
         public List<Member> GetMemberById(int id)
         {
@@ -138,12 +136,12 @@ namespace CS3230RentalSystemProject.DAL
 
             }
             return MemberList;
-
         }
 
         /// <summary>
         /// Get the member tha match the phone
         /// </summary>
+        /// <param name="phone">The memebr's phone</param>
         /// <returns> the member that match the phone</returns>
         public List<Member> GetMemberByPhone(String phone)
         {
@@ -202,12 +200,12 @@ namespace CS3230RentalSystemProject.DAL
 
             }
             return MemberList;
-
         }
 
         /// <summary>
         /// Get the member tha match the fullName
         /// </summary>
+        /// <param name="fullName">The member's full name</param>
         /// <returns> the member that match the fullName</returns>
         public List<Member> GetMemberByFullName(String fullName)
         {
@@ -266,7 +264,6 @@ namespace CS3230RentalSystemProject.DAL
 
             }
             return MemberList;
-
         }
 
         /// <summary>
@@ -303,6 +300,10 @@ namespace CS3230RentalSystemProject.DAL
             }
         }
 
+        /// <summary>
+        /// Update member's general information
+        /// </summary>
+        /// <param name="member">The member who need to be updated</param>
         public void UpdateMemberInfo(Member member)
         {
             string data = "Update `member` set gender = @gender, firstName = @firstName, lastName = @lastName, address1 = @address1,"

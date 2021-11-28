@@ -29,7 +29,7 @@ namespace CS3230RentalSystemProject
             this.invalidPassword.Visibility = Visibility.Collapsed;
         }
 
-        private async void loginButton_Click(object sender, RoutedEventArgs e)
+        private void loginButton_Click(object sender, RoutedEventArgs e)
         {
             bool isvalid = true;
             if (this.userNameBox.Text == null || this.userNameBox.Text == "")

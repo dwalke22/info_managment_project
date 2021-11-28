@@ -29,6 +29,7 @@ namespace CS3230RentalSystemProject.View
         public Member Member { get; set; }
 
         private IList<Furniture> furnitureListData;
+
         private CheckoutDAL checkoutDal;
 
         /// <summary>
@@ -39,6 +40,30 @@ namespace CS3230RentalSystemProject.View
             this.InitializeComponent();
             this.checkoutDal = new CheckoutDAL();
             this.invalidForRentalDays.Visibility = Visibility.Collapsed;
+        }
+
+        /// <summary>
+        /// Initialize parameter
+        /// </summary>
+        /// <param name="e">
+        ///         The parameter
+        /// </param>
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            base.OnNavigatedTo(e);
+            if (e.Parameter == null)
+            {
+                return;
+            }
+            this.furnitureListData = new List<Furniture>();
+            this.Employee = (Employee)e.Parameter;
+            this.Member = Employee.SelectedMember;
+            this.furnitureList.ItemsSource = this.Employee.SelectedMember.FurnitureListData;
+            this.furnitureListData = this.Employee.SelectedMember.FurnitureListData;
+            this.employeeName.Text = "Employee: " + this.Employee.ToString();
+            this.membername.Text = "Member: " + this.Member.ToString();
+            this.returndate.Date = DateTime.Now.AddDays(1);
+            this.resetTotalText();
         }
 
         private void Cancel_Click(object sender, RoutedEventArgs e)
@@ -143,55 +168,12 @@ namespace CS3230RentalSystemProject.View
                         this.resetTotalText();
                     }
                 }
-                catch (Exception e)
+                catch (Exception)
                 {
                 }
 
             }
 
-        }
-
-        /// <summary>
-        /// Initialize parameter
-        /// </summary>
-        /// <param name="e">
-        ///         The parameter
-        /// </param>
-        protected override void OnNavigatedTo(NavigationEventArgs e)
-        {
-            base.OnNavigatedTo(e);
-            if (e.Parameter == null)
-            {
-                return;
-            }
-            this.furnitureListData = new List<Furniture>();
-            this.Employee = (Employee)e.Parameter;
-            //var info = (EmployeeWindow.SelectedInfo)e.Parameter;
-            //this.Employee = info.Employee;
-            this.Member = Employee.SelectedMember;
-            this.furnitureList.ItemsSource = this.Employee.SelectedMember.FurnitureListData;
-            this.furnitureListData = this.Employee.SelectedMember.FurnitureListData;
-            this.employeeName.Text = "Employee: " + this.Employee.ToString();
-            this.membername.Text = "Member: " + this.Member.ToString();
-            this.returndate.Date = DateTime.Now.AddDays(1);
-            this.resetTotalText();
-        }
-
-        private void resetTotalText()
-        {
-            if (this.furnitureListData.Count == 0)
-            {
-                this.totalTextBlock.Text = "Not Items In The Cart.";
-            }
-            else
-            {
-                decimal total = 0;
-                foreach (var furniture in this.Employee.SelectedMember.FurnitureListData)
-                {
-                    total += furniture.CurrentToalPrice;
-                }
-                this.totalTextBlock.Text = "Total: $" + total;
-            }
         }
 
         private async void TextBox_LostFocus(object sender, RoutedEventArgs e)
@@ -254,7 +236,6 @@ namespace CS3230RentalSystemProject.View
 
                 }
             }
-            
         }
 
         private void rentalDaysForAll_TextChanging(TextBox sender, TextBoxTextChangingEventArgs args)
@@ -279,7 +260,7 @@ namespace CS3230RentalSystemProject.View
                     this.rentalDaysForAll.Text = days.ToString();
                 }
             }
-            catch(Exception e)
+            catch(Exception)
             {
                 this.returndate.Date = DateTime.Now.AddDays(1);
             }
@@ -313,5 +294,21 @@ namespace CS3230RentalSystemProject.View
             }
         }
 
+        private void resetTotalText()
+        {
+            if (this.furnitureListData.Count == 0)
+            {
+                this.totalTextBlock.Text = "Not Items In The Cart.";
+            }
+            else
+            {
+                decimal total = 0;
+                foreach (var furniture in this.Employee.SelectedMember.FurnitureListData)
+                {
+                    total += furniture.CurrentToalPrice;
+                }
+                this.totalTextBlock.Text = "Total: $" + total;
+            }
+        }
     }
 }

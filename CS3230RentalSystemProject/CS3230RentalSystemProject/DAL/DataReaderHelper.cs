@@ -3,9 +3,10 @@ using MySql.Data.MySqlClient;
 
 
 namespace DBAccess.DAL
-{/// <summary>
-///  Helper class define an Extension method that checks if a column is null before retturn its value
-/// </summary>
+{
+    /// <summary>
+    ///  Helper class define an Extension method that checks if a column is null before retturn its value
+    /// </summary>
     public static class DataReaderHelper
     {
         /// <summary>

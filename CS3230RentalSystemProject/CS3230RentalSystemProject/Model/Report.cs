@@ -1,13 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace CS3230RentalSystemProject.Model
+﻿namespace CS3230RentalSystemProject.Model
 {
     /// <summary>
-    /// The repor class
+    /// The report class
     /// </summary>
     public class Report
     {
