@@ -8,3 +8,5 @@ This application is for renting furniture from a store. The application has a ge
 * Employee: john1/password
 
 ## Contributions
+* [David Walker](https://github.com/dwalke22)
+* [Jinxiang Zeng](https://github.com/JinxiangZeng)
