@@ -210,7 +210,7 @@
         <Button x:Name="returnToMainPage" Content="Return To Main Page" Margin="750,8,0,0" VerticalAlignment="Top" Width="170" Click="returnToMainPage_Click"/>
         <TextBlock x:Name="filterTransactionLabel" HorizontalAlignment="Left" Margin="484,94,0,0" Text="Filter Transactions By ID: " TextWrapping="Wrap" VerticalAlignment="Top" Height="24" Width="172" FontSize="16" TextAlignment="Left" LineHeight="10"/>
         <ComboBox x:Name="transactionIDBox" Margin="665,88,140,0" SelectionChanged="transactionIDBox_SelectionChanged" HorizontalAlignment="Stretch" PlaceholderText="Select Transaction ID"/>
-        <Button x:Name="returnALl" Content="Return ALl" Margin="855,48,0,0" VerticalAlignment="Top" Width="105" Click="returnALl_Click"/>
+        <Button x:Name="returnALl" Content="Return All" Margin="855,48,0,0" VerticalAlignment="Top" Width="105" Click="returnALl_Click"/>
         <ToggleSwitch x:Name="_switch" Header="Transaction History" Margin="360,70,0,0" VerticalAlignment="Top" Width="120" Toggled="_switch_Toggled" Height="50"/>
         <Button x:Name="returnButton" Content="Return" Margin="855,85,0,0" VerticalAlignment="Top" Width="105" Click="returnButton_Click"/>
         <TextBlock x:Name="returnLabel" HorizontalAlignment="Left" Margin="220,285,0,0" Text="Return Transactions: " TextWrapping="Wrap" VerticalAlignment="Top" Height="24" Width="147" FontSize="16" TextAlignment="Left" LineHeight="10" Visibility="Collapsed"/>

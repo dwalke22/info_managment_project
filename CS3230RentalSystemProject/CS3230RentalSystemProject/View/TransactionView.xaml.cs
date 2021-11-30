@@ -214,6 +214,7 @@ namespace CS3230RentalSystemProject.View
 
                 List<RentalItem> list = this.TransanctionDAL.getAllRentalItemsByRentalID(id);
                 list.ForEach(x => x.setRentalIDInfor());
+                list.ForEach(x => x.setQuantityList());
                 this.rentalItemList.ItemsSource = list;
                 this.RentalItemsWithSameID = list;
                 if (list.Count != 0)
@@ -234,7 +235,7 @@ namespace CS3230RentalSystemProject.View
 
         private async void returnALl_Click(object sender, RoutedEventArgs e)
         {
-            MessageDialog showDialog = new MessageDialog("Are you sure want to return all items? \n fine: $" + this.calculateFine());
+            MessageDialog showDialog = new MessageDialog("Are you sure want to return all items? \n fine: $" + this.calculateFine(this.RentalItemsWithSameID));
             showDialog.Title = "Comfirmation";
             showDialog.Commands.Add(new UICommand("Yes")
             {
@@ -250,7 +251,7 @@ namespace CS3230RentalSystemProject.View
             Member member = (Member)this.memberList.SelectedItem;
             if ((int)result.Id == 0)
             {
-                this.TransanctionDAL.returnItems(this.RentalItemsWithSameID, this.Employee, member, 0);
+                this.TransanctionDAL.returnItems(this.RentalItemsWithSameID, this.Employee, member, (decimal)this.calculateFine(this.RentalItemsWithSameID));
                 List<RentalItem> list = this.TransanctionDAL.getAllCurrentRentaledItems((int)member.MemberID);
                 list.ForEach(x => x.setRentalIDInfor());
                 list.ForEach(x => x.setQuantityList());
@@ -260,7 +261,7 @@ namespace CS3230RentalSystemProject.View
                 this.returnItemList.ItemsSource = this.TransanctionDAL.getAllReturnItems((int)member.MemberID);
 
                 int transactionID = this.TransanctionDAL.GetReturnTransactionID();
-                MessageDialog recieptDialog = new MessageDialog(this.createReciept(transactionID, member));
+                MessageDialog recieptDialog = new MessageDialog(this.createReciept(transactionID, member, this.RentalItemsWithSameID));
                 recieptDialog.Title = "Reciept";
                 recieptDialog.Commands.Add(new UICommand("Print")
                 {
@@ -321,7 +322,7 @@ namespace CS3230RentalSystemProject.View
             }
             else
             {
-                MessageDialog showDialog = new MessageDialog("Are you sure want to return all items?" + "\n" + "\n" + "Total Fine: $" + this.calculateFine());
+                MessageDialog showDialog = new MessageDialog("Are you sure want to return all items?" + "\n" + "\n" + "Total Fine: $" + this.calculateFine(this.CheckedReturnItemList));
                 showDialog.Title = "Comfirmation";
                 showDialog.Commands.Add(new UICommand("Yes")
                 {
@@ -338,7 +339,7 @@ namespace CS3230RentalSystemProject.View
                 {
                     Member member = (Member)this.memberList.SelectedItem;
 
-                    if (this.TransanctionDAL.returnItems(this.CheckedReturnItemList, this.Employee, member, (decimal)this.calculateFine()))
+                    if (this.TransanctionDAL.returnItems(this.CheckedReturnItemList, this.Employee, member, (decimal)this.calculateFine(this.CheckedReturnItemList)))
                     {
                         List<RentalItem> list = this.TransanctionDAL.getAllCurrentRentaledItems((int)member.MemberID);
                         list.ForEach(x => x.setRentalIDInfor());
@@ -351,7 +352,7 @@ namespace CS3230RentalSystemProject.View
 
                         int transactionID = this.TransanctionDAL.GetReturnTransactionID();
                         
-                        MessageDialog recieptDialog = new MessageDialog(this.createReciept(transactionID, member));
+                        MessageDialog recieptDialog = new MessageDialog(this.createReciept(transactionID, member, this.CheckedReturnItemList));
                         recieptDialog.Title = "Reciept";
                         recieptDialog.Commands.Add(new UICommand("Print")
                         {
@@ -374,7 +375,7 @@ namespace CS3230RentalSystemProject.View
             }
         }
 
-        private string createReciept(int transactionID, Member member)
+        private string createReciept(int transactionID, Member member, List<RentalItem> list)
         {
             string reciept = "";
             reciept += "Transaction ID: " + transactionID + "\n" + "\n";
@@ -382,7 +383,7 @@ namespace CS3230RentalSystemProject.View
             reciept += "Customer:       " + member.FirstName + " " + member.LastName + "\n" + "\n";
             reciept += "Return Date:    " + DateTime.Now.ToString("yyyy-MM-dd") + "\n" + "\n";
             reciept += "Return Items".PadRight(50) + "Return Quantity" + "\n";
-            foreach (var returnItem in this.CheckedReturnItemList)
+            foreach (var returnItem in list)
             {
                 reciept += returnItem.FurnitureName.PadRight(70, '.');
                 reciept += returnItem.Quantity + "\n";
@@ -390,16 +391,16 @@ namespace CS3230RentalSystemProject.View
 
             this.CheckedReturnItemList = new List<RentalItem>();
             reciept += "\n" + "\n";
-            reciept += "Total fine: $" + this.calculateFine();
+            reciept += "Total fine: $" + this.calculateFine(list);
             reciept += "\n" + "\n";
             reciept += "Thanks for your business! Have A Nice Day!";
             return reciept;
         }
 
-        private double calculateFine()
+        private double calculateFine(List<RentalItem> list)
         {
             double fines = 0.0;
-            foreach (var furniture in this.CheckedReturnItemList)
+            foreach (var furniture in list)
             {
                 double daysPast = (DateTime.Parse(furniture.DueDate) - DateTime.Today).TotalDays;
 

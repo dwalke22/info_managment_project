@@ -76,9 +76,22 @@
         </member>
         <member name="M:CS3230RentalSystemProject.DAL.AdminQueryDAL.getReportByDates(System.DateTime,System.DateTime)">
             <summary>
-            Get all rental items
+                Get report between two dates
             </summary>
-            <returns>all rental items</returns>
+            <param name="date1">
+                The first date of the report
+            </param>
+            <param name="date2">
+                Teh second date of the report
+            </param>
+            <returns>
+                The report between the given two dates
+            </returns>
+        </member>
+        <member name="T:CS3230RentalSystemProject.DAL.CheckoutDAL">
+            <summary>
+            The CheckoutDAL class
+            </summary>
         </member>
         <member name="M:CS3230RentalSystemProject.DAL.CheckoutDAL.CheckoutCart(System.Collections.Generic.List{CS3230RentalSystemProject.Model.Furniture},CS3230RentalSystemProject.Model.Employee,System.Decimal,CS3230RentalSystemProject.Model.Member)">
             <summary>
@@ -86,7 +99,11 @@
             </summary>
             <param name="bag">The list of furniture to checkout.</param>
             <param name="employee">The employee creating the transaction.</param>
-            <param name="transactionID">The transaction id.</param>
+            <param name="total">The total cost of the transaction.</param>
+            <param name="member">The employee who checked out for the transaction.</param>
+            <return>
+            True if the transaction is created successful, false otherwise.
+            </return>
         </member>
         <member name="T:CS3230RentalSystemProject.DAL.FurnitureDAL">
             <summary>
@@ -103,12 +120,14 @@
             <summary>
             Get the Furniture tha match the id
             </summary>
+            <param name="id">The furniture ID</param>
             <returns> the Furniture that match the id</returns>
         </member>
         <member name="M:CS3230RentalSystemProject.DAL.FurnitureDAL.GetAllFurnitureMostAvailability(System.Int32)">
             <summary>
             Get the furniture's most availability
             </summary>
+            <param name="id">The furniture ID</param>
             <returns> all furniture's most availability</returns>
         </member>
         <member name="M:CS3230RentalSystemProject.DAL.FurnitureDAL.GetAllFurnitureCategories">
@@ -154,6 +173,16 @@
             The list of furniture that has a price less than or equal to that specified
             </returns>
         </member>
+        <member name="M:CS3230RentalSystemProject.DAL.FurnitureDAL.AddFurnitureToInventory(System.String,System.String,System.String,System.Decimal,System.Int32)">
+            <summary>
+            Add a new furniture to inventory
+            </summary>
+            <param name="name">The furniture name</param>
+            <param name="style">The furniture style</param>
+            <param name="category">The furniture category</param>
+            <param name="price">The furniture price</param>
+            <param name="quantity">The furniture quantity</param>
+        </member>
         <member name="T:CS3230RentalSystemProject.DAL.MemberDAL">
             <summary>
             The MemnerDAL class
@@ -169,18 +198,21 @@
             <summary>
             Get the member tha match the id
             </summary>
+            <param name="id">The member ID</param>
             <returns> the member that match the id</returns>
         </member>
         <member name="M:CS3230RentalSystemProject.DAL.MemberDAL.GetMemberByPhone(System.String)">
             <summary>
             Get the member tha match the phone
             </summary>
+            <param name="phone">The memebr's phone</param>
             <returns> the member that match the phone</returns>
         </member>
         <member name="M:CS3230RentalSystemProject.DAL.MemberDAL.GetMemberByFullName(System.String)">
             <summary>
             Get the member tha match the fullName
             </summary>
+            <param name="fullName">The member's full name</param>
             <returns> the member that match the fullName</returns>
         </member>
         <member name="M:CS3230RentalSystemProject.DAL.MemberDAL.RegisterMember(CS3230RentalSystemProject.Model.Member)">
@@ -191,6 +223,12 @@
                         The new member
             </param>
         </member>
+        <member name="M:CS3230RentalSystemProject.DAL.MemberDAL.UpdateMemberInfo(CS3230RentalSystemProject.Model.Member)">
+            <summary>
+            Update member's general information
+            </summary>
+            <param name="member">The member who need to be updated</param>
+        </member>
         <member name="T:CS3230RentalSystemProject.DAL.TransanctionDAL">
             <summary>
             The TransactionDAL class
@@ -200,36 +238,43 @@
             <summary>
             Get all rental items
             </summary>
+            <param name="id">The transaction ID</param>
             <returns>all rental items</returns>
         </member>
         <member name="M:CS3230RentalSystemProject.DAL.TransanctionDAL.getRentalItem(System.Int32,System.Int32)">
             <summary>
             Get all rental items
             </summary>
+            <param name="furnitureID">The furniture ID</param>
+            <param name="renttalID"> The rental ID</param>
             <returns>all rental items</returns>
         </member>
         <member name="M:CS3230RentalSystemProject.DAL.TransanctionDAL.getAllCurrentRentaledItems(System.Int32)">
             <summary>
             Get all current rentaled items
             </summary>
+            <param name="id">THe rental ID</param>
             <returns>all current rentaled items</returns>
         </member>
         <member name="M:CS3230RentalSystemProject.DAL.TransanctionDAL.getMemberTansactionsNumber(System.Int32)">
             <summary>
             Get all rental items
             </summary>
+            <param name="id">The member ID</param>
             <returns>all rental items</returns>
         </member>
         <member name="M:CS3230RentalSystemProject.DAL.TransanctionDAL.getAllRentalItemsByRentalID(System.Int32)">
             <summary>
             Get all rental items with specified rentalID
             </summary>
+            <param name="id">The rental ID</param>
             <returns>all rental items with specified rentalID</returns>
         </member>
         <member name="M:CS3230RentalSystemProject.DAL.TransanctionDAL.getAllReturnItems(System.Int32)">
             <summary>
             Get all return items
             </summary>
+            <param name="id">The member ID</param>
             <returns>all return items</returns>
         </member>
         <member name="M:CS3230RentalSystemProject.DAL.TransanctionDAL.returnItems(System.Collections.Generic.List{CS3230RentalSystemProject.Model.RentalItem},CS3230RentalSystemProject.Model.Employee,CS3230RentalSystemProject.Model.Member,System.Decimal)">
@@ -240,12 +285,13 @@
             <param name="employee"> the employee</param>
             <param name="member"> the member </param>
             <param name="fine">the fine if any </param>
+            <return>true if items returned successful, false otherwise</return>
         </member>
         <member name="M:CS3230RentalSystemProject.DAL.TransanctionDAL.GetReturnTransactionID">
             <summary>
             Get return transaction ID
             </summary>
-            <returns></returns>
+            <returns>The newest return transaction ID</returns>
         </member>
         <member name="T:CS3230RentalSystemProject.Enums.Country">
             <summary>
@@ -1048,7 +1094,7 @@
         </member>
         <member name="T:CS3230RentalSystemProject.Model.Report">
             <summary>
-            The repor class
+            The report class
             </summary>
         </member>
         <member name="P:CS3230RentalSystemProject.Model.Report.MemeberID">
@@ -1138,7 +1184,7 @@
         </member>
         <member name="T:CS3230RentalSystemProject.Utils.PasswordHash">
             <summary>
-            
+            The class PasswordHash
             </summary>
         </member>
         <member name="M:CS3230RentalSystemProject.Utils.PasswordHash.CreateMD5(System.String)">
@@ -1147,6 +1193,16 @@
             </summary>
             <param name="input">The input.</param>
             <returns></returns>
+        </member>
+        <member name="T:CS3230RentalSystemProject.View.AddEmployeeContentDialog">
+            <summary>
+            The class AddEmployeeContentDialog
+            </summary>
+        </member>
+        <member name="M:CS3230RentalSystemProject.View.AddEmployeeContentDialog.#ctor">
+            <summary>
+            Initialize constructor
+            </summary>
         </member>
         <member name="M:CS3230RentalSystemProject.View.AddEmployeeContentDialog.InitializeComponent">
             <summary>
@@ -1161,6 +1217,16 @@
         <member name="M:CS3230RentalSystemProject.View.AddEmployeeContentDialog.GetBindingConnector(System.Int32,System.Object)">
             <summary>
             GetBindingConnector(int connectionId, object target)
+            </summary>
+        </member>
+        <member name="T:CS3230RentalSystemProject.View.AddFurnitureContentDialog1">
+            <summary>
+            The class AddFurnitureContentDialog1
+            </summary>
+        </member>
+        <member name="M:CS3230RentalSystemProject.View.AddFurnitureContentDialog1.#ctor">
+            <summary>
+            Initialize constructor
             </summary>
         </member>
         <member name="M:CS3230RentalSystemProject.View.AddFurnitureContentDialog1.InitializeComponent">
@@ -1186,6 +1252,11 @@
         <member name="P:CS3230RentalSystemProject.View.AdminInterface.Employee">
             <summary>
             The Empolyee
+            </summary>
+        </member>
+        <member name="M:CS3230RentalSystemProject.View.AdminInterface.#ctor">
+            <summary>
+            Initialize constructor
             </summary>
         </member>
         <member name="M:CS3230RentalSystemProject.View.AdminInterface.OnNavigatedTo(Windows.UI.Xaml.Navigation.NavigationEventArgs)">
@@ -1330,10 +1401,21 @@
             GetBindingConnector(int connectionId, object target)
             </summary>
         </member>
+        <member name="T:CS3230RentalSystemProject.View.RecieptDialog">
+            <summary>
+            The class RecieptDialog
+            </summary>
+        </member>
         <member name="F:CS3230RentalSystemProject.View.RecieptDialog.furnitureListData">
             <summary>
             The furniture list data
             </summary>
+        </member>
+        <member name="M:CS3230RentalSystemProject.View.RecieptDialog.#ctor(System.Collections.Generic.List{CS3230RentalSystemProject.Model.Furniture})">
+            <summary>
+            Initalize constructor
+            </summary>
+            <param name="furnitureList"> The rentaled furniture List</param>
         </member>
         <member name="M:CS3230RentalSystemProject.View.RecieptDialog.InitializeComponent">
             <summary>
@@ -1539,7 +1621,7 @@
             <summary>
             Gets the newest employee identifier.
             </summary>
-            <returns></returns>
+            <returns>The id for the newest employee</returns>
         </member>
         <member name="T:DBAccess.DAL.LoginDALI">
             <summary>

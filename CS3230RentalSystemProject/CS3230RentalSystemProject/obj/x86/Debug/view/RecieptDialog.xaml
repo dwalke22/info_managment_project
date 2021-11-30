@@ -9,7 +9,7 @@
     Title="Transaction Receipt"
     PrimaryButtonText="Close">
     <Grid Margin="0,0,0,33">
-        <ListBox x:ConnectionId='2' x:Name="itemListBox" Height="99" VerticalAlignment="Top">
+        <ListBox x:ConnectionId='2' x:Name="itemListBox" Height="534" VerticalAlignment="Top">
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <Grid>
