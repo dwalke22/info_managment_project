@@ -174,13 +174,6 @@ namespace CS3230RentalSystemProject.View
                 else
                 {
                     string rowData = data.Columns[i].ColumnName;
-                    int width = data.Columns[i].ColumnName.Length;
-                    /*while (width < columnWidth)
-                    {
-                        rowData += " ";
-                        width++;
-                    }*/
-
                     text += rowData + '\t';
                 }
             }
@@ -217,7 +210,8 @@ namespace CS3230RentalSystemProject.View
                         tempString = tempString + "...";
                         rowData = tempString;
                     }
-                    else
+
+                    /*else
                     {
                         int width = rowData.Length;
                         while (width < columnWidth)
@@ -225,8 +219,8 @@ namespace CS3230RentalSystemProject.View
                             rowData += " ";
                             width++;
                         }
-                    }
-
+                    }*/
+                    
                     rowData += "\t";
                 }
                 text += rowData;
