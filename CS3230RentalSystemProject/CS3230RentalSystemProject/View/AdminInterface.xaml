@@ -6,13 +6,13 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
-    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" Width="1138" Height="600">
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" Width="1200" Height="600">
 
-    <Grid Height="600" VerticalAlignment="Center" HorizontalAlignment="Center" Width="1138">
+    <Grid Height="600" VerticalAlignment="Center" HorizontalAlignment="Center" Width="1200">
         <TextBlock x:Name="adminName" HorizontalAlignment="Left" Margin="60,15,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Height="42" Width="348" FontSize="36" FontFamily="Berlin Sans FB Demi" Foreground="#FF9C0D0D"/>
         <TextBlock x:Name="entryQueryLabel" HorizontalAlignment="Left" Margin="12,73,0,0" Text="Please Entry Your Query:" TextWrapping="Wrap" VerticalAlignment="Top" Height="27" Width="202" FontSize="18" FontFamily="Berlin Sans FB Demi" Foreground="Black" Visibility="Visible"/>
-        <TextBox x:Name="queryBox" HorizontalAlignment="Left" Margin="15,115,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Height="95" Width="1076" FontSize="14" Visibility="Visible" TextChanged="queryBox_TextChanged"/>
-        <TextBox x:Name="resultBox" Margin="15,270,47,25" ScrollViewer.VerticalScrollBarVisibility="Visible" Text="" TextWrapping="Wrap" FontSize="14" IsReadOnly="True" Visibility="Visible"/>
+        <TextBox x:Name="queryBox" HorizontalAlignment="Center" Margin="10,115,10,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Height="95" Width="1176" FontSize="14" Visibility="Visible" TextChanged="queryBox_TextChanged"/>
+        <TextBox x:Name="resultBox" Margin="10,270,10,25" ScrollViewer.VerticalScrollBarVisibility="Visible" Text="" TextWrapping="Wrap" FontSize="14" IsReadOnly="True" Visibility="Visible"/>
         <Button x:Name="excuteButton" Content="Execute" Margin="976,220,0,0" VerticalAlignment="Top" Height="45" Width="115" FontSize="16" Click="excuteButton_Click" Visibility="Visible"/>
         <Button x:Name="mainpage" Content="MainPage" Margin="882,10,0,0" VerticalAlignment="Top" Click="mainPage_Click" Visibility="Visible"/>
         <Button x:Name="report" Content="Report" Margin="789,10,0,0" VerticalAlignment="Top" Click="report_Click" Width="82" Visibility="Visible"/>
