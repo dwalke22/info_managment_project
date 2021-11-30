@@ -143,7 +143,7 @@ namespace CS3230RentalSystemProject.View
                             maxLenght = data.Columns[i].ColumnName.Length;
                         }
                     }
-                    int columnWidth = maxLenght + 2;
+                    int columnWidth = maxLenght;
 
                     text += this.formattTableHeaders(data, columnWidth);
 
@@ -175,13 +175,13 @@ namespace CS3230RentalSystemProject.View
                 {
                     string rowData = data.Columns[i].ColumnName;
                     int width = data.Columns[i].ColumnName.Length;
-                    while (width < columnWidth)
+                    /*while (width < columnWidth)
                     {
                         rowData += " ";
                         width++;
-                    }
+                    }*/
 
-                    text += rowData;
+                    text += rowData + '\t';
                 }
             }
 
@@ -213,7 +213,7 @@ namespace CS3230RentalSystemProject.View
 
                     if (rowData.Length > columnWidth)
                     {
-                        string tempString = rowData.Substring(0, columnWidth - 4);
+                        string tempString = rowData.Substring(0, columnWidth - 5);
                         tempString = tempString + "...";
                         rowData = tempString;
                     }
@@ -226,6 +226,8 @@ namespace CS3230RentalSystemProject.View
                             width++;
                         }
                     }
+
+                    rowData += "\t";
                 }
                 text += rowData;
             }
