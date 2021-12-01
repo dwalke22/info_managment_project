@@ -235,7 +235,7 @@ namespace CS3230RentalSystemProject.View
 
         private async void returnALl_Click(object sender, RoutedEventArgs e)
         {
-            MessageDialog showDialog = new MessageDialog("Are you sure want to return all items? \n fine: $" + this.calculateFine(this.RentalItemsWithSameID));
+            MessageDialog showDialog = new MessageDialog("Are you sure want to return all items? \n (Please be aware of that you will return ALL furnitures with ALL quantities!) \n fine: $" + this.calculateFine(this.RentalItemsWithSameID));
             showDialog.Title = "Comfirmation";
             showDialog.Commands.Add(new UICommand("Yes")
             {
