@@ -221,6 +221,8 @@ namespace CS3230RentalSystemProject.View
 
         private void isReadOnly(bool action)
         {
+            this.firstNameInputBox.IsReadOnly = action;
+            this.lastNameInputBox.IsReadOnly = action;
             this.address1InputBox.IsReadOnly = action;
             this.address2InputBox.IsReadOnly = action;
             this.cityInputBox.IsReadOnly = action;
